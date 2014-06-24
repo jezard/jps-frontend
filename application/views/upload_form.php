@@ -4,7 +4,7 @@
 </head>
 <body>
 
-<?php echo $error;?>
+<p>Upload your .fit, .gpx, .tcx or .pwx files below (we recommend uploading in smaller batches):</p>
 
 <?php echo form_open_multipart('upload/do_upload');?>
 
