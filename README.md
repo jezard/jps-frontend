@@ -1,4 +1,4 @@
-ppw-frontend
+jps-frontend
 ============
 
-Front end for Peak Power Wizard
+Front end for Joule Per Second
