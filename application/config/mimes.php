@@ -99,10 +99,10 @@ $mimes = array(	'hqx'	=>	'application/mac-binhex40',
 				'xl'	=>	'application/excel',
 				'eml'	=>	'message/rfc822',
 				'json' => array('application/json', 'text/json'),
-				'tcx' => 'application/octet-stream',
-				'pwx' => 'application/octet-stream',
+				'tcx' => 'application/xml',
+				'pwx' => 'application/xml',
 				'fit' => 'application/octet-stream',
-				'gpx' => 'application/octet-stream'
+				'gpx' => 'application/gpx+xml'
 			);
 
 

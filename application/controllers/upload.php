@@ -18,21 +18,22 @@ class Upload extends CI_Controller {
 	{
 		$this->upload->initialize(array(
 			'upload_path' => './uploads/',
-			'allowed_types' => '*',
+			'allowed_types' => 'tcx',
 			'max_size'	=> 5000,
 			'remove_spaces' => TRUE,
 			'overwrite' => TRUE
 		));
 
 
-		if ($this->upload->do_multi_upload("powerfiles")) { // use same as you did in the input field
-       		$return = $this->upload->get_multi_upload_data();
-       		/*$this->load->view('upload_success', $data);*/
+		if (! $this->upload->do_multi_upload("powerfiles")) {
+       		$error = array('error' => $this->upload->display_errors());
+			$this->load->view('upload_form', $error);
        	}
 
 		else
 		{
-			$this->load->view('upload_form', $error);
+			$data = $this->upload->get_multi_upload_data();
+       		$this->load->view('upload_success', $data);
 		}
 	
 	}
