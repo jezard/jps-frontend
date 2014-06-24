@@ -6,6 +6,7 @@ class Upload extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->helper(array('form', 'url'));
+		$this->load->library('upload'); 
 	}
 
 	function index()
@@ -15,26 +16,25 @@ class Upload extends CI_Controller {
 
 	function do_upload()
 	{
-		$config['upload_path'] = './uploads/';
-		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size']	= '100';
-		$config['max_width']  = '1024';
-		$config['max_height']  = '768';
+		$this->upload->initialize(array(
+			'upload_path' => './uploads/',
+			'allowed_types' => '*',
+			'max_size'	=> 5000,
+			'remove_spaces' => TRUE,
+			'overwrite' => TRUE
+		));
 
-		$this->load->library('upload', $config);
 
-		if ( ! $this->upload->do_upload())
-		{
-			$error = array('error' => $this->upload->display_errors());
+		if ($this->upload->do_multi_upload("powerfiles")) { // use same as you did in the input field
+       		$return = $this->upload->get_multi_upload_data();
+       		/*$this->load->view('upload_success', $data);*/
+       	}
 
-			$this->load->view('upload_form', $error);
-		}
 		else
 		{
-			$data = array('upload_data' => $this->upload->data());
-
-			$this->load->view('upload_success', $data);
+			$this->load->view('upload_form', $error);
 		}
+	
 	}
 }
 ?>

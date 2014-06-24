@@ -8,7 +8,7 @@
 
 <?php echo form_open_multipart('upload/do_upload');?>
 
-<input type="file" name="userfile" size="20" multiple />
+<input type="file" name="powerfiles[]" size="20" multiple />
 
 <br /><br />
 
