@@ -1,8 +1,3 @@
-<html>
-<head>
-<title>Upload Form</title>
-</head>
-<body>
 
 <p>Upload your .fit, .gpx, .tcx or .pwx files below (we recommend uploading in smaller batches):</p>
 
@@ -15,6 +10,3 @@
 <input type="submit" value="upload" />
 
 </form>
-
-</body>
-</html>

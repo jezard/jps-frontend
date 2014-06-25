@@ -11,7 +11,9 @@ class Upload extends CI_Controller {
 
 	function index()
 	{
+		$this->load->view('templates/header', array('title' => 'Upload - JoulePerSecond'));
 		$this->load->view('upload_form', array('error' => ' ' ));
+		$this->load->view('templates/footer');
 	}
 
 	function do_upload()
@@ -27,13 +29,17 @@ class Upload extends CI_Controller {
 
 		if (! $this->upload->do_multi_upload("powerfiles")) {
        		$error = array('error' => $this->upload->display_errors());
+       		$this->load->view('templates/header', array('title' => 'Upload - JoulePerSecond'));
 			$this->load->view('upload_form', $error);
+			$this->load->view('templates/footer');
        	}
 
 		else
 		{
 			$data = $this->upload->get_multi_upload_data();
+			$this->load->view('templates/header', array('title' => 'Upload Success - JoulePerSecond'));
        		$this->load->view('upload_success', $data);
+       		$this->load->view('templates/footer');
 		}
 	
 	}
