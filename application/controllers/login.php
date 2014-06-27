@@ -5,7 +5,7 @@ class Login extends CI_Controller {
 	function index()
 	{
 		$this->load->helper(array('form', 'url'));
-
+		$this->load->helper('cookie');
 		$this->load->library('form_validation');
 
 		$this->form_validation->set_rules('email', 'Email', 'required');
@@ -27,10 +27,22 @@ class Login extends CI_Controller {
 
 			if($details)
 			{
+				/*need to add a cookie or other setting here*/
+				$cookie = array(
+				    'name'   => 'ValidUser',
+				    'value'  => $details[2],
+				    'expire' => 0,
+				    'domain' => 'joulepersecond.com',
+				    'prefix' => 'joulepersecond_',
+				    'secure' => false
+				);
+
+				$this->input->set_cookie($cookie);
+				//go to the success page
 				$this->load->view('templates/header', array('title' => 'Welcome '.$details[1].' - JoulePerSecond'));
 				$this->load->view('login_success');
 				$this->load->view('templates/footer');
-				/*need to add a cookie or other setting here*/
+
 			}
 			else
 			{

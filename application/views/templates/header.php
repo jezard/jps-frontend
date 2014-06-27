@@ -1,4 +1,6 @@
 <?php $this->load->helper('url'); ?>
+<?php $this->load->helper('cookie'); ?>
+
 <!doctype html>
 <html>
 <head>
@@ -9,7 +11,14 @@
 </head>
 
 <body>
+<?php
+if ($this->input->cookie('joulepersecond_ValidUser'))
+  echo "Welcome " . $this->input->cookie('joulepersecond_ValidUser', false) . "!<br>";
+else
+  echo "Welcome guest!<br>";
+?>
 <h1><a href="http://JoulePerSecond.com" title="JoulePerSecond.com">JoulePerSecond</a></h1>
+
 <ul>
 	<li><?php echo anchor('signup', 'Sign up for JoulePerSecond'); ?></li>
 	<li><?php echo anchor('login', 'log in to JoulePerSecond'); ?></li>
