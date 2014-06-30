@@ -40,9 +40,27 @@ class User_model extends CI_Model {
 		}
     	return $validuser;
     }
+    function verify($validationLink){
+        //check the password against the database
 
+        $query = $this->db->query("SELECT email,id,verified FROM user");
 
-        
+        foreach ($query->result_array() as $row)
+        {
+           $email = $row['email'];
+           $id = $row['id'];
+           $verified = $row['verified'];
 
+           //if the hashed email equals the hashed validation email
+           if(do_hash('powerpeakjoulepersecond1973'.$email) == $validationLink && $verified == 0)
+           {
+                //set the verified flag to true
+                $this->db->where('id',$id);
+                $this->db->update('user', array('verified' => 1));
+                return $email;
+           }
+        }
+        return false;
+    }
 }
 ?>

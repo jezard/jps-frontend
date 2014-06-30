@@ -1,3 +1,3 @@
-<h3>Your form was successfully submitted!</h3>
+<h3>Your email (<code><?php echo $email; ?></code>) validation was successful!</h3>
 
-<p><?php echo anchor('signup', 'Try it again!'); ?></p>
+<p>Login to start</p>

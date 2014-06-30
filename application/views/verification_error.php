@@ -1,0 +1,2 @@
+<h3>Your email validation was not successful!</h3>
+<p>This is either because you have already validated your email address, or there has been an error. Please try to login with your email and password, or contact <a href="mailto:admin@wizard.technology">admin@wizard.technology</a></p>
