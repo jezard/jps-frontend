@@ -40,9 +40,29 @@ class User_model extends CI_Model {
 		}
     	return $validuser;
     }
+
+    //check that a user account exists
+    function accountexists(){
+        $this->email = $this->input->post('email');
+
+        $query = $this->db->query("SELECT email FROM user");
+
+        foreach ($query->result_array() as $row)
+        {
+           $email = $row['email'];
+
+           //if their is a match
+           if($email == $this->email)
+           {
+                return true;
+           }
+        }
+        return false;
+    }
+
+
     function verify($validationLink){
         //check the password against the database
-
         $query = $this->db->query("SELECT email,id,verified FROM user");
 
         foreach ($query->result_array() as $row)
@@ -51,7 +71,7 @@ class User_model extends CI_Model {
            $id = $row['id'];
            $verified = $row['verified'];
 
-           //if the hashed email equals the hashed validation email
+           //if the hashed email equals the hashed validation email and not already verified
            if(do_hash('powerpeakjoulepersecond1973'.$email) == $validationLink && $verified == 0)
            {
                 //set the verified flag to true
@@ -60,6 +80,40 @@ class User_model extends CI_Model {
                 return $email;
            }
         }
+        return false;
+    }
+
+    function exists($validationLink){
+        //check the password against the database
+        $query = $this->db->query("SELECT email,id FROM user");
+
+        foreach ($query->result_array() as $row)
+        {
+           $email = $row['email'];
+           $id = $row['id'];
+
+           //if the hashed email equals the hashed validation email and not already verified
+           if(do_hash('powerpeakjoulepersecond1973'.$email) == $validationLink)
+           {
+                //return email address
+                return $email;
+           }
+        }
+        return false;
+    }
+
+    function updatepassword(){
+        //get form values (email from a hidden field)
+        $this->email = $this->input->post('email');
+        $this->password = $this->input->post('password');
+
+        //set the verified flag to true
+        $this->db->where('email', $this->email);
+        if($this->db->update('user', array('password' => do_hash('powerpeakjoulepersecond1973'.$this->password))))
+        {
+          return true;
+        }
+
         return false;
     }
 }

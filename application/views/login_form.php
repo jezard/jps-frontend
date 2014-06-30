@@ -7,7 +7,7 @@
 
 <h5>Password</h5>
 <input type="password" name="password" value="<?php echo set_value('password'); ?>" size="50" />
-
+<a href="http://joulepersecond.com/index.php/forgottenpassword">Forgotten Password?</a>
 
 <div><input type="submit" value="Submit" /></div>
 

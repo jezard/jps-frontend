@@ -38,7 +38,7 @@ class Signup extends CI_Controller {
 		        $this->email->subject('Validate your email - JoulePerSecond.com');
 		        $this->email->message('Hi '.$username.'. Please use this link to valiate your email. http://joulepersecond.com/index.php/validate?vl='.do_hash('powerpeakjoulepersecond1973'.$email));  
 		        $this->email->send();
-		        echo $this->email->print_debugger();
+		        /*echo $this->email->print_debugger();*/
 
 				$this->load->view('templates/header', array('title' => 'Verification sent! - JoulePerSecond'));
 				$this->load->view('verification_sent', array('email' => $email));
