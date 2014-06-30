@@ -9,13 +9,16 @@ class User_model extends CI_Model {
     
 
     function add(){
+        //insert record to database
     	$this->username = $this->input->post('username');
     	$password = $this->input->post('password');
     	$this->password = do_hash('powerpeakjoulepersecond1973'.$password);
     	$this->email = $this->input->post('email');
-
     	$this->db->insert('user', $this);
+
+        //return id
     	return $this->db->insert_id();
+
     }
     function validate(){
     	$password = $this->input->post('password');
@@ -37,5 +40,9 @@ class User_model extends CI_Model {
 		}
     	return $validuser;
     }
+
+
+        
+
 }
 ?>

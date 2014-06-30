@@ -6,7 +6,6 @@ class Signup extends CI_Controller {
 	function index()
 	{
 		$this->load->helper(array('form', 'url'));
-
 		$this->load->library('form_validation');
 
 		$this->form_validation->set_rules('username', 'Username', 'required');
@@ -29,8 +28,20 @@ class Signup extends CI_Controller {
 			//add to the database
 			if($this->user->add())
 			{
-				$this->load->view('templates/header', array('title' => 'Signed up! - JoulePerSecond'));
-				$this->load->view('signup_success');
+    			//send out validation email
+    			$this->load->library('email');
+
+		        $email = $this->input->post('email');
+		        $username = $this->input->post('username');
+		        $this->email->from('no-reply@joulepersecond.com', 'Jeremy');
+		        $this->email->to($email); 
+		        $this->email->subject('Validate your email - JoulePerSecond.com');
+		        $this->email->message('Hi '.$username.'. Please use this link to valiate your email. http://joulepersecond.com/valdiate?'.do_hash('powerpeakjoulepersecond1973'.$this->db->insert_id()));  
+		        $this->email->send();
+		        echo $this->email->print_debugger();
+
+				$this->load->view('templates/header', array('title' => 'Verification sent! - JoulePerSecond'));
+				$this->load->view('verification_sent', array('email' => $email));
 				$this->load->view('templates/footer');
 			}
 			//on database error
