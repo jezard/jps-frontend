@@ -38,10 +38,8 @@ class Login extends CI_Controller {
 				);
 
 				$this->input->set_cookie($cookie);
-				//go to the success page
-				$this->load->view('templates/header', array('title' => 'Welcome '.$details[1].' - JoulePerSecond'));
-				$this->load->view('login_success');
-				$this->load->view('templates/footer');
+				//go to the uploads page
+				redirect('/upload', 'refresh');
 
 			}
 			else

@@ -2,3 +2,9 @@ body{
 	font-family:lato;
 	font-size: 1.4em;
 }
+#signup.logged-in, #login.logged-in{
+	display: none;
+}
+#signout.logged-out, #myaccount.logged-out, #analysis.logged-out, #upload.logged-out{
+	display:none;
+}

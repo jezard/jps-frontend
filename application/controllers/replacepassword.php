@@ -7,7 +7,7 @@ class Replacepassword extends CI_Controller {
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
 
-		$this->form_validation->set_rules('password', 'Password', 'required');
+		$this->form_validation->set_rules('password','Password','trim|required|matches[passconf]');
 		$this->form_validation->set_rules('passconf', 'Password Confirmation', 'required');
 		$this->form_validation->set_rules('email', 'Email', 'required');
 
