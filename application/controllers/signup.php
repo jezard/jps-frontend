@@ -16,7 +16,7 @@ class Signup extends CI_Controller {
 
 		if ($this->form_validation->run() == FALSE)
 		{
-			$this->load->view('templates/header', array('title' => 'Signup - JoulePerSecond'));
+			$this->load->view('templates/header', array('title' => 'Signup - '.$this->config->item('site_name')));
 			$this->load->view('signup_form');
 			$this->load->view('templates/footer');
 		}
@@ -33,21 +33,21 @@ class Signup extends CI_Controller {
 
 		        $email = $this->input->post('email');
 		        $username = $this->input->post('username');
-		        $this->email->from('no-reply@joulepersecond.com', 'Jeremy');
+		        $this->email->from('no-reply@'.$this->config->item('site_name'), $this->config->item('site_name').' Admin');
 		        $this->email->to($email); 
-		        $this->email->subject('Validate your email - JoulePerSecond.com');
-		        $this->email->message('Hi '.$username.'. Please use this link to valiate your email. http://joulepersecond.com/index.php/validate?vl='.do_hash('powerpeakjoulepersecond1973'.$email));  
+		        $this->email->subject('Validate your email - '.$this->config->item('site_name'));
+		        $this->email->message('Hi '.$username.'. Please use this link to valiate your email. '.$this->config->item('base_url').'index.php/validate?vl='.do_hash($this->config->item('salt').$email));  
 		        $this->email->send();
-		        /*echo $this->email->print_debugger();*/
+		        echo $this->email->print_debugger();//remove for production
 
-				$this->load->view('templates/header', array('title' => 'Verification sent! - JoulePerSecond'));
+				$this->load->view('templates/header', array('title' => 'Verification sent! - '.$this->config->item('site_name')));
 				$this->load->view('verification_sent', array('email' => $email));
 				$this->load->view('templates/footer');
 			}
 			//on database error
 			else
 			{
-				$this->load->view('templates/header', array('title' => 'Database error - JoulePerSecond'));
+				$this->load->view('templates/header', array('title' => 'Database error - '.$this->config->item('site_name')));
 				$this->load->view('signup_form');
 				$this->load->view('templates/footer');
 			}	

@@ -13,7 +13,7 @@ class Replacepassword extends CI_Controller {
 
 		if ($this->form_validation->run() == FALSE)
 		{
-			$this->load->view('templates/header', array('title' => 'Password reset - JoulePerSecond'));
+			$this->load->view('templates/header', array('title' => 'Password reset - '.$this->config->item('site_name')));
 			$this->load->view('new_password_form');
 			$this->load->view('templates/footer');
 		}
@@ -25,13 +25,13 @@ class Replacepassword extends CI_Controller {
 			//add to the database
 			if($this->user->updatepassword())
 			{
-				$this->load->view('templates/header', array('title' => 'Home - JoulePerSecond'));
+				$this->load->view('templates/header', array('title' => 'Home - '.$this->config->item('site_name')));
 				$this->load->view('front_page');
 				$this->load->view('templates/footer');
 			}
 			else
 			{
-				$this->load->view('templates/header', array('title' => 'Password reset - JoulePerSecond'));
+				$this->load->view('templates/header', array('title' => 'Password reset - '.$this->config->item('site_name')));
 				$this->load->view('new_password_form');
 				$this->load->view('templates/footer');
 			}

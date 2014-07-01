@@ -12,7 +12,7 @@ class User_model extends CI_Model {
         //insert record to database
     	$this->username = $this->input->post('username');
     	$password = $this->input->post('password');
-    	$this->password = do_hash('powerpeakjoulepersecond1973'.$password);
+    	$this->password = do_hash($this->config->item('salt').$password);
     	$this->email = $this->input->post('email');
     	$this->db->insert('user', $this);
 
@@ -20,12 +20,13 @@ class User_model extends CI_Model {
     	return $this->db->insert_id();
 
     }
+	//check that a user's credentials are valid, and that they have verified their email address
     function validate(){
     	$password = $this->input->post('password');
     	$email = $this->input->post('email');
-    	$password = do_hash('powerpeakjoulepersecond1973'.$password);
+    	$password = do_hash($this->config->item('salt').$password);
 
-    	$this->db->where(array('password' => $password, 'email'=> $email));
+    	$this->db->where(array('password' => $password, 'email'=> $email, 'verified' => 1));
     	$this->db->from('user'); 
     	$this->db->limit(1);
     	$query = $this->db->get();
@@ -41,8 +42,9 @@ class User_model extends CI_Model {
     	return $validuser;
     }
 
-    //check that a user account exists
+    
     function accountexists(){
+	//check that a user account exists
         $this->email = $this->input->post('email');
 
         $query = $this->db->query("SELECT email FROM user");
@@ -51,7 +53,7 @@ class User_model extends CI_Model {
         {
            $email = $row['email'];
 
-           //if their is a match
+           //if there is a match
            if($email == $this->email)
            {
                 return true;
@@ -70,9 +72,10 @@ class User_model extends CI_Model {
            $email = $row['email'];
            $id = $row['id'];
            $verified = $row['verified'];
+		   
 
            //if the hashed email equals the hashed validation email and not already verified
-           if(do_hash('powerpeakjoulepersecond1973'.$email) == $validationLink && $verified == 0)
+           if((do_hash($this->config->item('salt').$email) == $validationLink) && $verified == 0)
            {
                 //set the verified flag to true
                 $this->db->where('id',$id);
@@ -93,7 +96,7 @@ class User_model extends CI_Model {
            $id = $row['id'];
 
            //if the hashed email equals the hashed validation email and not already verified
-           if(do_hash('powerpeakjoulepersecond1973'.$email) == $validationLink)
+           if(do_hash($this->config->item('salt').$email) == $validationLink)
            {
                 //return email address
                 return $email;
@@ -109,7 +112,7 @@ class User_model extends CI_Model {
 
         //set the verified flag to true
         $this->db->where('email', $this->email);
-        if($this->db->update('user', array('password' => do_hash('powerpeakjoulepersecond1973'.$this->password))))
+        if($this->db->update('user', array('password' => do_hash($this->config->item('salt').$this->password))))
         {
           return true;
         }

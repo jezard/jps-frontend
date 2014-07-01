@@ -11,10 +11,10 @@ class SendVerification extends CI_Controller {
 
 		//send out validation email
         $email = $this->input->post('email');
-        $this->email->from('no-reply@joulepersecond.com', 'Jeremy');
+        $this->email->from('no-reply@'.$this->config->item('site_name'), $this->config->item('site_name').' Admin');
         $this->email->to($email); 
-        $this->email->subject('Validate your email - JoulePerSecond.com');
-        $this->email->message('Hi '.$this->username.'. Please click this link to valiate your email. http://joulepersecond.com/valdiate?'.do_hash('powerpeakjoulepersecond1973'.$this->db->insert_id()));  
+        $this->email->subject('Validate your email - '.$this->config->item('site_name'));
+        $this->email->message('Hi '.$this->username.'. Please click this link to valiate your email. '.$this->config->item('base_url').'/valdiate?'.do_hash($this->config->item('salt').this->db->insert_id()));  
         $this->email->send();
         echo $this->email->print_debugger();
 

@@ -11,7 +11,7 @@ class Forgottenpassword extends CI_Controller {
 
 		if ($this->form_validation->run() == FALSE)
 		{
-			$this->load->view('templates/header', array('title' => 'Password reset - JoulePerSecond'));
+			$this->load->view('templates/header', array('title' => 'Password reset - '.$this->config->item('site_name')));
 			$this->load->view('password_reset', array('message' => 'Please check your email for your password reset link'));
 			$this->load->view('templates/footer');
 		}
@@ -29,16 +29,16 @@ class Forgottenpassword extends CI_Controller {
     			$this->load->library('email');
 
 		        $email = $this->input->post('email');
-		        $this->email->from('no-reply@joulepersecond.com', 'Jeremy');
+		        $this->email->from('no-reply@'.$this->config->item('site_name'), 'Jeremy');
 		        $this->email->to($email); 
-		        $this->email->subject('Validate your email - JoulePerSecond.com');
-		        $this->email->message('Please use this link to validate your email. http://joulepersecond.com/index.php/passwordreset?vl='.do_hash('powerpeakjoulepersecond1973'.$email));  
+		        $this->email->subject('Validate your email - '.$this->config->item('site_name'));
+		        $this->email->message('Please use this link to validate your email. '.$this->config->item('base_url').'index.php/passwordreset?vl='.do_hash($this->config->item('salt').$email));  
 		        $this->email->send();
-		        echo $this->email->print_debugger();
+		        echo $this->email->print_debugger();//remove for production
 			}
 			else
 			{
-				$this->load->view('templates/header', array('title' => 'Account does not exist - JoulePerSecond'));
+				$this->load->view('templates/header', array('title' => 'Account does not exist - '.$this->config->item('site_name')));
 				$this->load->view('password_reset', array('message' => 'Account does not exist - Try another email address'));
 				$this->load->view('templates/footer');
 			}

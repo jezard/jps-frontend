@@ -13,7 +13,7 @@ class Login extends CI_Controller {
 
 		if ($this->form_validation->run() == FALSE)
 		{
-			$this->load->view('templates/header', array('title' => 'Login - JoulePerSecond'));
+			$this->load->view('templates/header', array('title' => 'Login - '.$this->config->item('site_name')));
 			$this->load->view('login_form');
 			$this->load->view('templates/footer');
 		}
@@ -29,11 +29,11 @@ class Login extends CI_Controller {
 			{
 				/*need to add a cookie or other setting here*/
 				$cookie = array(
-				    'name'   => 'ValidUser',
+				    'name'   => 'valid_user',
 				    'value'  => $details[2],
 				    'expire' => -100,
-				    'domain' => 'joulepersecond.com',
-				    'prefix' => 'joulepersecond_',
+				    'domain' => $this->config->item('site_name'),
+				    'prefix' => '',
 				    'secure' => false
 				);
 
@@ -44,7 +44,7 @@ class Login extends CI_Controller {
 			}
 			else
 			{
-				$this->load->view('templates/header', array('title' => 'Login Incorrect - JoulePerSecond'));
+				$this->load->view('templates/header', array('title' => 'Login Incorrect - '.$this->config->item('site_name')));
 				$this->load->view('login_form');
 				$this->load->view('templates/footer');
 			}

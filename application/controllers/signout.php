@@ -6,7 +6,7 @@ class Signout extends CI_Controller {
 	{
 		$this->load->helper('cookie');
 
-		delete_cookie('ValidUser','joulepersecond.com','/', 'joulepersecond_');
+		delete_cookie('valid_user', $this->config->item('site_name'),'/', '');
 
 		$this->load->helper('url');
 		redirect('/', 'refresh');

@@ -19,7 +19,7 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('templates/header', array('title' => 'Home - JoulePerSecond'));
+		$this->load->view('templates/header', array('title' => 'Home - '.$this->config->item('site_name')));
 		$this->load->view('front_page');
 		$this->load->view('templates/footer');
 	}
