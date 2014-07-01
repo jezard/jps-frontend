@@ -13,6 +13,10 @@
 </head>
 
 <body>
+
+
+<header class="site-header">
+<div class="grid grid-pad">
 <?php
 
 if ($this->input->cookie('valid_user'))
@@ -27,13 +31,20 @@ else
 	echo "Welcome guest!<br>";
 }
 ?>
-<h1><a href="<?php echo $this->config->item('base_url'); ?>" title="<?php echo $this->config->item('site_name'); ?> "><?php echo $this->config->item('site_name'); ?></a></h1>
 
+
+<h1><a href="<?php echo $this->config->item('base_url'); ?>" title="<?php echo $this->config->item('site_name'); ?> "><?php echo $this->config->item('site_name'); ?></a></h1>
+<nav class="top-nav">
 <ul>
-	<li id="signup" <?php echo $display; ?> ><?php echo anchor('signup', 'Sign up for '.$this->config->item('site_name')); ?></li>
-	<li id="login" <?php echo $display; ?> ><?php echo anchor('login', 'log in to '.$this->config->item('site_name')); ?></li>
-	<li id="signout" <?php echo $display; ?> ><?php echo anchor('signout', 'log out of '.$this->config->item('site_name')); ?></li>
-	<li id="myaccount" <?php echo $display; ?> ><?php echo anchor('myaccount', 'My Account'); ?></li>
-	<li id="analysis" <?php echo $display; ?> ><?php echo anchor('analysis', 'Analysis'); ?></li>
+	<li id="signup" <?php echo $display; ?> ><?php echo anchor('signup', 'Sign up');?></li>
+	<li id="login" <?php echo $display; ?> ><?php echo anchor('login', 'log in');?></li>
 	<li id="upload" <?php echo $display; ?> ><?php echo anchor('upload', 'Upload files'); ?></li>
+	<li id="analysis" <?php echo $display; ?> ><?php echo anchor('analysis', 'Analysis'); ?></li>
+	<li id="myaccount" <?php echo $display; ?> ><?php echo anchor('myaccount', 'My Account'); ?></li>
+	<li id="signout" <?php echo $display; ?> ><?php echo anchor('signout', 'log out');?></li>
 </ul>
+</nav>
+</div>
+</header>
+<main>
+<div class="grid grid-pad">
