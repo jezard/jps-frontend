@@ -31,7 +31,7 @@ class Login extends CI_Controller {
 				$cookie = array(
 				    'name'   => 'ValidUser',
 				    'value'  => $details[2],
-				    'expire' => 0,
+				    'expire' => -100,
 				    'domain' => 'joulepersecond.com',
 				    'prefix' => 'joulepersecond_',
 				    'secure' => false
