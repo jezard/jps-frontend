@@ -441,7 +441,7 @@
 							*/
 
 							/*convert fit files*/
-							if($this->file_ext == 'fit')
+							if(/*$this->file_ext == 'fit'*/true == true)
 							{
 								$infile = $this->upload_path.$this->file_name;
 								$outfile = str_replace('.fit', '.tcx', $infile);
