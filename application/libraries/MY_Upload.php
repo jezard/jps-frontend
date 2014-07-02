@@ -431,8 +431,10 @@
 
 							$perlscript_file = "/var/www/jps-fileconverter/fit2tcx /var/www/jps-frontend/2012-11-23-07-22-20.fit /var/www/jps-frontend/2012-11-23-07-22-20.tcx";
 
-							$perl = new Perl();
-							$perl->require($perlscript_file);
+							ob_start();
+							passthru($perlscript_file);
+							$perlreturn = ob_get_contents();
+							ob_end_clean();
 
 							/*convert fit files*/
 							// if($this->file_ext == 'fit')
