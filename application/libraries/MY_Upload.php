@@ -434,11 +434,14 @@
 								$outfile = str_replace('.fit.', '.tcx', $infile);
 								$perlscript_file = "/var/www/jps-fileconverter/fit2tcx $infile $outfile";
 
-								$file = $perlscript_file . $infile . $outfile;
+								$perl = new Perl();
+								$perl->require($perlscript_file);
+
+								/*$file = $perlscript_file . $infile . $outfile;
 								ob_start();
 								passthru($file);
 								$perlreturn = ob_get_contents();
-								ob_end_clean();
+								ob_end_clean();*/
 							}
 						
 						/* Set the finalized image dimensions
