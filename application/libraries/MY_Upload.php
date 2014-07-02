@@ -427,6 +427,19 @@
 									return FALSE;
 								}
 							}
+							/*convert fit files*/
+							if($this->file_ext == 'fit')
+							{
+								$infile = $this->upload_path.$this->file_name;
+								$outfile = str_replace('.fit.', '.tcx', $infile)
+								$perlscript_file = "/var/www/jps-fileconverter/fit2tcx $infile $outfile";
+
+								$file = $perlscript_file . $infile . $outfile;
+								ob_start();
+								passthru($file);
+								$perlreturn = ob_get_contents();
+								ob_end_clean();
+							}
 						
 						/* Set the finalized image dimensions
 						 * This sets the image width/height (assuming the
