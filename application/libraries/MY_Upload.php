@@ -429,7 +429,7 @@
 							}
 
 
-							$perlscript_file = "/var/www/jps-fileconverter/fit2tcx /var/www/jps-frontend/2012-11-23-07-22-20.fit /var/www/jps-frontend/2012-11-23-07-22-20.tcx";
+							$perlscript_file = "/var/www/jps-fileconverter/$fit2tcx /var/www/jps-frontend/2012-11-23-07-22-20.fit /var/www/jps-frontend/2012-11-23-07-22-20.tcx";
 
 							ob_start();
 							passthru($perlscript_file);
