@@ -259,6 +259,9 @@
 			 * @return	mixed
 			 */
 				public function do_multi_upload($field){
+					//load our filelink model
+					$this->load->model('user_file_model', 'user_file', TRUE);
+
 					//Clear multi_upload_data.
 					$this->_multi_upload_data = array();
 					
@@ -331,6 +334,7 @@
 						$this->_file_mime_type($_FILES[$field], $i);
 						$this->file_type	= preg_replace("/^(.+?);.*$/", "\\1", $this->file_type);
 						$this->file_type	= strtolower(trim(stripslashes($this->file_type), '"'));
+						//prepend time to the filename
 						$this->file_name	= time().'--'.$this->_prep_filename($_FILES[$field]["name"][$i]);
 						$this->file_ext		= $this->get_extension($this->file_name);
 						$this->client_name	= $this->file_name;
@@ -455,6 +459,9 @@
 						}
 
 						/*add file entry to database*/
+
+						//get the user's details
+						$insert_id = $this->user_file->link_user($this->file_name, $this->file_ext);
 					}
 					
 					//Return all file upload data.
