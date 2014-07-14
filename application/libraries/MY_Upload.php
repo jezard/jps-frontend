@@ -13,6 +13,13 @@
 	 * @link		https://github.com/stvnthomas/CodeIgniter-2.1-Multi-Upload
 	 */
 		class MY_Upload extends CI_Upload {
+			function __construct()
+			{
+				parent::__construct();
+				//load the model
+				$CI =& get_instance();
+				$CI->load->model('user_file_model', 'user_file', TRUE); 
+			}
 		
 			/**
 			 * Properties
@@ -458,7 +465,7 @@
 						/*add file entry to database*/
 
 						//get the user's details
-						$insert_id = $this->user_file_model->link_user($this->file_name, $this->file_ext);
+						$insert_id = $CI->user_file->link_user($this->file_name, $this->file_ext);
 					}
 					
 					//Return all file upload data.
