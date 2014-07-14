@@ -221,7 +221,7 @@
 			 */
 				protected function set_multi_upload_data(){
 					$this->_multi_upload_data[] = array(
-						"file_name"			=> $this->file_name,
+						"file_name"			=> time().$this->file_name,
 						"file_type"			=> $this->file_type,
 						"file_path"			=> $this->upload_path,
 						"full_path"			=> $this->upload_path.$this->file_name,
@@ -265,10 +265,10 @@
 					if(!isset($_FILES[$field])){ return false; }
 					
 					//Is this really a multi upload?
-					if(!is_array($_FILES[$field]["name"])){
+					/*if(!is_array($_FILES[$field]["name"])){
 						//Fallback to do_upload method.
 						return $this->do_upload($field);
-					}
+					}*/
 					
 					//Is the upload path valid?
 					if(!$this->validate_upload_path()){
@@ -429,17 +429,6 @@
 							}
 
 
-							/* 
-							//this stub works!
-
-							$perlscript_file = "perl /var/www/jps-fileconverter/fit2tcx /var/www/jps-frontend/uploads/2012-11-23-07-22-20.fit /var/www/jps-frontend/uploads/2012-11-23-07-22-20.tcx";
-
-							ob_start();
-							passthru($perlscript_file);
-							$perlreturn = ob_get_contents();
-							ob_end_clean();
-							*/
-
 							/*convert fit files*/
 							if($this->file_ext == '.fit')
 							{
@@ -452,6 +441,8 @@
 								$perlreturn = ob_get_contents();
 								ob_end_clean();
 							}
+
+							/*add file entry to database*/
 						
 						/* Set the finalized image dimensions
 						 * This sets the image width/height (assuming the
