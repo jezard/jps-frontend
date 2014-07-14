@@ -19,7 +19,7 @@
 			 * Properties
 			 */
 			 	protected $_multi_upload_data			= array();
-				protected $_multi_file_name_override	= time();
+				protected $_multi_file_name_override	= "";
 				
 				
 			/**
@@ -219,9 +219,11 @@
 			 * @access	protected
 			 * @return	void
 			 */
+
 				protected function set_multi_upload_data(){
+					$prefix = time();
 					$this->_multi_upload_data[] = array(
-						"file_name"			=> $this->file_name,
+						"file_name"			=> $prefix.$this->file_name,
 						"file_type"			=> $this->file_type,
 						"file_path"			=> $this->upload_path,
 						"full_path"			=> $this->upload_path.$this->file_name,
