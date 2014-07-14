@@ -15,5 +15,6 @@ class User_file_model extends CI_Model{
 			//return id
     		return $this->db->insert_id();
 		}*/
+		return TRUE;
 	}
 }
