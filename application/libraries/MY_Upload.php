@@ -13,14 +13,7 @@
 	 * @link		https://github.com/stvnthomas/CodeIgniter-2.1-Multi-Upload
 	 */
 		class MY_Upload extends CI_Upload {
-			function __construct()
-			{
-				parent::__construct();
-				//load the model
-				$CI =& get_instance();
-				$CI->load->model('user_file_model', 'user_file', TRUE); 
-			}
-		
+			
 			/**
 			 * Properties
 			 */
@@ -283,6 +276,11 @@
 						//Errors will already be set by validate_upload_path() so just return FALSE
 						return FALSE;
 					}
+
+
+					$CI =& get_instance();
+					$CI->load->model('user_file_model', 'user_file', TRUE); 
+
 					
 					//Every file will have a separate entry in each of the $_FILES associative array elements (name, type, etc).
 					//Loop through $_FILES[$field]["name"] as representative of total number of files. Use count as key in
