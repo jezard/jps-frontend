@@ -430,21 +430,6 @@
 								}
 							}
 
-
-							/*convert fit files*/
-							if($this->file_ext == '.fit')
-							{
-								$infile = $this->upload_path.$this->file_name;
-								$outfile = str_replace('.fit', '.tcx', $infile);
-								$perlscript_file = "perl /var/www/jps-fileconverter/fit2tcx $infile $outfile";
-
-								ob_start();
-								passthru($perlscript_file);
-								$perlreturn = ob_get_contents();
-								ob_end_clean();
-							}
-
-							/*add file entry to database*/
 						
 						/* Set the finalized image dimensions
 						 * This sets the image width/height (assuming the
@@ -455,6 +440,22 @@
 							
 						//Set current file data to multi_file_upload_data.
 						$this->set_multi_upload_data();
+
+
+						/*convert fit files*/
+						if($this->file_ext == '.fit')
+						{
+							$infile = $this->upload_path.$this->file_name;
+							$outfile = str_replace('.fit', '.tcx', $infile);
+							$perlscript_file = "perl /var/www/jps-fileconverter/fit2tcx $infile $outfile";
+
+							ob_start();
+							passthru($perlscript_file);
+							$perlreturn = ob_get_contents();
+							ob_end_clean();
+						}
+
+						/*add file entry to database*/
 					}
 					
 					//Return all file upload data.
