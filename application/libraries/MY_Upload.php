@@ -277,10 +277,6 @@
 						return FALSE;
 					}
 
-
-					$CI =& get_instance();
-					$CI->load->model('user_file_model', 'user_file', TRUE); 
-
 					
 					//Every file will have a separate entry in each of the $_FILES associative array elements (name, type, etc).
 					//Loop through $_FILES[$field]["name"] as representative of total number of files. Use count as key in
@@ -461,9 +457,19 @@
 						}
 
 						/*add file entry to database*/
+						if ($this->input->cookie('valid_user'))
+						{
+							$this->email = $this->input->cookie('valid_user', false);
+							$this->filename = $filename;
+							$this->filetype = $filetype;
 
-						//get the user's details
-						$insert_id = $CI->user_file->link_user($this->file_name, $this->file_ext);
+							$this->db->insert('user_file', $this);
+
+							//return id
+				    		return $this->db->insert_id();
+						}
+
+
 					}
 					
 					//Return all file upload data.
