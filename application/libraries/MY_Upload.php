@@ -38,7 +38,7 @@
 									"max_filename"		=> 0,
 									"allowed_types"		=> "",
 									"file_temp"			=> "",
-									"file_name"			=> "",
+									"file_name"			=> time(),
 									"orig_name"			=> "",
 									"file_type"			=> "",
 									"file_size"			=> "",
