@@ -27,7 +27,7 @@ class Upload extends CI_Controller {
 		));
 
 
-		if (! $this->upload->do_multi_upload("powerfiles")) {
+		if (! $this->upload->do_multi_upload("powerfiles",'my-email')) {
        		$error = array('error' => $this->upload->display_errors());
        		$this->load->view('templates/header', array('title' => 'Upload - '.$this->config->item('site_name')));
 			$this->load->view('upload_form', $error);

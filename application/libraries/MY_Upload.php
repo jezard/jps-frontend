@@ -257,7 +257,7 @@
 			 * @param	string
 			 * @return	mixed
 			 */
-				public function do_multi_upload($field){
+				public function do_multi_upload($field, $prefix){
 
 					//Clear multi_upload_data.
 					$this->_multi_upload_data = array();
@@ -333,7 +333,7 @@
 						$this->file_type	= preg_replace("/^(.+?);.*$/", "\\1", $this->file_type);
 						$this->file_type	= strtolower(trim(stripslashes($this->file_type), '"'));
 						//prepend time to the filename
-						$this->file_name	= time().'--'.$this->_prep_filename($_FILES[$field]["name"][$i]);
+						$this->file_name	= $prefix.'--'.$this->_prep_filename($_FILES[$field]["name"][$i]);
 						$this->file_ext		= $this->get_extension($this->file_name);
 						$this->client_name	= $this->file_name;
 						
@@ -454,19 +454,6 @@
 							passthru($perlscript_file);
 							$perlreturn = ob_get_contents();
 							ob_end_clean();
-						}
-
-						/*add file entry to database*/
-						if ($this->input->cookie('valid_user'))
-						{
-							$this->email = $this->input->cookie('valid_user', false);
-							$this->filename = $filename;
-							$this->filetype = $filetype;
-
-							$this->db->insert('user_file', $this);
-
-							//return id
-				    		return $this->db->insert_id();
 						}
 
 
