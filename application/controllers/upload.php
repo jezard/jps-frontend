@@ -7,6 +7,11 @@ class Upload extends CI_Controller {
 		parent::__construct();
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('upload');
+		$this->load->helper('cookie');
+		if ($this->input->cookie('valid_user'))
+		{
+			$this->email = $this->input->cookie('valid_user', false);
+		}
 	}
 
 	function index()
@@ -27,7 +32,7 @@ class Upload extends CI_Controller {
 		));
 
 
-		if (! $this->upload->do_multi_upload("powerfiles",'my-email')) {
+		if (! $this->upload->do_multi_upload("powerfiles",$this->email)) {
        		$error = array('error' => $this->upload->display_errors());
        		$this->load->view('templates/header', array('title' => 'Upload - '.$this->config->item('site_name')));
 			$this->load->view('upload_form', $error);
