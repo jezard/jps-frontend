@@ -38,7 +38,7 @@
 									"max_filename"		=> 0,
 									"allowed_types"		=> "",
 									"file_temp"			=> "",
-									"file_name"			=> time(),
+									"file_name"			=> "",
 									"orig_name"			=> "",
 									"file_type"			=> "",
 									"file_size"			=> "",
@@ -221,9 +221,8 @@
 			 */
 
 				protected function set_multi_upload_data(){
-					$prefix = time();
 					$this->_multi_upload_data[] = array(
-						"file_name"			=> $prefix.$this->file_name,
+						"file_name"			=> $this->file_name,
 						"file_type"			=> $this->file_type,
 						"file_path"			=> $this->upload_path,
 						"full_path"			=> $this->upload_path.$this->file_name,
@@ -332,7 +331,7 @@
 						$this->_file_mime_type($_FILES[$field], $i);
 						$this->file_type	= preg_replace("/^(.+?);.*$/", "\\1", $this->file_type);
 						$this->file_type	= strtolower(trim(stripslashes($this->file_type), '"'));
-						$this->file_name	= $this->_prep_filename($_FILES[$field]["name"][$i]);
+						$this->file_name	= time().$this->_prep_filename($_FILES[$field]["name"][$i]);
 						$this->file_ext		= $this->get_extension($this->file_name);
 						$this->client_name	= $this->file_name;
 						
