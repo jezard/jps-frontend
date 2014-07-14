@@ -331,7 +331,7 @@
 						$this->_file_mime_type($_FILES[$field], $i);
 						$this->file_type	= preg_replace("/^(.+?);.*$/", "\\1", $this->file_type);
 						$this->file_type	= strtolower(trim(stripslashes($this->file_type), '"'));
-						$this->file_name	= time().$this->_prep_filename($_FILES[$field]["name"][$i]);
+						$this->file_name	= time().'--'.$this->_prep_filename($_FILES[$field]["name"][$i]);
 						$this->file_ext		= $this->get_extension($this->file_name);
 						$this->client_name	= $this->file_name;
 						
