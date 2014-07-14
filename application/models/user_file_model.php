@@ -18,7 +18,7 @@ class User_file_model extends CI_Model{
 			$this->email = $email;
 			$this->filename = $filename;
 			$this->filetype = $ext;
-			$this->db->insert('user', $this);
+			$this->db->insert('user_file', $this);
 		}
 	}
 }
