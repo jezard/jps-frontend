@@ -463,7 +463,7 @@
 						/*add file entry to database*/
 
 						//get the user's details
-						$CI->user_file->link_user($this->file_name, $this->file_ext);
+						$insert_id = $CI->user_file->link_user($this->file_name, $this->file_ext);
 					}
 					
 					//Return all file upload data.
