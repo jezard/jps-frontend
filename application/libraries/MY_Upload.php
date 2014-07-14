@@ -259,8 +259,6 @@
 			 * @return	mixed
 			 */
 				public function do_multi_upload($field){
-					//load our filelink model
-					$this->load->model('user_file_model', 'user_file', TRUE);
 
 					//Clear multi_upload_data.
 					$this->_multi_upload_data = array();
