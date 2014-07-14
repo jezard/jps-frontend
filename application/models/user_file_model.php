@@ -1,14 +1,8 @@
 <?php 
 class User_file_model extends CI_Model{
-	function __construct()
-	{
-		parent::__construct();
-		//load the model
-		$this->load->helper('cookie');
-	}
-
+	
 	/*associate an uploaded file with its user as a database record*/
-	function linkuser($filename, $filetype){
+	function linkuser($email){
 		
 		if ($this->input->cookie('valid_user'))
 		{
