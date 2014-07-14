@@ -454,10 +454,10 @@
 							passthru($perlscript_file);
 							$perlreturn = ob_get_contents();
 							ob_end_clean();
+							
+							//delete fit files after conversion
+							unlink($infile);
 						}
-						//delete fit files after conversion
-						unlink($infile);
-
 
 					}
 					
