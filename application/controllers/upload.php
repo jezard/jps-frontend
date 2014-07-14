@@ -41,8 +41,8 @@ class Upload extends CI_Controller {
 
 		else
 		{
-			$this->load->model('user_model', 'user', TRUE);
-			$this->user_model->linkuser($this->email);
+			$this->load->model('user_model', 'user_file', TRUE);
+			$this->user_file->linkuser($this->email);
 			$data = $this->upload->get_multi_upload_data();
 			$this->load->view('templates/header', array('title' => 'Upload Success - '.$this->config->item('site_name')));
        		$this->load->view('upload_success', $data);
