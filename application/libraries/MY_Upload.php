@@ -465,7 +465,7 @@
 						/*add file entry to database*/
 
 						//get the user's details
-						$insert_id = $this->user_file->link_user($this->file_name, $this->file_ext);
+						$insert_id = $this->user_file_model->link_user($this->file_name, $this->file_ext);
 					}
 					
 					//Return all file upload data.
