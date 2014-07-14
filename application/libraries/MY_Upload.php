@@ -13,14 +13,7 @@
 	 * @link		https://github.com/stvnthomas/CodeIgniter-2.1-Multi-Upload
 	 */
 		class MY_Upload extends CI_Upload {
-
-			function __construct(){
-				parent:: __construct();
-				//load our filelink model
-				$this->load->model('user_file_model', '', TRUE);
-			}
-			
-			
+		
 			/**
 			 * Properties
 			 */

@@ -6,7 +6,8 @@ class Upload extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->helper(array('form', 'url'));
-		$this->load->library('upload'); 
+		$this->load->library('upload');
+		//$this->load->model('user_file_model', '', TRUE); 
 	}
 
 	function index()
