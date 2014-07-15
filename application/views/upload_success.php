@@ -8,7 +8,7 @@
 <?php 
 	foreach($fileinfo as $filemeta)
 	{
-		echo '<li>'.$filemeta['orig_name'].'</li>';
+		echo '<li>'.substr($filemeta['orig_name'],32).'</li>';
 	}
 ?>
 </ol>
