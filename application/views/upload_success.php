@@ -1,7 +1,7 @@
 
 <h3>Your file was successfully uploaded!</h3>
 <ul>
-<?php foreach ($multi_upload_data[] as $fileinfo):?>
+<?php foreach ($multi_upload_data[] as $fileinfo[]):?>
 <li><?php echo $fileinfo['raw_name']; ?></li>
 <?php endforeach; ?>
 </ul>
