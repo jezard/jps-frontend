@@ -13,5 +13,15 @@
 	}
 ?>
 </ol>
-<p><?php echo anchor('upload', 'Upload more files'); ?></p>
+<?php
+/*
+$this->load->helper(array('url'));
+redirect('/process', 'refresh');
+*/
+?>
+<p class="wait"><?php echo anchor('process', 'Preparing to process your files. Click here if nothing happens within 5 seconds');?></p>
+<script type="text/javascript">
+	var link = jQuery('.wait a').attr('href');
+	setTimeout(function(){window.location.href=link}, 1000)
+</script>
 

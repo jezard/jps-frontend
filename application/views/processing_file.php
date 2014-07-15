@@ -1,3 +1,3 @@
-<h3>Your file was successfully uploaded and are now being processed!</h3>
+<h3>File processing in progress</h3>
 
-<p><?php echo anchor('upload', 'Upload more files'); ?></p>
+<p><?php //echo anchor('upload', 'Upload more files'); ?></p>
