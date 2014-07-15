@@ -8,7 +8,7 @@
 <?php 
 	foreach($fileinfo as $filemeta)
 	{
-		echo '<li>'.$fileinfo['raw_name'].'</li>'
+		echo '<li>'.$filemeta['raw_name'].'</li>';
 	}
 ?>
 </ul>
