@@ -8,6 +8,7 @@
 <?php 
 	foreach($fileinfo as $filemeta)
 	{
+		//show the original filename (also remove the hashed prefix)
 		echo '<li>'.substr($filemeta['orig_name'],34).'</li>';
 	}
 ?>
