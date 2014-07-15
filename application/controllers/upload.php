@@ -21,6 +21,7 @@ class Upload extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
+	//upload files, converting .fit to .tcx, and store record of upload in database
 	function do_upload()
 	{
 		$this->upload->initialize(array(
