@@ -12,36 +12,52 @@
 //list of files, and progression
 var files = [];
 var progress = 0;
+var totalfiles = 0;
 
 //do a query from the database getting the list of files
-jQuery.getJSON(<?php echo '"'.$this->config->item('base_url').'index.php/process/joblist"'; ?>, function(result){
-	jQuery.each(result, function(key, val){
-		files.push(val);
+function getJobList(){
+	jQuery.getJSON(<?php echo '"'.$this->config->item('base_url').'index.php/process/joblist"'; ?>, function(result){
+		jQuery.each(result, function(key, val){
+			files.push(val);
+		});
+
+		//set the value of total files now before depletion - only set on the first iteration else progress bar total figure will be out
+		if(progress == 0)
+		{
+			totalfiles = files.length;
+		}
+
+		//let the user know how many files are left to process
+		jQuery('#parse-window').html('<p class="backlog">Files left to process: [<span class="highlight">' + files.length + '</span>]</p><progress value="'+ progress + '" max="' + totalfiles + '"</progress>');
+		
+		//decide whether more files still need to be processed, or whether to end now
+		if(files.length > 0)
+		{
+			parseFiles();
+		}
+		else
+		{
+			console.log('alls done');
+		}
 	});
-	//let the user know how many files are left to process
-	jQuery('#parse-window').html('<p class="backlog">Files left to process: [<span class="highlight">' + files.length + '</span>]</p><progress value="'+ progress + '" max="' + files.length + '"</progress>');
-	
-	//decide whether more files still need to be processed, or whether to end now
-	if(progress < files.length)
-	{
-		parseFiles();
-	}
-	else
-	{
-		console.log('alls done');
-	}
-});
+}
+getJobList();
 
 
 function parseFiles(){
-	console.log('parsing file: ' + files[progress].filename);
-	jQuery.post(<?php echo '"'.$this->config->item('base_url').'index.php/process/parse"'; ?>, {filename: files[progress].filename,
-																								filetype: files[progress].filetype
+	console.log('parsing file: ' + files[0].filename);
+	jQuery.post(<?php echo '"'.$this->config->item('base_url').'index.php/process/parse"'; ?>, {filename: files[0].filename,
+																								filetype: files[0].filetype
 	}, function(data){
 		console.log(data);
+		progress++;
+		console.log('progress: ' + progress, 'files-length: ' + files.length);
+		files = [];
+		getJobList();
 	});
-	progress++;
 }
+
+
 //for each file
 
 /*****PHP*******/

@@ -34,7 +34,6 @@ class User_file_model extends CI_Model{
 
 	function add_activity($date, $email, $type){
 		//add the record
-
 		$format = "Y-m-dTh:i:sZ";
 		$timestamp = strtotime($date);
 		$this->date = date("Y-m-d h:i:s", $timestamp);
@@ -42,9 +41,13 @@ class User_file_model extends CI_Model{
 		$this->type = $type;
 		$this->db->insert('user_activity', $this);
 
-
-		//dont forget to delete the record from the intermediate 'user_file' table as this prevents duplication of activities
-
+		//return the activity id
 		return $this->db->insert_id();
+	}
+
+	function _deleteIntRec($filename){
+		$this->db->where('filename', $filename);
+        $this->db->delete('user_file');
+        echo 'deleted';
 	}
 }

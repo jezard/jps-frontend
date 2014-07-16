@@ -48,9 +48,18 @@ class Process extends CI_Controller {
 			$tagActivity = $xmlDoc->getElementsByTagName('Activity');
 			$this->sport = $tagActivity->item(0)->getAttribute('Sport');
 
-			$insertId = $this->user_file->add_activity($activityId, $this->email, $this->sport);
+			$activityId = $this->user_file->add_activity($activityId, $this->email, $this->sport);
 
-			echo $insertId;
+			if($activityId > 0){
+				echo $this->user_file->_deleteIntRec($filename);
+			}
+
+
+			//do all the other stuff with the file laps, track info etc...
+
+
+			//delete record from db
+
 
 			/*$activities = $xmlDoc->getElementsByTagName('Activity');
 			foreach($activities as $activity){
