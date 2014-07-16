@@ -9,6 +9,13 @@
 </div>
 <script type="text/javascript">
 //do a query from the database getting the list of files
+jQuery.getJSON(<?php echo '"'.$this->config->item('base_url').'index.php/process/joblist"'; ?>, function(result){
+	var files = [];
+	jQuery.each(result, function(key, val){
+		files.push(val);
+	});
+	jQuery('#parse-window').html('<p class="backlog">Files left to process: [<span class="highlight">' + files.length + '</span>]</p>');
+});
 
 //get a count and show number or files to process
 

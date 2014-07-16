@@ -21,4 +21,13 @@ class User_file_model extends CI_Model{
 			$this->db->insert('user_file', $this);
 		}
 	}
+
+	function getjobs($email){
+		$jobs = [];
+		$query = $this->db->query("SELECT DISTINCT filename FROM user_file WHERE email = '$email'");
+		foreach($query->result_array() as $row){
+			array_push($jobs, $row['filename']);
+		}
+		return $jobs;
+	}
 }

@@ -23,6 +23,15 @@ class Process extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
+	// ajaxhttp://joulepersecond.com/index.php/process/joblist
+	//get a list of jobs to process (any entries in intermediate table), and display results back to user
+	function joblist(){
+		$this->load->model('user_file_model', 'user_file', TRUE);
+		//get a list of filenames
+		$jobs = $this->user_file->getjobs($this->email);
+		echo json_encode($jobs);
+	}
+
 	// ajaxhttp://joulepersecond.com/index.php/process/parse
 	function parse()
 	{
