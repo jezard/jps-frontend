@@ -464,7 +464,8 @@
 						{
 							$infile = $this->upload_path.$this->file_name;
 							$outfile = str_replace('.gpx', '.tcx', $infile);
-							$gpsbabel = "gpsbabel -i gpx -f $infile -o tcx -F $outfile";
+							//gtrnctr is the code for tcx files (garmin training center)
+							$gpsbabel = "gpsbabel -i gpx -f $infile -o gtrnctr -F $outfile";
 
 							exec($gpsbabel);
 							
