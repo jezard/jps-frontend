@@ -450,16 +450,13 @@
 							$outfile = str_replace('.fit', '.tcx', $infile);
 							$perlscript_file = "perl /var/www/jps-fileconverter/fit2tcx $infile $outfile";
 							//$perlscript_file = escapeshellcmd("C:/Users/Administrator/git-projects/jps-fileconverter/fit2tcx.pl $infile $outfile");
-
-							//ob_start();
 							exec($perlscript_file);
-							//$perlreturn = ob_get_contents();
-							//ob_end_clean();
-							
+			
 							//delete fit files after conversion
 							unlink($infile);
 						}
 						/*convert gpx files*/
+						//it turns out that gpx files don't hold power data. The functionality will be left here incase we want to do something with these in the future...
 						if($this->file_ext == '.gpx')
 						{
 							$infile = $this->upload_path.$this->file_name;
