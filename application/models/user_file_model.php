@@ -36,9 +36,9 @@ class User_file_model extends CI_Model{
 		//add the record
 		$format = "Y-m-dTh:i:sZ";
 		$timestamp = strtotime($date);
-		$this->date = date("Y-m-d h:i:s", $timestamp);
+		$this->activity_date = date("Y-m-d h:i:s", $timestamp);
 		$this->email = $email;
-		$this->type = $type;
+		$this->activity_type = $type;
 		$this->db->insert('user_activity', $this);
 
 		//return the activity id

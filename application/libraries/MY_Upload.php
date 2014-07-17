@@ -451,10 +451,22 @@
 							//$perlscript_file = "perl /var/www/jps-fileconverter/fit2tcx $infile $outfile";
 							$perlscript_file = escapeshellcmd("C:/Users/Administrator/git-projects/jps-fileconverter/fit2tcx.pl $infile $outfile");
 
-							ob_start();
-							passthru($perlscript_file);
-							$perlreturn = ob_get_contents();
-							ob_end_clean();
+							//ob_start();
+							exec($perlscript_file);
+							//$perlreturn = ob_get_contents();
+							//ob_end_clean();
+							
+							//delete fit files after conversion
+							unlink($infile);
+						}
+						/*convert gpx files*/
+						if($this->file_ext == '.gpx')
+						{
+							$infile = $this->upload_path.$this->file_name;
+							$outfile = str_replace('.gpx', '.tcx', $infile);
+							$gpsbabel = "gpsbabel -i gpx -f $infile -o tcx -F $outfile";
+
+							exec($gpsbabel);
 							
 							//delete fit files after conversion
 							unlink($infile);
