@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(E_ERROR);
 class Process extends CI_Controller {
 
 	function __construct()
@@ -32,44 +32,79 @@ class Process extends CI_Controller {
 	// ajaxhttp://joulepersecond.com/index.php/process/parse
 	function parse()
 	{
+		$debug = '';
+
 		//get the filename for the current job item
 		$filename = $this->input->post('filename');
 		$filetype = $this->input->post('filetype');
 
+		$fileok = false;
+		$readok = false;
+
+
+
 		if ($filetype == '.tcx'){
 			$xmlDoc = new DOMDocument();
-			$xmlDoc->load($this->config->item('base_url').'uploads/'.$filename);
 
-			//get the id from the file
-			$tagId = $xmlDoc->getElementsByTagName('Id');
-			$activityId = $tagId->item(0)->nodeValue;
+			//try to load file
+			$fileloaded = $xmlDoc->load($this->config->item('base_url').'uploads/'.$filename);
+			if($fileloaded)
+			{
+				$fileok = true;
+			}
+			else{
+				echo 'Error: File ['.substr($filename,34).'] could not be loaded. It may be corrupted. Skipping this file.<br>';
+				//delete record of this file from intermediate table else we're going to keep trying to load a file that ain't there...
+				$this->user_file->_deleteIntRec($filename);
+			}
+			
+			if($fileok){
+				//handle error created by a bad file during parsing
+				register_shutdown_function( "parseError" );
+				//try to read the file
 
-			//get the activity type
-			$tagActivity = $xmlDoc->getElementsByTagName('Activity');
-			$this->sport = $tagActivity->item(0)->getAttribute('Sport');
+				//get the id from the file
+				$tagId = $xmlDoc->getElementsByTagName('Id');
+				$activityId = $tagId->item(0)->nodeValue;
 
-			$activityId = $this->user_file->add_activity($activityId, $this->email, $this->sport);
+				//get the activity type
+				$tagActivity = $xmlDoc->getElementsByTagName('Activity');
+				$this->sport = $tagActivity->item(0)->getAttribute('Sport');
 
-			if($activityId > 0){
-				echo $this->user_file->_deleteIntRec($filename);
+				$readok = true;
 			}
 
+					
+			//if basic file reading was ok
+			if($readok){
+				$activityId = $this->user_file->add_activity($activityId, $this->email, $this->sport);
 
-			//do all the other stuff with the file laps, track info etc...
+				//delete record from db
+				if($activityId > 0){
+					if ($this->user_file->_deleteIntRec($filename).substr($filename,34))
+					{
+						$debug .= 'File ['.substr($filename,34).'] was sent for processing<br>';
+					}
+				}
 
 
-			//delete record from db
+				//do all the other stuff with the file laps, track info etc...
 
-
-			/*$activities = $xmlDoc->getElementsByTagName('Activity');
-			foreach($activities as $activity){
-				//echo $activity->nodeValue, PHP_EOL;
-				$this->sport = $activity->getAttribute('Sport');
-			}*/
-
-
+			}
 
 		}
+		else
+		{
+			echo 'File ['.substr($filename,34).'] could not be converted. We do not currently support files with extension '.$filetype.'. Skipping this file.<br>';
+			//delete record of this file from intermediate table else we're going to keep trying to load a file that ain't there...
+			$this->user_file->_deleteIntRec($filename);
+		}
+		
+
+		function parseError(){
+		    'File: ['.substr($filename,34).'] could not be read. Please ensure it is an activity file, rather than a course file, and try again';
+		}
+		echo $debug;
 	}
 
 }

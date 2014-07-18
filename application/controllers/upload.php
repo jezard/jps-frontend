@@ -17,7 +17,7 @@ class Upload extends CI_Controller {
 	function index()
 	{
 		$this->load->view('templates/header', array('title' => 'Upload - '.$this->config->item('site_name')));
-		$this->load->view('upload_form', array('error' => ' ' ));
+		$this->load->view('upload_form', array('message' => 'Upload your .fit or .tcx files below (we recommend uploading in smaller batches):'));
 		$this->load->view('templates/footer');
 	}
 
@@ -26,7 +26,7 @@ class Upload extends CI_Controller {
 	{
 		$this->upload->initialize(array(
 			'upload_path' => './uploads/',
-			'allowed_types' => 'tcx|pwx|fit|gpx',
+			'allowed_types' => 'tcx|fit|gpx',
 			'max_size'	=> 5000,
 			'remove_spaces' => TRUE,
 			'overwrite' => TRUE
@@ -36,7 +36,7 @@ class Upload extends CI_Controller {
 		if (! $this->upload->do_multi_upload("powerfiles",md5($this->email))) {
        		$error = array('error' => $this->upload->display_errors());
        		$this->load->view('templates/header', array('title' => 'Upload - '.$this->config->item('site_name')));
-			$this->load->view('upload_form', $error);
+			$this->load->view('upload_form', array('message' => 'Failed due to incorrect filetype. Please upload only .fit or .tcx files.'));
 			$this->load->view('templates/footer');
        	}
 

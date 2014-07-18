@@ -47,7 +47,6 @@ class User_file_model extends CI_Model{
 
 	function _deleteIntRec($filename){
 		$this->db->where('filename', $filename);
-        $this->db->delete('user_file');
-        echo 'deleted';
+        return $this->db->delete('user_file');//true one success or false on fail
 	}
 }

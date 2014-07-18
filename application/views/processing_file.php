@@ -6,6 +6,7 @@
 	<div id="parse-progress">
 		<!-- ajax content -->
 	</div>
+	<div id="parse-results"></div>
 </div>
 <script type="text/javascript">
 
@@ -28,7 +29,7 @@ function getJobList(){
 		}
 
 		//let the user know how many files are left to process
-		jQuery('#parse-window').html('<p class="backlog">Files left to process: [<span class="highlight">' + files.length + '</span>]</p><progress value="'+ progress + '" max="' + totalfiles + '"</progress>');
+		jQuery('#parse-progress').html('<p class="backlog">Files left to process: [<span class="highlight">' + files.length + '</span>]</p><progress value="'+ progress + '" max="' + totalfiles + '"></progress>');
 		
 		//decide whether more files still need to be processed, or whether to end now
 		if(files.length > 0)
@@ -50,6 +51,7 @@ function parseFiles(){
 																								filetype: files[0].filetype
 	}, function(data){
 		console.log(data);
+		jQuery('#parse-results').append(data);
 		progress++;
 		console.log('progress: ' + progress, 'files-length: ' + files.length);
 		files = [];
