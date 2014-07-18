@@ -448,8 +448,8 @@
 						{
 							$infile = $this->upload_path.$this->file_name;
 							$outfile = str_replace('.fit', '.tcx', $infile);
-							//$perlscript_file = "perl /var/www/jps-fileconverter/fit2tcx $infile $outfile";
-							$perlscript_file = escapeshellcmd("C:/Users/Administrator/git-projects/jps-fileconverter/fit2tcx.pl $infile $outfile");
+							$perlscript_file = "perl /var/www/jps-fileconverter/fit2tcx $infile $outfile";
+							//$perlscript_file = escapeshellcmd("C:/Users/Administrator/git-projects/jps-fileconverter/fit2tcx.pl $infile $outfile");
 							exec($perlscript_file);
 			
 							//delete fit files after conversion
