@@ -90,6 +90,17 @@ class Process extends CI_Controller {
 
 				//do all the other stuff with the file laps, track info etc...
 
+				// we should also make sure we DON'T duplicate activities in the user_activity table - or devise some other functionality to ensure this works!
+
+				/******************************************************************************************
+				*                                                                                         *
+				*                                                                                         *
+				*                                                                                         *
+				*                                                                                         *
+				*                                                                                         *
+				*                                                                                         *
+				*                                                                                         *
+				******************************************************************************************/
 			}
 
 		}
