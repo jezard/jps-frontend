@@ -59,8 +59,7 @@ class Process extends CI_Controller {
 			}
 			
 			if($fileok){
-				//handle error created by a bad file during parsing
-				register_shutdown_function( "parseError" );
+
 				//try to read the file
 
 				//get the id from the file
@@ -77,10 +76,10 @@ class Process extends CI_Controller {
 					
 			//if basic file reading was ok
 			if($readok){
-				$activityId = $this->user_file->add_activity($activityId, $this->email, $this->sport);
+				$activity = $this->user_file->add_activity($activityId, $this->email, $this->sport);
 
 				//delete record from db
-				if($activityId > 0){
+				if($activity){
 					if ($this->user_file->_deleteIntRec($filename).substr($filename,34))
 					{
 						$debug .= 'File ['.substr($filename,34).'] was sent for processing<br>';
@@ -111,10 +110,8 @@ class Process extends CI_Controller {
 			$this->user_file->_deleteIntRec($filename);
 		}
 		
+		
 
-		function parseError(){
-		    'File: ['.substr($filename,34).'] could not be read. Please ensure it is an activity file, rather than a course file, and try again';
-		}
 		echo $debug;
 	}
 

@@ -39,14 +39,19 @@ class User_file_model extends CI_Model{
 		$this->activity_date = date("Y-m-d h:i:s", $timestamp);
 		$this->email = $email;
 		$this->activity_type = $type;
-		$this->db->insert('user_activity', $this);
-
-		//return the activity id
-		return $this->db->insert_id();
+		$query = $this->db->query("INSERT IGNORE INTO user_activity (activity_date, email, activity_type) VALUES ('$this->activity_date','$this->email', '$this->activity_type')");
+		if($query)
+		{
+			//return the activity id
+			return TRUE;
+		}
+		
 	}
 
 	function _deleteIntRec($filename){
 		$this->db->where('filename', $filename);
         return $this->db->delete('user_file');//true one success or false on fail
 	}
+
+
 }
