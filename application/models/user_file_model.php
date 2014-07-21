@@ -36,15 +36,19 @@ class User_file_model extends CI_Model{
 		//add the record
 		$format = "Y-m-dTh:i:sZ";
 		$timestamp = strtotime($date);
-		$this->activity_date = date("Y-m-d h:i:s", $timestamp);
-		$this->email = $email;
-		$this->activity_type = $type;
-		$query = $this->db->query("INSERT IGNORE INTO user_activity (activity_date, email, activity_type) VALUES ('$this->activity_date','$this->email', '$this->activity_type')");
+		$timestamp = date("Y-m-d h:i:s", $timestamp);
+		$query = $this->db->query("INSERT IGNORE INTO user_activity (activity_date, email, activity_type) VALUES ('$timestamp','$email', '$type')");
 		if($query)
 		{
 			//return the activity id
 			return $this->db->insert_id();
 		}
+		else
+		{
+
+		}
+		return false;
+
 	}
 
 	//delete intermediate record
@@ -53,10 +57,20 @@ class User_file_model extends CI_Model{
         return $this->db->delete('user_file');//true one success or false on fail
 	}
 
-	function addLap(){
+	//add a activity lap
+	function addLap($activityID, $lapnumber, $timestamp, $duration){
+		$format = "Y-m-dTh:i:sZ";
+		$timestamp = strtotime($timestamp);
+		$this->timestamp = date("Y-m-d h:i:s", $timestamp);
+		$this->lap_number = $lapnumber;
+		$this->lap_duration = $duration;
+		$this->activity_id = $activityID;
 
+		if($this->db->insert('lap', $this))
+		{
+			//return the lap id
+			return $this->db->insert_id();
+		}
+		return false;
 	}
-
-
-
 }

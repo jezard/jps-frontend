@@ -77,7 +77,7 @@ class Process extends CI_Controller {
 				  	//add the activity to the db
 					$activity = $this->user_file->add_activity($activityId, $this->email, $sport);
 
-					//delete record from db
+					//if all went well, delete record from db, and descend down to the next level of our file
 					if($activity > 0){
 						if ($this->user_file->_deleteIntRec($filename).substr($filename,34))
 						{
@@ -92,12 +92,20 @@ class Process extends CI_Controller {
 							$lapnumber = $lapcount++;
 							$timestamp = $lap['@attributes']['StartTime'];
 							$duration = $lap['TotalTimeSeconds'];
+
+							//if adding the lap is good, continue drilling down into the file to get our hands on the lovely raw data :) Mmmmm... Raw Data!!!
+							$lapID = $this->user_file->addLap($activity, $lapnumber, $timestamp, $duration);
+
+							if($lapID > 0)
+							{
+								//echo $lapID;
+							}
 						}
 					}		  	
 				}
 			}
 
-			print_r ($ourData);
+			//print_r ($ourData);
 
 
 		}
