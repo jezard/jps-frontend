@@ -43,15 +43,20 @@ class User_file_model extends CI_Model{
 		if($query)
 		{
 			//return the activity id
-			return TRUE;
+			return $this->db->insert_id();
 		}
-		
 	}
 
+	//delete intermediate record
 	function _deleteIntRec($filename){
 		$this->db->where('filename', $filename);
         return $this->db->delete('user_file');//true one success or false on fail
 	}
+
+	function addLap(){
+
+	}
+
 
 
 }

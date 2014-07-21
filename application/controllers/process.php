@@ -58,49 +58,47 @@ class Process extends CI_Controller {
 				$this->user_file->_deleteIntRec($filename);
 			}
 			
-			if($fileok){
+	
+			//convert our xml file to json to help retain my sanity
+			$ourJSON = $this->ParseXML($this->config->item('base_url').'uploads/'.$filename);
+			$ourData = json_decode($ourJSON, true);
 
-				//try to read the file
+			$lapcount = 0;
 
-				//get the id from the file
-				$tagId = $xmlDoc->getElementsByTagName('Id');
-				$activityId = $tagId->item(0)->nodeValue;
+			//top level loop
+			foreach($ourData as $Activities){ 
+				//level 2 etc...
+				foreach($Activities as $Activity){
 
-				//get the activity type
-				$tagActivity = $xmlDoc->getElementsByTagName('Activity');
-				$this->sport = $tagActivity->item(0)->getAttribute('Sport');
+				  	$activityId = $Activity['Id'];
+				  	$sport = $Activity['@attributes']['sport'];
 
-				$readok = true;
-			}
 
-					
-			//if basic file reading was ok
-			if($readok){
-				$activity = $this->user_file->add_activity($activityId, $this->email, $this->sport);
+				  	//add the activity to the db
+					$activity = $this->user_file->add_activity($activityId, $this->email, $sport);
 
-				//delete record from db
-				if($activity){
-					if ($this->user_file->_deleteIntRec($filename).substr($filename,34))
-					{
-						$debug .= 'File ['.substr($filename,34).'] was sent for processing<br>';
-					}
+					//delete record from db
+					if($activity > 0){
+						if ($this->user_file->_deleteIntRec($filename).substr($filename,34))
+						{
+							$debug .= 'File ['.substr($filename,34).'] was sent for processing<br>';
+						}
+
+						//get laps for this activity
+						$laps = $Activity['Lap'];
+
+						//for each lap within activity
+						foreach($laps as $lap){
+							$lapnumber = $lapcount++;
+							$timestamp = $lap['@attributes']['StartTime'];
+							$duration = $lap['TotalTimeSeconds'];
+						}
+					}		  	
 				}
-
-
-				//do all the other stuff with the file laps, track info etc...
-
-				// we should also make sure we DON'T duplicate activities in the user_activity table - or devise some other functionality to ensure this works!
-
-				/******************************************************************************************
-				*                                                                                         *
-				*                                                                                         *
-				*                                                                                         *
-				*                                                                                         *
-				*                                                                                         *
-				*                                                                                         *
-				*                                                                                         *
-				******************************************************************************************/
 			}
+
+			print_r ($ourData);
+
 
 		}
 		else
@@ -114,6 +112,23 @@ class Process extends CI_Controller {
 
 		echo $debug;
 	}
+	//http://lostechies.com/seanbiefeld/2011/10/21/simple-xml-to-json-with-php/
+	protected function ParseXML ($url) {
+
+		$fileContents= file_get_contents($url);
+
+		$fileContents = str_replace(array("\n", "\r", "\t"), '', $fileContents);
+
+		$fileContents = trim(str_replace('"', "'", $fileContents));
+
+		$simpleXml = simplexml_load_string($fileContents);
+
+		$json = json_encode($simpleXml);
+
+		return $json;
+
+	}
+
 
 }
 ?>

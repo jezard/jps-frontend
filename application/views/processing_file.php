@@ -34,7 +34,14 @@ function getJobList(){
 		//decide whether more files still need to be processed, or whether to end now
 		if(files.length > 0)
 		{
-			parseFiles();
+			//if an error stop execution
+			if(progress > totalfiles){
+				console.log('Error: Breaking ajax loop');
+			}
+			else
+			{
+				parseFiles();
+			}
 		}
 		else
 		{
