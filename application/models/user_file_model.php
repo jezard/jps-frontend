@@ -73,4 +73,18 @@ class User_file_model extends CI_Model{
 		}
 		return false;
 	}
+
+	function writeToDb($lapID, $snapshotTime, $heartRate, $power, $cadence, $speed, $distance ){
+		$this->lap_id = $lapID;
+		$format = "Y-m-dTh:i:sZ";
+		$snapshotTime = strtotime($snapshotTime);
+		$this->snapshot_timestamp = date("Y-m-d h:i:s", $snapshotTime);
+		$this->heart_rate = $heartrate;
+		$this->power = $power;
+		$this->cadence = $cadence;
+		$this->speed = $speed;
+		$this->distance = $distance;
+
+		$this->db->insert('snapshot');
+	}
 }

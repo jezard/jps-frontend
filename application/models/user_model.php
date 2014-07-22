@@ -65,12 +65,12 @@ class User_model extends CI_Model {
 
     function verify($validationLink){
         //check the password against the database
-        $query = $this->db->query("SELECT email,id,verified FROM user");
+        $query = $this->db->query("SELECT email,user_id,verified FROM user");
 
         foreach ($query->result_array() as $row)
         {
            $email = $row['email'];
-           $id = $row['id'];
+           $id = $row['user_id'];
            $verified = $row['verified'];
 		   
 
@@ -78,7 +78,7 @@ class User_model extends CI_Model {
            if((do_hash($this->config->item('salt').$email) == $validationLink) && $verified == 0)
            {
                 //set the verified flag to true
-                $this->db->where('id',$id);
+                $this->db->where('user_id',$id);
                 $this->db->update('user', array('verified' => 1));
                 return $email;
            }
@@ -88,12 +88,12 @@ class User_model extends CI_Model {
 
     function exists($validationLink){
         //check the password against the database
-        $query = $this->db->query("SELECT email,id FROM user");
+        $query = $this->db->query("SELECT email,user_id FROM user");
 
         foreach ($query->result_array() as $row)
         {
            $email = $row['email'];
-           $id = $row['id'];
+           $id = $row['user_id'];
 
            //if the hashed email equals the hashed validation email and not already verified
            if(do_hash($this->config->item('salt').$email) == $validationLink)

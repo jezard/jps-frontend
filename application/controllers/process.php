@@ -71,7 +71,7 @@ class Process extends CI_Controller {
 				foreach($Activities as $Activity){
 
 				  	$activityId = $Activity['Id'];
-				  	$sport = $Activity['@attributes']['sport'];
+				  	$sport = $Activity['@attributes']['Sport'];
 
 
 				  	//add the activity to the db
@@ -87,25 +87,61 @@ class Process extends CI_Controller {
 						//get laps for this activity
 						$laps = $Activity['Lap'];
 
+						echo count($laps);
+
 						//for each lap within activity
-						foreach($laps as $lap){
+						/*foreach($laps as $lap){
 							$lapnumber = $lapcount++;
 							$timestamp = $lap['@attributes']['StartTime'];
 							$duration = $lap['TotalTimeSeconds'];
 
-							//if adding the lap is good, continue drilling down into the file to get our hands on the lovely raw data :) Mmmmm... Raw Data!!!
-							$lapID = $this->user_file->addLap($activity, $lapnumber, $timestamp, $duration);
+							echo $timestamp.' '.$duration;
+							/***
+							*
+							* We can extract many other lap metrics here if required:
+							*
+							* $lap['DistanceMeters']
+							* $lap['MaximumSpeed']
+							* $lap['Calories']
+							* $lap['AverageHeartRateBpm']['Value']
+							* $lap['MaximumHeartRateBpm']['Value']
+							* $lap['Cadence']
+							* $lap['TriggerMethod']
+							*
+							***/
 
-							if($lapID > 0)
+							//if adding the lap is good, continue drilling down into the file to get our hands on the lovely raw data :) Mmmmm... Raw Data!!!
+							//$lapID = $this->user_file->addLap($activity, $lapnumber, $timestamp, $duration);
+
+							/*if($lapID > 0)
 							{
-								//echo $lapID;
+								$tracks = $lap['Track'];
+								foreach($tracks as $track){
+
+									$trackpoints = $track['Trackpoint'];
+									foreach($trackpoints as $trackpoint)
+									{
+
+										$snapshotTime = $trackpoint['Time'];
+										$distance = $trackpoint['DistanceMeters'];
+										$heartRate = $trackpoint['HeartRateBpm']['Value'];
+										$cadence = $trackpoint['Cadence'];
+										$speed = $trackpoint['Extensions']['TPX']['Speed'];
+										$power = $trackpoint['Extensions']['TPX']['Watts'];
+
+										echo $snapshotTime.' * '.$distance.' * '.$heartRate.' * '.$cadence.' * '.$speed.' * '.$power.'<br>';
+
+
+										//$this->user_file->writeToDb($lapID, $snapshotTime, $heartRate, $power, $cadence, $speed, $distance );
+									}
+								}
 							}
-						}
+						}*/
 					}		  	
 				}
 			}
 
-			//print_r ($ourData);
+			print_r ($ourData);
 
 
 		}
