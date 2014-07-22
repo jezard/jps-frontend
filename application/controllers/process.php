@@ -1,5 +1,6 @@
 <?php
 error_reporting(E_ERROR);
+require($_SERVER['DOCUMENT_ROOT']."/MagicParser.php");
 class Process extends CI_Controller {
 
 	function __construct()
@@ -58,9 +59,42 @@ class Process extends CI_Controller {
 				$this->user_file->_deleteIntRec($filename);
 			}
 			
+
+			function myRecordHandler($record)
+			{
+				//print_r($record);exit;
+				print $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/ID"].'<br>';
+				print $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY-SPORT"].'<br>';
+
+				print $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/LAP-STARTTIME"].'<br>';
+				print $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/LAP/TOTALTIMESECONDS"].'<br>';
+
+
+				print $record["TRACKPOINT"].'<br>';
+			    print $record["TIME"].'<br>';
+			    print $record["DISTANCEMETERS"].'<br>';
+			    print $record["HEARTRATEBPM"].'<br>';
+			    print $record["HEARTRATEBPM/VALUE"].'<br>';
+			    print $record["CADENCE"].'<br>';
+			    print $record["EXTENSIONS"].'<br>';
+			    print $record["EXTENSIONS/NS3:TPX"].'<br>';
+			    print $record["EXTENSIONS/NS3:TPX/NS3:WATTS"].'<br>';
+			    print $record["EXTENSIONS/NS3:TPX/NS3:SPEED"].'<br>';
+
+			}
+
+			$result = MagicParser_parse($this->config->item('base_url').'uploads/'.$filename,"myRecordHandler","xml|TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/LAP/TRACK/TRACKPOINT/");
+
+			if (!$result)
+			{ 
+				print MagicParser_getErrorMessage();
+			}
+
+			//delete the record of our file if all done...
+			$this->user_file->_deleteIntRec($filename);
 	
 			//convert our xml file to json to help retain my sanity
-			$ourJSON = $this->ParseXML($this->config->item('base_url').'uploads/'.$filename);
+			/*$ourJSON = $this->ParseXML($this->config->item('base_url').'uploads/'.$filename);
 			$ourData = json_decode($ourJSON, true);
 
 			$lapcount = 0;
@@ -90,7 +124,7 @@ class Process extends CI_Controller {
 						echo count($laps);
 
 						//for each lap within activity
-						/*foreach($laps as $lap){
+						foreach($laps as $lap){
 							$lapnumber = $lapcount++;
 							$timestamp = $lap['@attributes']['StartTime'];
 							$duration = $lap['TotalTimeSeconds'];
@@ -136,12 +170,11 @@ class Process extends CI_Controller {
 									}
 								}
 							}
-						}*/
+						}
 					}		  	
 				}
-			}
+			}*/
 
-			print_r ($ourData);
 
 
 		}
