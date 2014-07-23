@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php $this->load->helper('url'); ?>
 <?php $this->load->helper('cookie'); ?>
 <?php $loggedIn = false; ?>

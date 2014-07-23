@@ -1,4 +1,5 @@
 <?php
+
 error_reporting(E_ERROR);
 require($_SERVER['DOCUMENT_ROOT']."/MagicParser.php");
 class Process extends CI_Controller {
@@ -38,6 +39,8 @@ class Process extends CI_Controller {
 		//get the filename for the current job item
 		$filename = $this->input->post('filename');
 		$filetype = $this->input->post('filetype');
+		$email = $this->email;
+
 
 		$fileok = false;
 		$readok = false;
@@ -58,31 +61,69 @@ class Process extends CI_Controller {
 				//delete record of this file from intermediate table else we're going to keep trying to load a file that ain't there...
 				$this->user_file->_deleteIntRec($filename);
 			}
-			
 
+			
 			function myRecordHandler($record)
 			{
 				//print_r($record);exit;
-				print $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/ID"].' Activity ID<br>';
+				/*print $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/ID"].' Activity ID<br>';
 				print $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY-SPORT"].' Sport<br>';
 
 				print $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/LAP-STARTTIME"].' Lap start time<br>';
 				print $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/LAP/TOTALTIMESECONDS"].' Lap duration <br>';
 
-
-				//print $record["TRACKPOINT"].'<br>';
-			    print $record["TIME"].' Timestamp<br>';
-			    //print $record["HEARTRATEBPM"].'<br>';
+			    print $record["TIME"].' Timestamp<br>';;
 			    print $record["HEARTRATEBPM/VALUE"].' Heartrate<br>';
 			    print $record["CADENCE"].' Cadence <br>';
-			    //print $record["EXTENSIONS"].'<br>';
-			    //print $record["EXTENSIONS/NS3:TPX"].'<br>';
-			    print $record["EXTENSIONS/TPX/WATTS"].' Watts<br>';
-			    print $record["EXTENSIONS/TPX/SPEED"].' Speed<br>';
+			    print $record["EXTENSIONS/TPX/WATTS"].' Watts<br>';*/
 
+			    global $mp_count;
+			    global $autoActivityID;
+
+			    $activityID = $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/ID"];
+				$sport = $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY-SPORT"];
+
+				$lapstart = $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/LAP-STARTTIME"];
+				$lapduration = $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/LAP/TOTALTIMESECONDS"];
+
+			    $tpTimestamp = $record["TIME"];
+			    $tpHeartRate = $record["HEARTRATEBPM/VALUE"].' Heartrate<br>';
+			    $tpCadence = $record["CADENCE"];
+			    $tpWatts = ["EXTENSIONS/TPX/WATTS"];
+
+			    //if this is the first loop
+			    if($mp_count == 0){
+					$_SESSION['activity_id']=$activityID;
+					$_SESSION['sport']=$sport;
+				}
+				$mp_count++;
+
+
+				//let's write that data HERE!
+				
 			}
+			/////////////////!!!!KEEP CLEAR!!!!\\\\\\\\\\\\\\\\\\
+			//get a unique id
+			function exact_time() {
+			    $t = explode(' ',microtime());
+			    return ($t[0] + $t[1]);
+			}
+			$autoActivityID = exact_time();//or time() if issues!
 
 			$result = MagicParser_parse($this->config->item('base_url').'uploads/'.$filename,"myRecordHandler","xml|TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/LAP/TRACK/TRACKPOINT/");
+
+			echo $_SESSION['activity_id'].' '.$_SESSION['sport'].' '.$autoActivityID.' '.$this->email.'...</br>';
+
+			//add the activity to the db
+			if($this->user_file->add_activity($autoActivityID, $_SESSION['activity_id'], $this->email, $_SESSION['sport']))
+			{
+				echo 'Record added to mysql database<br>';
+			}
+
+			//unset the session vars
+			unset($_SESSION['activity_id']);
+			unset($_SESSION['sport']);
+
 
 			if (!$result)
 			{ 
@@ -91,91 +132,10 @@ class Process extends CI_Controller {
 
 			//delete the record of our file if all done...
 			$this->user_file->_deleteIntRec($filename);
-	
-			//convert our xml file to json to help retain my sanity
-			/*$ourJSON = $this->ParseXML($this->config->item('base_url').'uploads/'.$filename);
-			$ourData = json_decode($ourJSON, true);
 
-			$lapcount = 0;
-
-			//top level loop
-			foreach($ourData as $Activities){ 
-				//level 2 etc...
-				foreach($Activities as $Activity){
-
-				  	$activityId = $Activity['Id'];
-				  	$sport = $Activity['@attributes']['Sport'];
-
-
-				  	//add the activity to the db
-					$activity = $this->user_file->add_activity($activityId, $this->email, $sport);
-
-					//if all went well, delete record from db, and descend down to the next level of our file
-					if($activity > 0){
-						if ($this->user_file->_deleteIntRec($filename).substr($filename,34))
-						{
-							$debug .= 'File ['.substr($filename,34).'] was sent for processing<br>';
-						}
-
-						//get laps for this activity
-						$laps = $Activity['Lap'];
-
-						echo count($laps);
-
-						//for each lap within activity
-						foreach($laps as $lap){
-							$lapnumber = $lapcount++;
-							$timestamp = $lap['@attributes']['StartTime'];
-							$duration = $lap['TotalTimeSeconds'];
-
-							echo $timestamp.' '.$duration;
-							/***
-							*
-							* We can extract many other lap metrics here if required:
-							*
-							* $lap['DistanceMeters']
-							* $lap['MaximumSpeed']
-							* $lap['Calories']
-							* $lap['AverageHeartRateBpm']['Value']
-							* $lap['MaximumHeartRateBpm']['Value']
-							* $lap['Cadence']
-							* $lap['TriggerMethod']
-							*
-							***/
-
-							//if adding the lap is good, continue drilling down into the file to get our hands on the lovely raw data :) Mmmmm... Raw Data!!!
-							//$lapID = $this->user_file->addLap($activity, $lapnumber, $timestamp, $duration);
-
-							/*if($lapID > 0)
-							{
-								$tracks = $lap['Track'];
-								foreach($tracks as $track){
-
-									$trackpoints = $track['Trackpoint'];
-									foreach($trackpoints as $trackpoint)
-									{
-
-										$snapshotTime = $trackpoint['Time'];
-										$distance = $trackpoint['DistanceMeters'];
-										$heartRate = $trackpoint['HeartRateBpm']['Value'];
-										$cadence = $trackpoint['Cadence'];
-										$speed = $trackpoint['Extensions']['TPX']['Speed'];
-										$power = $trackpoint['Extensions']['TPX']['Watts'];
-
-										echo $snapshotTime.' * '.$distance.' * '.$heartRate.' * '.$cadence.' * '.$speed.' * '.$power.'<br>';
-
-
-										//$this->user_file->writeToDb($lapID, $snapshotTime, $heartRate, $power, $cadence, $speed, $distance );
-									}
-								}
-							}
-						}
-					}		  	
-				}
-			}*/
-
-
-
+			/*
+			Add the remaining info to the user_ativity database table
+			*/
 		}
 		else
 		{
@@ -183,28 +143,8 @@ class Process extends CI_Controller {
 			//delete record of this file from intermediate table else we're going to keep trying to load a file that ain't there...
 			$this->user_file->_deleteIntRec($filename);
 		}
-		
-		
-
 		echo $debug;
 	}
-	//http://lostechies.com/seanbiefeld/2011/10/21/simple-xml-to-json-with-php/
-	protected function ParseXML ($url) {
-
-		$fileContents= file_get_contents($url);
-
-		$fileContents = str_replace(array("\n", "\r", "\t"), '', $fileContents);
-
-		$fileContents = trim(str_replace('"', "'", $fileContents));
-
-		$simpleXml = simplexml_load_string($fileContents);
-
-		$json = json_encode($simpleXml);
-
-		return $json;
-
-	}
-
 
 }
 ?>
