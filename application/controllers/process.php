@@ -63,23 +63,22 @@ class Process extends CI_Controller {
 			function myRecordHandler($record)
 			{
 				//print_r($record);exit;
-				print $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/ID"].'<br>';
-				print $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY-SPORT"].'<br>';
+				print $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/ID"].' Activity ID<br>';
+				print $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY-SPORT"].' Sport<br>';
 
-				print $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/LAP-STARTTIME"].'<br>';
-				print $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/LAP/TOTALTIMESECONDS"].'<br>';
+				print $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/LAP-STARTTIME"].' Lap start time<br>';
+				print $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/LAP/TOTALTIMESECONDS"].' Lap duration <br>';
 
 
-				print $record["TRACKPOINT"].'<br>';
-			    print $record["TIME"].'<br>';
-			    print $record["DISTANCEMETERS"].'<br>';
-			    print $record["HEARTRATEBPM"].'<br>';
-			    print $record["HEARTRATEBPM/VALUE"].'<br>';
-			    print $record["CADENCE"].'<br>';
-			    print $record["EXTENSIONS"].'<br>';
-			    print $record["EXTENSIONS/NS3:TPX"].'<br>';
-			    print $record["EXTENSIONS/NS3:TPX/NS3:WATTS"].'<br>';
-			    print $record["EXTENSIONS/NS3:TPX/NS3:SPEED"].'<br>';
+				//print $record["TRACKPOINT"].'<br>';
+			    print $record["TIME"].' Timestamp<br>';
+			    //print $record["HEARTRATEBPM"].'<br>';
+			    print $record["HEARTRATEBPM/VALUE"].' Heartrate<br>';
+			    print $record["CADENCE"].' Cadence <br>';
+			    //print $record["EXTENSIONS"].'<br>';
+			    //print $record["EXTENSIONS/NS3:TPX"].'<br>';
+			    print $record["EXTENSIONS/TPX/WATTS"].' Watts<br>';
+			    print $record["EXTENSIONS/TPX/SPEED"].' Speed<br>';
 
 			}
 
