@@ -110,6 +110,9 @@ class Process extends CI_Controller {
 			}
 			$autoActivityID = exact_time();//or time() if issues!
 
+			//remove the period
+			$autoActivityID = str_replace('.', '', $autoActivityID);
+
 			$result = MagicParser_parse($this->config->item('base_url').'uploads/'.$filename,"myRecordHandler","xml|TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/LAP/TRACK/TRACKPOINT/");
 
 			echo $_SESSION['activity_id'].' '.$_SESSION['sport'].' '.$autoActivityID.' '.$this->email.'...</br>';

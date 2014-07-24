@@ -34,9 +34,9 @@ class User_file_model extends CI_Model{
 
 	function add_activity($uid, $date, $email, $type){
 		//add the record
-		$format = "Y-m-dTh:i:sZ";
+		$format = "Y-m-dTH:i:sZ";
 		$timestamp = strtotime($date);
-		$timestamp = date("Y-m-d h:i:s", $timestamp);
+		$timestamp = date("Y-m-d H:i:s", $timestamp);
 		$query = $this->db->query("INSERT IGNORE INTO user_activity (activity_id, activity_date, email, activity_type) VALUES ('$uid', '$timestamp','$email', '$type')");
 		if($query)
 		{
@@ -53,34 +53,5 @@ class User_file_model extends CI_Model{
         return $this->db->delete('user_file');//true one success or false on fail
 	}
 
-	//add a activity lap
-	function addLap($activityID, $lapnumber, $timestamp, $duration){
-		$format = "Y-m-dTh:i:sZ";
-		$timestamp = strtotime($timestamp);
-		$this->timestamp = date("Y-m-d h:i:s", $timestamp);
-		$this->lap_number = $lapnumber;
-		$this->lap_duration = $duration;
-		$this->activity_id = $activityID;
 
-		if($this->db->insert('lap', $this))
-		{
-			//return the lap id
-			return $this->db->insert_id();
-		}
-		return false;
-	}
-
-	function writeToDb($lapID, $snapshotTime, $heartRate, $power, $cadence, $speed, $distance ){
-		$this->lap_id = $lapID;
-		$format = "Y-m-dTh:i:sZ";
-		$snapshotTime = strtotime($snapshotTime);
-		$this->snapshot_timestamp = date("Y-m-d h:i:s", $snapshotTime);
-		$this->heart_rate = $heartrate;
-		$this->power = $power;
-		$this->cadence = $cadence;
-		$this->speed = $speed;
-		$this->distance = $distance;
-
-		$this->db->insert('snapshot');
-	}
 }
