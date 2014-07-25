@@ -39,6 +39,8 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 /* my global vars */
  //magic parser globals
  $mp_count = 0;
+ $mp_lapcount = 0;
+ $lapstart;
  $autoActivityID =  0;
 
 

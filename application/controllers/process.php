@@ -78,18 +78,28 @@ class Process extends CI_Controller {
 			    print $record["EXTENSIONS/TPX/WATTS"].' Watts<br>';*/
 
 			    global $mp_count;
+			    global $mp_lapcount;
 			    global $autoActivityID;
+			    global $lapstart;
 
-			    $activityID = $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/ID"];
-				$sport = $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY-SPORT"];
+			    //* <-- item to be inserted into database(s)
 
+			    $activityID = $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/ID"];//*
+				$sport = $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY-SPORT"];//*
+
+				$lastLap = $lapstart;
 				$lapstart = $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/LAP-STARTTIME"];
-				$lapduration = $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/LAP/TOTALTIMESECONDS"];
+				if($lastLap != $lapstart){
+					$lapnumber = $mp_lapcount;//*
 
-			    $tpTimestamp = $record["TIME"];
-			    $tpHeartRate = $record["HEARTRATEBPM/VALUE"].' Heartrate<br>';
-			    $tpCadence = $record["CADENCE"];
-			    $tpWatts = ["EXTENSIONS/TPX/WATTS"];
+					$mp_lapcount++;
+				}
+				$lapduration = $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/LAP/TOTALTIMESECONDS"];//*
+
+			    $tpTimestamp = $record["TIME"];//*
+			    $tpHeartRate = $record["HEARTRATEBPM/VALUE"].' Heartrate<br>';//*
+			    $tpCadence = $record["CADENCE"];//*
+			    $tpWatts = ["EXTENSIONS/TPX/WATTS"];//*
 
 			    //if this is the first loop
 			    if($mp_count == 0){
@@ -110,6 +120,9 @@ class Process extends CI_Controller {
 			}
 			$autoActivityID = exact_time();//or time() if issues!
 
+			//reset lap counter
+			$mp_lapcount = 0;
+
 			//remove the period
 			$autoActivityID = str_replace('.', '', $autoActivityID);
 
@@ -120,7 +133,7 @@ class Process extends CI_Controller {
 			//add the activity to the db
 			if($this->user_file->add_activity($autoActivityID, $_SESSION['activity_id'], $this->email, $_SESSION['sport']))
 			{
-				echo 'Record added to mysql database<br>';
+				echo 'Record added to mysql database.<br>';
 			}
 
 			//unset the session vars
