@@ -1,5 +1,29 @@
 <?php
 
+require_once(__DIR__.'/../lib/autoload.php');
+
+/*
+use phpcassa\Connection\ConnectionPool;
+use phpcassa\ColumnFamily;
+use phpcassa\SystemManager;
+use phpcassa\Schema\StrategyClass;
+
+// Start a connection pool, create our ColumnFamily instance// Create a new keyspace and column family
+$servers = array('127.0.0.1:9160');
+$pool = new ConnectionPool('joulepersecond_a', $servers);
+//var_dump($pool->describe_keyspace());
+$tp = new ColumnFamily($pool, 'activity_data');
+
+/*$tp->insert(1, array(	"lap_duration" => 10, 
+					"lap_number" => 12,
+					"lap_start" => '2014-07-03T19:07:01Z',
+					"tp_cadence" => 90,
+					"tp_heartrate" => 173,
+					"tp_timestamp" => '2014-07-03T19:07:01Z',
+					"tp_watts" => 221
+					));*/
+
+
 error_reporting(E_ERROR);
 require($_SERVER['DOCUMENT_ROOT']."/MagicParser.php");
 class Process extends CI_Controller {
@@ -13,6 +37,7 @@ class Process extends CI_Controller {
 			$this->email = $this->input->cookie('valid_user', false);
 		}
 		$this->load->model('user_file_model', 'user_file', TRUE);
+
 	}
 
 	//get user uploaded file references and parse file data to database record, and remove files from uploads dir
@@ -31,9 +56,15 @@ class Process extends CI_Controller {
 		echo json_encode($jobs);
 	}
 
+	
 	// ajaxhttp://joulepersecond.com/index.php/process/parse
 	function parse()
 	{
+
+
+		//let's write that data HERE!
+		/**/
+
 		$debug = '';
 
 		//get the filename for the current job item
@@ -61,7 +92,7 @@ class Process extends CI_Controller {
 				//delete record of this file from intermediate table else we're going to keep trying to load a file that ain't there...
 				$this->user_file->_deleteIntRec($filename);
 			}
-
+			
 			
 			function myRecordHandler($record)
 			{
@@ -82,26 +113,55 @@ class Process extends CI_Controller {
 			    global $autoActivityID;
 			    global $lapstart;
 
-			    //* <-- item to be inserted into database(s)
+			    //get higher level non repeating nodes
+			    $activityID = $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/ID"];
+				$sport = $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY-SPORT"];
 
-			    $activityID = $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/ID"];//*
-				$sport = $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY-SPORT"];//*
-
+				//increment lap number if new lap timestamp
 				$lastLap = $lapstart;
 				$lapstart = $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/LAP-STARTTIME"];
 				if($lastLap != $lapstart){
-					$lapnumber = $mp_lapcount;//*
-
+					$lapnumber = $mp_lapcount;
 					$mp_lapcount++;
 				}
-				$lapduration = $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/LAP/TOTALTIMESECONDS"];//*
+				else
+				{
+					$lapnumber = $mp_lapcount;
+				}
 
-			    $tpTimestamp = $record["TIME"];//*
-			    $tpHeartRate = $record["HEARTRATEBPM/VALUE"].' Heartrate<br>';//*
-			    $tpCadence = $record["CADENCE"];//*
-			    $tpWatts = ["EXTENSIONS/TPX/WATTS"];//*
 
-			    //if this is the first loop
+			    $tpTimestamp = $record["TIME"];
+
+			    //clean up missing records
+			    if($record["HEARTRATEBPM/VALUE"])
+		    	{
+		    		$tpHeartRate = $record["HEARTRATEBPM/VALUE"];
+		    	}
+			    else 
+			    {
+			    	$tpHeartRate = '0';//no null/empty valls
+			    }
+
+			    if($record["CADENCE"])
+		    	{
+		    		$tpCadence = $record["CADENCE"];
+		    	}
+			    else 
+			    {
+			    	$tpCadence = '0';//no null/empty valls
+			    }
+
+			    if($record["EXTENSIONS/TPX/WATTS"])
+		    	{
+		    		$tpWatts = $record["EXTENSIONS/TPX/WATTS"];
+		    	}
+			    else 
+			    {
+			    	$tpWatts = '0';//no null/empty valls
+			    }
+
+
+			    //if this is the first loop record this info...
 			    if($mp_count == 0){
 					$_SESSION['activity_id']=$activityID;
 					$_SESSION['sport']=$sport;
@@ -109,8 +169,20 @@ class Process extends CI_Controller {
 				$mp_count++;
 
 
-				//let's write that data HERE!
-				
+				//convert to Cassandra acceptable timestamp...
+				$lapstartCassa = strtotime($lapstart)*1000;
+				$tpTimestampCassa = strtotime($tpTimestamp)*1000;
+
+				$theUID = $_SESSION['autoActivityID'];
+
+
+
+				//create a unique key
+				$PK = md5($theUID.$tpTimestampCassa);
+
+				//cql 
+				$_SESSION['joulepersecdata'] .= "INSERT INTO activity_data (key, activity_id, lap_number, lap_start, tp_cadence, tp_heartrate, tp_timestamp, tp_watts ) VALUES ('$PK', $theUID, $lapnumber, $lapstartCassa, $tpCadence, $tpHeartRate, $tpTimestampCassa, $tpWatts);".PHP_EOL;
+
 			}
 			/////////////////!!!!KEEP CLEAR!!!!\\\\\\\\\\\\\\\\\\
 			//get a unique id
@@ -119,28 +191,40 @@ class Process extends CI_Controller {
 			    return ($t[0] + $t[1]);
 			}
 			$autoActivityID = exact_time();//or time() if issues!
-
 			//reset lap counter
 			$mp_lapcount = 0;
-
 			//remove the period
 			$autoActivityID = str_replace('.', '', $autoActivityID);
-
+			$_SESSION['autoActivityID'] = $autoActivityID;
+			$_SESSION['joulepersecdata'] = '';
+			/*********************
+			*
+			* Fanfare please...!
+			*
+			*********************/
 			$result = MagicParser_parse($this->config->item('base_url').'uploads/'.$filename,"myRecordHandler","xml|TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/LAP/TRACK/TRACKPOINT/");
+			// stand at ease.
 
-			echo $_SESSION['activity_id'].' '.$_SESSION['sport'].' '.$autoActivityID.' '.$this->email.'...</br>';
+
+
+			//echo $_SESSION['activity_id'].' '.$_SESSION['sport'].' '.$autoActivityID.' '.$this->email.'...</br>';
 
 			//add the activity to the db
 			if($this->user_file->add_activity($autoActivityID, $_SESSION['activity_id'], $this->email, $_SESSION['sport']))
 			{
-				echo 'Record added to mysql database.<br>';
+				//echo 'Record added to mysql database.<br>';
 			}
+
+			//output
+			echo $_SESSION['joulepersecdata']; 
 
 			//unset the session vars
 			unset($_SESSION['activity_id']);
 			unset($_SESSION['sport']);
+			unset($_SESSION['autoActivityID']);
+			unset($_SESSION['joulepersecdata']);
 
-
+	
 			if (!$result)
 			{ 
 				print MagicParser_getErrorMessage();
@@ -160,7 +244,12 @@ class Process extends CI_Controller {
 			$this->user_file->_deleteIntRec($filename);
 		}
 		echo $debug;
-	}
 
+		
+	}
 }
+// Close our connections
+/*
+$pool->close();
+*/
 ?>

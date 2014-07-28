@@ -1,0 +1,16 @@
+CREATE TABLE activity_data (
+	activity_id int,
+  	lap_number int,
+  	lap_start int,
+  	lap_duration int,
+  	tp_timestamp timestamp,
+  	tp_heartrate int,
+  	tp_cadence int,
+  	tp_watts int,
+  	PRIMARY KEY (activity_id)
+)
+WITH COMPACT STORAGE;
+
+-----------------------------------
+
+DROP TABLE activity_data;
