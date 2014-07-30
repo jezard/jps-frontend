@@ -140,7 +140,7 @@ class Process extends CI_Controller {
 				$PK = md5($theUID.$tpTimestampCassa);
 
 				//cql 
-				$_SESSION['joulepersecdata'] .= "INSERT INTO joulepersecond_a.activity_data (key, activity_id, lap_number, lap_start, tp_cadence, tp_heartrate, tp_timestamp, tp_watts ) VALUES ('$PK', $theUID, $lapnumber, $lapstartCassa, $tpCadence, $tpHeartRate, $tpTimestampCassa, $tpWatts);".PHP_EOL;
+				$_SESSION['joulepersecdata'] .= "INSERT INTO Joulepersecond.activity_data (key, activity_id, lap_number, lap_start, tp_cadence, tp_heartrate, tp_timestamp, tp_watts ) VALUES ('$PK', $theUID, $lapnumber, $lapstartCassa, $tpCadence, $tpHeartRate, $tpTimestampCassa, $tpWatts);".PHP_EOL;
 
 			}
 			/////////////////!!!!KEEP CLEAR!!!!\\\\\\\\\\\\\\\\\\
@@ -177,7 +177,7 @@ class Process extends CI_Controller {
 			//set paths
 			$CQLfilename = '/var/www/jps-frontend/temp/'.$autoActivityID.'.cql';	
 		    $cassa_cmd = "cqlsh -f $CQLfilename";
-		    
+
 		    //write to file
 			file_put_contents($CQLfilename, $insert_data);
 
