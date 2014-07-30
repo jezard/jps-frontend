@@ -191,6 +191,8 @@ class Process extends CI_Controller {
 
 			exec($cassa_cmd);
 
+			echo $cassa_cmd;
+
 			//unset the session vars
 			unset($_SESSION['activity_id']);
 			unset($_SESSION['sport']);
