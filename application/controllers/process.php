@@ -183,13 +183,13 @@ class Process extends CI_Controller {
 			file_put_contents($filename, $insert_data);
 
 			//output
-			if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {//windows dev
+			/*if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {//windows dev
 			    $cassa_cmd = escapeshellcmd("C:/Users/Administrator/git-projects/jps-fileconverter/fit2tcx.pl $infile $outfile");
 			} else {//live site
 			    $cassa_cmd = "cqlsh -f $filename";
 			}
 
-			exec($cassa_cmd);
+			exec($cassa_cmd);*/
 
 
 			//unset the session vars
