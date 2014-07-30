@@ -171,27 +171,26 @@ class Process extends CI_Controller {
 			$result = MagicParser_parse($this->config->item('base_url').'uploads/'.$filename,"myRecordHandler","xml|TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/LAP/TRACK/TRACKPOINT/");
 			// stand at ease.
 
-
-
-			//echo $_SESSION['activity_id'].' '.$_SESSION['sport'].' '.$autoActivityID.' '.$this->email.'...</br>';
-
 			//add the activity to the db
 			if($this->user_file->add_activity($autoActivityID, $_SESSION['activity_id'], $this->email, $_SESSION['sport']))
 			{
 				//echo 'Record added to mysql database.<br>';
 			}
 
-			$insert_data = $_SESSION['joulepersecdata']; 
+			$insert_data = $_SESSION['joulepersecdata'];
+			//write content to file
+			$filename = $autoActivityID.'cql';
+			file_put_contents($filename, $insert_data);
+
 			//output
 			if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {//windows dev
 			    $cassa_cmd = escapeshellcmd("C:/Users/Administrator/git-projects/jps-fileconverter/fit2tcx.pl $infile $outfile");
 			} else {//live site
-			    $cassa_cmd = "cqlsh; ".$insert_data;
+			    $cassa_cmd = "cqlsh -f $filename";
 			}
 
 			exec($cassa_cmd);
 
-			echo $cassa_cmd;
 
 			//unset the session vars
 			unset($_SESSION['activity_id']);
