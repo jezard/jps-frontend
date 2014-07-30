@@ -66,24 +66,5 @@ function parseFiles(){
 	});
 }
 
-
-//for each file
-
-/*****PHP*******/
-
-//read the contents of the file
-
-//parse contents of file
-
-//write contents of file to database
-
-//delete file
-
-//return done
-
-/******JS******/
-
-//show done
-
 </script>
 <p><?php //echo anchor('upload', 'Upload more files'); ?></p>

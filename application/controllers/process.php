@@ -73,16 +73,6 @@ class Process extends CI_Controller {
 			function myRecordHandler($record)
 			{
 				//print_r($record);exit;
-				/*print $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/ID"].' Activity ID<br>';
-				print $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY-SPORT"].' Sport<br>';
-
-				print $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/LAP-STARTTIME"].' Lap start time<br>';
-				print $record["./TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/LAP/TOTALTIMESECONDS"].' Lap duration <br>';
-
-			    print $record["TIME"].' Timestamp<br>';;
-			    print $record["HEARTRATEBPM/VALUE"].' Heartrate<br>';
-			    print $record["CADENCE"].' Cadence <br>';
-			    print $record["EXTENSIONS/TPX/WATTS"].' Watts<br>';*/
 
 			    global $mp_count;
 			    global $mp_lapcount;
@@ -157,7 +147,7 @@ class Process extends CI_Controller {
 				$PK = md5($theUID.$tpTimestampCassa);
 
 				//cql 
-				$_SESSION['joulepersecdata'] .= "INSERT INTO activity_data (key, activity_id, lap_number, lap_start, tp_cadence, tp_heartrate, tp_timestamp, tp_watts ) VALUES ('$PK', $theUID, $lapnumber, $lapstartCassa, $tpCadence, $tpHeartRate, $tpTimestampCassa, $tpWatts);".PHP_EOL;
+				$_SESSION['joulepersecdata'] .= "INSERT INTO joulepersecond_a.activity_data (key, activity_id, lap_number, lap_start, tp_cadence, tp_heartrate, tp_timestamp, tp_watts ) VALUES ('$PK', $theUID, $lapnumber, $lapstartCassa, $tpCadence, $tpHeartRate, $tpTimestampCassa, $tpWatts);".PHP_EOL;
 
 			}
 			/////////////////!!!!KEEP CLEAR!!!!\\\\\\\\\\\\\\\\\\
@@ -191,8 +181,15 @@ class Process extends CI_Controller {
 				//echo 'Record added to mysql database.<br>';
 			}
 
+			$insert_data = $_SESSION['joulepersecdata']; 
 			//output
-			echo $_SESSION['joulepersecdata']; 
+			if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {//windows dev
+			    $cassa_cmd = escapeshellcmd("C:/Users/Administrator/git-projects/jps-fileconverter/fit2tcx.pl $infile $outfile");
+			} else {//live site
+			    $cassa_cmd = "cqlsh; ".$insert_data;
+			}
+
+			exec($cassa_cmd);
 
 			//unset the session vars
 			unset($_SESSION['activity_id']);
