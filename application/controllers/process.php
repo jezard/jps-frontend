@@ -1,29 +1,5 @@
 <?php
 
-require_once(__DIR__.'/../lib/autoload.php');
-
-/*
-use phpcassa\Connection\ConnectionPool;
-use phpcassa\ColumnFamily;
-use phpcassa\SystemManager;
-use phpcassa\Schema\StrategyClass;
-
-// Start a connection pool, create our ColumnFamily instance// Create a new keyspace and column family
-$servers = array('127.0.0.1:9160');
-$pool = new ConnectionPool('joulepersecond_a', $servers);
-//var_dump($pool->describe_keyspace());
-$tp = new ColumnFamily($pool, 'activity_data');
-
-/*$tp->insert(1, array(	"lap_duration" => 10, 
-					"lap_number" => 12,
-					"lap_start" => '2014-07-03T19:07:01Z',
-					"tp_cadence" => 90,
-					"tp_heartrate" => 173,
-					"tp_timestamp" => '2014-07-03T19:07:01Z',
-					"tp_watts" => 221
-					));*/
-
-
 error_reporting(E_ERROR);
 require($_SERVER['DOCUMENT_ROOT']."/MagicParser.php");
 class Process extends CI_Controller {
@@ -233,9 +209,6 @@ class Process extends CI_Controller {
 			//delete the record of our file if all done...
 			$this->user_file->_deleteIntRec($filename);
 
-			/*
-			Add the remaining info to the user_ativity database table
-			*/
 		}
 		else
 		{
@@ -248,8 +221,5 @@ class Process extends CI_Controller {
 		
 	}
 }
-// Close our connections
-/*
-$pool->close();
-*/
+
 ?>
