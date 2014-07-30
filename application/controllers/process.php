@@ -179,7 +179,7 @@ class Process extends CI_Controller {
 
 			$insert_data = $_SESSION['joulepersecdata'];
 			//write content to file
-			$filename = $autoActivityID.'cql';
+			$filename = '/var/www/jps-frontend/temp/'.$autoActivityID.'cql';
 			file_put_contents($filename, $insert_data);
 
 			//output
