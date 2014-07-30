@@ -37,10 +37,6 @@ class Process extends CI_Controller {
 	function parse()
 	{
 
-
-		//let's write that data HERE!
-		/**/
-
 		$debug = '';
 
 		//get the filename for the current job item
@@ -48,11 +44,8 @@ class Process extends CI_Controller {
 		$filetype = $this->input->post('filetype');
 		$email = $this->email;
 
-
 		$fileok = false;
 		$readok = false;
-
-
 
 		if ($filetype == '.tcx'){
 			$xmlDoc = new DOMDocument();
@@ -178,22 +171,21 @@ class Process extends CI_Controller {
 			}
 
 			$insert_data = $_SESSION['joulepersecdata'];
-			//write content to file
-			$filename = '/var/www/jps-frontend/temp/'.$autoActivityID.'.cql';
-
-			file_put_contents($filename, $insert_data);
 
 			//output
-			if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {//windows dev
-			    $cassa_cmd = escapeshellcmd("C:/Users/Administrator/git-projects/jps-fileconverter/fit2tcx.pl $infile $outfile");
-			} else {//live site
-			    $cassa_cmd = "cqlsh -f $filename";
-			}
+	
+			//set paths
+			$CQLfilename = '/var/www/jps-frontend/temp/'.$autoActivityID.'.cql';	
+		    $cassa_cmd = "cqlsh -f $CQLfilename";
+		    
+		    //write to file
+			file_put_contents($CQLfilename, $insert_data);
 
+			//execute command
 			exec($cassa_cmd);
 
-			echo 'done';
-
+			//remove tempfile
+			unlink($CQLfilename);
 
 			//unset the session vars
 			unset($_SESSION['activity_id']);
@@ -201,7 +193,6 @@ class Process extends CI_Controller {
 			unset($_SESSION['autoActivityID']);
 			unset($_SESSION['joulepersecdata']);
 
-	
 			if (!$result)
 			{ 
 				print MagicParser_getErrorMessage();
