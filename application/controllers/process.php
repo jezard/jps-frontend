@@ -184,9 +184,9 @@ class Process extends CI_Controller {
 			//execute command
 			$cassa_return = shell_exec($cassa_cmd);
 
-			//log any errors
+			//Log
 			$logfile = $this->config->item('log_file');
-			$message = date('[CASSANDRA CQL]'."Y-m-d H:i:s").' User: '.$this->email.' Message: '.$cassa_return;
+			$message = '[CASSANDRA CQL]'.date("Y-m-d H:i:s").' User: '.$this->email.' Message: '.$cassa_return;
 			file_put_contents($logfile, $message, FILE_APPEND);
 
 			//remove tempfile

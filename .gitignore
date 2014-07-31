@@ -5,6 +5,9 @@
 */cache/!index.html
 */cache/!.htaccess
 
+/log/
+/log/*
+
 /application/config/config.php
 /application/config/database.php
 /uploads/

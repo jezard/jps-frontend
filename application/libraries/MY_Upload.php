@@ -458,8 +458,10 @@
 
 							$perl_return = shell_exec($perlscript_file);
 
-							//log any errors
-							file_put_contents($this->config->item('log_file'), '[FILE CONVERSION]'.date("Y-m-d H:i:s").' File: '.$infile.' Message: '.$perl_return, FILE_APPEND);
+							//Log
+							$logfile = $this->config->item('log_file');
+							$message = '[FILE CONVERSION]'.date("Y-m-d H:i:s").' File: '.$infile.' Message: '.$perl_return;
+							file_put_contents($logfile, $message, FILE_APPEND);
 			
 							//delete fit files after conversion
 							unlink($infile);
