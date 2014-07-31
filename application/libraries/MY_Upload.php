@@ -456,7 +456,10 @@
 							    $perlscript_file = "perl /var/www/jps-fileconverter/fit2tcx $infile $outfile";
 							}
 
-							exec($perlscript_file);
+							$perl_return = shell_exec($perlscript_file);
+
+							//log any errors
+							file_put_contents($this->config->item('log_file'), '[FILE CONVERSION]'.date("Y-m-d H:i:s").' File: '.$infile.' Message: '.$perl_return, FILE_APPEND);
 			
 							//delete fit files after conversion
 							unlink($infile);
