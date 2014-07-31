@@ -182,7 +182,9 @@ class Process extends CI_Controller {
 			file_put_contents($CQLfilename, $insert_data);
 
 			//execute command
-			exec($cassa_cmd);
+			$cassa_return = shell_exec($cassa_cmd);
+
+			echo $cassa_return;
 
 			//remove tempfile
 			unlink($CQLfilename);
