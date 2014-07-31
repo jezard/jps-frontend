@@ -140,7 +140,7 @@ class Process extends CI_Controller {
 				$PK = md5($theUID.$tpTimestampCassa);
 
 				//cql 
-				$_SESSION['joulepersecdata'] .= "INSERT INTO Joulepersecond.activity_data (key, activity_id, lap_number, lap_start, tp_cadence, tp_heartrate, tp_timestamp, tp_watts ) VALUES ('$PK', $theUID, $lapnumber, $lapstartCassa, $tpCadence, $tpHeartRate, $tpTimestampCassa, $tpWatts);".PHP_EOL;
+				$_SESSION['joulepersecdata'] .= "INSERT INTO \"Joulepersecond\".activity_data (key, activity_id, lap_number, lap_start, tp_cadence, tp_heartrate, tp_timestamp, tp_watts ) VALUES ('$PK', $theUID, $lapnumber, $lapstartCassa, $tpCadence, $tpHeartRate, $tpTimestampCassa, $tpWatts);".PHP_EOL;
 
 			}
 			/////////////////!!!!KEEP CLEAR!!!!\\\\\\\\\\\\\\\\\\
@@ -173,10 +173,19 @@ class Process extends CI_Controller {
 			$insert_data = $_SESSION['joulepersecdata'];
 
 			//output
-	
-			//set paths
-			$CQLfilename = '/var/www/jps-frontend/temp/'.$autoActivityID.'.cql';	
-		    $cassa_cmd = "cqlsh -f $CQLfilename";
+			//detect os for dev mainly
+			if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+			    //set paths
+				$CQLfilename = 'C:/Users/Administrator/git-projects/jps-frontend/temp/'.$autoActivityID.'.cql';	
+			    $cassa_cmd = "python C:/\"program files\"/\"Datastax Community\"/apache-cassandra/bin/cqlsh -f $CQLfilename";
+			    file_put_contents('C:/Users/Administrator/git-projects/jps-frontend/temp/insertcmd.bat', $cassa_cmd);
+			    $cassa_cmd = 'C:/Users/Administrator/git-projects/jps-frontend/temp/insertcmd.bat';
+			    system("cmd /c $cassa_cmd");
+			} else {
+			    //set paths
+				$CQLfilename = '/var/www/jps-frontend/temp/'.$autoActivityID.'.cql';	
+			    $cassa_cmd = "cqlsh -f $CQLfilename";
+			}
 
 		    //write to file
 			file_put_contents($CQLfilename, $insert_data);
