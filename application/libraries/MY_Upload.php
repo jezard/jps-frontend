@@ -459,7 +459,8 @@
 							$perl_return = shell_exec($perlscript_file);
 
 							//Log
-							$logfile = $this->config->item('log_file');
+							$CI =& get_instance();
+							$logfile = $CI->config->item('log_file');
 							$message = '[FILE CONVERSION]'.date("Y-m-d H:i:s").' File: '.$infile.' Message: '.$perl_return;
 							file_put_contents($logfile, $message, FILE_APPEND);
 			
