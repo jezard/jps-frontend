@@ -140,7 +140,7 @@ class Process extends CI_Controller {
 				$PK = md5($theUID.$tpTimestampCassa);
 
 				//cql 
-				$_SESSION['joulepersecdata'] .= "INSERT INTO \"Joulepersecond\".activity_data (key, activity_id, lap_number, lap_start, tp_cadence, tp_heartrate, tp_timestamp, tp_watts ) VALUES ('$PK', $theUID, $lapnumber, $lapstartCassa, $tpCadence, $tpHeartRate, $tpTimestampCassa, $tpWatts);".PHP_EOL;
+				$_SESSION['joulepersecdata'] .= "INSERT INTO joulepersecond.activity_data (key, activity_id, lap_number, lap_start, tp_cadence, tp_heartrate, tp_timestamp, tp_watts ) VALUES ('$PK', $theUID, $lapnumber, $lapstartCassa, $tpCadence, $tpHeartRate, $tpTimestampCassa, $tpWatts);".PHP_EOL;
 
 			}
 			/////////////////!!!!KEEP CLEAR!!!!\\\\\\\\\\\\\\\\\\
