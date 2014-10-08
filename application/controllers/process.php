@@ -61,8 +61,26 @@ class Process extends CI_Controller {
 				//delete record of this file from intermediate table else we're going to keep trying to load a file that ain't there...
 				$this->user_file->_deleteIntRec($filename);
 			}
-			
-			
+			/////////////////!!!!KEEP CLEAR!!!!\\\\\\\\\\\\\\\\\\
+			//get a unique id
+			function exact_time() {
+			    $t = explode(' ',microtime());
+			    return ($t[0] + $t[1]);
+			}
+			$autoActivityID = exact_time();//or time() if issues!
+			//reset lap counter
+			$mp_lapcount = 0;
+			//remove the period
+			$autoActivityID = str_replace('.', '', $autoActivityID);
+			$_SESSION['autoActivityID'] = $autoActivityID;
+			$_SESSION['joulepersecdata'] = '';
+
+
+			/*********************************************************************************************************
+			*
+			* Fanfare please...! Function call to myRecordHandler and recursive function myRecordHandler
+			*
+			*********************************************************************************************************/
 			function myRecordHandler($record)
 			{
 				//print_r($record);exit;
@@ -147,26 +165,13 @@ class Process extends CI_Controller {
 				$_SESSION['joulepersecdata'] .= "INSERT INTO joulepersecond.activity_data (key, activity_id, lap_number, lap_start, tp_cadence, tp_heartrate, tp_timestamp, tp_watts ) VALUES ('$PK', $theUID, $lapnumber, $lapstartCassa, $tpCadence, $tpHeartRate, $tpTimestampCassa, $tpWatts);".PHP_EOL;
 
 			}
-			/////////////////!!!!KEEP CLEAR!!!!\\\\\\\\\\\\\\\\\\
-			//get a unique id
-			function exact_time() {
-			    $t = explode(' ',microtime());
-			    return ($t[0] + $t[1]);
-			}
-			$autoActivityID = exact_time();//or time() if issues!
-			//reset lap counter
-			$mp_lapcount = 0;
-			//remove the period
-			$autoActivityID = str_replace('.', '', $autoActivityID);
-			$_SESSION['autoActivityID'] = $autoActivityID;
-			$_SESSION['joulepersecdata'] = '';
-			/*********************
-			*
-			* Fanfare please...!
-			*
-			*********************/
 			$result = MagicParser_parse($this->config->item('base_url').'uploads/'.$filename,"myRecordHandler","xml|TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/LAP/TRACK/TRACKPOINT/");
-			// stand at ease.
+			/*********************************************************************************************************
+			*
+			* End of recursive section
+			*
+			*********************************************************************************************************/
+			
 
 			//add the activity to the db
 			if($this->user_file->add_activity($autoActivityID, $_SESSION['activity_id'], $this->email, $_SESSION['sport']))
