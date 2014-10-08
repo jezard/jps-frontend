@@ -151,7 +151,7 @@ class Process extends CI_Controller {
 
 				//cql 
 				//Again we use a session to store this row which represents 1 sample point 
-				$_SESSION['joulepersecdata'] .= "INSERT INTO joulepersecond.activity_row (activity_id, tp_cadence, tp_heartrate, tp_timestamp, tp_watts, lap_start, lap_number) VALUES ( '$PK', $tpCadence, $tpHeartRate, $tpTimestampCassa, $tpWatts, $lapstartCassa, $lapnumber);".PHP_EOL;
+				$_SESSION['joulepersecdata'] .= "INSERT INTO joulepersecond.activity_data (activity_id, tp_cadence, tp_heartrate, tp_timestamp, tp_watts, lap_start, lap_number) VALUES ( '$PK', $tpCadence, $tpHeartRate, $tpTimestampCassa, $tpWatts, $lapstartCassa, $lapnumber);".PHP_EOL;
 
 			}
 			$result = MagicParser_parse($this->config->item('base_url').'uploads/'.$filename,"myRecordHandler","xml|TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/LAP/TRACK/TRACKPOINT/");
