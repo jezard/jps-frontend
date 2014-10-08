@@ -61,15 +61,27 @@ class Process extends CI_Controller {
 				//delete record of this file from intermediate table else we're going to keep trying to load a file that ain't there...
 				$this->user_file->_deleteIntRec($filename);
 			}
-			
-			
+			/////////////////!!!!KEEP CLEAR!!!!\\\\\\\\\\\\\\\\\\
+			//reset lap counter
+			$mp_lapcount = 0;
+			//remove the period
+			$_SESSION['ActivityID'] = '';
+			$_SESSION['ActivityKey'] = '';
+			$_SESSION['joulepersecdata'] = '';
+			$_SESSION['UserKey'] = $email;
+
+
+			/*********************************************************************************************************
+			*
+			* Fanfare please...! Function call to myRecordHandler and recursive function myRecordHandler
+			*
+			*********************************************************************************************************/
 			function myRecordHandler($record)
 			{
 				//print_r($record);exit;
 
 			    global $mp_count;
 			    global $mp_lapcount;
-			    global $autoActivityID;
 			    global $lapstart;
 
 			    //get higher level non repeating nodes
@@ -122,89 +134,90 @@ class Process extends CI_Controller {
 
 			    //if this is the first loop record this info...
 			    if($mp_count == 0){
-					$_SESSION['activity_id']=$activityID;
+			    	/**
+			    	* We use sessions to store data extracted from this recursive function
+			    	*/
+					$_SESSION['ActivityID']=$activityID;
+					$_SESSION['ActivityKey'] = md5($_SESSION['ActivityID'].$_SESSION['UserKey']);//concatenate user and activity IDs to ensure uniqueness of user activity
 					$_SESSION['sport']=$sport;
 				}
 				$mp_count++;
 
+				$PK = $_SESSION['ActivityKey'];
 
 				//convert to Cassandra acceptable timestamp...
 				$lapstartCassa = strtotime($lapstart)*1000;
 				$tpTimestampCassa = strtotime($tpTimestamp)*1000;
 
-				$theUID = $_SESSION['autoActivityID'];
-
-
-
-				//create a unique key
-				$PK = md5($theUID.$tpTimestampCassa);
-
 				//cql 
-				$_SESSION['joulepersecdata'] .= "INSERT INTO joulepersecond.activity_data (key, activity_id, lap_number, lap_start, tp_cadence, tp_heartrate, tp_timestamp, tp_watts ) VALUES ('$PK', $theUID, $lapnumber, $lapstartCassa, $tpCadence, $tpHeartRate, $tpTimestampCassa, $tpWatts);".PHP_EOL;
+				//Again we use a session to store this row which represents 1 sample point 
+				$_SESSION['joulepersecdata'] .= "INSERT INTO joulepersecond.activity_data (activity_id, tp_cadence, tp_heartrate, tp_timestamp, tp_watts, lap_start, lap_number) VALUES ( '$PK', $tpCadence, $tpHeartRate, $tpTimestampCassa, $tpWatts, $lapstartCassa, $lapnumber);".PHP_EOL;
 
 			}
-			/////////////////!!!!KEEP CLEAR!!!!\\\\\\\\\\\\\\\\\\
-			//get a unique id
-			function exact_time() {
-			    $t = explode(' ',microtime());
-			    return ($t[0] + $t[1]);
-			}
-			$autoActivityID = exact_time();//or time() if issues!
-			//reset lap counter
-			$mp_lapcount = 0;
-			//remove the period
-			$autoActivityID = str_replace('.', '', $autoActivityID);
-			$_SESSION['autoActivityID'] = $autoActivityID;
-			$_SESSION['joulepersecdata'] = '';
-			/*********************
-			*
-			* Fanfare please...!
-			*
-			*********************/
 			$result = MagicParser_parse($this->config->item('base_url').'uploads/'.$filename,"myRecordHandler","xml|TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/LAP/TRACK/TRACKPOINT/");
-			// stand at ease.
+			/*********************************************************************************************************
+			*
+			* End of recursive section
+			*
+			*********************************************************************************************************/
+			
 
 			//add the activity to the db
-			if($this->user_file->add_activity($autoActivityID, $_SESSION['activity_id'], $this->email, $_SESSION['sport']))
+			if($this->user_file->add_activity($_SESSION['ActivityKey'], $_SESSION['ActivityID'], $_SESSION['UserKey'], $_SESSION['sport']))
 			{
 				//echo 'Record added to mysql database.<br>';
 			}
 
 			$insert_data = $_SESSION['joulepersecdata'];
 
+
 			//output
 			//detect os for dev mainly
 			if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
 			    //set paths
-				$CQLfilename = 'C:/Users/Administrator/git-projects/jps-frontend/temp/'.$autoActivityID.'.cql';	
+
+			    //create the CQL filepath
+				$CQLfilename = 'C:/Users/Administrator/git-projects/jps-frontend/temp/'.$_SESSION['ActivityKey'].'.cql';	
+				//create the python CQL command
 			    $cassa_cmd = "python C:/\"program files\"/\"Datastax Community\"/apache-cassandra/bin/cqlsh -f $CQLfilename";
+			    //add/overwrite the command to the batch file
 			    file_put_contents('C:/Users/Administrator/git-projects/jps-frontend/temp/insertcmd.bat', $cassa_cmd);
+
+			    //add the CQL insert statements to the .cql file
+				file_put_contents($CQLfilename, $insert_data);
+
+				//path to batch file for execution (have to do this manually on windows)
 			    $cassa_cmd = 'C:/Users/Administrator/git-projects/jps-frontend/temp/insertcmd.bat';
-			    system("cmd /c $cassa_cmd");
+			    //run the batch file
+			    ///system("cmd /c $cassa_cmd");
+
+
 			} else {
 			    //set paths
-				$CQLfilename = '/var/www/jps-frontend/temp/'.$autoActivityID.'.cql';	
+				$CQLfilename = '/var/www/jps-frontend/temp/'.$_SESSION['ActivityKey'].'.cql';	
+				//add the CQL insert statements to the .cql file
+				file_put_contents($CQLfilename, $insert_data);
+				//set the command
 			    $cassa_cmd = "cqlsh -f $CQLfilename";
+			    //execute the command inserting the data to the cassandra database
+				$cassa_return = shell_exec($cassa_cmd);
+				//remove tempfile
+				unlink($CQLfilename);
 			}
 
-		    //write to file
-			file_put_contents($CQLfilename, $insert_data);
-
-			//execute command
-			$cassa_return = shell_exec($cassa_cmd);
 
 			//Log
 			$logfile = $this->config->item('log_file');
 			$message = '[CASSANDRA CQL]'.date("Y-m-d H:i:s").' User: '.$this->email.' Message: '.$cassa_return.PHP_EOL;
 			file_put_contents($logfile, $message, FILE_APPEND);
 
-			//remove tempfile
-			unlink($CQLfilename);
+			
 
 			//unset the session vars
 			unset($_SESSION['activity_id']);
 			unset($_SESSION['sport']);
-			unset($_SESSION['autoActivityID']);
+			unset($_SESSION['ActivityID']);
+			unset($_SESSION['ActivityKey']);
 			unset($_SESSION['joulepersecdata']);
 
 			if (!$result)
