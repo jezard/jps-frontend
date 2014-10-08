@@ -62,18 +62,13 @@ class Process extends CI_Controller {
 				$this->user_file->_deleteIntRec($filename);
 			}
 			/////////////////!!!!KEEP CLEAR!!!!\\\\\\\\\\\\\\\\\\
-			//get a unique id
-			function exact_time() {
-			    $t = explode(' ',microtime());
-			    return ($t[0] + $t[1]);
-			}
-			$autoActivityID = exact_time();//or time() if issues!
 			//reset lap counter
 			$mp_lapcount = 0;
 			//remove the period
-			$autoActivityID = str_replace('.', '', $autoActivityID);
-			$_SESSION['autoActivityID'] = $autoActivityID;
+			$_SESSION['ActivityID'] = '';
+			$_SESSION['ActivityKey'] = '';
 			$_SESSION['joulepersecdata'] = '';
+			$_SESSION['UserKey'] = $email;
 
 
 			/*********************************************************************************************************
@@ -87,7 +82,6 @@ class Process extends CI_Controller {
 
 			    global $mp_count;
 			    global $mp_lapcount;
-			    global $autoActivityID;
 			    global $lapstart;
 
 			    //get higher level non repeating nodes
@@ -143,26 +137,22 @@ class Process extends CI_Controller {
 			    	/**
 			    	* We use sessions to store data extracted from this recursive function
 			    	*/
-					$_SESSION['activity_id']=$activityID;
+					$_SESSION['ActivityID']=$activityID;
+					$_SESSION['ActivityKey'] = md5($_SESSION['ActivityID'].$_SESSION['UserKey']);//concatenate user and activity IDs to ensure uniqueness of user activity
 					$_SESSION['sport']=$sport;
 				}
 				$mp_count++;
 
+				$PK = $_SESSION['ActivityKey'];
 
 				//convert to Cassandra acceptable timestamp...
 				$lapstartCassa = strtotime($lapstart)*1000;
 				$tpTimestampCassa = strtotime($tpTimestamp)*1000;
 
-				$theUID = $_SESSION['autoActivityID'];
-
-
-
-				//create a unique key
-				$PK = md5($theUID.$tpTimestampCassa);
-
 				//cql 
 				//Again we use a session to store this row which represents 1 sample point - we will revisit this as we want a wide row rather than a deep one
-				$_SESSION['joulepersecdata'] .= "INSERT INTO joulepersecond.activity_data (key, activity_id, lap_number, lap_start, tp_cadence, tp_heartrate, tp_timestamp, tp_watts ) VALUES ('$PK', $theUID, $lapnumber, $lapstartCassa, $tpCadence, $tpHeartRate, $tpTimestampCassa, $tpWatts);".PHP_EOL;
+				//$_SESSION['joulepersecdata'] .= "INSERT INTO joulepersecond.activity_data (key, activity_id, lap_number, lap_start, tp_cadence, tp_heartrate, tp_timestamp, tp_watts ) VALUES ('$PK', $theUID, $lapnumber, $lapstartCassa, $tpCadence, $tpHeartRate, $tpTimestampCassa, $tpWatts);".PHP_EOL;
+				$_SESSION['joulepersecdata'] .= "INSERT INTO joulepersecond.activity_row (activity_id, tp_cadence, tp_heartrate, tp_timestamp, tp_watts ) VALUES ( '$PK', $tpCadence, $tpHeartRate, $tpTimestampCassa, $tpWatts);".PHP_EOL;
 
 			}
 			$result = MagicParser_parse($this->config->item('base_url').'uploads/'.$filename,"myRecordHandler","xml|TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/LAP/TRACK/TRACKPOINT/");
@@ -174,7 +164,7 @@ class Process extends CI_Controller {
 			
 
 			//add the activity to the db
-			if($this->user_file->add_activity($autoActivityID, $_SESSION['activity_id'], $this->email, $_SESSION['sport']))
+			if($this->user_file->add_activity($_SESSION['ActivityKey'], $_SESSION['ActivityID'], $_SESSION['UserKey'], $_SESSION['sport']))
 			{
 				//echo 'Record added to mysql database.<br>';
 			}
@@ -188,7 +178,7 @@ class Process extends CI_Controller {
 			    //set paths
 
 			    //create the CQL filepath
-				$CQLfilename = 'C:/Users/Administrator/git-projects/jps-frontend/temp/'.$autoActivityID.'.cql';	
+				$CQLfilename = 'C:/Users/Administrator/git-projects/jps-frontend/temp/'.$_SESSION['ActivityKey'].'.cql';	
 				//create the python CQL command
 			    $cassa_cmd = "python C:/\"program files\"/\"Datastax Community\"/apache-cassandra/bin/cqlsh -f $CQLfilename";
 			    //add/overwrite the command to the batch file
@@ -205,7 +195,7 @@ class Process extends CI_Controller {
 
 			} else {
 			    //set paths
-				$CQLfilename = '/var/www/jps-frontend/temp/'.$autoActivityID.'.cql';	
+				$CQLfilename = '/var/www/jps-frontend/temp/'.$_SESSION['ActivityKey'].'.cql';	
 				//add the CQL insert statements to the .cql file
 				file_put_contents($CQLfilename, $insert_data);
 				//set the command
@@ -227,7 +217,8 @@ class Process extends CI_Controller {
 			//unset the session vars
 			unset($_SESSION['activity_id']);
 			unset($_SESSION['sport']);
-			unset($_SESSION['autoActivityID']);
+			unset($_SESSION['ActivityID']);
+			unset($_SESSION['ActivityKey']);
 			unset($_SESSION['joulepersecdata']);
 
 			if (!$result)
