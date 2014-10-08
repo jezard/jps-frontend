@@ -122,6 +122,9 @@ class Process extends CI_Controller {
 
 			    //if this is the first loop record this info...
 			    if($mp_count == 0){
+			    	/**
+			    	* We use sessions to store data extracted from this recursive function
+			    	*/
 					$_SESSION['activity_id']=$activityID;
 					$_SESSION['sport']=$sport;
 				}
@@ -140,6 +143,7 @@ class Process extends CI_Controller {
 				$PK = md5($theUID.$tpTimestampCassa);
 
 				//cql 
+				//Again we use a session to store this row which represents 1 sample point - we will revisit this as we want a wide row rather than a deep one
 				$_SESSION['joulepersecdata'] .= "INSERT INTO joulepersecond.activity_data (key, activity_id, lap_number, lap_start, tp_cadence, tp_heartrate, tp_timestamp, tp_watts ) VALUES ('$PK', $theUID, $lapnumber, $lapstartCassa, $tpCadence, $tpHeartRate, $tpTimestampCassa, $tpWatts);".PHP_EOL;
 
 			}
@@ -172,34 +176,48 @@ class Process extends CI_Controller {
 
 			$insert_data = $_SESSION['joulepersecdata'];
 
+
 			//output
 			//detect os for dev mainly
 			if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
 			    //set paths
+
+			    //create the CQL filepath
 				$CQLfilename = 'C:/Users/Administrator/git-projects/jps-frontend/temp/'.$autoActivityID.'.cql';	
+				//create the python CQL command
 			    $cassa_cmd = "python C:/\"program files\"/\"Datastax Community\"/apache-cassandra/bin/cqlsh -f $CQLfilename";
+			    //add/overwrite the command to the batch file
 			    file_put_contents('C:/Users/Administrator/git-projects/jps-frontend/temp/insertcmd.bat', $cassa_cmd);
+
+			    //add the CQL insert statements to the .cql file
+				file_put_contents($CQLfilename, $insert_data);
+
+				//path to batch file for execution (have to do this manually on windows)
 			    $cassa_cmd = 'C:/Users/Administrator/git-projects/jps-frontend/temp/insertcmd.bat';
-			    system("cmd /c $cassa_cmd");
+			    //run the batch file
+			    ///system("cmd /c $cassa_cmd");
+
+
 			} else {
 			    //set paths
 				$CQLfilename = '/var/www/jps-frontend/temp/'.$autoActivityID.'.cql';	
+				//add the CQL insert statements to the .cql file
+				file_put_contents($CQLfilename, $insert_data);
+				//set the command
 			    $cassa_cmd = "cqlsh -f $CQLfilename";
+			    //execute the command inserting the data to the cassandra database
+				$cassa_return = shell_exec($cassa_cmd);
+				//remove tempfile
+				unlink($CQLfilename);
 			}
 
-		    //write to file
-			file_put_contents($CQLfilename, $insert_data);
-
-			//execute command
-			$cassa_return = shell_exec($cassa_cmd);
 
 			//Log
 			$logfile = $this->config->item('log_file');
 			$message = '[CASSANDRA CQL]'.date("Y-m-d H:i:s").' User: '.$this->email.' Message: '.$cassa_return.PHP_EOL;
 			file_put_contents($logfile, $message, FILE_APPEND);
 
-			//remove tempfile
-			unlink($CQLfilename);
+			
 
 			//unset the session vars
 			unset($_SESSION['activity_id']);
