@@ -150,9 +150,8 @@ class Process extends CI_Controller {
 				$tpTimestampCassa = strtotime($tpTimestamp)*1000;
 
 				//cql 
-				//Again we use a session to store this row which represents 1 sample point - we will revisit this as we want a wide row rather than a deep one
-				//$_SESSION['joulepersecdata'] .= "INSERT INTO joulepersecond.activity_data (key, activity_id, lap_number, lap_start, tp_cadence, tp_heartrate, tp_timestamp, tp_watts ) VALUES ('$PK', $theUID, $lapnumber, $lapstartCassa, $tpCadence, $tpHeartRate, $tpTimestampCassa, $tpWatts);".PHP_EOL;
-				$_SESSION['joulepersecdata'] .= "INSERT INTO joulepersecond.activity_row (activity_id, tp_cadence, tp_heartrate, tp_timestamp, tp_watts ) VALUES ( '$PK', $tpCadence, $tpHeartRate, $tpTimestampCassa, $tpWatts);".PHP_EOL;
+				//Again we use a session to store this row which represents 1 sample point 
+				$_SESSION['joulepersecdata'] .= "INSERT INTO joulepersecond.activity_row (activity_id, tp_cadence, tp_heartrate, tp_timestamp, tp_watts, lap_start, lap_number) VALUES ( '$PK', $tpCadence, $tpHeartRate, $tpTimestampCassa, $tpWatts, $lapstartCassa, $lapnumber);".PHP_EOL;
 
 			}
 			$result = MagicParser_parse($this->config->item('base_url').'uploads/'.$filename,"myRecordHandler","xml|TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/LAP/TRACK/TRACKPOINT/");
