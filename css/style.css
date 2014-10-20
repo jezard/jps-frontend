@@ -822,7 +822,15 @@ body {
 .col-7-12 {
 	width: 58.33%
 }
-
+/*analysis window*/
+#analysis-container{
+	width:1140px;
+	height:600px;
+}
+.analysis-page-body{
+	background: white;
+	margin:20px;
+}
 @media handheld, only screen and (max-width: 767px) {
 
 	

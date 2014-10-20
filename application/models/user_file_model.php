@@ -43,10 +43,16 @@ class User_file_model extends CI_Model{
 			return true;
 		}
 		return false;
-
-
 	}
 
+	function get_recent_activities($email){
+		$activities = [];
+		$query = $this->db->query("SELECT * FROM user_activity WHERE email = '$email'");
+		foreach($query->result_array() as $row){
+			array_push($activities, array('activity_id'=> $row['activity_id'], 'activity_date' => $row['activity_date'], 'activity_name' => $row['activity_name'], 'activity_type' => $row['activity_type']));
+		}
+		return $activities;
+	}
 	//delete intermediate record
 	function _deleteIntRec($filename){
 		$this->db->where('filename', $filename);
