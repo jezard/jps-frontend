@@ -3,7 +3,7 @@
 	<?php 
 	foreach ($recentActivities as $activity) {
 		$activityDate = date_create_from_format('Y-m-d H:i:s', $activity['activity_date']);
-		echo '<li><a class="activity-link" href="http://127.0.0.1:8080/'.$activity['activity_id'].'">'.date_format($activityDate, 'D, jS F Y').'</a></li>';
+		echo '<li><a class="activity-link" href="http://'.$_SERVER['SERVER_ADDR'].':8080/'.$activity['activity_id'].'">'.date_format($activityDate, 'D, jS F Y').'</a></li>';
 	}
 	?>
 </ul>
