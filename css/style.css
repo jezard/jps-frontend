@@ -144,7 +144,7 @@ button,
 input,
 select,
 textarea {
-	color: #66635e;
+	color: #999;
 	font-family: 'Lato', sans-serif;
 	font-size: 16px;
 	font-size: 1.6em;
@@ -276,37 +276,16 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-	border: 1px solid #ccc;
-	border-color: #ccc #ccc #bbb #ccc;
+	border: 0;
 	border-radius: 3px;
 	background: #e6e6e6;
-	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 15px 17px rgba(255, 255, 255, 0.5), inset 0 -5px 12px rgba(0, 0, 0, 0.05);
 	color: rgba(0, 0, 0, .8);
 	cursor: pointer; /* Improves usability and consistency of cursor style between image-type 'input' and others */
 	-webkit-appearance: button; /* Corrects inability to style clickable 'input' types in iOS */
 	font-size: 12px;
 	font-size: 1.2rem;
 	line-height: 1;
-	padding: .6em 1em .4em;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
-}
-button:hover,
-input[type="button"]:hover,
-input[type="reset"]:hover,
-input[type="submit"]:hover {
-	border-color: #ccc #bbb #aaa #bbb;
-	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 15px 17px rgba(255, 255, 255, 0.8), inset 0 -5px 12px rgba(0, 0, 0, 0.02);
-}
-button:focus,
-input[type="button"]:focus,
-input[type="reset"]:focus,
-input[type="submit"]:focus,
-button:active,
-input[type="button"]:active,
-input[type="reset"]:active,
-input[type="submit"]:active {
-	border-color: #aaa #bbb #bbb #bbb;
-	box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.5), inset 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 input[type="checkbox"],
 input[type="radio"] {
@@ -823,8 +802,50 @@ body {
 	width: 58.33%
 }
 /*styles*/
+select{
+	font-size: 24px;
+	background-color: #444;
+	color: #00D1FD;
+	padding: 10px 5px;
+	font-weight: 300;
+	border: 0;
+	margin-bottom: 15px;
+	width:200px;
+	border-radius:3px;
+	display: block;
+	margin:0 auto 30px;
+}
+.btn {
+	margin: 0 auto 30px;
+	width: 200px;
+	color: #FFF;
+	font-weight: 300;
+	font-size: 24px;
+	height: 46px;
+	display: block;
+	background-color: #fb4b02;
+	line-height: 46px;
+}
+hr{
+	border:#444 inset 1px;
+	height:4px;
+	background: transparent;
+	margin-right: 20px
+}
+select:hover{
+	background: #555;
+}
 .site-header, .site-footer{
 	background: #C6F202;
+}
+.neon-blue{
+	color:#00D1FD;
+}
+.neon-orange{
+	color:#fb4b02;
+}
+.neon-green{
+	color:#C6F202;
 }
 /*analysis window*/
 #analysis-container{
@@ -836,6 +857,23 @@ body {
 .analysis-page-body{
 	background: transparent;
 	margin:20px;
+}
+.account-page{
+	position:relative;
+}
+.account-page p, .account-page li{
+	font-size: 16px;
+	font-weight: 300
+}
+#range{
+	font-weight: 700;
+	width: 100%;
+	text-align:right;
+	font-size: 18px
+}
+.account-page input[type='range']{
+	width:100%;
+	height:30px;
 }
 #chart_div{
 	border:1px solid #404040;
@@ -851,6 +889,9 @@ body {
 		margin-right: 0px;
 		padding-left: 0px;
 		padding-right: 0px;
+	}
+	hr{
+		margin-right: 0
 	}
 	
 	[class*='col-'] {
@@ -868,10 +909,13 @@ body {
 nav.top-nav li{
 	list-style: none;
 	display: inline-block;
-	font-weight: 400;
-	font-size: 1.1em;
+	font-weight: 700;
+	font-size: 0.9em;
 	text-transform: uppercase;
 	padding-left: 52px;
+}
+nav.top-nav ul{
+	margin:0 0 1.5em 0;
 }
 nav.top-nav{
 	text-align: right;
@@ -894,6 +938,14 @@ h1{
 	font-size: 2em;
 	font-weight: 700;
 }
+h2{
+	font-size: 1.5em;
+	font-weight: 600;
+}
+h3{
+	color:#fb4b02;
+}
+
 
 /* media queries */
 @media screen and (max-width: 860px) {

@@ -30,8 +30,7 @@ class Myaccount extends CI_Controller {
 			//update the settings
 			if($this->user->updatesettings($this->email))
 			{
-				//update the cookies
-				//create the settings cookies
+				//update the settings cookies (these are retrieved by go for use in app)
 				$settings = $this->user->getsettings($this->email);
 
 				$cookie = array(
