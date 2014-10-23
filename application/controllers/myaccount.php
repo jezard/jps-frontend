@@ -27,10 +27,33 @@ class Myaccount extends CI_Controller {
 		}
 		else
 		{
-
 			//update the settings
 			if($this->user->updatesettings($this->email))
 			{
+				//update the cookies
+				//create the settings cookies
+				$settings = $this->user->getsettings($this->email);
+
+				$cookie = array(
+				    'name'   => 'set_autofill',
+				    'value'  => $settings['set_autofill'],
+				    'expire' => -100,
+				    'domain' => $this->config->item('site_name'),
+				    'prefix' => '',
+				    'secure' => false
+				);
+				$this->input->set_cookie($cookie);
+
+				$cookie = array(
+				    'name'   => 'set_data_cutoff',
+				    'value'  => $settings['set_data_cutoff'],
+				    'expire' => -100,
+				    'domain' => $this->config->item('site_name'),
+				    'prefix' => '',
+				    'secure' => false
+				);
+				$this->input->set_cookie($cookie);
+
     			$this->load->view('templates/header', array('title' => 'Settings saved! - '.$this->config->item('site_name')));
 				$this->load->view('my_account');
 				$this->load->view('templates/footer');
