@@ -7,14 +7,15 @@
 	}
 	?>
 </ul>
+
 <iframe id="analysis-container" allowTransparency="true" scrolling="no"></iframe>
+
 <script>
 jQuery(document).ready(function(){
 	jQuery('.activity-link').on('click', function(e){
 		e.preventDefault();
 		var url = jQuery(this).attr('href');
 		jQuery('#analysis-container').attr('src', url);
-		
 	})
 })
 
