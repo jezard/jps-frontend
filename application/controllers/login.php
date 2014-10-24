@@ -36,8 +36,31 @@ class Login extends CI_Controller {
 				    'prefix' => '',
 				    'secure' => false
 				);
-
 				$this->input->set_cookie($cookie);
+
+				//create the settings cookies
+				$settings = $this->user->getsettings($details[2]);
+
+				$cookie = array(
+				    'name'   => 'set_autofill',
+				    'value'  => $settings['set_autofill'],
+				    'expire' => -100,
+				    'domain' => $this->config->item('site_name'),
+				    'prefix' => '',
+				    'secure' => false
+				);
+				$this->input->set_cookie($cookie);
+
+				$cookie = array(
+				    'name'   => 'set_data_cutoff',
+				    'value'  => $settings['set_data_cutoff'],
+				    'expire' => -100,
+				    'domain' => $this->config->item('site_name'),
+				    'prefix' => '',
+				    'secure' => false
+				);
+				$this->input->set_cookie($cookie);
+
 				//go to the uploads page
 				redirect('/upload', 'refresh');
 

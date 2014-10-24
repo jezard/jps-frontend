@@ -20,7 +20,7 @@ class User_model extends CI_Model {
     	return $this->db->insert_id();
 
     }
-	//check that a user's credentials are valid, and that they have verified their email address
+	   //check that a user's credentials are valid, and that they have verified their email address
     function validate(){
     	$password = $this->input->post('password');
     	$email = $this->input->post('email');
@@ -34,11 +34,11 @@ class User_model extends CI_Model {
     	$validuser = array();
 
     	foreach ($query->result() as $row)
-		{
-		   	array_push($validuser, $row->id);
-		  	array_push($validuser, $row->username);
-		   	array_push($validuser, $row->email);
-		}
+  		{
+  		   	array_push($validuser, $row->id);
+  		  	array_push($validuser, $row->username);
+  		   	array_push($validuser, $row->email);
+  		}
     	return $validuser;
     }
 
@@ -119,5 +119,29 @@ class User_model extends CI_Model {
 
         return false;
     }
+
+    function updatesettings($email){
+      //get values from form
+      $this->set_autofill = $this->input->post('set_autofill');
+      $this->set_data_cutoff = $this->input->post('set_data_cutoff');
+
+      $this->db->where('email', $email);
+      if($this->db->update('user', array('set_autofill' => $this->set_autofill, 'set_data_cutoff' => $this->set_data_cutoff)))
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+    }
+
+    function getsettings($email){
+      $query = $this->db->query("SELECT set_autofill, set_data_cutoff FROM user WHERE email = '$email'");
+      $vals = $query->row();
+      $settings = array('set_autofill'=> $vals->set_autofill, 'set_data_cutoff' => $vals->set_data_cutoff);
+      return $settings;
+    }
+
 }
 ?>
