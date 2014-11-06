@@ -1,10 +1,32 @@
 <div class="account-page">
-	<div class="col-1">
+	<div class="col-1-1">
 		<h1>My Account</h1>
-		<h2>Settings</h2>
+		<hr>
+		<h2>General Settings</h2>
 	</div>
 	<div class="clear"></div>
 	<?php echo form_open('myaccount'); ?>
+		<section class="col-1-2 about-me">
+			<h3>About me</h3>
+			<label for="my_firstname">First name:</label>
+			<input type="text" id="my_firstname" name="my_firstname" maxlength="50" size="20" placeholder="First name" ><br>
+			<label for="my_surname">last name:</label>
+			<input type="text" id="my_surname" name="my_surname" maxlength="50" size="20" placeholder="Last name" ><br>
+			<label for="my_firstname">Age (years):</label>
+			<input type="number" id="my_age" name="my_age" maxlength="3" size="3" placeholder="Age" max="120" min="5" >
+		</section>
+		<section class="col-1-2 my-vital-stats">
+			<h3>My vital statistics</h3>
+			<label for="my_mhr">Maximum Heart Rate:</label>
+			<input type="number" id="my_mhr" name="my_mhr" maxlength="3" size="3" placeholder="BPM" max="220" min="90" ><br>
+			<label for="my_thr">Threshold Heart Rate:</label>
+			<input type="number" id="my_thr" name="my_thr" maxlength="3" size="3" placeholder="BPM" max="220" min="60" ><br>
+			<label for="my_ftp">Functional Threshold Power:</label>
+			<input type="number" id="my_ftp" name="my_ftp" maxlength="3" size="3" placeholder="Watts" max="600" min="60" >
+		</section>
+		<div class="clear"></div>
+		<hr>
+		<h2>Advanced settings</h2>
 		<section class="col-1-2">
 			<h3>Data Cutoff</h3>
 			<p>This setting determines how long the gap in the data should be before stopping analysis. The autofill settings determine what to record during this period. Default value is 15 Seconds</p>
@@ -19,7 +41,6 @@
 			<h3>Data autofill</h3> 
 			<p>These settings allow the user to decide how to handle data which isn't recorded at a rate of once per second. We recommend you do not use features such as Garmin's Auto Pause and particularly <em>Smart Recording</em> which can skew your data. It is a good idea to play around with these settings to suit your equipment and acitivity style.</p>
 		</section>
-
 		<section class="col-1-2">
 			<h3>&nbsp;</h3>
 			<ul>
