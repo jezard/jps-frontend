@@ -310,6 +310,7 @@ input[type="email"],
 input[type="url"],
 input[type="password"],
 input[type="search"],
+input[type="number"]
 textarea {
 	color: #666;
 	border: 1px solid #ccc;
@@ -320,8 +321,10 @@ input[type="email"]:focus,
 input[type="url"]:focus,
 input[type="password"]:focus,
 input[type="search"]:focus,
+input[type="number"]:focus,
 textarea:focus {
-	color: #111;
+	color: #00D1FD;
+	font-weight: bold
 }
 input[type="text"],
 input[type="email"],
@@ -815,8 +818,21 @@ select{
 	display: block;
 	margin:0 auto 30px;
 }
-.btn {
-	margin: 0 auto 30px;
+input[type="text"], input[type="number"]{
+	font-size: 24px;
+	background-color: #444;
+	color: #999;
+	padding: 2px 5px;
+	font-weight: 300;
+	border: 0;
+	margin-bottom: 15px;
+	width:200px;
+	border-radius:3px;
+	display: block;
+	margin:0 auto 30px;
+}
+.top-update .btn, .bottom-update .btn {
+	
 	width: 200px;
 	color: #FFF;
 	font-weight: 300;
@@ -826,6 +842,16 @@ select{
 	background-color: #fb4b02;
 	line-height: 46px;
 }
+.top-update .btn{
+	margin: 15px 0 30px;
+	float:right;
+
+}
+.bottom-update .btn {
+	margin: 30px auto;
+}
+
+
 hr{
 	border:#444 inset 1px;
 	height:4px;
@@ -875,10 +901,26 @@ select:hover{
 	width:100%;
 	height:30px;
 }
-#chart_div{
-	border:1px solid #404040;
-	padding:5px;
+.about-me label{
+	width:150px;
+	font-size: 24px;
+	float:left;
 }
+.my-vital-stats label{
+	width:330px;
+	font-size: 24px;
+	float:left;
+}
+.about-me, .my-vital-stats{
+	padding-bottom:30px;
+}
+.account-page input[type="text"], .account-page input[type="number"]{
+	margin:0;
+}
+.account-page input[type="number"]{
+	width:80px;
+}
+
 @media handheld, only screen and (max-width: 767px) {
 
 	
@@ -956,7 +998,10 @@ h3{
 
 
 @media (max-width: 767px) {
-  	
+  	*.btn{
+		margin: 15px 0 30px;
+		float:left!important;
+	}
 }
 
 

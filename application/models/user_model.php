@@ -124,9 +124,24 @@ class User_model extends CI_Model {
       //get values from form
       $this->set_autofill = $this->input->post('set_autofill');
       $this->set_data_cutoff = $this->input->post('set_data_cutoff');
+      $this->my_firstname = $this->input->post('my_firstname');
+      $this->my_lastname = $this->input->post('my_lastname');
+      $this->my_age = $this->input->post('my_age');
+      $this->my_mhr = $this->input->post('my_mhr');
+      $this->my_thr = $this->input->post('my_thr');
+      $this->my_ftp = $this->input->post('my_ftp');
 
       $this->db->where('email', $email);
-      if($this->db->update('user', array('set_autofill' => $this->set_autofill, 'set_data_cutoff' => $this->set_data_cutoff)))
+      if($this->db->update('user', array(
+        'set_autofill' => $this->set_autofill, 
+        'set_data_cutoff' => $this->set_data_cutoff,
+        'my_firstname' => $this->my_firstname,
+        'my_lastname' => $this->my_lastname,
+        'my_age' => $this->my_age,
+        'my_mhr' => $this->my_mhr,
+        'my_thr' => $this->my_thr,
+        'my_ftp' => $this->my_ftp
+        )))
       {
         return true;
       }
@@ -137,9 +152,17 @@ class User_model extends CI_Model {
     }
 
     function getsettings($email){
-      $query = $this->db->query("SELECT set_autofill, set_data_cutoff FROM user WHERE email = '$email'");
+      $query = $this->db->query("SELECT * FROM user WHERE email = '$email'");
       $vals = $query->row();
-      $settings = array('set_autofill'=> $vals->set_autofill, 'set_data_cutoff' => $vals->set_data_cutoff);
+      $settings = array('set_autofill'=> $vals->set_autofill, 
+                        'set_data_cutoff' => $vals->set_data_cutoff,
+                        'my_firstname' => $vals->my_firstname,
+                        'my_lastname' => $vals->my_lastname,
+                        'my_age' => $vals->my_age,
+                        'my_mhr' => $vals->my_mhr,
+                        'my_thr' => $vals->my_thr,
+                        'my_ftp' => $vals->my_ftp
+      );
       return $settings;
     }
 
