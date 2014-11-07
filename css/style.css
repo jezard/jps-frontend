@@ -831,8 +831,8 @@ input[type="text"], input[type="number"]{
 	display: block;
 	margin:0 auto 30px;
 }
-.btn {
-	margin: 0 auto 30px;
+.top-update .btn, .bottom-update .btn {
+	
 	width: 200px;
 	color: #FFF;
 	font-weight: 300;
@@ -842,6 +842,16 @@ input[type="text"], input[type="number"]{
 	background-color: #fb4b02;
 	line-height: 46px;
 }
+.top-update .btn{
+	margin: 15px 0 30px;
+	float:right;
+
+}
+.bottom-update .btn {
+	margin: 30px auto;
+}
+
+
 hr{
 	border:#444 inset 1px;
 	height:4px;
@@ -988,7 +998,10 @@ h3{
 
 
 @media (max-width: 767px) {
-  	
+  	*.btn{
+		margin: 15px 0 30px;
+		float:left!important;
+	}
 }
 
 

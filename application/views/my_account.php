@@ -1,19 +1,25 @@
 <div class="account-page">
-	<div class="col-1-1">
-		<h1>My Account</h1>
-		<hr>
-		<h2>General Settings</h2>
-	</div>
-	<div class="clear"></div>
 	<?php echo form_open('myaccount'); ?>
-		<section class="col-1-2 about-me">
-			<h3>About me</h3>
-			<label for="my_firstname">First name:</label>
-			<input type="text" id="my_firstname" name="my_firstname" value="<?php echo set_value('my_firstname', @$my_firstname); ?>" maxlength="50" size="20" placeholder="First name" ><br>
-			<label for="my_lastname">Last name:</label>
-			<input type="text" id="my_lastname" name="my_lastname" value="<?php echo set_value('my_lastname', @$my_lastname); ?>" maxlength="50" size="20" placeholder="Last name" ><br>
-			<label for="my_firstname">Age (years):</label>
-			<input type="number" id="my_age" name="my_age" value="<?php echo set_value('my_age', @$my_age); ?>" maxlength="3" size="3" placeholder="Age" max="120" min="5" >
+		<section class="col-1-2">
+			<h1>My Account</h1>
+		</section>
+		<section class="col-1-2 top-update">
+			<button class="btn" type="submit">Update Settings</button>
+		</section>
+		<div class="clear"></div>
+		<hr>
+		<div class="clear"></div>
+		<div class="col-1-1"><h2>General settings</h2></div>
+		<section>
+			<div class="col-1-2 about-me">
+				<h3>About me</h3>
+				<label for="my_firstname">First name:</label>
+				<input type="text" id="my_firstname" name="my_firstname" value="<?php echo set_value('my_firstname', @$my_firstname); ?>" maxlength="50" size="20" placeholder="First name" ><br>
+				<label for="my_lastname">Last name:</label>
+				<input type="text" id="my_lastname" name="my_lastname" value="<?php echo set_value('my_lastname', @$my_lastname); ?>" maxlength="50" size="20" placeholder="Last name" ><br>
+				<label for="my_firstname">Age (years):</label>
+				<input type="number" id="my_age" name="my_age" value="<?php echo set_value('my_age', @$my_age); ?>" maxlength="3" size="3" placeholder="Age" max="120" min="5" >
+			</div>
 		</section>
 		<section class="col-1-2 my-vital-stats">
 			<h3>My vital statistics</h3>
@@ -26,10 +32,12 @@
 		</section>
 		<div class="clear"></div>
 		<hr>
-		<h2>Advanced settings</h2>
-		<section class="col-1-2">
-			<h3>Data Cutoff</h3>
-			<p>This setting determines how long the gap in the data should be before stopping analysis. The autofill settings determine what to record during this period. Default value is 15 Seconds</p>
+		<section>
+			<div class="col-1-1"><h2>Advanced settings</h2></div>
+			<div class="col-1-2">
+				<h3>Data Cutoff</h3>
+				<p>This setting determines how long the gap in the data should be before stopping analysis. The autofill settings determine what to record during this period. Default value is 15 Seconds</p>
+			</div>
 		</section>
 		<section class="col-1-2">
 			<div id="range" class="neon-blue"><?php echo set_value('set_data_cutoff', @$set_data_cutoff); ?> Seconds</div>
@@ -59,7 +67,7 @@
 		</section>
 		<div class="clear"></div>
 		<hr>
-		<div class="col-1-1"><button class="btn" type="submit">Update Settings</button></div>
+		<div class="col-1-1 bottom-update"><button class="btn" type="submit">Update Settings</button></div>
 	</form>
 </div>
 <script>

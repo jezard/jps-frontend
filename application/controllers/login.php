@@ -61,6 +61,46 @@ class Login extends CI_Controller {
 				);
 				$this->input->set_cookie($cookie);
 
+				$cookie = array(
+				    'name'   => 'my_mhr',
+				    'value'  => $settings['my_mhr'],
+				    'expire' => -100,
+				    'domain' => $this->config->item('site_name'),
+				    'prefix' => '',
+				    'secure' => false
+				);
+				$this->input->set_cookie($cookie);
+
+				$cookie = array(
+				    'name'   => 'my_thr',
+				    'value'  => $settings['my_thr'],
+				    'expire' => -100,
+				    'domain' => $this->config->item('site_name'),
+				    'prefix' => '',
+				    'secure' => false
+				);
+				$this->input->set_cookie($cookie);
+
+				$cookie = array(
+				    'name'   => 'my_ftp',
+				    'value'  => $settings['my_ftp'],
+				    'expire' => -100,
+				    'domain' => $this->config->item('site_name'),
+				    'prefix' => '',
+				    'secure' => false
+				);
+				$this->input->set_cookie($cookie);
+
+				$cookie = array(
+				    'name'   => 'my_age',
+				    'value'  => $settings['my_age'],
+				    'expire' => -100,
+				    'domain' => $this->config->item('site_name'),
+				    'prefix' => '',
+				    'secure' => false
+				);
+				$this->input->set_cookie($cookie);
+
 				//go to the uploads page
 				redirect('/upload', 'refresh');
 

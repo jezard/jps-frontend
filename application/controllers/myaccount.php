@@ -18,10 +18,10 @@ class Myaccount extends CI_Controller {
 		$this->form_validation->set_rules('set_data_cutoff', 'Data Cutoff', 'required');
 		$this->form_validation->set_rules('my_firstname', 'First name', 'alpha');
 		$this->form_validation->set_rules('my_lastname', 'Last name', 'alpha');
-		$this->form_validation->set_rules('my_age', 'Firstname', 'integer');
-		$this->form_validation->set_rules('my_mhr', 'Max Heart Rate', 'integer');
-		$this->form_validation->set_rules('my_thr', 'Threshold Heart Rate', 'integer');
-		$this->form_validation->set_rules('my_ftp', 'Functional Threshold Power', 'integer');
+		$this->form_validation->set_rules('my_age', 'Firstname', 'integer|max_length[3]|less_than[120]');
+		$this->form_validation->set_rules('my_mhr', 'Max Heart Rate', 'integer|max_length[3]|less_than[220]');
+		$this->form_validation->set_rules('my_thr', 'Threshold Heart Rate', 'integer|max_length[3]|less_than[220]');
+		$this->form_validation->set_rules('my_ftp', 'Functional Threshold Power', 'integer|max_length[3]|less_than[600]');
 
 
 		if ($this->form_validation->run() == FALSE)
@@ -58,6 +58,47 @@ class Myaccount extends CI_Controller {
 				    'secure' => false
 				);
 				$this->input->set_cookie($cookie);
+
+				$cookie = array(
+				    'name'   => 'my_mhr',
+				    'value'  => $settings['my_mhr'],
+				    'expire' => -100,
+				    'domain' => $this->config->item('site_name'),
+				    'prefix' => '',
+				    'secure' => false
+				);
+				$this->input->set_cookie($cookie);
+
+				$cookie = array(
+				    'name'   => 'my_thr',
+				    'value'  => $settings['my_thr'],
+				    'expire' => -100,
+				    'domain' => $this->config->item('site_name'),
+				    'prefix' => '',
+				    'secure' => false
+				);
+				$this->input->set_cookie($cookie);
+
+				$cookie = array(
+				    'name'   => 'my_ftp',
+				    'value'  => $settings['my_ftp'],
+				    'expire' => -100,
+				    'domain' => $this->config->item('site_name'),
+				    'prefix' => '',
+				    'secure' => false
+				);
+				$this->input->set_cookie($cookie);
+
+				$cookie = array(
+				    'name'   => 'my_age',
+				    'value'  => $settings['my_age'],
+				    'expire' => -100,
+				    'domain' => $this->config->item('site_name'),
+				    'prefix' => '',
+				    'secure' => false
+				);
+				$this->input->set_cookie($cookie);
+
 
     			$this->load->view('templates/header', array('title' => 'Settings saved! - '.$this->config->item('site_name')));
 				$this->load->view('my_account');
