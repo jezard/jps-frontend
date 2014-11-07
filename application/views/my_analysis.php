@@ -1,5 +1,6 @@
-<h3>Recent activities</h3>
-<ul>
+<section class="col-1-1">
+<h2>Recent activities</h2>
+<ul class>
 	<?php 
 	foreach ($recentActivities as $activity) {
 		$activityDate = date_create_from_format('Y-m-d H:i:s', $activity['activity_date']);
@@ -7,6 +8,7 @@
 	}
 	?>
 </ul>
+</section>
 
 <iframe id="analysis-container" allowTransparency="true" scrolling="no"></iframe>
 
