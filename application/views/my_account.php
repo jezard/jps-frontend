@@ -9,20 +9,20 @@
 		<section class="col-1-2 about-me">
 			<h3>About me</h3>
 			<label for="my_firstname">First name:</label>
-			<input type="text" id="my_firstname" name="my_firstname" maxlength="50" size="20" placeholder="First name" ><br>
-			<label for="my_surname">last name:</label>
-			<input type="text" id="my_surname" name="my_surname" maxlength="50" size="20" placeholder="Last name" ><br>
+			<input type="text" id="my_firstname" name="my_firstname" value="<?php echo set_value('my_firstname', @$my_firstname); ?>" maxlength="50" size="20" placeholder="First name" ><br>
+			<label for="my_lastname">Last name:</label>
+			<input type="text" id="my_lastname" name="my_lastname" value="<?php echo set_value('my_lastname', @$my_lastname); ?>" maxlength="50" size="20" placeholder="Last name" ><br>
 			<label for="my_firstname">Age (years):</label>
-			<input type="number" id="my_age" name="my_age" maxlength="3" size="3" placeholder="Age" max="120" min="5" >
+			<input type="number" id="my_age" name="my_age" value="<?php echo set_value('my_age', @$my_age); ?>" maxlength="3" size="3" placeholder="Age" max="120" min="5" >
 		</section>
 		<section class="col-1-2 my-vital-stats">
 			<h3>My vital statistics</h3>
 			<label for="my_mhr">Maximum Heart Rate:</label>
-			<input type="number" id="my_mhr" name="my_mhr" maxlength="3" size="3" placeholder="BPM" max="220" min="90" ><br>
+			<input type="number" id="my_mhr" name="my_mhr" value="<?php echo set_value('my_mhr', @$my_mhr); ?>" maxlength="3" size="3" placeholder="BPM" max="220" min="90" ><br>
 			<label for="my_thr">Threshold Heart Rate:</label>
-			<input type="number" id="my_thr" name="my_thr" maxlength="3" size="3" placeholder="BPM" max="220" min="60" ><br>
+			<input type="number" id="my_thr" name="my_thr" value="<?php echo set_value('my_thr', @$my_thr); ?>" maxlength="3" size="3" placeholder="BPM" max="220" min="60" ><br>
 			<label for="my_ftp">Functional Threshold Power:</label>
-			<input type="number" id="my_ftp" name="my_ftp" maxlength="3" size="3" placeholder="Watts" max="600" min="60" >
+			<input type="number" id="my_ftp" name="my_ftp" value="<?php echo set_value('my_ftp', @$my_ftp); ?>" maxlength="3" size="3" placeholder="Watts" max="600" min="60" >
 		</section>
 		<div class="clear"></div>
 		<hr>

@@ -16,6 +16,12 @@ class Myaccount extends CI_Controller {
 
 		$this->form_validation->set_rules('set_autofill', 'Autofill', 'required');
 		$this->form_validation->set_rules('set_data_cutoff', 'Data Cutoff', 'required');
+		$this->form_validation->set_rules('my_firstname', 'First name', 'alpha');
+		$this->form_validation->set_rules('my_lastname', 'Last name', 'alpha');
+		$this->form_validation->set_rules('my_age', 'Firstname', 'integer');
+		$this->form_validation->set_rules('my_mhr', 'Max Heart Rate', 'integer');
+		$this->form_validation->set_rules('my_thr', 'Threshold Heart Rate', 'integer');
+		$this->form_validation->set_rules('my_ftp', 'Functional Threshold Power', 'integer');
 
 
 		if ($this->form_validation->run() == FALSE)
