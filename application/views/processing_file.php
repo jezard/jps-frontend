@@ -58,11 +58,18 @@ function parseFiles(){
 																								filetype: files[0].filetype
 	}, function(data){
 		console.log(data);
-		jQuery('#parse-results').append(data);
-		progress++;
-		console.log('progress: ' + progress, 'files-length: ' + files.length);
-		files = [];
-		getJobList();
+		jQuery.ajax({
+			url: "http://joulepersecond.com:8080/process/activity/" + data,
+			xhrFields: {
+		      withCredentials: true
+		   }
+		}).done(function(){
+			progress++;
+			console.log('progress: ' + progress, 'files-length: ' + files.length);
+			files = [];
+			getJobList();
+		});
+		
 	});
 }
 
