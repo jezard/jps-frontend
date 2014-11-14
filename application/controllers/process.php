@@ -170,41 +170,31 @@ class Process extends CI_Controller {
 
 			$insert_data = $_SESSION['joulepersecdata'];
 
-
 			//output
 			//detect os for dev mainly
 			if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-			    //set paths
-
 			    //create the CQL filepath
 				$CQLfilename = 'C:/Users/Administrator/git-projects/jps-frontend/temp/'.$_SESSION['ActivityKey'].'.cql';	
-				//create the python CQL command
-			    $cassa_cmd = "python C:/\"program files\"/\"Datastax Community\"/apache-cassandra/bin/cqlsh -f $CQLfilename";
-			    //add/overwrite the command to the batch file
-			    file_put_contents('C:/Users/Administrator/git-projects/jps-frontend/temp/insertcmd.bat', $cassa_cmd);
-
-			    //add the CQL insert statements to the .cql file
-				file_put_contents($CQLfilename, $insert_data);
-
-				//path to batch file for execution (have to do this manually on windows)
-			    $cassa_cmd = 'C:/Users/Administrator/git-projects/jps-frontend/temp/insertcmd.bat';
-			    //run the batch file
-			    ///system("cmd /c $cassa_cmd");
-
-
 			} else {
 			    //set paths
-				$CQLfilename = '/var/www/jps-frontend/temp/'.$_SESSION['ActivityKey'].'.cql';	
-				//add the CQL insert statements to the .cql file
-				file_put_contents($CQLfilename, $insert_data);
-				//set the command
-			    $cassa_cmd = "cqlsh -f $CQLfilename";
-			    //execute the command inserting the data to the cassandra database
-				$cassa_return = shell_exec($cassa_cmd);
-				//remove tempfile
-				unlink($CQLfilename);
+				$CQLfilename = '/var/www/jps-frontend/temp/'.$_SESSION['ActivityKey'].'.cql';
 			}
 
+			//add the CQL insert statements to the .cql file
+			file_put_contents($CQLfilename, $insert_data);
+
+			//make url acceptable
+			$CQLfilenamePiped = str_replace("/", "|", $CQLfilename);
+			//execute the insert at Golang app
+				$ch = curl_init("http://joulepersecond.com:8080/process/file/".$CQLfilenamePiped);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+				curl_setopt($ch, CURLOPT_HEADER, 0);
+				curl_exec($ch);
+
+			curl_close($ch);
+			unlink($CQLfilename);
+
+			echo $_SESSION['ActivityKey'];
 
 			//Log
 			$logfile = $this->config->item('log_file');
