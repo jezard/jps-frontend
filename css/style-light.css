@@ -93,7 +93,8 @@ html {
 	box-sizing:         border-box;
 }
 body {
-	background: #fff;
+	background: #333;
+
 }
 article,
 aside,
@@ -894,7 +895,7 @@ select:hover{
 }
 .analysis-page-body{
 	background: transparent;
-	margin:20px;
+	/*margin:20px;*/
 }
 .account-page{
 	position:relative;
@@ -931,6 +932,12 @@ select:hover{
 }
 .account-page input[type="number"]{
 	width:80px;
+}
+.overview-page a:visited, .overview-page a{
+	color:#ccc;
+}
+.overview-page a:hover{
+	color:#fb4b02;
 }
 
 @media handheld, only screen and (max-width: 767px) {
@@ -995,6 +1002,8 @@ nav.top-nav a:hover {
 	-moz-box-shadow:    0px 6px 8px -2px rgba(50, 50, 50, 0.75);
 	box-shadow:         0px 6px 8px -2px rgba(50, 50, 50, 0.75);
 	margin-right: 20px;
+	border-top: 1px #fff solid;
+	border: 1px #fff solid;
 /*	border-left: 5px solid #fb4b02;
 	border-right: 5px solid #fb4b02;*/
 
@@ -1011,6 +1020,7 @@ nav.top-nav a:hover {
 }
 main{
 	/*background: url(../images/graph-paper-blog.gif);*/
+	/*background: url(http://joulepersecond.com/images/pillow-logo.png) no-repeat center -30px;*/
 	min-height: 600px;
 	background-color: #666;
 }
@@ -1045,7 +1055,8 @@ h3{
 	-webkit-box-shadow: 0px 6px 8px -2px rgba(50, 50, 50, 0.75);
 	-moz-box-shadow:    0px 6px 8px -2px rgba(50, 50, 50, 0.75);
 	box-shadow:         0px 6px 8px -2px rgba(50, 50, 50, 0.75);
-	margin-right: 20px
+	margin-right: 20px;
+	border: 1px #fff solid;
 }
 
 /* media queries */
