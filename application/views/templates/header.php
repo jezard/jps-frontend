@@ -16,28 +16,31 @@
 
 <body>
 
+<?php
+
+	if ($this->input->cookie('valid_user'))
+	{
+		$message = "Welcome " . $this->input->cookie('valid_user', false) . "!<br>";
+		$loggedIn = true;
+		$display = 'class="logged-in"';
+	}
+	  
+	else
+	{
+		$message = "Welcome guest!<br>";
+	}
+?>
 
 <header class="site-header">
+	<div class="logo">
+		<a href="<?php echo $this->config->item('base_url'); ?>" title="<?php echo $this->config->item('site_name'); ?> ">
+			<img src="<?php echo $this->config->item('base_url'); ?>images/pillow-logo.png" width="200" height="auto" alt="JoulePerSecond.com" />
+		</a>
+	</div>
 	<div class="grid grid-pad">
-		<div class="col-1-1">
-		<?php
-
-		if ($this->input->cookie('valid_user'))
-		{
-			echo "Welcome " . $this->input->cookie('valid_user', false) . "!<br>";
-			$loggedIn = true;
-			$display = 'class="logged-in"';
-		}
-		  
-		else
-		{
-			echo "Welcome guest!<br>";
-		}
-		?>
-
-
-		<h1><a href="<?php echo $this->config->item('base_url'); ?>" title="<?php echo $this->config->item('site_name'); ?> "><?php echo $this->config->item('site_name'); ?></a></h1>
-			<nav class="top-nav">
+		<div class="hdr-container">
+		
+			<nav class="top-nav col-1-1">
 			<ul>
 				<li id="signup" <?php echo $display; ?> ><?php echo anchor('signup', 'Sign up');?></li>
 				<li id="login" <?php echo $display; ?> ><?php echo anchor('login', 'log in');?></li>
@@ -48,7 +51,9 @@
 			</ul>
 			</nav>
 		</div>
+
 	</div>
 </header>
 <main>
 <div class="grid grid-pad">
+	<aside class="message"><?php echo $message; ?></aside>
