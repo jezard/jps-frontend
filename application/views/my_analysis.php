@@ -21,9 +21,6 @@ jQuery(document).ready(function(){
 		jQuery('#analysis-container').attr('src', url);
 	})
 });
-jQuery('iframe').load(function() {
-    this.style.height =
-    this.contentWindow.document.body.offsetHeight + 'px';
-});
+
 
 </script>

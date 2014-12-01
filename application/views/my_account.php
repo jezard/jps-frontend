@@ -43,7 +43,7 @@
 				</div>
 
 				<div class="col-1-2">
-					<div id="range" class="neon-blue"><?php echo set_value('set_data_cutoff', @$set_data_cutoff); ?> Seconds</div>
+					<div id="range" class="neon-green"><?php echo set_value('set_data_cutoff', @$set_data_cutoff); ?> Seconds</div>
 					<input type="range" name="set_data_cutoff" min="3" max="150" value="<?php echo set_value('set_data_cutoff', @$set_data_cutoff); ?>"  onchange="showValue(this.value)" />
 				</div>
 			</div>
@@ -58,9 +58,9 @@
 				<div class="col-1-2">
 					<h3>&nbsp;</h3>
 					<ul>
-						<li><span class="neon-blue">Autofill</span> (default): this fills in missing sample data up until the setting Data Cutoff point is reached. This is a good option where equipment doesn't record at the rate of once per second, or where frequent dropouts occur</li>
-						<li><span class="neon-blue">SetZero</span>: works well with systems like TrainerRoad or where data dropouts are infrequent and data is recorded once per second. Try setting Data Cutoff low for best results.</li>
-						<li><span class="neon-blue">Remove</span>: This removes all missing data from the activity, if data is missing - not recorded at once per second some acitivity charts will become shorter.</li>
+						<li><span class="neon-green">Autofill</span> (default): this fills in missing sample data up until the setting Data Cutoff point is reached. This is a good option where equipment doesn't record at the rate of once per second, or where frequent dropouts occur</li>
+						<li><span class="neon-green">SetZero</span>: works well with systems like TrainerRoad or where data dropouts are infrequent and data is recorded once per second. Try setting Data Cutoff low for best results.</li>
+						<li><span class="neon-green">Remove</span>: This removes all missing data from the activity, if data is missing - not recorded at once per second some acitivity charts will become shorter.</li>
 					</ul>
 					<?php
 						$options = array(
