@@ -1,6 +1,7 @@
 body{
 	/*font-family:lato;*/
 	/*font-size: 1.4em;*/
+	background-color: #50534D;
 }
 #signup.logged-in, #login.logged-in{
 	display: none;
@@ -92,10 +93,7 @@ html {
 	-moz-box-sizing:    border-box; /* Still needed for Firefox 28; see http://caniuse.com/#search=box-sizing */
 	box-sizing:         border-box;
 }
-body {
-	background: #333;
 
-}
 article,
 aside,
 details,
@@ -870,11 +868,9 @@ select:hover{
 	background: #6DD300;
 }
 .site-header{
-	
-	background-color: #666;
-	-webkit-box-shadow: 0px 6px 8px -2px rgba(50, 50, 50, 0.75);
+	/*-webkit-box-shadow: 0px 6px 8px -2px rgba(50, 50, 50, 0.75);
 	-moz-box-shadow:    0px 6px 8px -2px rgba(50, 50, 50, 0.75);
-	box-shadow:         0px 6px 8px -2px rgba(50, 50, 50, 0.75);
+	box-shadow:         0px 6px 8px -2px rgba(50, 50, 50, 0.75);*/
 }
 
 .neon-blue{
@@ -885,6 +881,9 @@ select:hover{
 }
 .neon-green{
 	color:#6DD300;
+}
+.value{
+	color:#00D1FD;
 }
 /*analysis window*/
 #analysis-container{
@@ -939,7 +938,23 @@ select:hover{
 .overview-page a:hover{
 	color:#fb4b02;
 }
-
+tr:hover{
+	background-color: #444;
+	cursor: pointer;
+}
+.section-ln td{
+	width:50%;
+}
+tr td:first-of-type:hover{
+	padding-left: 5px;
+	margin-right: -5px;
+}
+.tt-time{
+	font-size: 12px;
+}
+tspan{
+	/*font-size: 14px!important*/
+}
 @media handheld, only screen and (max-width: 767px) {
 
 	
@@ -1022,7 +1037,6 @@ main{
 	/*background: url(../images/graph-paper-blog.gif);*/
 	/*background: url(http://joulepersecond.com/images/pillow-logo.png) no-repeat center -30px;*/
 	min-height: 600px;
-	background-color: #666;
 }
 
 main p{
@@ -1039,7 +1053,9 @@ h2{
 	margin-bottom: 0.5em;
 }
 h3{
-	color:/*#fb4b02*/#6DD300;
+	color:#fb4b02;
+	margin-bottom: 0.3em;
+	/*#6DD300;*/
 }
 .section-ln {
 	/*border-left: #6DD300 5px solid;*/

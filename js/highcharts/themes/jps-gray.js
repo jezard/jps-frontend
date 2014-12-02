@@ -14,12 +14,14 @@ Highcharts.theme = {
 		plotBorderWidth: 0
 	},
 	title: {
+		align: 'left',
 		style: {
-			color: '#FFF',
+			color: '#fb4b02',
 			font: '16px Lucida Grande, Lucida Sans Unicode, Verdana, Arial, Helvetica, sans-serif'
 		}
 	},
 	subtitle: {
+		align: 'left',
 		style: {
 			color: '#DDD',
 			font: '12px Lucida Grande, Lucida Sans Unicode, Verdana, Arial, Helvetica, sans-serif'
