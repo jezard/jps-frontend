@@ -889,9 +889,19 @@ select:hover{
 	color:#00D1FD;
 }
 /*analysis window*/
+.laps-container h3{
+	padding: 5px 10px;
+	background-color: #444;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	margin-bottom: 15px;
+	color: #666;
+	border: 1px #444 solid;
+}
 #analysis-container{
 	width:1140px;
-	height:2200px;
+	height:12000px;
 	overflow: hidden
 	background-color:#333;
 }
