@@ -127,9 +127,13 @@ class User_model extends CI_Model {
       $this->my_firstname = $this->input->post('my_firstname');
       $this->my_lastname = $this->input->post('my_lastname');
       $this->my_age = $this->input->post('my_age');
+      $this->my_weight = $this->input->post('my_weight');
+      $this->my_gender = $this->input->post('my_gender');
       $this->my_mhr = $this->input->post('my_mhr');
       $this->my_thr = $this->input->post('my_thr');
+      $this->my_rhr = $this->input->post('my_rhr');
       $this->my_ftp = $this->input->post('my_ftp');
+      $this->my_vo2 = $this->input->post('my_vo2');
 
       $this->db->where('email', $email);
       if($this->db->update('user', array(
@@ -138,9 +142,13 @@ class User_model extends CI_Model {
         'my_firstname' => $this->my_firstname,
         'my_lastname' => $this->my_lastname,
         'my_age' => $this->my_age,
+        'my_weight' => $this->my_weight,
+        'my_gender' => $this->my_gender,
         'my_mhr' => $this->my_mhr,
         'my_thr' => $this->my_thr,
-        'my_ftp' => $this->my_ftp
+        'my_rhr' => $this->my_rhr,
+        'my_ftp' => $this->my_ftp,
+        'my_vo2' => $this->my_vo2
         )))
       {
         return true;
@@ -159,9 +167,13 @@ class User_model extends CI_Model {
                         'my_firstname' => $vals->my_firstname,
                         'my_lastname' => $vals->my_lastname,
                         'my_age' => $vals->my_age,
+                        'my_weight' => $vals->my_weight,
+                        'my_gender' => $vals->my_gender,
                         'my_mhr' => $vals->my_mhr,
                         'my_thr' => $vals->my_thr,
-                        'my_ftp' => $vals->my_ftp
+                        'my_rhr' => $vals->my_rhr,
+                        'my_ftp' => $vals->my_ftp,
+                        'my_vo2' => $vals->my_vo2
       );
       return $settings;
     }

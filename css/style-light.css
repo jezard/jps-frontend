@@ -852,6 +852,9 @@ input[type="text"], input[type="number"]{
 .bottom-update .btn {
 	margin: 30px auto;
 }
+#my-gender{
+	margin: 0;
+}
 
 
 hr{

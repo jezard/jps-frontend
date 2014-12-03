@@ -19,9 +19,12 @@ class Myaccount extends CI_Controller {
 		$this->form_validation->set_rules('my_firstname', 'First name', 'alpha');
 		$this->form_validation->set_rules('my_lastname', 'Last name', 'alpha');
 		$this->form_validation->set_rules('my_age', 'Firstname', 'integer|max_length[3]|less_than[120]');
+		$this->form_validation->set_rules('my_weight', 'Weight Kg', 'integer|max_length[3]|less_than[150]');
 		$this->form_validation->set_rules('my_mhr', 'Max Heart Rate', 'integer|max_length[3]|less_than[220]');
 		$this->form_validation->set_rules('my_thr', 'Threshold Heart Rate', 'integer|max_length[3]|less_than[220]');
+		$this->form_validation->set_rules('my_rhr', 'Resting Heart Rate', 'integer|max_length[3]|less_than[120]');
 		$this->form_validation->set_rules('my_ftp', 'Functional Threshold Power', 'integer|max_length[3]|less_than[600]');
+		$this->form_validation->set_rules('my_vo2', 'VO2 Max', 'integer|max_length[2]|less_than[70]');
 
 
 		if ($this->form_validation->run() == FALSE)
@@ -50,6 +53,16 @@ class Myaccount extends CI_Controller {
 				$this->input->set_cookie($cookie);
 
 				$cookie = array(
+				    'name'   => 'my_gender',
+				    'value'  => $settings['my_gender'],
+				    'expire' => -100,
+				    'domain' => $this->config->item('site_name'),
+				    'prefix' => '',
+				    'secure' => false
+				);
+				$this->input->set_cookie($cookie);
+
+				$cookie = array(
 				    'name'   => 'set_data_cutoff',
 				    'value'  => $settings['set_data_cutoff'],
 				    'expire' => -100,
@@ -62,6 +75,36 @@ class Myaccount extends CI_Controller {
 				$cookie = array(
 				    'name'   => 'my_mhr',
 				    'value'  => $settings['my_mhr'],
+				    'expire' => -100,
+				    'domain' => $this->config->item('site_name'),
+				    'prefix' => '',
+				    'secure' => false
+				);
+				$this->input->set_cookie($cookie);
+
+				$cookie = array(
+				    'name'   => 'my_rhr',
+				    'value'  => $settings['my_rhr'],
+				    'expire' => -100,
+				    'domain' => $this->config->item('site_name'),
+				    'prefix' => '',
+				    'secure' => false
+				);
+				$this->input->set_cookie($cookie);
+
+				$cookie = array(
+				    'name'   => 'my_vo2',
+				    'value'  => $settings['my_vo2'],
+				    'expire' => -100,
+				    'domain' => $this->config->item('site_name'),
+				    'prefix' => '',
+				    'secure' => false
+				);
+				$this->input->set_cookie($cookie);
+
+				$cookie = array(
+				    'name'   => 'my_weight',
+				    'value'  => $settings['my_weight'],
 				    'expire' => -100,
 				    'domain' => $this->config->item('site_name'),
 				    'prefix' => '',

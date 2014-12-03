@@ -52,6 +52,16 @@ class Login extends CI_Controller {
 				$this->input->set_cookie($cookie);
 
 				$cookie = array(
+				    'name'   => 'my_gender',
+				    'value'  => $settings['my_gender'],
+				    'expire' => -100,
+				    'domain' => $this->config->item('site_name'),
+				    'prefix' => '',
+				    'secure' => false
+				);
+				$this->input->set_cookie($cookie);
+
+				$cookie = array(
 				    'name'   => 'set_data_cutoff',
 				    'value'  => $settings['set_data_cutoff'],
 				    'expire' => -100,
@@ -64,6 +74,36 @@ class Login extends CI_Controller {
 				$cookie = array(
 				    'name'   => 'my_mhr',
 				    'value'  => $settings['my_mhr'],
+				    'expire' => -100,
+				    'domain' => $this->config->item('site_name'),
+				    'prefix' => '',
+				    'secure' => false
+				);
+				$this->input->set_cookie($cookie);
+
+				$cookie = array(
+				    'name'   => 'my_rhr',
+				    'value'  => $settings['my_rhr'],
+				    'expire' => -100,
+				    'domain' => $this->config->item('site_name'),
+				    'prefix' => '',
+				    'secure' => false
+				);
+				$this->input->set_cookie($cookie);
+
+				$cookie = array(
+				    'name'   => 'my_vo2',
+				    'value'  => $settings['my_vo2'],
+				    'expire' => -100,
+				    'domain' => $this->config->item('site_name'),
+				    'prefix' => '',
+				    'secure' => false
+				);
+				$this->input->set_cookie($cookie);
+
+				$cookie = array(
+				    'name'   => 'my_weight',
+				    'value'  => $settings['my_weight'],
 				    'expire' => -100,
 				    'domain' => $this->config->item('site_name'),
 				    'prefix' => '',
