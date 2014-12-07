@@ -34,13 +34,13 @@
 ?>
 
 <header class="site-header">
-	<div class="logo">
-		<a href="<?php echo $this->config->item('base_url'); ?>" title="<?php echo $this->config->item('site_name'); ?> ">
-			<img src="<?php echo $this->config->item('base_url'); ?>images/pillow-logo.png" width="200" height="auto" alt="JoulePerSecond.com" />
-		</a>
-	</div>
 	<div class="grid grid-pad">
 		<div class="hdr-container">
+			<div class="logo">
+				<a href="<?php echo $this->config->item('base_url'); ?>" title="<?php echo $this->config->item('site_name'); ?> ">
+					<img src="<?php echo $this->config->item('base_url'); ?>images/logo-small.png" alt="JoulePerSecond.com" />
+				</a> 
+			</div>
 		
 			<nav class="top-nav col-1-1">
 			<ul>

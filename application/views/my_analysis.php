@@ -1,5 +1,5 @@
 <div class="overview-page">
-	<section class="col-1-2">
+	<section class="section-ln">
 	<h2>Recent activities</h2>
 		<ul class>
 			<?php 

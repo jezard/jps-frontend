@@ -2,6 +2,7 @@ body{
 	/*font-family:lato;*/
 	/*font-size: 1.4em;*/
 	background-color: #50534D;
+	background: url(http://joulepersecond.com/images/logo_large.png) #50534D no-repeat fixed center top;
 }
 #signup.logged-in, #login.logged-in{
 	display: none;
@@ -1039,12 +1040,8 @@ nav.top-nav a:hover {
 .logo{
 	position: absolute;
 	z-index: 0;
-	margin-left: 50%;
-	width: 200px;
-	top: 20px;
-}
-.logo img{
-	margin-left: -100px;
+	width: 67px;
+	height:46px;
 }
 main{
 	/*background: url(../images/graph-paper-blog.gif);*/
