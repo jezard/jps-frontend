@@ -969,6 +969,17 @@ tr td:first-of-type:hover{
 tspan{
 	/*font-size: 14px!important*/
 }
+
+.date-range-btns label{
+	clear: both;
+}
+.date-range-btns label, .date-range-btns input[type="radio"]{
+	width:100px;
+	float:left;
+	height: 20px;
+	display: block;
+	margin: 5px 0;
+}
 @media handheld, only screen and (max-width: 767px) {
 
 	
