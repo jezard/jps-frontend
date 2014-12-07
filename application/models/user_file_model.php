@@ -53,6 +53,26 @@ class User_file_model extends CI_Model{
 		}
 		return $activities;
 	}
+	//get id's of activities using one of the preset options
+	function get_older_activities_id($email,$subdays){
+		$date = date('Y-m-d');
+		$activities = [];
+		$query = $this->db->query("SELECT activity_id FROM user_activity WHERE email = '$email' AND activity_date >  DATE_SUB('$date', INTERVAL $subdays DAY)");
+		foreach($query->result_array() as $row){
+			array_push($activities, array($row['activity_id']));
+		}
+		return $activities;
+	}
+	//get results from user date range
+	function get_older_activities_range($email,$dateStart,$dateEnd){
+		$activities = [];
+		$query = $this->db->query("SELECT activity_id FROM user_activity WHERE  email = '$email' AND CAST(activity_date AS DATE) BETWEEN '$dateStart' AND  '$dateEnd'");
+
+		foreach($query->result_array() as $row){
+			array_push($activities, array($row['activity_id']));
+		}
+		return $activities;
+	}
 	//delete intermediate record
 	function _deleteIntRec($filename){
 		$this->db->where('filename', $filename);
