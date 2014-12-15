@@ -1,7 +1,6 @@
 body{
-	background-color: #fff;
 	background: url(http://joulepersecond.com/images/logo_large_trans_bold.png) #fff no-repeat fixed center top;
-	color: #333;
+	background: url(http://joulepersecond.com/images/MidTransBg.png) #6DD300;
 }
 .section-ln {
 	border: 3px #6DD300 solid;
