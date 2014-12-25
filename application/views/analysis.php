@@ -1,7 +1,7 @@
 <div class="overview-page">
 	<section class="section-ln">
 		<div class="col-1-2">
-			<h2>Recent activities</h2>
+			<h3>Recent activities</h3>
 			<div id="calendar"></div>
 		</div>
 		<div class="col-1-2 top-update">
@@ -52,13 +52,13 @@ jQuery(document).ready(function(){
 			$html = '';
 			foreach ($recentActivities as $activity) {
 
-			$activityDate = date_create_from_format('Y-m-d H:i:s', $activity['activity_date']);
-			$html .= '{
-				startDate: new Date('.date_format($activityDate, 'Y, m-1, d, H, i O').'),
-				endDate: new Date('.date_format($activityDate, 'Y, m-1, d, H, i O').'),
-				title: "'.date_format($activityDate, 'H:i').' '.$activity['activity_name'].'",
-				description: "'.$activity['activity_id'].'"
-				},';
+				$activityDate = date_create_from_format('Y-m-d H:i:s', $activity['activity_date']);
+				$html .= '{
+					startDate: new Date('.date_format($activityDate, 'Y, m-1, d, H, i O').'),
+					endDate: new Date('.date_format($activityDate, 'Y, m-1, d, H, i O').'),
+					title: "'.date_format($activityDate, 'H:i').' :: '.$activity['activity_name'].' view: &raquo;",
+					description: "'.$activity['activity_id'].'"
+					},';
 			}
 			$html = rtrim($html, ',');
 			echo $html;

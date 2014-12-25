@@ -5,8 +5,8 @@
 .dp_calendar .loading { background:url(../images/dp_calendar/loading.gif) 50% 50% no-repeat; width:41px; height:39px; }
 
 .dp_calendar {
-	width:500px;
-	min-height:300px;
+	/*width:500px;*/
+	/*min-height:300px;
 	text-align:left;
 	background: #ffffff;
 	border:1px solid #dbdbdb;
@@ -15,25 +15,23 @@
 	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
 	color:#272727;
 	line-height: 1;
-	padding:1px;
+	padding:1px;*/
 }
 
 .dp_calendar .div_main_date {
-	padding:20px;
 	text-align:center;
-	background:url(../images/dp_calendar/bg_top.jpg) 0 100% repeat-x #f6f6f6;
 }
 
 .dp_calendar .main_date {
-	font-size:50px;
-	font-family: 'Open Sans Condensed', sans-serif;
+	font-size:24px;
+	font-weight: 700;
 	position:relative;
+	height: 50px;
 }
 
 .dp_calendar .main_date a {
 	color:inherit;
 	text-decoration:none;
-	text-transform:uppercase;
 }
 
 .dp_calendar .main_date a#next_month {
@@ -69,13 +67,14 @@
 	background:none;
 	padding:5px;
 	line-height:100% !important;
-	width:14px;
+	min-width:45px;
 	font-size:15px;
 	color: #929292;
 	float:left;
-	font-family: 'Open Sans Condensed', sans-serif;
+	/*font-family: 'Open Sans Condensed', sans-serif;*/
 	padding-top:10px;
 	list-style: none;
+	margin: 0 3px 3px 0;
 }
 
 .dp_calendar .div_dates li.dp_calendar_edisabled {
@@ -90,20 +89,18 @@
 }
 
 .dp_calendar .div_dates li.has_events {
-	background:url(../images/dp_calendar/hover_dates_has_event.png) no-repeat 50% 0;
-	color:#3679B5 !important;
+	background:url(../images/dp_calendar/hover_dates_has_event.png) #6DD300 no-repeat 50% 0;
+	color:#fff !important;
+	font-weight: 700;
 }
 
 .dp_calendar .div_dates .day_name {
 	text-align:left;
-	margin:0 20px;
 }
 
-.dp_calendar .div_dates .day_name h1 {
-	font-size:70px !important;
+.dp_calendar .div_dates .day_name h1, .div_month span {
+	font-size:36px !important;
 	float:left;
-	font-family: 'Open Sans Condensed', sans-serif;
-	text-transform:uppercase;
 	margin:20px 0 10px 0;
 	font-weight:bold !important;
 	color:inherit;
@@ -118,20 +115,10 @@
 	padding-top:7px;
 }
 
-.dp_calendar .div_dates .day_name .span_month {
-	font-size:25px;
-	text-transform:uppercase;
-}
-
-.dp_calendar .div_dates .day_name .span_day {
-	font-size:35px;
-}
 
 .dp_calendar .calendar_list {
 	min-height: 100px;
-	background:#f4f4f4;
 	text-align:left;
-	padding:20px;
 	clear:left;
 }
 
@@ -167,7 +154,7 @@
 .dp_calendar .calendar_list ul#cl_sort_by li:hover, .dp_calendar .calendar_list ul#cl_sort_by li.active {
 	text-decoration:underline;
 	cursor:pointer;
-	color:#272727;
+	/*color:#272727;*/
 }
 
 .dp_calendar .calendar_list #list {
@@ -178,15 +165,23 @@
 .dp_calendar .calendar_list #list li {
 	min-height:41px;
 	padding:11px;
-	font-family: 'Open Sans Condensed', sans-serif;
+	background-color: #6DD300;
 	cursor:pointer;
-	background:none;
 	line-height:normal;
 	list-style:none;
+	color: #fff;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow: 0px 6px 8px -2px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    0px 6px 8px -2px rgba(50, 50, 50, 0.75);
+	box-shadow: 0px 6px 8px -2px rgba(50, 50, 50, 0.75);
+}
+.dp_calendar .calendar_list #list li h1{
+	text-shadow:none;
 }
 
 .dp_calendar .calendar_list #list li h1 {
-	font-size:38px;
+	font-size:20px;
 	margin: 0 0 0 10px;
 	float:left;
 	font-weight:normal;
@@ -196,8 +191,6 @@
 }
 
 .dp_calendar .calendar_list #list li .time {
-	-moz-border-radius: 3px;
-	border-radius: 3px;
 	border:1px solid #ccc;
 	color:#F6F6F6;
 	font-size:20px;
@@ -229,11 +222,6 @@
 	border:1px solid #b9c14c;
 }
 
-.dp_calendar .calendar_list #list li:hover {
-	border:1px solid #ccc;
-	background-color:#F9F9F9;
-	background-position:1px 4px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-	padding:10px;
+.calendar_list h2, #cl_sort_by{
+	display: none;
 }

@@ -308,8 +308,7 @@
 			
 			/* Days and Months Labels*/
 			$(day_name).html("");
-			$(day_name).append("<h1>" + curr_day_name + "</h1>");
-			$(day_name).append('<div class="div_month"><span class="span_month">' + curr_month_name_short + '</span><br><span class="span_day">' + dp_str_pad(curr_date, 2, "0", "STR_PAD_LEFT") + '</span></div>');		
+			$(day_name).append('<div class="date_selected"><h3 style="background-image:none; border:none">Activities for ' + curr_day_name + ' ' + curr_month_name_short + ' ' + dp_str_pad(curr_date, 2, "0", "STR_PAD_LEFT") + ': </h3></div>');		
 			   
 			$dp.datepicker("setDate", date_selected);
 			$(toggleDP).html(curr_month_name + " " + curr_year);
@@ -648,7 +647,7 @@
 		dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
 		dayNamesMin: ['Su','Mo','Tu','We','Th','Fr','Sa'],
 		DP_LBL_EVENTS: 'Events',
-		DP_LBL_NO_ROWS: 'No results were found in this date.',
+		DP_LBL_NO_ROWS: 'No activities were found in this date.',
 		DP_LBL_SORT_BY: 'SORT BY:',
 		DP_LBL_TIME: 'TIME',
 		DP_LBL_TITLE: 'TITLE',
