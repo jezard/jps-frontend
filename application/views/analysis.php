@@ -2,17 +2,7 @@
 	<section class="section-ln">
 		<div class="col-1-2">
 			<h2>Recent activities</h2>
-			<ul class="recent-list">
-				<?php
-				echo '<li><a class="activity-link" href="http://joulepersecond.com:8080/view/range/">Range</a></li>';
-				foreach ($recentActivities as $activity) {
-					$activityDate = date_create_from_format('Y-m-d H:i:s', $activity['activity_date']);
-					echo '<li><a class="activity-link" href="http://'.$this->config->item('go_ip').'/view/activity/'.$activity['activity_id'].'">'.date_format($activityDate, 'D, jS F Y').'</a></li>';
-				}
-				?>
-			</ul>
-			<h2>View older</h2>
-			<p>Date calender widget</p>
+			<div id="calendar"></div>
 		</div>
 		<div class="col-1-2 top-update">
 			<h2>Analyse your historical aggregated data</h2>
@@ -48,12 +38,39 @@
 
 <script>
 jQuery(document).ready(function(){
-	jQuery('.activity-link').on('click', function(e){
-		e.preventDefault();
-		var url = jQuery(this).attr('href');
-		jQuery('#analysis-container').attr('src', url);
-	})
-});
 
+	$(document).on("click", ".urgent", function(e){
+        e.preventDefault();
+		var activity_id = jQuery('.calendar_list li p').text();
+		var url = <?php echo '"http://'.$this->config->item('go_ip').'/view/activity/"'; ?> + activity_id;
+		console.log(url);
+		jQuery('#analysis-container').attr('src', url);
+    });
+
+	var events_array = new Array(
+		<?php
+			$html = '';
+			foreach ($recentActivities as $activity) {
+
+			$activityDate = date_create_from_format('Y-m-d H:i:s', $activity['activity_date']);
+			$html .= '{
+				startDate: new Date('.date_format($activityDate, 'Y, m-1, d, H, i O').'),
+				endDate: new Date('.date_format($activityDate, 'Y, m-1, d, H, i O').'),
+				title: "'.date_format($activityDate, 'H:i').' '.$activity['activity_name'].'",
+				description: "'.$activity['activity_id'].'"
+				},';
+			}
+			$html = rtrim($html, ',');
+			echo $html;
+		?>
+	);
+
+	
+
+	jQuery("#calendar").dp_calendar({
+		events_array: events_array,
+	});
+
+});
 
 </script>

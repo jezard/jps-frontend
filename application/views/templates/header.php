@@ -11,8 +11,23 @@
 <!-- <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,100italic,300italic,400italic' rel='stylesheet' type='text/css'> -->
 <link rel='stylesheet' href='<?php echo $this->config->item('base_url'); ?>css/style.css' type='text/css' media='all' />
 <link rel='stylesheet' href='<?php echo $this->config->item('base_url'); ?>css/light.css' type='text/css' media='all' />
+
+
+<link href="http://joulepersecond.com/js/calendar/css/dp_calendar.css" type="text/css" rel="stylesheet" />
+<link href="http://joulepersecond.com/js/calendar/themes/ui-lightness/jquery.ui.all.css" type="text/css" rel="stylesheet" />
+
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="//use.typekit.net/mbs5qua.js"></script>
+<!-- jQuery --> 
+<!-- <script src='js/jquery-1.5.2.min.js'></script> --> 
+<!-- required plugins --> 
+<script src="http://joulepersecond.com/js/calendar/ui/jquery.ui.core.js"></script> 
+<script src="http://joulepersecond.com/js/calendar/ui/jquery.ui.position.js"></script> 
+<script src="http://joulepersecond.com/js/calendar/ui/jquery.ui.datepicker.js"></script> 
+<script src="http://joulepersecond.com/js/calendar/js/date.js"></script> 
+<script src="http://joulepersecond.com/js/calendar/js/jquery.dp_calendar.js"></script>
+
 <script>try{Typekit.load();}catch(e){}</script>
 <title><?php echo $title; ?></title>
 </head>

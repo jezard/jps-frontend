@@ -950,6 +950,23 @@ tr td:first-of-type:hover{
 tspan{
 	/*font-size: 14px!important*/
 }
+#tss-update input[type="number"]{
+	font-size: 12px;
+	font-family: monospace;
+	color:#333;
+	width:60px;
+	height:22px;
+	margin:0;
+	display: inline;
+	font-weight: bold;
+}
+#tss-update button{
+	padding:4px;
+	margin-left: 10px;
+	background: #6DD300;
+	color:white;
+
+}
 
 .date-range-btns label{
 	clear: both;
@@ -1076,6 +1093,9 @@ h3 {
 	border-radius: 10px;
 	margin-right: 20px;
 	border: 1px #fff solid;
+}
+.calendar_list .time{
+	display: none;
 }
 
 /* media queries */
