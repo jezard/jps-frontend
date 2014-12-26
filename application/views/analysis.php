@@ -37,19 +37,34 @@
 </div>
 
 <script>
+$(document).on("click", ".active", function(e){
+	
+	if(jQuery('#list h1').length == 1){
+		var activity_id = jQuery('.calendar_list li p').text();
+
+		//go to activity when clicking the calendar day
+		var url = <?php echo '"http://'.$this->config->item('go_ip').'/view/activity/"'; ?> + activity_id;
+
+		jQuery('#analysis-container').attr('src', url);
+	}		
+});
+
+
 jQuery(document).ready(function(){
 
+	//show all activities for day
 	$(document).on("click", ".urgent", function(e){
-        e.preventDefault();
-		var activity_id = jQuery('.calendar_list li p').text();
+
+		var activity_id = jQuery(this).find('p').text();
 		var url = <?php echo '"http://'.$this->config->item('go_ip').'/view/activity/"'; ?> + activity_id;
-		console.log(url);
+
 		jQuery('#analysis-container').attr('src', url);
     });
 
 	var events_array = new Array(
 		<?php
 			$html = '';
+
 			foreach ($recentActivities as $activity) {
 
 				$activityDate = date_create_from_format('Y-m-d H:i:s', $activity['activity_date']);
@@ -71,6 +86,10 @@ jQuery(document).ready(function(){
 		events_array: events_array,
 	});
 
+
+
 });
+
+
 
 </script>

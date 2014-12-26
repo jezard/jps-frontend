@@ -163,6 +163,7 @@
 }
 
 .dp_calendar .calendar_list #list li {
+	margin-bottom: 10px;
 	min-height:41px;
 	padding:11px;
 	background-color: #6DD300;
