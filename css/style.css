@@ -4,7 +4,7 @@ body{
 #signup.logged-in, #login.logged-in{
 	display: none;
 }
-#signout.logged-out, #myaccount.logged-out, #analysis.logged-out, #upload.logged-out{
+#signout.logged-out, #myaccount.logged-out, #analysis.logged-out, #upload.logged-out, #activity.logged-out{
 	display:none;
 }
 
@@ -887,7 +887,7 @@ hr{
 	margin-bottom: 15px;
 	color: #666;
 }
-#analysis-container{
+#analysis-container, #activity-container{
 	width:1140px;
 	height:12000px;
 	overflow: hidden
