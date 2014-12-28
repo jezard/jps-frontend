@@ -4,35 +4,15 @@
 			<h3>Recent activities</h3>
 			<div id="calendar"></div>
 		</div>
-		Activity update form
-		<!-- <div class="col-1-2 top-update">
-			<h2>Analyse your historical aggregated data</h2>
-			<h3>For:</h3>
+		<div class="col-1-2 ride-basic">
+			<h3>Basic ride info</h3>
 			<?php echo form_open('activity'); ?>
-				<input type="hidden" name="date-info" value="true">
-				<div class="date-range-btns">
-				<label for="week">Last Week</label>
-				<input id="week" type="radio" name="history" name="group1" value="week" checked>
-				<label for="month">Last month</label>
-				<input id="month" type="radio" name="history" value="month">
-				<label for="year">Last year</label>
-				<input id="year" type="radio" name="history" value="year">
-				<label for="drange">Date Range...</label>
-				<input id="drange" type="radio" name="history" value="range">
-				<div class="clear"></div>
-				<div id="range-input">
-					<p>Please enter start and end dates for range analysis (dd/mm/yy):</p>
-					<label for="drange-start">Start</label>
-					<input id="drange-start" name="drange-start" type="text" />
-					<div class="clear"></div>
-					<label for="drange-end">End</label>
-					<input id="drange-end" name="drange-end" type="text" />
-				<div>
-				<button class="btn" type="submit">Analyze</button>
+				<input type="hidden" id="activity_id" name="activity_id" value="">
+				<label for="activity_title">Start</label>
+				<input id="activity_title" name="activity_title" type="text" />
+				<button type="submit">Update</button>
 			</form>
 		</div>
-		<p class="message neon-orange"><?php if(isset($message))echo $message; ?></p> -->
-
 	</section>
 	<iframe id="activity-container" allowTransparency="true" scrolling="no"></iframe>
 </div>
@@ -45,6 +25,12 @@ $(document).on("click", ".active", function(e){
 
 		//go to activity when clicking the calendar day
 		var url = <?php echo '"http://'.$this->config->item('go_ip').'/view/activity/"'; ?> + activity_id;
+		jQuery('#activity_id').val(activity_id);
+
+		//get title/name of activity 
+		jQuery.post( '<?php echo $this->config->item('base_url') .'index.php/activity/get'; ?>', { activity_id: activity_id }, function(data){
+			jQuery('#activity_title').val(data);
+		});
 
 		jQuery('#activity-container').attr('src', url);
 	}		
@@ -58,6 +44,12 @@ jQuery(document).ready(function(){
 
 		var activity_id = jQuery(this).find('p').text();
 		var url = <?php echo '"http://'.$this->config->item('go_ip').'/view/activity/"'; ?> + activity_id;
+		jQuery('#activity_id').val(activity_id);
+
+		//get title/name of activity 
+		jQuery.post( '<?php echo $this->config->item('base_url') .'index.php/activity/get'; ?>', { activity_id: activity_id }, function(data){
+			jQuery('#activity_title').val(data);
+		});
 
 		jQuery('#ctivity-container').attr('src', url);
     });
