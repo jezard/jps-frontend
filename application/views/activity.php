@@ -5,7 +5,7 @@
 			<div id="calendar"></div>
 		</div>
 		<div class="col-1-2 ride-basic">
-			<h3>Basic ride info</h3>
+			<h3>Basic ride info <date id="activity-date" class="neon-orange"></date></h3>
 			<div class="basic-form">
 			<?php echo form_open('activity'); ?>
 				<input type="hidden" id="activity_id" name="activity_id" value="">
@@ -26,7 +26,7 @@ $(document).on("click", ".active", function(e){
 	
 	if(jQuery('#list h1').length == 1){
 		var activity_id = jQuery('.calendar_list li p').text();
-
+		localStorage.setItem("selectedDate", jQuery.fn.dp_calendar.getDate());
 		//go to activity when clicking the calendar day
 		var url = <?php echo '"http://'.$this->config->item('go_ip').'/view/activity/"'; ?> + activity_id;
 		jQuery('#activity_id').val(activity_id);
@@ -36,6 +36,7 @@ $(document).on("click", ".active", function(e){
 			data_array = data.split('^');
 			jQuery('#activity_title').val(data_array[0]);
 			jQuery('#activity_notes').val(data_array[1]);
+			jQuery('#activity-date').text(data_array[2]);
 		});
 
 		jQuery('#activity-container').attr('src', url);
@@ -53,6 +54,7 @@ jQuery(document).ready(function(){
 		data_array = data.split('^');
 		jQuery('#activity_title').val(data_array[0]);
 		jQuery('#activity_notes').val(data_array[1]);
+		jQuery('#activity-date').text(data_array[2]);
 	});
 
 	jQuery('#activity-container').attr('src', url);
@@ -61,6 +63,9 @@ jQuery(document).ready(function(){
 	$(document).on("click", ".urgent", function(e){
 
 		var activity_id = jQuery(this).find('p').text();
+
+		localStorage.setItem("selectedDate", jQuery.fn.dp_calendar.getDate());
+
 		var url = <?php echo '"http://'.$this->config->item('go_ip').'/view/activity/"'; ?> + activity_id;
 		jQuery('#activity_id').val(activity_id);
 
@@ -69,6 +74,7 @@ jQuery(document).ready(function(){
 			data_array = data.split('^');
 			jQuery('#activity_title').val(data_array[0]);
 			jQuery('#activity_notes').val(data_array[1]);
+			jQuery('#activity-date').text(data_array[2]);
 		});
 
 		jQuery('#activity-container').attr('src', url);
@@ -93,10 +99,11 @@ jQuery(document).ready(function(){
 		?>
 	);
 
-	
+	var d = new Date(localStorage.getItem("selectedDate"));
 
 	jQuery("#calendar").dp_calendar({
 		events_array: events_array,
+		date_selected: d,
 	});
 
 

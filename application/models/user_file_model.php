@@ -59,8 +59,9 @@ class User_file_model extends CI_Model{
 		foreach($query->result_array() as $row){
 			$activity_title = $row['activity_name'];
 			$activity_notes = $row['activity_notes'];
+			$activity_date = $row['activity_date'];
 		}
-		echo $activity_title.'^'.$activity_notes;
+		echo $activity_title.'^'.$activity_notes.'^'.$activity_date;
 	}
 
 	function update_basic($id, $name, $notes){

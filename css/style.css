@@ -860,7 +860,7 @@ textarea{
 	font-size: 16px;
 }
 .basic-form form{
-	padding:30px 10px;
+	padding:30px 10px 0;
 }
 
 
@@ -982,7 +982,10 @@ tspan{
 	color:white;
 
 }
-
+#activity-date{
+	font-family: monospace;
+	font-size: 18px;
+}
 .date-range-btns label{
 	clear: both;
 }
