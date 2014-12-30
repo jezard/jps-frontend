@@ -812,7 +812,7 @@ select{
 	display: block;
 	margin:0 auto 30px;
 }
-input[type="text"], input[type="number"]{
+input[type="text"], input[type="number"], textarea{
 	font-size: 24px;
 	padding: 2px 5px;
 	font-weight: 300;
@@ -822,7 +822,7 @@ input[type="text"], input[type="number"]{
 	display: block;
 	margin:0 auto 30px;
 }
-.top-update .btn, .bottom-update .btn {
+.top-update .btn, .bottom-update .btn, .ride-basic .btn {
 	
 	width: 200px;
 	color: #FFF;
@@ -841,11 +841,26 @@ input[type="text"], input[type="number"]{
 	float:right;
 
 }
-.bottom-update .btn {
+.bottom-update .btn, .basic-form .btn {
 	margin: 30px auto;
 }
 #my-gender{
 	margin: 0;
+}
+
+.ride-basic label{
+	font-size: 24px;
+	float:left;
+}
+.ride-basic input[type="text"], .ride-basic textarea{ 
+	width:300px;
+}
+textarea{
+	font-family: monospace;
+	font-size: 16px;
+}
+.basic-form form{
+	padding:30px 10px;
 }
 
 

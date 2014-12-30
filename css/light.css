@@ -47,11 +47,11 @@ h1,h2,h3{
 h3{
 	background: url(http://joulepersecond.com/images/GridBg.png);
 }
-table, .chart, #calendar {
+table, .chart, #calendar, .basic-form {
 	/*background-color: #efefef;*/
 	background-color: #f9f9f9;
 }
-h3, table, .chart, #calendar{
+h3, table, .chart, #calendar, .basic-form{
 	padding: 5px 10px;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
@@ -59,4 +59,7 @@ h3, table, .chart, #calendar{
 	margin-bottom: 15px!important;
 	color: #666;
 	border: 1px #ccc solid;
+}
+textarea{
+	color:#333;
 }

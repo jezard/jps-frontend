@@ -54,12 +54,17 @@ class User_file_model extends CI_Model{
 		return $activities;
 	}
 
-	function get_activity_title($id){
+	function get_activity_basic($id){
 		$query = $this->db->query("SELECT * FROM user_activity WHERE activity_id = '$id'");
 		foreach($query->result_array() as $row){
 			$activity_title = $row['activity_name'];
+			$activity_notes = $row['activity_notes'];
 		}
-		echo $activity_title;
+		echo $activity_title.'^'.$activity_notes;
+	}
+
+	function update_basic($id, $name, $notes){
+		$query = $this->db->query("UPDATE user_activity SET activity_name = '$name', activity_notes = '$notes' WHERE activity_id = '$id'");
 	}
 
 	//delete intermediate record

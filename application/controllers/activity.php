@@ -20,33 +20,37 @@ class Activity extends CI_Controller {
 	{
 		$validated = true;
 		$this->load->view('templates/header', array('title' => 'My Profile - '.$this->config->item('site_name')));
-
-		//if updating activity
-		if ( isset($_POST['activity_id']))
+			
+		if ($this->input->cookie('valid_user'))
 		{
-			
-			
-		}
-		//or for just a single page analysis
-		else
-		{
-			
-			if ($this->input->cookie('valid_user'))
+			//if updating activity
+			if (isset($_POST['activity_id']))
 			{
-
-				//get the user's recent activities
-				$recentActivities = $this->user_file->get_recent_activities($this->email);
-				$this->load->view('activity', array('recentActivities' => $recentActivities));
+				$id = $_POST['activity_id'];
+				$name = $_POST['activity_title'];
+				$notes = $_POST['activity_notes'];
+				$this->user_file->update_basic($id, $name, $notes);
 			}
-			
+			//get the user's recent activities
+			$recentActivities = $this->user_file->get_recent_activities($this->email);
+
+			//if user is updating use id to show on load, else show the most recent activity
+			if(isset($id)){
+				$displayActivity = $id;
+			}else{
+				$displayActivity = @$recentActivities[0]['activity_id'];
+			}
+
+			$this->load->view('activity', array('recentActivities' => $recentActivities, 'displayActivity' => @$displayActivity));
 		}
+			
 		$this->load->view('templates/footer');		
 	}
 
 	function get(){
 		//TODO get id from post/get and return and show in view
 		$id = $this->input->post('activity_id');
-		$activity_title = $this->user_file->get_activity_title($id);
+		$activity_title = $this->user_file->get_activity_basic($id);
 		echo $activity_title;
 	}
 

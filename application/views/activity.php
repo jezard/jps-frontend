@@ -6,12 +6,16 @@
 		</div>
 		<div class="col-1-2 ride-basic">
 			<h3>Basic ride info</h3>
+			<div class="basic-form">
 			<?php echo form_open('activity'); ?>
 				<input type="hidden" id="activity_id" name="activity_id" value="">
-				<label for="activity_title">Start</label>
-				<input id="activity_title" name="activity_title" type="text" />
-				<button type="submit">Update</button>
+				<label for="activity_title">Name:</label>
+				<input id="activity_title" name="activity_title" type="text">
+				<label for="activity_description">Notes:</label>
+				<textarea id="activity_notes" rows="5" name="activity_notes"></textarea>
+				<button class="btn" type="submit">Update</button>
 			</form>
+		</div>
 		</div>
 	</section>
 	<iframe id="activity-container" allowTransparency="true" scrolling="no"></iframe>
@@ -29,7 +33,9 @@ $(document).on("click", ".active", function(e){
 
 		//get title/name of activity 
 		jQuery.post( '<?php echo $this->config->item('base_url') .'index.php/activity/get'; ?>', { activity_id: activity_id }, function(data){
-			jQuery('#activity_title').val(data);
+			data_array = data.split('^');
+			jQuery('#activity_title').val(data_array[0]);
+			jQuery('#activity_notes').val(data_array[1]);
 		});
 
 		jQuery('#activity-container').attr('src', url);
@@ -38,6 +44,18 @@ $(document).on("click", ".active", function(e){
 
 
 jQuery(document).ready(function(){
+	//direct user to most recent activity or just updated
+	var activity_id = <?php echo '"'.$displayActivity.'"'; ?>;
+	var url = <?php echo '"http://'.$this->config->item('go_ip').'/view/activity/"'; ?> + activity_id;
+	jQuery('#activity_id').val(activity_id);
+	//get title/name of activity 
+	jQuery.post( '<?php echo $this->config->item('base_url') .'index.php/activity/get'; ?>', { activity_id: activity_id }, function(data){
+		data_array = data.split('^');
+		jQuery('#activity_title').val(data_array[0]);
+		jQuery('#activity_notes').val(data_array[1]);
+	});
+
+	jQuery('#activity-container').attr('src', url);
 
 	//show all activities for day
 	$(document).on("click", ".urgent", function(e){
@@ -48,10 +66,12 @@ jQuery(document).ready(function(){
 
 		//get title/name of activity 
 		jQuery.post( '<?php echo $this->config->item('base_url') .'index.php/activity/get'; ?>', { activity_id: activity_id }, function(data){
-			jQuery('#activity_title').val(data);
+			data_array = data.split('^');
+			jQuery('#activity_title').val(data_array[0]);
+			jQuery('#activity_notes').val(data_array[1]);
 		});
 
-		jQuery('#ctivity-container').attr('src', url);
+		jQuery('#activity-container').attr('src', url);
     });
 
 	var events_array = new Array(

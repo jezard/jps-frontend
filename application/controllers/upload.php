@@ -27,7 +27,7 @@ class Upload extends CI_Controller {
 		$this->upload->initialize(array(
 			'upload_path' => './uploads/',
 			'allowed_types' => 'tcx|fit|gpx',
-			'max_size'	=> 20,
+			'max_size'	=> 5000,
 			'remove_spaces' => TRUE,
 			'overwrite' => TRUE
 		));
