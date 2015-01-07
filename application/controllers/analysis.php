@@ -20,7 +20,11 @@ class Analysis extends CI_Controller {
 	{
 		$validated = true;
 		$this->load->view('templates/header', array('title' => 'My Profile - '.$this->config->item('site_name')));
-		$this->load->view('analysis');
+		$count = count($this->user_file->get_recent_activities($this->email));
+		if ($count > 0)
+			$this->load->view('analysis');
+		else
+			$this->load->view('upload_form', array('message' => 'Upload your .fit or .tcx files below (we recommend uploading in smaller batches):'));
 		$this->load->view('templates/footer');		
 	}
 

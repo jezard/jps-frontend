@@ -20,8 +20,10 @@ class Activity extends CI_Controller {
 	{
 		$validated = true;
 		$this->load->view('templates/header', array('title' => 'My Profile - '.$this->config->item('site_name')));
+
+		$count = count($this->user_file->get_recent_activities($this->email));
 			
-		if ($this->input->cookie('valid_user'))
+		if ($count > 0 && $this->input->cookie('valid_user'))
 		{
 			//if updating activity
 			if (isset($_POST['activity_id']))
@@ -42,7 +44,8 @@ class Activity extends CI_Controller {
 			}
 
 			$this->load->view('activity', array('recentActivities' => $recentActivities, 'displayActivity' => @$displayActivity));
-		}
+		}else
+			$this->load->view('upload_form', array('message' => 'Upload your .fit or .tcx files below (we recommend uploading in smaller batches):'));
 			
 		$this->load->view('templates/footer');		
 	}
