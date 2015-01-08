@@ -46,13 +46,18 @@ function getJobList(){
 		else
 		{
 			console.log('alls done');
+			jQuery('#parse-results').html('<p>' + localStorage.getItem("joulepersecond.com/upload_status") + '</p>');
+			localStorage.setItem("joulepersecond.com/upload_status", null);
 		}
 	});
+	
 }
 getJobList();
 
 
+
 function parseFiles(){
+	var status
 	console.log('parsing file: ' + files[0].filename);
 	jQuery.post(<?php echo '"'.$this->config->item('base_url').'index.php/process/parse"'; ?>, {filename: files[0].filename,
 																								filetype: files[0].filetype
@@ -66,6 +71,16 @@ function parseFiles(){
 		}).done(function(){
 			progress++;
 			console.log('progress: ' + progress, 'files-length: ' + files.length);
+			status = localStorage.getItem("joulepersecond.com/upload_status");
+			if (status == null) status = '';
+			localStorage.setItem("joulepersecond.com/upload_status", status + '<br>' + files[0].filename.slice(34) + ": Succeeded");
+			files = [];
+			getJobList();
+		}).fail(function(){
+			status = localStorage.getItem("joulepersecond.com/upload_status");
+			if (status == null) status = '';
+			localStorage.setItem("joulepersecond.com/upload_status",  status + '<br>' + files[0].filename.slice(34) + ": FAILED");
+			progress++;
 			files = [];
 			getJobList();
 		});
