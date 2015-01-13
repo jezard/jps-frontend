@@ -903,7 +903,7 @@ hr{
 	color: #666;
 }
 #analysis-container, #activity-container{
-	width:1140px;
+	width:100%;
 	height:12000px;
 	overflow: hidden
 	background-color:#333;
@@ -965,7 +965,8 @@ tr td:first-of-type:hover{
 tspan{
 	/*font-size: 14px!important*/
 }
-#tss-update input[type="number"]{
+
+#filter-update input[type="number"], #tss-update input[type="number"]{
 	font-size: 12px;
 	font-family: monospace;
 	color:#333;
@@ -975,12 +976,26 @@ tspan{
 	display: inline;
 	font-weight: bold;
 }
-#tss-update button{
+#filter-update button, #tss-update button{
 	padding:4px;
 	margin-left: 10px;
 	background: #6DD300;
 	color:white;
 
+}
+#filter-update select{
+	font-family: monospace;
+	font-size: 12px;
+	display: inline;
+	padding:4px;
+	color:#333;
+	width:80px;
+}
+#filter-update label{
+	width:300px;
+	font-size: 12px;
+	display: inline-block;
+	line-height: 30px
 }
 #activity-date{
 	font-family: monospace;
