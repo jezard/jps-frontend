@@ -1,14 +1,18 @@
 body{
-	background: url(http://joulepersecond.com/images/logo_large_trans_bold.png) #fff no-repeat fixed center top;
-	background: url(http://joulepersecond.com/images/logo_large_trans_mono.png) #fff no-repeat fixed center top;
+	/*background: url(http://joulepersecond.com/images/logo_large_trans_bold.png) #fff no-repeat fixed center top;
+	background: url(http://joulepersecond.com/images/logo_large_trans_mono.png) #fff no-repeat fixed center top;*/
 	/*background: url(http://joulepersecond.com/images/MidTransBg.png) #6DD300;*/
+	background: url(http://joulepersecond.com/images/paper_bg.jpg)
 }
 .section-ln {
-	border: 3px #6DD300 solid;
+	border: 1px #ddd solid;
 	background: url(http://joulepersecond.com/images/LightTransBg.png);
+	background-color: #fff;
 	-webkit-box-shadow: 0px 6px 8px -2px rgba(50, 50, 50, 0.75);
 	-moz-box-shadow:    0px 6px 8px -2px rgba(50, 50, 50, 0.75);
 	box-shadow: 0px 6px 8px -2px rgba(50, 50, 50, 0.75);
+	webkit-border-radius: 3px;
+	border-radius: 3px;
 }
 input[type="text"], input[type="number"]{
 	color: #999;
@@ -33,7 +37,7 @@ h1,h2,h3{
 }
  h3 {
 	padding: 5px 10px;
-	background-color: #444;
+	background-color: #6DD300;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
@@ -44,8 +48,11 @@ h1,h2,h3{
 	-moz-box-shadow:    0px 6px 8px -2px rgba(50, 50, 50, 0.75);
 	box-shadow:         0px 6px 8px -2px rgba(50, 50, 50, 0.75);*/
 }
-h3{
-	background: url(http://joulepersecond.com/images/GridBg.png);
+.laps-container h3{
+	/*background: url(http://joulepersecond.com/images/GridBg.png);*/
+}
+#calendar .date_selected h3{
+	background: none!important;
 }
 table, .chart, #calendar, .basic-form {
 	/*background-color: #efefef;*/
@@ -58,7 +65,7 @@ h3, table, .chart, #calendar, .basic-form{
 	border-radius: 5px;
 	margin-bottom: 15px!important;
 	color: #666;
-	border: 1px #ccc solid;
+	border: 1px #fff solid;
 }
 textarea{
 	color:#333;
