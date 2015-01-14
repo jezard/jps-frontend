@@ -864,6 +864,9 @@ textarea{
 .basic-form form{
 	padding:30px 10px 0;
 }
+table, .chart, #calendar, .basic-form{
+	margin-bottom: 15px;
+}
 
 
 hr{
@@ -1116,8 +1119,6 @@ h3 {
 	text-transform: uppercase;
 }
 .section-ln {
-	/*border-left: #6DD300 5px solid;*/
-	/*border-right: #00D1FD 5px solid;*/
 	margin-left: 0px;
 	padding: 30px 20px 10px 20px;
 	overflow: hidden;
@@ -1127,6 +1128,7 @@ h3 {
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 	margin-right: 20px;
+	margin-bottom: 20px;
 	border: 1px #fff solid;
 }
 .calendar_list .time{
