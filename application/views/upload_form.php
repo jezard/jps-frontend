@@ -1,11 +1,15 @@
+<section class="section-ln">
+	<h3>Upload files</h3>
+	<div class="content-container upload-form">
+		<p><?php echo $message; ?></p>
+		<?php echo form_open_multipart('upload/do_upload');?>
 
-<p><?php echo $message; ?></p>
-<?php echo form_open_multipart('upload/do_upload');?>
+		<input type="file" name="powerfiles[]" size="20" multiple />
 
-<input type="file" name="powerfiles[]" size="20" multiple />
+		<br /><br />
 
-<br /><br />
+		<button class="btn" type="submit">Upload</button>
 
-<input type="submit" value="upload" />
-
-</form>
+		</form>
+	</div>
+</section>

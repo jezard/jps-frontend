@@ -11,8 +11,8 @@ body{
 	-webkit-box-shadow: 0px 6px 8px -2px rgba(50, 50, 50, 0.75);
 	-moz-box-shadow:    0px 6px 8px -2px rgba(50, 50, 50, 0.75);
 	box-shadow: 0px 6px 8px -2px rgba(50, 50, 50, 0.75);
-	webkit-border-radius: 3px;
-	border-radius: 3px;
+/*	-webkit-border-radius: 3px;
+	border-radius: 3px;*/
 }
 input[type="text"], input[type="number"]{
 	color: #999;
@@ -25,37 +25,44 @@ tr:hover{
 	background-color: #ccc;
 }
 .hdr-container{
-	background: url(http://joulepersecond.com/images/GridBg.png);
+	/*background: url(http://joulepersecond.com/images/GridBg.png);*/
+	background: #6DD300;
+}
+nav.top-nav li{
+	background-color: #5EB300;
+}
+nav.top-nav li a{
+	color:white;
 }
 h1,h2,h3{
-	text-shadow: -1px -1px white, 1px 1px white, -1px 1px white, 1px -1px white;
+	/*text-shadow: -1px -1px white, 1px 1px white, -1px 1px white, 1px -1px white;*/
 }
 .value {
 	color: #000;
 	font-weight: bold;
 	font-family: monospace;
 }
- h3 {
+ h3 ,.m-header {
 	padding: 5px 10px;
-	background-color: #6DD300;
+	background-color: #5EB300;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
-	color: #666;
-	border: 1px #fff solid;
+	color: white;
 	margin-bottom: 10px!important;
-
-	background: #6dd300; /* Old browsers */
-	background: -moz-linear-gradient(top,  #6dd300 0%, #8dd145 50%, #6dd300 51%, #75ba00 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#6dd300), color-stop(50%,#8dd145), color-stop(51%,#6dd300), color-stop(100%,#75ba00)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #6dd300 0%,#8dd145 50%,#6dd300 51%,#75ba00 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #6dd300 0%,#8dd145 50%,#6dd300 51%,#75ba00 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #6dd300 0%,#8dd145 50%,#6dd300 51%,#75ba00 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #6dd300 0%,#8dd145 50%,#6dd300 51%,#75ba00 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6dd300', endColorstr='#75ba00',GradientType=0 ); /* IE6-9 */
-
-
-
+}
+h3, .m-header{
+	/*background: #6dd300;
+	background: -moz-linear-gradient(top,  #6dd300 0%, #8dd145 50%, #6dd300 51%, #75ba00 100%)!important; 
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#6dd300), color-stop(50%,#8dd145), color-stop(51%,#6dd300), color-stop(100%,#75ba00))!important; 
+	background: -webkit-linear-gradient(top,  #6dd300 0%,#8dd145 50%,#6dd300 51%,#75ba00 100%)!important; 
+	background: -o-linear-gradient(top,  #6dd300 0%,#8dd145 50%,#6dd300 51%,#75ba00 100%)!important; 
+	background: -ms-linear-gradient(top,  #6dd300 0%,#8dd145 50%,#6dd300 51%,#75ba00 100%)!important; 
+	background: linear-gradient(to bottom,  #6dd300 0%,#8dd145 50%,#6dd300 51%,#75ba00 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6dd300', endColorstr='#75ba00',GradientType=0 )!important; */
+}
+.m-header {
+	background-color: #5EB300!important;
 }
 .laps-container h3{
 	/*background: url(http://joulepersecond.com/images/GridBg.png);*/
@@ -63,17 +70,21 @@ h1,h2,h3{
 #calendar .date_selected h3{
 	background: none!important;
 }
-table, .chart, #calendar, .basic-form {
+table, .chart, #calendar, .basic-form, .forum-container, .content-container {
 	/*background-color: #efefef;*/
 	background-color: #f9f9f9;
 }
-table, .chart, #calendar, .basic-form{
+table, .chart, #calendar, .basic-form, .forum-container, .content-container{
 	padding: 5px 10px;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 	color: #666;
 	border: 1px #fff solid;
+}
+.forum-container, .content-container{
+	padding:15px;
+	margin-bottom: 20px;
 }
 textarea{
 	color:#333;

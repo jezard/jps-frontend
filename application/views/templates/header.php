@@ -50,7 +50,7 @@
 ?>
 
 <header class="site-header">
-	<div class="grid grid-pad">
+
 		<div class="hdr-container">
 			<div class="logo">
 				<a href="<?php echo $this->config->item('base_url'); ?>" title="<?php echo $this->config->item('site_name'); ?> ">
@@ -61,17 +61,17 @@
 			<nav class="top-nav col-1-1">
 			<ul>
 				<li id="signup" <?php echo $display; ?> ><?php echo anchor('signup', 'Sign up');?></li>
-				<li id="login" <?php echo $display; ?> ><?php echo anchor('login', 'log in');?></li>
+				<li id="login" <?php echo $display; ?> ><?php echo anchor('login', 'Log in');?></li>
 				<li id="upload" <?php echo $display; ?> ><?php echo anchor('upload', 'Upload files'); ?></li>
 				<li id="activity" <?php echo $display; ?> ><?php echo anchor('activity', 'Activity'); ?></li>
 				<li id="analysis" <?php echo $display; ?> ><?php echo anchor('analysis', 'Analysis'); ?></li>
 				<li id="myaccount" <?php echo $display; ?> ><?php echo anchor('myaccount', 'My Account'); ?></li>
+				<li id="forum" <?php echo $display; ?> ><?php echo anchor('forum', 'Forum'); ?></li>
 				<li id="signout" <?php echo $display; ?> ><?php echo anchor('signout', 'log out');?></li>
 			</ul>
 			</nav>
 		</div>
 
-	</div>
 </header>
 <main>
 <div class="grid grid-pad">

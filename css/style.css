@@ -812,15 +812,20 @@ select{
 	display: block;
 	margin:0 auto 30px;
 }
-input[type="text"], input[type="number"], textarea{
-	font-size: 24px;
-	padding: 2px 5px;
+input[type="text"], 
+input[type="number"],
+input[type="email"], 
+input[type="password"], 
+textarea{
+/*	font-size: 24px;
+	
 	font-weight: 300;
-	margin-bottom: 15px;
-	width:200px;
+	width:200px;*/
+	padding: 2px 5px;
 	border-radius:3px;
+	margin-bottom: 15px;
 	display: block;
-	margin:0 auto 30px;
+	/*margin:0 auto 30px;*/
 }
 .top-update .btn, .bottom-update .btn, .ride-basic .btn {
 	
@@ -851,11 +856,11 @@ input[type="text"], input[type="number"], textarea{
 }
 
 .ride-basic label{
-	font-size: 24px;
 	float:left;
+	width:60px;
 }
 .ride-basic input[type="text"], .ride-basic textarea{ 
-	width:300px;
+	max-width:450px;
 }
 textarea{
 	font-family: monospace;
@@ -970,7 +975,9 @@ tr td:first-of-type:hover{
 tspan{
 	/*font-size: 14px!important*/
 }
+label{
 
+}
 #filter-update input[type="number"], #tss-update input[type="number"]{
 	font-size: 12px;
 	font-family: monospace;
@@ -981,7 +988,7 @@ tspan{
 	display: inline;
 	font-weight: bold;
 }
-#filter-update button, #tss-update button{
+#filter-update button, #tss-update button, .upload-form button, .login-form button, .signup-form button{
 	padding:4px;
 	margin-left: 10px;
 	background: #6DD300;
@@ -1046,16 +1053,19 @@ tspan{
 nav.top-nav li{
 	list-style: none;
 	display: inline-block;
-	font-weight: 700;
-	/*font-size: 0.9em;*/
-	text-transform: uppercase;
-	padding: 0 26px;
+	font-weight: 400;
+	font-size: 0.9em;
+	/* text-transform: uppercase; */
+	padding: 5px 10px;
+	margin-top: 2px;
+	border-radius: 5px;
 }
 nav.top-nav li a{
-	text-shadow: -1px -1px white, 1px 1px white, -1px 1px white, 1px -1px white;
+	margin-top: 2px;
 }
+
 nav.top-nav ul{
-	margin: 10px auto;
+	margin: 5px auto;
 	text-align: center;
 
 }
@@ -1069,22 +1079,15 @@ nav.top-nav a:hover {
 	border-bottom:3px #8e8e8e solid;
 }
 .hdr-container{
-	position: relative;
+	position: fixed;
+	width: 100%;
+	height: 45px;
+	margin-bottom: 48px;
 	overflow: hidden;
-	margin-bottom: 10px;
-	margin-top: -20px;
-	/*background-color: #ccc;*/
-	/*-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;*/
-	/*border-radius: 0  0 10px 10px;*/
 	-webkit-box-shadow: 0px 6px 8px -2px rgba(50, 50, 50, 0.75);
-	-moz-box-shadow:    0px 6px 8px -2px rgba(50, 50, 50, 0.75);
-	box-shadow:         0px 6px 8px -2px rgba(50, 50, 50, 0.75);
-	margin-right: 20px;
-	border-top: 1px #fff solid;
-	border: 1px #fff solid;
-/*	border-left: 5px solid #fb4b02;
-	border-right: 5px solid #fb4b02;*/
+	-moz-box-shadow: 0px 6px 8px -2px rgba(50, 50, 50, 0.75);
+	box-shadow: 0px 6px 8px -2px rgba(50, 50, 50, 0.75);
+	z-index: 999;
 
 }
 .logo{
@@ -1097,10 +1100,11 @@ main{
 	/*background: url(../images/graph-paper-blog.gif);*/
 	/*background: url(http://joulepersecond.com/images/pillow-logo.png) no-repeat center -30px;*/
 	min-height: 600px;
+	margin-top: 48px;
 }
 
 main p{
-	font-size: 1.6em;
+	font-size: 1.1em;
 	font-weight: 300;
 }
 h1{
@@ -1115,8 +1119,6 @@ h2{
 h3 {
 	color: #fb4b02;
 	margin-bottom: 0.3em;
-	font-weight: 700;
-	text-transform: uppercase;
 }
 .section-ln {
 	margin-left: 0px;

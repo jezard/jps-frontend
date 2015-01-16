@@ -1,13 +1,18 @@
-<h3>File processing in progress</h3>
+
 
 <!-- this is the static outer frame use to house the ajax parse progress window  -->
-<div id="parse-window">
-	<!-- this is the dynamic inner section -->
-	<div id="parse-progress">
-		<!-- ajax content -->
+<section class="section-ln">
+	<h3>File processing ...</h3>
+	<div class="content-container">
+		<div id="parse-window">
+			<!-- this is the dynamic inner section -->
+			<div id="parse-progress">
+				<!-- ajax content -->
+			</div>
+			<div id="parse-results"></div>
+		</div>
 	</div>
-	<div id="parse-results"></div>
-</div>
+</section>
 <script type="text/javascript">
 
 //list of files, and progression
@@ -47,7 +52,7 @@ function getJobList(){
 		{
 			console.log('alls done');
 			jQuery('#parse-results').html('<p>' + localStorage.getItem("joulepersecond.com/upload_status") + '</p>');
-			localStorage.setItem("joulepersecond.com/upload_status", null);
+			localStorage.setItem("joulepersecond.com/upload_status", '');
 		}
 	});
 	
