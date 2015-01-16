@@ -27,7 +27,7 @@
 <script src="http://joulepersecond.com/js/calendar/ui/jquery.ui.datepicker.js"></script> 
 <script src="http://joulepersecond.com/js/calendar/js/date.js"></script> 
 <script src="http://joulepersecond.com/js/calendar/js/jquery.dp_calendar.js"></script>
-
+<script src="http://joulepersecond.com/js/main.js"></script>
 <script>try{Typekit.load();}catch(e){}</script>
 <title><?php echo $title; ?></title>
 </head>
@@ -38,14 +38,15 @@
 
 	if ($this->input->cookie('valid_user'))
 	{
-		$message = "Welcome " . $this->input->cookie('valid_user', false) . "!<br>";
+		$message = "logged in as " . $this->input->cookie('valid_user', false);
 		$loggedIn = true;
-		$display = 'class="logged-in"';
+		$display = 'class="logged-in main-nav-item"';
 	}
 	  
 	else
 	{
 		$message = "Welcome guest!<br>";
+		$display = 'class="logged-out main-nav-item"';
 	}
 ?>
 
@@ -57,17 +58,24 @@
 					<img src="<?php echo $this->config->item('base_url'); ?>images/logo-small.png" alt="JoulePerSecond.com" />
 				</a> 
 			</div>
+			<?php if ($this->input->cookie('valid_user')): ?>
+				<div class="user-img">
+					<a href="<?php echo $this->config->item('base_url'); ?>" title="<?php echo $message; ?> ">
+						<img src="<?php echo $this->config->item('base_url'); ?>images/icons/logged-in.png" alt="JoulePerSecond.com" />
+					</a> 
+				</div>
+			<?php endif; ?>
 		
 			<nav class="top-nav col-1-1">
 			<ul>
-				<li id="signup" <?php echo $display; ?> ><?php echo anchor('signup', 'Sign up');?></li>
-				<li id="login" <?php echo $display; ?> ><?php echo anchor('login', 'Log in');?></li>
-				<li id="upload" <?php echo $display; ?> ><?php echo anchor('upload', 'Upload files'); ?></li>
-				<li id="activity" <?php echo $display; ?> ><?php echo anchor('activity', 'Activity'); ?></li>
-				<li id="analysis" <?php echo $display; ?> ><?php echo anchor('analysis', 'Analysis'); ?></li>
-				<li id="myaccount" <?php echo $display; ?> ><?php echo anchor('myaccount', 'My Account'); ?></li>
-				<li id="forum" <?php echo $display; ?> ><?php echo anchor('forum', 'Forum'); ?></li>
-				<li id="signout" <?php echo $display; ?> ><?php echo anchor('signout', 'log out');?></li>
+				<li id="signup" style="background-color:#FB4B02" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/sign-up.png" alt="sign-up"/><?php echo anchor('signup', 'Sign up');?></li>
+				<li id="login" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/log-in.png" alt="log-in"/><?php echo anchor('login', 'Log in');?></li>
+				<li id="upload" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/upload.png" alt="upload"/><?php echo anchor('upload', 'Upload files'); ?></li>
+				<li id="activity" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/activity.png" alt="activity"/><?php echo anchor('activity', 'Activity'); ?></li>
+				<li id="analysis" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/analysis.png" alt="analysis"/><?php echo anchor('analysis', 'Analysis'); ?></li>
+				<li id="myaccount" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/my-account.png" alt="my-account"/><?php echo anchor('myaccount', 'My Account'); ?></li>
+				<li id="forum" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/forum.png" alt="forum"/><?php echo anchor('forum', 'Forum'); ?></li>
+				<li id="signout" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/log-out.png" alt="log-out"/><?php echo anchor('signout', 'log out');?></li>
 			</ul>
 			</nav>
 		</div>
@@ -75,4 +83,3 @@
 </header>
 <main>
 <div class="grid grid-pad">
-	<aside class="message"><?php echo $message; ?></aside>

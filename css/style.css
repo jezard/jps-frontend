@@ -1011,7 +1011,8 @@ label{
 }
 #activity-date{
 	font-family: monospace;
-	font-size: 18px;
+	font-size: 16px;
+	font-weight: bold;
 }
 .date-range-btns label{
 	clear: both;
@@ -1062,6 +1063,9 @@ nav.top-nav li{
 }
 nav.top-nav li a{
 	margin-top: 2px;
+	line-height: 20px;
+	display: block;
+	float: left;
 }
 
 nav.top-nav ul{
@@ -1076,7 +1080,7 @@ nav.top-nav{
 }
 nav.top-nav a:hover {
 	text-decoration: none;
-	border-bottom:3px #8e8e8e solid;
+	/*border-bottom:3px #8e8e8e solid;*/
 }
 .hdr-container{
 	position: fixed;
@@ -1090,11 +1094,19 @@ nav.top-nav a:hover {
 	z-index: 999;
 
 }
-.logo{
+.logo, .user-img{
 	position: absolute;
 	z-index: 0;
 	width: 67px;
 	height:46px;
+}
+.user-img{
+	right:0;
+}
+img.menu-icon{
+	display: block;
+	float: left;
+	padding-right: 5px;
 }
 main{
 	/*background: url(../images/graph-paper-blog.gif);*/

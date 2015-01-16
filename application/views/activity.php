@@ -5,7 +5,7 @@
 			<div id="calendar"></div>
 		</div>
 		<div class="col-1-2 ride-basic">
-			<h3>Basic ride info <date id="activity-date" class="neon-orange"></date></h3>
+			<h3>Basic ride info <date id="activity-date"></date></h3>
 			<div class="basic-form">
 			<?php echo form_open('activity'); ?>
 				<input type="hidden" id="activity_id" name="activity_id" value="">
