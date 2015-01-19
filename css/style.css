@@ -941,12 +941,10 @@ hr{
 }
 .about-me label{
 	width:150px;
-	font-size: 24px;
 	float:left;
 }
 .my-vital-stats label{
 	width:330px;
-	font-size: 24px;
 	float:left;
 }
 .about-me, .my-vital-stats{
@@ -1134,7 +1132,7 @@ h3 {
 }
 .section-ln {
 	margin-left: 0px;
-	padding: 30px 20px 10px 20px;
+	padding: 20px 20px 10px 20px;
 	overflow: hidden;
 	/*background: url(../images/graph-paper-blog.gif);*/
 	background-color: #333;

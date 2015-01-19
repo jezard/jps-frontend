@@ -20,6 +20,20 @@ class User_model extends CI_Model {
     	return $this->db->insert_id();
 
     }
+     function addViaSocialUser(){
+       //insert record to database
+      $this->username = $this->input->post('username');
+      $this->password ="via-social";
+      $this->verified = 1;
+      $this->email = $this->input->post('email');
+      $this->db->insert('user', $this);
+
+      //TODO need to handle situation/error when attempt to sign up with email via social and address already exists from previous sign up using same email address
+
+      //return id
+      return $this->db->insert_id();
+
+    }
 	   //check that a user's credentials are valid, and that they have verified their email address
     function validate(){
     	$password = $this->input->post('password');
