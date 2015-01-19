@@ -29,6 +29,7 @@ class Socialsignup extends CI_Controller {
 
 		        $email = $this->input->post('email');
 		        $username = $this->input->post('username');
+		        
 		        $this->email->from('no-reply@'.$this->config->item('site_name'), $this->config->item('site_name').' Admin');
 		        $this->email->to($email); 
 		        $this->email->subject('Welcome to '.$this->config->item('site_name'));

@@ -66,15 +66,23 @@ function handleEmailResponse(resp) {
 var primaryEmail;
 var user_img = resp.image.url;
 var display_name = resp.displayName;
+var familyName = resp.name.familyName;
+var givenName = resp.name.givenName;
+
 	for (var i=0; i < resp.emails.length; i++) {
 	  	if (resp.emails[i].type === 'account') primaryEmail = resp.emails[i].value;
 	}
 	document.getElementById('responseContainer').value = 'Primary email: ' + primaryEmail + '\n\nFull Response:\n' + JSON.stringify(resp);
 
 	//this is the information we need
-	console.log(primaryEmail, user_img, display_name);
+	console.log(primaryEmail, user_img, display_name, familyName, givenName);
 
-	jQuery.post("http://joulepersecond.com/index.php/socialsignup/", {username: display_name, email: primaryEmail })
+	jQuery.post("http://joulepersecond.com/index.php/socialsignup/", {
+							username: display_name, 
+							email: primaryEmail,
+							my_firstname: givenName,
+							my_lastname: familyName
+		})
 		.done(function(data){
 			console.log(data);
 			window.location = "http://joulepersecond.com/index.php/login";

@@ -23,6 +23,8 @@ class User_model extends CI_Model {
      function addViaSocialUser(){
        //insert record to database
       $this->username = $this->input->post('username');
+      $this->my_firstname = $this->input->post('my_firstname');
+      $this->my_lastname = $this->input->post('my_lastname');
       $this->password ="via-social";
       $this->verified = 1;
       $this->email = $this->input->post('email');
