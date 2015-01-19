@@ -56,6 +56,28 @@ class User_model extends CI_Model {
     	return $validuser;
     }
 
+     //check that a user's credentials are valid
+    function validateViaSocial(){
+      //$password = $this->input->post('password');
+      $email = $this->input->post('email');
+      //$password = do_hash($this->config->item('salt').$password);
+
+      $this->db->where(array('email' => $email, 'verified' => 1));
+      $this->db->from('user'); 
+      $this->db->limit(1);
+      $query = $this->db->get();
+
+      $validuser = array();
+
+      foreach ($query->result() as $row)
+      {
+          array_push($validuser, $row->user_id);
+          array_push($validuser, $row->username);
+          array_push($validuser, $row->email);
+      }
+      return $validuser;
+    }
+
     
     function accountexists(){
 	//check that a user account exists
