@@ -29,8 +29,8 @@ class Myaccount extends CI_Controller {
 
 		if ($this->form_validation->run() == FALSE)
 		{
-
-			$this->load->view('templates/header', array('title' => 'My Account - '.$this->config->item('site_name')));
+			$user_image = $this->user->get_user_image($this->email);
+			$this->load->view('templates/header', array('title' => 'My Account - '.$this->config->item('site_name'), 'user_image' => $user_image));
 			$this->load->view('my_account', $this->user->getsettings($this->email));
 			$this->load->view('templates/footer');
 		}

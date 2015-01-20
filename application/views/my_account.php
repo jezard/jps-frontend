@@ -43,7 +43,7 @@
 						<label for="my_thr">Threshold Heart Rate:</label>
 						<input type="number" id="my_thr" name="my_thr" value="<?php echo set_value('my_thr', @$my_thr); ?>" maxlength="3" size="3" placeholder="BPM" max="220" min="60" ><br>
 						<label for="my_ftp">Functional Threshold Power<span class="neon-orange">*</span>:</label>
-						<input type="number" id="my_ftp" name="my_ftp" value="<?php echo set_value('my_ftp', @$my_ftp); ?>" maxlength="3" size="3" placeholder="Watts" max="600" min="60" ><br>
+						<input type="number" id="my_ftp" name="my_ftp" value="<?php echo set_value('my_ftp', @$my_ftp); ?>" maxlength="3" size="3" placeholder="Watts" max="600" min="0" ><br>
 						<label for="my_vo2">VO<sub>2</sub> Max<span class="neon-orange">*</span> (ml/kg/min):</label>
 						<input type="number" id="my_vo2" name="my_vo2" value="<?php echo set_value('my_vo2', @$my_vo2); ?>" maxlength="3" size="3" placeholder="Val" max="70" min="0" >
 						<p><br><span class="neon-orange">*</span> If values for <em><abbr title="Functional Threshold Power">FTP</abbr></em> or <em>VO<sub>2</sub> Max</em> are unknown, set value to <code>0</code></p>

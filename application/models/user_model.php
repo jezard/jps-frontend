@@ -28,6 +28,7 @@ class User_model extends CI_Model {
       $this->password ="via-social";
       $this->verified = 1;
       $this->email = $this->input->post('email');
+      $this->my_portrait = $this->input->post('my_portrait');
       $this->db->insert('user', $this);
 
       //TODO need to handle situation/error when attempt to sign up with email via social and address already exists from previous sign up using same email address
@@ -98,6 +99,17 @@ class User_model extends CI_Model {
            }
         }
         return false;
+    }
+
+    function get_user_image($email){
+      $this->db->select('user.my_portrait');
+      $this->db->where(array('email' => $email));
+      $this->db->from('user'); 
+      $this->db->limit(1);
+      $query = $this->db->get();
+      $image_link = $query->result();
+
+      return $image_link[0]->my_portrait;
     }
 
 

@@ -81,7 +81,8 @@ var givenName = resp.name.givenName;
 							username: display_name, 
 							email: primaryEmail,
 							my_firstname: givenName,
-							my_lastname: familyName
+							my_lastname: familyName,
+							my_portrait: user_img
 		})
 		.done(function(data){
 			console.log(data);

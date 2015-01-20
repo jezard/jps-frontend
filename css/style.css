@@ -1095,8 +1095,11 @@ nav.top-nav a:hover {
 .logo, .user-img{
 	position: absolute;
 	z-index: 0;
-	width: 67px;
-	height:46px;
+	width: 34px;
+	height:34px;
+	border-radius: 5px;
+	display: block;
+	margin: 5px;
 }
 .user-img{
 	right:0;

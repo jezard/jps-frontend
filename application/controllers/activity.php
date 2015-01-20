@@ -6,6 +6,7 @@ class Activity extends CI_Controller {
 		parent::__construct();
 		//load the user file model
 		$this->load->model('user_file_model', 'user_file', TRUE);
+		$this->load->model('user_model', 'user', TRUE);
 		$this->load->helper('cookie');
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
@@ -18,8 +19,9 @@ class Activity extends CI_Controller {
 
 	function index()
 	{
+		$user_image = $this->user->get_user_image($this->email);
 		$validated = true;
-		$this->load->view('templates/header', array('title' => 'My Profile - '.$this->config->item('site_name')));
+		$this->load->view('templates/header', array('title' => 'My Profile - '.$this->config->item('site_name'), 'user_image' => $user_image));
 
 		$count = count($this->user_file->get_recent_activities($this->email));
 			

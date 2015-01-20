@@ -75,5 +75,6 @@ var display_name = resp.displayName;
 			console.log(data);
 			window.location = "http://joulepersecond.com/index.php/myaccount";
 		});
+	
 }
 </script>

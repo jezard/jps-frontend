@@ -59,17 +59,11 @@
 <header class="site-header">
 
 		<div class="hdr-container">
-			<div class="logo">
-				<a href="<?php echo $this->config->item('base_url'); ?>" title="<?php echo $this->config->item('site_name'); ?> ">
-					<img src="<?php echo $this->config->item('base_url'); ?>images/logo-small.png" alt="JoulePerSecond.com" />
-				</a> 
-			</div>
+
+			<a class="logo" href="<?php echo $this->config->item('base_url'); ?>" title="<?php echo $this->config->item('site_name'); ?>" style="background: url(<?php echo $this->config->item('base_url'); ?>images/logo-small.png) center; background-size:cover"></a> 
+
 			<?php if ($this->input->cookie('valid_user')): ?>
-				<div class="user-img">
-					<a href="<?php echo $this->config->item('base_url'); ?>" title="<?php echo $message; ?> ">
-						<img src="<?php echo $this->config->item('base_url'); ?>images/icons/logged-in.png" alt="JoulePerSecond.com" />
-					</a> 
-				</div>
+				<a class="user-img" href="<?php echo $this->config->item('base_url'); ?>" title="<?php echo $message; ?> " style="background: url(<?php echo $user_image; ?>) center; background-size:cover"></a> 
 			<?php endif; ?>
 		
 			<nav class="top-nav col-1-1">

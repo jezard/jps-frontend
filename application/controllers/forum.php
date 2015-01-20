@@ -5,6 +5,7 @@ class Forum extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->helper('cookie');
+		$this->load->model('user_model', 'user', TRUE);
 		if ($this->input->cookie('valid_user'))
 		{
 			$this->email = $this->input->cookie('valid_user', false);
@@ -15,7 +16,8 @@ class Forum extends CI_Controller {
 	function index()
 	{
 		$validated = true;
-		$this->load->view('templates/header', array('title' => 'JoulePerSecond Forum - '.$this->config->item('site_name')));
+		$user_image = $this->user->get_user_image($this->email);
+		$this->load->view('templates/header', array('title' => 'JoulePerSecond Forum - '.$this->config->item('site_name'), 'user_image' => $user_image));
 
 		$this->load->view('forum');
 
