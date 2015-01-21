@@ -12,6 +12,7 @@ class Myaccount extends CI_Controller {
 		if ($this->input->cookie('valid_user'))
 		{
 			$this->email = $this->input->cookie('valid_user', false);
+			$this->user_image = $this->user->get_user_image($this->email);
 		}
 
 		$this->form_validation->set_rules('set_autofill', 'Autofill', 'required');
@@ -29,8 +30,8 @@ class Myaccount extends CI_Controller {
 
 		if ($this->form_validation->run() == FALSE)
 		{
-			$user_image = $this->user->get_user_image($this->email);
-			$this->load->view('templates/header', array('title' => 'My Account - '.$this->config->item('site_name'), 'user_image' => $user_image));
+			
+			$this->load->view('templates/header', array('title' => 'My Account - '.$this->config->item('site_name'), 'user_image' => $this->user_image));
 			$this->load->view('my_account', $this->user->getsettings($this->email));
 			$this->load->view('templates/footer');
 		}
@@ -143,14 +144,14 @@ class Myaccount extends CI_Controller {
 				$this->input->set_cookie($cookie);
 
 
-    			$this->load->view('templates/header', array('title' => 'Settings saved! - '.$this->config->item('site_name')));
+    			$this->load->view('templates/header', array('title' => 'Settings saved! - '.$this->config->item('site_name'), 'user_image' => $this->user_image));
 				$this->load->view('my_account');
 				$this->load->view('templates/footer');
 			}
 			//on database error
 			else
 			{
-				$this->load->view('templates/header', array('title' => 'Database error - '.$this->config->item('site_name')));
+				$this->load->view('templates/header', array('title' => 'Database error - '.$this->config->item('site_name'), 'user_image' => $this->user_image));
 				$this->load->view('my_account');
 				$this->load->view('templates/footer');
 			}

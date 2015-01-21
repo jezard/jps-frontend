@@ -27,8 +27,8 @@
 <script src="http://joulepersecond.com/js/calendar/ui/jquery.ui.datepicker.js"></script> 
 <script src="http://joulepersecond.com/js/calendar/js/date.js"></script> 
 <script src="http://joulepersecond.com/js/calendar/js/jquery.dp_calendar.js"></script>
-<!-- <script src = "https://plus.google.com/js/client:plusone.js"></script> -->
-<script src="https://apis.google.com/js/client:platform.js" async defer></script>
+
+<script src="https://apis.google.com/js/client:platform.js"></script>
 <script src="http://joulepersecond.com/js/main.js"></script>
 
 

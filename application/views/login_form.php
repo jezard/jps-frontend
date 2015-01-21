@@ -33,46 +33,12 @@
 					data-width="wide"
 					data-cookiepolicy="single_host_origin">
 				</button>
-				<button class="btn" id="disconnect" >Disconnect your Google account from this app</button>
-				<!-- Textarea for outputting data -->
-				<div id="response" class="hide">
-					<textarea id="responseContainer" style="width:100%; height:150px"></textarea>
-				</div>
 		    </div>
 		</div>
 
 	</div>
 </section>
 <script>
-/*function onSignInCallback(resp) {
-	gapi.client.load('plus', 'v1', apiClientLoaded);
-}
-
-
-function apiClientLoaded() {
-	gapi.client.plus.people.get({userId: 'me'}).execute(handleEmailResponse);
-}
-
-
-function handleEmailResponse(resp) {
-var primaryEmail;
-var user_img = resp.image.url;
-var display_name = resp.displayName;
-	for (var i=0; i < resp.emails.length; i++) {
-	  	if (resp.emails[i].type === 'account') primaryEmail = resp.emails[i].value;
-	}
-	document.getElementById('responseContainer').value = 'Primary email: ' + primaryEmail + '\n\nFull Response:\n' + JSON.stringify(resp);
-
-	//this is the information we need
-	console.log(primaryEmail, user_img, display_name);
-
-	jQuery.post("http://joulepersecond.com/index.php/sociallogin/", {email: primaryEmail, username: display_name })
-		.done(function(data){
-			console.log(data);
-			window.location = "http://joulepersecond.com/index.php/myaccount";
-		});
-
-}*/
 var helper = (function() {
   var BASE_API_PATH = 'plus/v1/';
 
@@ -97,29 +63,6 @@ var helper = (function() {
         console.log('authResult', authResult);
       });
     },
-
-    /**
-     * Calls the OAuth2 endpoint to disconnect the app for the user.
-     */
-    disconnect: function() {
-      // Revoke the access token.
-      $.ajax({
-        type: 'GET',
-        url: 'https://accounts.google.com/o/oauth2/revoke?token=' +
-            gapi.auth.getToken().access_token,
-        async: false,
-        contentType: 'application/json',
-        dataType: 'jsonp',
-        success: function(result) {
-          console.log('revoke response: ' + result);
-          $('#gConnect').show();
-        },
-        error: function(e) {
-          console.log(e);
-        }
-      });
-    },
-
 
     /**
      * Gets and renders the currently signed in user's profile data.
