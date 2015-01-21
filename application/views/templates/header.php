@@ -75,7 +75,15 @@
 				<li id="analysis" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/analysis.png" alt="analysis"/><?php echo anchor('analysis', 'Analysis'); ?></li>
 				<li id="myaccount" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/my-account.png" alt="my-account"/><?php echo anchor('myaccount', 'My Account'); ?></li>
 				<li id="forum" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/forum.png" alt="forum"/><?php echo anchor('forum', 'Forum'); ?></li>
-				<li id="signout" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/log-out.png" alt="log-out"/><?php echo anchor('signout', 'log out');?></li>
+				<!-- we coud do with hiding this button for google users -->
+				<li id="signout" <?php echo $display; ?> >
+					<img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/log-out.png" alt="log-out"/>
+					<?php if( $this->input->cookie('social_user') == 'no'): ?>
+						<?php echo anchor('signout', 'log out');?>
+					<?php else: ?>
+						<?php echo anchor('socialsignout', 'log out');?>
+					<?php endif; ?>
+				</li>
 			</ul>
 			</nav>
 		</div>
