@@ -14,7 +14,7 @@
 				<input type="password" name="password" value="<?php echo set_value('password'); ?>" size="50" />
 				<a href="<?php echo $this->config->item('base_url'); ?>index.php/forgottenpassword">Forgotten Password?</a>
 
-				<div><button class="btn" type="submit">Login</button></div>
+				<div><button class="btn-default" type="submit">Login</button></div>
 
 			</form>
 		</div>

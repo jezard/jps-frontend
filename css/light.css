@@ -34,13 +34,33 @@ nav.top-nav li{
 nav.top-nav li a{
 	color:white;
 }
-h1,h2,h3{
-	/*text-shadow: -1px -1px white, 1px 1px white, -1px 1px white, 1px -1px white;*/
+.account-settings h1{
+	color:#666;
+	margin: 0;
+}
+.account-settings .btn-default{
+	float:right;
+}
+h1{
+	font-weight: bold;
+	font-size: 30px;
 }
 .value {
 	color: #000;
 	font-weight: bold;
 	font-family: monospace;
+}
+.heading-gray, .date_selected h3 {
+	background-color: #f9f9f9;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	color: #666;
+	padding: 5px 10px;
+	font-family: monospace;
+	font-size: 20px;
+	margin: 0;
+	border: 1px solid white;
 }
  h3 ,.m-header {
 	padding: 5px 10px;
@@ -50,6 +70,11 @@ h1,h2,h3{
 	border-radius: 5px;
 	color: white;
 	margin-bottom: 10px!important;
+}
+.account-settings h2{
+	color: #666;
+	font-size: 26px;
+	margin: 0;
 }
 h3, .m-header{
 	/*background: #6dd300;

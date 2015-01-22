@@ -1,16 +1,16 @@
 <div class="account-page">
 	<?php echo form_open('myaccount'); ?>
-		<section class="col-1-2">
-			<h1>My Account</h1>
-		</section>
-		<section class="col-1-2 top-update">
-			<button class="btn" type="submit">Update Settings</button>
-		</section>
-		<div class="clear"></div>
-
-		<section>
-			<div class="col-1-1"><h2>General settings</h2></div>
+		
+		<section class="account-settings">
 			<div class="section-ln">
+				<div class="col-1-2">
+					<h1>Account settings</h1>
+				</div>
+				<div class="col-1-2">
+					<button class="btn-default" type="submit">Update All Settings</button>
+				</div>
+				
+				<div class="clear"></div>
 				<div class="col-1-2 about-me">
 					<h3>About me</h3>
 					<div class="basic-form">
@@ -50,39 +50,22 @@
 					</div>
 				</div>
 			</div>
-		</section>
-		<div class="clear"></div>
-		<hr>
-
-		<section>
-			<div class="col-1-1"><h2>Advanced settings</h2></div>
 			<div class="section-ln">
-				<h3>Data Cutoff</h3>
+
+				<h2>Advanced settings</h2>
+				
 				<div class="col-1-2">
+					<h3>Data Cutoff</h3>
 					<div class="content-container">
 						<p>This setting determines how long the gap in the data should be before stopping analysis. The autofill settings determine what to record during this period. Default value is 15 Seconds</p>
-					</div>
-				</div>
-
-				<div class="col-1-2">
-					<div class="content-container">
 						<div id="range" class="neon-green"><?php echo set_value('set_data_cutoff', @$set_data_cutoff); ?> Seconds</div>
 						<input type="range" name="set_data_cutoff" min="3" max="150" value="<?php echo set_value('set_data_cutoff', @$set_data_cutoff); ?>"  onchange="showValue(this.value)" />
 					</div>
 				</div>
-			</div>
-			<div class="clear"></div>
-			<hr>
-
-			<div class="section-ln">
-				<h3>Data autofill</h3> 
 				<div class="col-1-2">
+					<h3>Data autofill</h3> 
 					<div class="content-container">
 						<p>These settings allow the user to decide how to handle data which isn't recorded at a rate of once per second. We recommend you do not use features such as Garmin's Auto Pause and particularly <em>Smart Recording</em> which can skew your data. It is a good idea to play around with these settings to suit your equipment and acitivity style.</p>
-					</div>
-				</div>
-				<div class="col-1-2">
-					<div class="content-container">
 						<ul>
 							<li><span class="neon-green">Autofill</span> (default): this fills in missing sample data up until the setting Data Cutoff point is reached. This is a good option where equipment doesn't record at the rate of once per second, or where frequent dropouts occur</li>
 							<li><span class="neon-green">SetZero</span>: works well with systems like TrainerRoad or where data dropouts are infrequent and data is recorded once per second. Try setting Data Cutoff low for best results.</li>
@@ -98,13 +81,14 @@
 			           	?>
 			        </div>
 				</div>
+				<div class="clear"></div>
+				<div class="col-1-1 bottom-update"><button class="btn-default" type="submit">Update All Settings</button></div>
 			</div>
+			
 
 		</section>
 		
-		<div class="clear"></div>
-		<hr>
-		<div class="col-1-1 bottom-update"><button class="btn" type="submit">Update Settings</button></div>
+		
 	</form>
 </div>
 <script>

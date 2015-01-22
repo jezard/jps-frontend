@@ -13,7 +13,7 @@
 				<input id="activity_title" name="activity_title" type="text">
 				<label for="activity_description">Notes:</label>
 				<textarea id="activity_notes" rows="5" name="activity_notes"></textarea>
-				<button class="btn" type="submit">Update</button>
+				<button class="btn-default" type="submit">Update</button>
 			</form>
 		</div>
 		</div>

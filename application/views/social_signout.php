@@ -12,8 +12,8 @@
 				</button>
 		    </div>
 		    
-		    <button class="btn" id="justsignout" >Just log out of JoulePerSecond (Recommended)</button><br>
-		    <button class="btn" id="disconnect" >Disconnect your Google account from JoulePerSecond ***</button>
+		    <button class="btn-default" id="justsignout" >Just log out of JoulePerSecond (Recommended)</button><br>
+		    <button class="btn-danger" id="disconnect" >Disconnect your Google account from JoulePerSecond ***</button>
 		    <p>*** WARNING - this option deletes all data/activities associated with your account!!!</p>
 		</div>
 	</div>

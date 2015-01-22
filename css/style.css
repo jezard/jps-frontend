@@ -208,10 +208,12 @@ big {
 	font-size: 125%;
 }
 ::selection {
-	background: #00D1FD; /* Safari */
+	background: #FB4B02; /* Safari */
+	color:white;
 	}
 ::-moz-selection {
-	background: #00D1FD; /* Firefox */
+	background: #FB4B02; /* Firefox */
+	color:white;
 }
 
 /*--------------------------------------------------------------
@@ -803,31 +805,20 @@ body {
 }
 /*styles*/
 select{
-	font-size: 24px;
-	padding: 10px 5px;
-	font-weight: 300;
-	margin-bottom: 15px;
-	width:200px;
+	padding: 4px;
 	border-radius:3px;
-	display: block;
-	margin:0 auto 30px;
 }
 input[type="text"], 
 input[type="number"],
 input[type="email"], 
 input[type="password"], 
 textarea{
-/*	font-size: 24px;
-	
-	font-weight: 300;
-	width:200px;*/
 	padding: 2px 5px;
 	border-radius:3px;
 	margin-bottom: 15px;
 	display: block;
-	/*margin:0 auto 30px;*/
 }
-.top-update .btn, .bottom-update .btn, .ride-basic .btn {
+/*.top-update .btn, .bottom-update .btn, .ride-basic .btn {
 	
 	width: 200px;
 	color: #FFF;
@@ -850,7 +841,7 @@ textarea{
 }
 .bottom-update .btn, .basic-form .btn {
 	margin: 30px auto;
-}
+}*/
 #my-gender{
 	margin: 0;
 }
@@ -871,6 +862,7 @@ textarea{
 }
 table, .chart, #calendar, .basic-form{
 	margin-bottom: 15px;
+	border-collapse: separate!important;
 }
 
 
@@ -986,13 +978,13 @@ label{
 	display: inline;
 	font-weight: bold;
 }
-#filter-update button, #tss-update button, .upload-form button, .login-form button, .signup-form button{
+/*#filter-update button, #tss-update button, .upload-form button, .login-form button, .signup-form button{
 	padding:4px;
 	margin-left: 10px;
 	background: #6DD300;
 	color:white;
 
-}
+}*/
 #filter-update select{
 	font-family: monospace;
 	font-size: 12px;

@@ -10,11 +10,16 @@
 <meta charset="utf-8">
 <!-- <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,100italic,300italic,400italic' rel='stylesheet' type='text/css'> -->
 <link rel='stylesheet' href='<?php echo $this->config->item('base_url'); ?>css/style.css' type='text/css' media='all' />
+<!-- Bootstrap -->
+<link href="http://joulepersecond.com/bootstrap-3.3.2/css/bootstrap.min.css" rel="stylesheet">
 <link rel='stylesheet' href='<?php echo $this->config->item('base_url'); ?>css/light.css' type='text/css' media='all' />
+<link href="http://joulepersecond.com/bootstrap-3.3.2/css/bootstrap-theme.css" rel="stylesheet">
 
 
 <link href="http://joulepersecond.com/js/calendar/css/dp_calendar.css" type="text/css" rel="stylesheet" />
 <link href="http://joulepersecond.com/js/calendar/themes/ui-lightness/jquery.ui.all.css" type="text/css" rel="stylesheet" />
+
+
 
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -30,6 +35,7 @@
 
 <script src="https://apis.google.com/js/client:platform.js"></script>
 <script src="http://joulepersecond.com/js/main.js"></script>
+<script src="http://joulepersecond.com/bootstrap-3.3.2/js/bootstrap.min.js"></script>
 
 
 

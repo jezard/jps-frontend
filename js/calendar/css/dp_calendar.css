@@ -92,6 +92,9 @@
 	background:url(../images/dp_calendar/hover_dates_has_event.png) #6DD300 no-repeat 50% 0;
 	color:#fff !important;
 	font-weight: 700;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 }
 
 .dp_calendar .div_dates .day_name {

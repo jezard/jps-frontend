@@ -8,7 +8,7 @@
 
 		<br /><br />
 
-		<button class="btn" type="submit">Upload</button>
+		<button class="btn-default" type="submit">Upload</button>
 
 		</form>
 	</div>
