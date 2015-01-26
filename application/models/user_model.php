@@ -184,6 +184,8 @@ class User_model extends CI_Model {
       $this->my_rhr = $this->input->post('my_rhr');
       $this->my_ftp = $this->input->post('my_ftp');
       $this->my_vo2 = $this->input->post('my_vo2');
+      $this->my_location = $this->input->post('my_location');
+      $this->is_public = $this->input->post('is_public');
 
       $this->db->where('email', $email);
       if($this->db->update('user', array(
@@ -198,7 +200,9 @@ class User_model extends CI_Model {
         'my_thr' => $this->my_thr,
         'my_rhr' => $this->my_rhr,
         'my_ftp' => $this->my_ftp,
-        'my_vo2' => $this->my_vo2
+        'my_vo2' => $this->my_vo2,
+        'my_location' => $this->my_location,
+        'is_public'   => $this->is_public
         )))
       {
         return true;
@@ -223,7 +227,9 @@ class User_model extends CI_Model {
                         'my_thr' => $vals->my_thr,
                         'my_rhr' => $vals->my_rhr,
                         'my_ftp' => $vals->my_ftp,
-                        'my_vo2' => $vals->my_vo2
+                        'my_vo2' => $vals->my_vo2,
+                        'my_location' => $vals->my_location,
+                        'is_public' => $vals->is_public
       );
       return $settings;
     }

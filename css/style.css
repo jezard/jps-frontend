@@ -842,8 +842,8 @@ textarea{
 .bottom-update .btn, .basic-form .btn {
 	margin: 30px auto;
 }*/
-#my-gender{
-	margin: 0;
+#my-gender, #my-location{
+	margin-bottom: 15px;
 }
 
 .ride-basic label{
