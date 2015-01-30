@@ -103,6 +103,11 @@ jQuery(document).ready(function(){
 	);
 
 	var d = new Date(localStorage.getItem("selectedDate"));
+	var today = new Date();
+
+	if(d.getFullYear() == '1970'){
+		d = today;
+	}
 
 	jQuery("#calendar").dp_calendar({
 		events_array: events_array,
