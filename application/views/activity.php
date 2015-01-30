@@ -88,8 +88,11 @@ jQuery(document).ready(function(){
 
 				$activityDate = date_create_from_format('Y-m-d H:i:s', $activity['activity_date']);
 				$html .= '{
-					startDate: new Date('.date_format($activityDate, 'Y, m-1, d, H, i O').'),
-					endDate: new Date('.date_format($activityDate, 'Y, m-1, d, H, i O').'),
+					startDate: new Date('.date_format($activityDate, 'Y, (n-1), j, G').'),
+					endDate: new Date('.date_format($activityDate, 'Y, (n-1), j, G').'),
+					//alternative method...
+					/*startDate: new Date('.date_format($activityDate, 'Y').', '. (int)(date_format($activityDate, 'm')-1) .', '.date_format($activityDate, 'd, H, i, s').'),
+					endDate: new Date('.date_format($activityDate, 'Y').', '. (int)(date_format($activityDate, 'm')-1) .', '.date_format($activityDate, 'd, H, i, s').'),*/
 					title: "'.date_format($activityDate, 'H:i').' :: '.$activity['activity_name'].' view: &raquo;",
 					description: "'.$activity['activity_id'].'"
 					},';

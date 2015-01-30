@@ -35,7 +35,6 @@ function getJobList(){
 
 		//let the user know how many files are left to process
 		jQuery('#parse-progress').html('<p class="backlog">Files left to process: [<span class="highlight">' + files.length + '</span>]</p><progress value="'+ progress + '" max="' + totalfiles + '"></progress>');
-		
 		//decide whether more files still need to be processed, or whether to end now
 		if(files.length > 0)
 		{

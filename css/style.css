@@ -1014,6 +1014,39 @@ label{
 	display: block;
 	margin: 5px 0;
 }
+
+progress[value] {
+  /* Reset the default appearance */
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  
+  /* Get rid of default border in Firefox. */
+  border: none;
+
+  width: 50%;
+  height: 20px;
+}
+progress[value]::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+	/*background-image:
+	   -webkit-linear-gradient(top,  #fb4b02 0%,#db4000 100%); */
+}
+progress[value]::-moz-progress-bar { 
+  background-color: #eee;
+  border-radius: 2px; 
+  background-size: 35px 20px, 100% 100%, 100% 100%; 
+}
+progress[value]::-webkit-progress-value {
+    border-radius: 2px; 
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+progress[value]::-moz-progress-value {
+    border-radius: 2px; 
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+}
 @media handheld, only screen and (max-width: 767px) {
 
 	
@@ -1052,7 +1085,7 @@ nav.top-nav li{
 	border-radius: 5px;
 }
 nav.top-nav li a{
-	margin-top: 2px;
+/*	margin-top: 2px;*/
 	line-height: 20px;
 	display: block;
 	float: left;
@@ -1100,6 +1133,24 @@ img.menu-icon{
 	display: block;
 	float: left;
 	padding-right: 5px;
+}
+nav.top-nav li {
+	box-shadow: 0 1px 0 rgba(255,255,255,0.3);
+	color: #FFF;
+	line-height: 1em;
+	text-shadow: 0 -1px #0d0d0d;
+}
+nav.top-nav li:hover{
+	background: #fb4b02; /* Old browsers */
+	background: -moz-linear-gradient(top,  #fb4b02 0%, #db4000 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fb4b02), color-stop(100%,#db4000)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #fb4b02 0%,#db4000 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #fb4b02 0%,#db4000 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #fb4b02 0%,#db4000 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #fb4b02 0%,#db4000 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fb4b02', endColorstr='#db4000',GradientType=0 ); /* IE6-9 */
+
+
 }
 main{
 	/*background: url(../images/graph-paper-blog.gif);*/
