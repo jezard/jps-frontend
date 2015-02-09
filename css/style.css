@@ -1165,6 +1165,15 @@ nav.top-nav li:hover{
 
 
 }
+.blurb p, .blurb ul.li{
+	line-height: 1.5em;
+}
+.jps-slider img{
+	border-radius: 3px;
+	-webkit-box-shadow: 0px 6px 8px -2px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow: 0px 6px 8px -2px rgba(50, 50, 50, 0.75);
+	box-shadow: 0px 6px 8px -2px rgba(50, 50, 50, 0.75);
+}
 main{
 	/*background: url(../images/graph-paper-blog.gif);*/
 	/*background: url(http://joulepersecond.com/images/pillow-logo.png) no-repeat center -30px;*/

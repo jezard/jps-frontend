@@ -95,7 +95,7 @@
                 $AutoPlay: true,                                    //[Optional] Whether to auto play, to enable slideshow, this option must be set to true, default value is false
                 $AutoPlaySteps: 1,                                  //[Optional] Steps to go for each navigation request (this options applys only when slideshow disabled), the default value is 1
                 $AutoPlayInterval: 4000,                            //[Optional] Interval (in milliseconds) to go for next slide since the previous stopped if the slider is auto playing, default value is 3000
-                $PauseOnHover: 1,                               //[Optional] Whether to pause when mouse over if a slider is auto playing, 0 no pause, 1 pause for desktop, 2 pause for touch device, 3 pause for desktop and touch device, 4 freeze for desktop, 8 freeze for touch device, 12 freeze for desktop and touch device, default value is 1
+                $PauseOnHover: 0,                               //[Optional] Whether to pause when mouse over if a slider is auto playing, 0 no pause, 1 pause for desktop, 2 pause for touch device, 3 pause for desktop and touch device, 4 freeze for desktop, 8 freeze for touch device, 12 freeze for desktop and touch device, default value is 1
 
                 $ArrowKeyNavigation: true,   			            //[Optional] Allows keyboard (arrow key) navigation or not, default value is false
                 $SlideDuration: 500,                                //[Optional] Specifies default duration (swipe) for slide in milliseconds, default value is 500
@@ -201,17 +201,18 @@
     </script>
     <!-- Jssor Slider Begin -->
     <div class="grid grid-pad">
+    	<h1 class="primary-heading">This is JoulePerSecond (Beta)!</h1>
     	<section class="section-ln">
-    		<h1>This is JoulePerSecond Beta!</h1>
+    		
     		<h2>Product tour</h2>
-    		<div class="content-container" style="overflow:hidden">
+    		<div class="content-container jps-slider" style="overflow:hidden; background: url(http://joulepersecond.com/images/LightTransBg.png);">
 			    <!-- You can move inline styles to css file or css block. -->
 			    <!-- Jssor Slider Begin -->
 			    <!-- You can move inline styles to css file or css block. -->
 			        <div id="slider1_container" style="position: relative; margin: 0px 5px 5px 0px; float: left; top: 0px; left: 0px; width: 1000px;
-			            height: 400px; overflow: hidden;">
+			            height: 420px; overflow: hidden;">
 			            <!-- Slides Container -->
-			            <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1000px; height: 400px;
+			            <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1000px; height: 420px;
 			                overflow: hidden;">
 			                <div>
 				                <a u=image href="#"><img src="http://joulepersecond.com/js/slider/img/screenshots/activity-finder.png" /></a>
@@ -367,9 +368,51 @@
 				        <!-- Arrow Navigator Skin End -->
 				        <a style="display: none" href="http://www.jssor.com">jQuery Slider</a>
 			        </div>
-			        <p>Note: screenshots above are taken from a developement version, and may not reflect the official release version</p>
 			        <!-- Jssor Slider End -->
 			    <!-- Jssor Slider End -->
 			</div>
+		</section>
+		<section class="section-ln">
+			<article class="blurb">
+				<h2>What is JoulePerSecond?</h2>
+				<div class="col-1-2">
+					
+					<h3>Objectives</h3>
+					<div class="content-container" >
+						<p>JoulePerSecond is an analytics for serious cyclists. Our Primary goal to provide a decision support system for your training rides – what to do and when to do it so that you can be at your peak when you want to be.  Our objective is to provide the tools which will help you to go faster when it counts.</p>
+						<p>JoulePerSecond Beta provides a toolkit with some very useful features – there’s a lot to do before we can begin to say we’re finished – in fact that’s why we have a beta version, we’d like your input – what are your requirements. The most popular requests are those most likely candidates for early implementation to JoulePerSecond. JoulePerSecond is a tool for Cyclists, made by Cyclists. Indeed the reason for building JoulePerSecond was from frustration at a certain other online tool not listening to the requests of its premium users.</p>
+						<p>JoulePerSecond is about showing performance data rather that where you’ve been or who you’ve beaten on a certain stretch of road. We serious cyclists often spend many hours cycling indoors. JoulePerSecond is particularly useful when extending the analysis provided by other systems especially TrainerRoad, whilst merging other outdoor training and race data.</p>
+					</div>
+					<h3>JoulePerSecond? Watt?</h3>
+					<div class="content-container" >
+						<p>For those that don’t know, one Joule per Second is one Watt, the commonly used unit of power in many applications including cycling. Our web app is targeted particularly to those who use a power meter, although we use algorithms based on heart rate for times when we like to go off on a bike without a power meter, or our power meter batteries die! Additionally, we allow a manual override of the training load for an activity.</p>
+					</div>
+					<h3>What are the limitations of the Beta version?</h3>
+					<div class="content-container" >
+						<p>The Beta version is free to use – its main purpose is to iron out any bugs and serious issues. It is possible that we might need to change the structure of the stored data during this time – so we don’t make any guarantees about retaining your ride data. Obviously we won’t remove any ride data unless we find a problem that we feasibly can’t migrate to a new format. Hopefully we’re already beyond that point. The servers used in the Beta version are scaled down from that which we will use in production; hence data processing is likely to be slower than what you can expect in the future. There may also be times when the site is down so that we can implement the feedback you give us.</p>
+						<p>There isn’t much of a social function yet although this is important to us, we consider getting the basic app running first priority, but sharing (and showing off!) of your rides is next on our agenda. Most of what’s available in the Beta version will remain free in the release version. Exceptions from the free version likely to be (we reserve the right to change these during the Beta testing phase):</p>
+						<ul>
+							<li>Historical ride data only shown for the last 90 days (although training loads will still be calculated for periods extending up to one year)</li>
+							<li>Limitation on number of activities you can upload per week (limited to four)</li>
+							<li>Activity files downloadable in .tcx format will not be available for free users</li>
+							<li>We propose to develop a range of advanced tools that spot trends and patterns in user’s ride data. Some of these new tools won’t be available to free users</li>
+							<li>Additional fine tuning settings (e.g. setting various zones) – some these won’t be available to free users</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-1-2">
+					<h3>Technical information</h3>
+					<div class="content-container" >
+						<ul>
+							<li>JoulePerSecond requires a modern HTML5 capable browser – we’d rather invest the time in creating new exciting features rather than attempting to support ancient browsers.</li>
+							<li>JavaSript must be enabled</li>
+							<li>Cookies must be enabled – our system uses several modern web technologies. This information is readily shared between them using the cookies stored in your browser session. We also take advantage of the modern browser’s storage functionality, although the system will operate without it.</li>
+							<li>The release version of JoulePerSecond will be more mobile friendly – we know how important being able to analyse post-ride data is whilst our partners try on various clothing items at the mall…</li>
+							<li>We are looking to implement an API for third parties to access a user’s shared data (shared by permission).</li>
+						</ul>
+						<small>Note: screenshots above are taken from a developement version, and may not reflect the official release version</small>
+					</div>
+				</div>
+			</article>
 		</section>
 	</div>
