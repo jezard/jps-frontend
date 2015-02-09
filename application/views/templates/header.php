@@ -22,6 +22,7 @@
 
 
 
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="//use.typekit.net/mbs5qua.js"></script>
 <!-- jQuery --> 
@@ -32,6 +33,7 @@
 <script src="http://joulepersecond.com/js/calendar/ui/jquery.ui.datepicker.js"></script> 
 <script src="http://joulepersecond.com/js/calendar/js/date.js"></script> 
 <script src="http://joulepersecond.com/js/calendar/js/jquery.dp_calendar.js"></script>
+
 
 <script src="https://apis.google.com/js/client:platform.js"></script>
 <script src="http://joulepersecond.com/js/main.js"></script>

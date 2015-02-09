@@ -3,7 +3,17 @@
 
 <footer class="site-footer">
 <div class="grid grid-pad">
-	Footer
+	<div class="col-1-2 footer-links-text">
+		<ul>
+			<li><a href="#">Privacy Policy</a></li>
+			<li> | </li>
+			<li><a href="#">Cookies</a></li>
+			<li> | </li>
+			<li><a href="#">Browser Requirements</a></li>
+			<li> | </li>
+			<li><a href="#">Contact us</a></li>
+		</ul>
+	<div>
 </div>
 </footer>
 </body>
