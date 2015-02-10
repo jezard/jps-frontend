@@ -89,28 +89,28 @@ h1.primary-heading{
 	border: 1px solid white;
 }
 h2{
-	color: ##5A5A5D;
-	font-weight: bold;
-	font-size: 24px;
+	color: #5A5A5D;
+	font-size: 25px;
+	margin: 10px 0;
 }
  h3 ,.m-header {
 	padding: 5px 10px;
-	background-color: #5EB300;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
-	color: white;
 	margin-bottom: 10px!important;
 	margin-top: 0;
 	text-shadow: 0 -1px #0d0d0d;
-	background: #6dd300; /* Old browsers */
-	background: -moz-linear-gradient(top,  #6dd300 0%, #5eb300 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#6dd300), color-stop(100%,#5eb300)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #6dd300 0%,#5eb300 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #6dd300 0%,#5eb300 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #6dd300 0%,#5eb300 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #6dd300 0%,#5eb300 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6dd300', endColorstr='#5eb300',GradientType=0 ); /* IE6-9 */
+
+	color: white;
+	background: #6dd300;
+	background: -moz-linear-gradient(top,  #6dd300 0%, #5eb300 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#6dd300), color-stop(100%,#5eb300)); 
+	background: -webkit-linear-gradient(top,  #6dd300 0%,#5eb300 100%); 
+	background: -o-linear-gradient(top,  #6dd300 0%,#5eb300 100%); 
+	background: -ms-linear-gradient(top,  #6dd300 0%,#5eb300 100%); 
+	background: linear-gradient(to bottom,  #6dd300 0%,#5eb300 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6dd300', endColorstr='#5eb300',GradientType=0 ); 
 
 }
 progress[value]::-webkit-progress-value {
@@ -154,6 +154,11 @@ table, .chart, #calendar, .basic-form, .forum-container, .content-container{
 .forum-container, .content-container{
 	padding:15px;
 	margin-bottom: 20px;
+	overflow: hidden;
+}
+.blurb .content-container img{
+	float:left;
+	margin:10px 15px;
 }
 textarea{
 	color:#333;
@@ -165,4 +170,20 @@ textarea{
 .footer-links-text li {
 	color:#fff;
 	text-shadow: 0 -1px #0d0d0d;
+}
+/*--------------------------------------------------------------
+Links
+--------------------------------------------------------------*/
+a {
+	color:#fb4b02;
+	text-decoration:none;
+}
+a:visited {
+	color:#fb4b02;
+}
+a:hover,
+a:focus,
+a:active {
+	color: #fb4b02;
+	text-decoration:underline;
 }
