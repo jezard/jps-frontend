@@ -1158,7 +1158,7 @@ nav.top-nav li:hover{
 .blurb p, .blurb li{
 	line-height: 2em;
 }
-.jps-slider img{
+.jps-slider img.image-shadow{
 	border-radius: 5px;
 	padding: 5px;
 	border: 1px #ccc solid;
@@ -1190,9 +1190,9 @@ h3 {
 	color: #fb4b02;
 	margin-bottom: 0.3em;
 }
-.homepage h3 img{
+.homepage h3 img, img.show-icon{
 	height:48px;
-	padding:2px 15px 2px 5px;
+	padding:5px 15px 5px 5px;
 }
 .section-ln {
 	margin-left: 0px;

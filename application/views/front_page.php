@@ -22,8 +22,10 @@
 			text-shadow: 0 -1px #0d0d0d;
 			font-size: 20px;
 			padding:0 10px;
+            transform:none!important;
+            opacity: 1!important;
         }
-        .captionOrange{
+/*        .captionOrange{
             background: #fff;
             text-shadow: none;
             font-size: 20px;
@@ -32,8 +34,7 @@
             border: 1px solid #ccc;
             transform:none!important;
             opacity: 1!important;
-
-        }
+        }*/
         .captionBlack
         {
         	font-size:16px;
@@ -51,7 +52,7 @@
             text-decoration: underline;
             background-color: #eeeeee;
             background-color: rgba(238, 238, 238, 0.7);
-        }#5A5A5D 
+        }
         .bricon
         {
             background: url(http://joulepersecond.com/js/slider/img/browser-icons.png);
@@ -226,99 +227,99 @@
 			            <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1000px; height: 420px;
 			                overflow: hidden;">
 			                <div>
-				                <a u=image href="#"><img src="http://joulepersecond.com/js/slider/img/screenshots/activity-finder.png" /></a>
-				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top: 0; min-width:300px; height:auto;"> 
-				                Find activities easily and make notes
+				                <a u=image href="#"><img class="image-shadow"  src="http://joulepersecond.com/js/slider/img/screenshots/activity-finder.png" /></a>
+				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top: 0;"> 
+				                    <img class="show-icon" src="http://joulepersecond.com/images/h3-icons/wt-logo.png" alt="icon" />Find activities easily and make notes
 				                </div>
 				            </div>
 				            <div>
-				                <a u=image href="#"><img src="http://joulepersecond.com/js/slider/img/screenshots/ride-summary.png" /></a>
-				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top: 0; min-width:300px; height:auto;"> 
-				                At a glance stats
+				                <a u=image href="#"><img class="image-shadow" src="http://joulepersecond.com/js/slider/img/screenshots/ride-summary.png" /></a>
+				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top: 0;"> 
+				                    <img class="show-icon" src="http://joulepersecond.com/images/h3-icons/pie-chart.png" alt="icon" />At a glance stats
 				                </div>
 				            </div>
 				            <div>
-				                <a u=image href="#"><img src="http://joulepersecond.com/js/slider/img/screenshots/activity-overview.png" /></a>
-				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top: 0; min-width:300px; height:auto;"> 
-				                Zoom in on an activity
+				                <a u=image href="#"><img class="image-shadow" src="http://joulepersecond.com/js/slider/img/screenshots/activity-overview.png" /></a>
+				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top: 0;"> 
+				                    <img class="show-icon" src="http://joulepersecond.com/images/h3-icons/magnifier.png" alt="icon" />Zoom in on an activity
 				                </div>
 				            </div>
 				            <div>
-				                <a u=image href="#"><img src="http://joulepersecond.com/js/slider/img/screenshots/heartrate-dist.png" /></a>
-				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top: 0; min-width:300px; height:auto;"> 
-				                Heartrate distribution
+				                <a u=image href="#"><img class="image-shadow" src="http://joulepersecond.com/js/slider/img/screenshots/heartrate-dist.png" /></a>
+				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top: 0;"> 
+				                    <img class="show-icon" src="http://joulepersecond.com/images/h3-icons/pie-chart.png" alt="icon" />Heartrate distribution
 				                </div>
 				            </div>
 				            <div>
-				                <a u=image href="#"><img src="http://joulepersecond.com/js/slider/img/screenshots/power-dist.png" /></a>
-				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0; min-width:300px; height:auto;"> 
-				                Power distribution
+				                <a u=image href="#"><img class="image-shadow" src="http://joulepersecond.com/js/slider/img/screenshots/power-dist.png" /></a>
+				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0;"> 
+				                    <img class="show-icon" src="http://joulepersecond.com/images/h3-icons/pie-chart.png" alt="icon" />Power distribution
 				                </div>
 				            </div>
 				            <div>
-				                <a u=image href="#"><img src="http://joulepersecond.com/js/slider/img/screenshots/mmp-activity.png" /></a>
-				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0; min-width:300px; height:auto;"> 
-				                Mean Maximal power
+				                <a u=image href="#"><img class="image-shadow" src="http://joulepersecond.com/js/slider/img/screenshots/mmp-activity.png" /></a>
+				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0;"> 
+				                    <img class="show-icon" src="http://joulepersecond.com/images/h3-icons/target.png" alt="icon" />Mean Maximal power
 				                </div>
 				            </div>
 				            <div>
-				                <a u=image href="#"><img src="http://joulepersecond.com/js/slider/img/screenshots/lap-summaries.png" /></a>
-				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0; min-width:300px; height:auto;"> 
-				                Lap summaries
+				                <a u=image href="#"><img class="image-shadow" src="http://joulepersecond.com/js/slider/img/screenshots/lap-summaries.png" /></a>
+				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0;"> 
+				                    <img class="show-icon" src="http://joulepersecond.com/images/h3-icons/calculation.png" alt="icon" />Lap summaries
 				                </div>
 				            </div>
 				            <div>
-				                <a u=image href="#"><img src="http://joulepersecond.com/js/slider/img/screenshots/analysis-filter.png" /></a>
-				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0; min-width:300px; height:auto;"> 
-				                Show only what you need
+				                <a u=image href="#"><img class="image-shadow" src="http://joulepersecond.com/js/slider/img/screenshots/analysis-filter.png" /></a>
+				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0;"> 
+				                    <img class="show-icon" src="http://joulepersecond.com/images/h3-icons/settings.png" alt="icon" />Show only what you need
 				                </div>
 				            </div>
 				            <div>
-				                <a u=image href="#"><img src="http://joulepersecond.com/js/slider/img/screenshots/training-load.png" /></a>
-				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0; min-width:300px; height:auto;"> 
-				                Compare performance with fitness and fatigue
+				                <a u=image href="#"><img class="image-shadow" src="http://joulepersecond.com/js/slider/img/screenshots/training-load.png" /></a>
+				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0;"> 
+				                    <img class="show-icon" src="http://joulepersecond.com/images/h3-icons/whats-watt.png" alt="icon" />Compare performance with fitness and fatigue
 				                </div>
 				            </div>
 				            <div>
-				                <a u=image href="#"><img src="http://joulepersecond.com/js/slider/img/screenshots/mean-max-power-3.png" /></a>
-				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0; min-width:300px; height:auto;"> 
-				                Compare Mean Maximal power against previous periods
+				                <a u=image href="#"><img class="image-shadow" src="http://joulepersecond.com/js/slider/img/screenshots/mean-max-power-3.png" /></a>
+				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0;"> 
+				                    <img class="show-icon" src="http://joulepersecond.com/images/h3-icons/monitoring.png" alt="icon" />Compare Mean Maximal power against previous periods
 				                </div>
 				            </div>
 				            <div>
-				                <a u=image href="#"><img src="http://joulepersecond.com/js/slider/img/screenshots/tss-vs-duration.png" /></a>
-				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0; min-width:300px; height:auto;"> 
-				                Monitor weekly training load and duration
+				                <a u=image href="#"><img class="image-shadow" src="http://joulepersecond.com/js/slider/img/screenshots/tss-vs-duration.png" /></a>
+				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0;"> 
+				                    <img class="show-icon" src="http://joulepersecond.com/images/h3-icons/monitoring.png" alt="icon" />Monitor weekly training load and duration
 				                </div>
 				            </div>
 				            <div>
-				                <a u=image href="#"><img src="http://joulepersecond.com/js/slider/img/screenshots/heartrate-by-zone.png" /></a>
-				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0; min-width:300px; height:auto;"> 
-				                Analyse time in heartrate zones
+				                <a u=image href="#"><img class="image-shadow" src="http://joulepersecond.com/js/slider/img/screenshots/heartrate-by-zone.png" /></a>
+				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0;"> 
+				                    <img class="show-icon" src="http://joulepersecond.com/images/h3-icons/objectives.png" alt="icon" />Analyse time in heartrate zones
 				                </div>
 				            </div>
 				            <div>
-				                <a u=image href="#"><img src="http://joulepersecond.com/js/slider/img/screenshots/power-by-zone.png" /></a>
-				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0; min-width:300px; height:auto;"> 
-				                Analyse time in power zones
+				                <a u=image href="#"><img class="image-shadow" src="http://joulepersecond.com/js/slider/img/screenshots/power-by-zone.png" /></a>
+				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0;"> 
+				                    <img class="show-icon" src="http://joulepersecond.com/images/h3-icons/objectives.png" alt="icon" />Analyse time in power zones
 				                </div>
 				            </div>
 				            <div>
-				                <a u=image href="#"><img src="http://joulepersecond.com/js/slider/img/screenshots/heart-vs-power.png" /></a>
-				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0; min-width:300px; height:auto;"> 
-				                Note trends between key metrics
+				                <a u=image href="#"><img class="image-shadow" src="http://joulepersecond.com/js/slider/img/screenshots/heart-vs-power.png" /></a>
+				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0;"> 
+				                    <img class="show-icon" src="http://joulepersecond.com/images/h3-icons/intelligence.png" alt="icon" />Note trends between key metrics
 				                </div>
 				            </div>
 				            <div>
-				                <a u=image href="#"><img src="http://joulepersecond.com/js/slider/img/screenshots/settings.png" /></a>
-				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0; min-width:300px; height:auto;"> 
-				                Basic settings. Sharing and API coming soon!
+				                <a u=image href="#"><img class="image-shadow" src="http://joulepersecond.com/js/slider/img/screenshots/settings.png" /></a>
+				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0;"> 
+				                    <img class="show-icon" src="http://joulepersecond.com/images/h3-icons/settings.png" alt="icon" />Basic settings. Sharing and API coming soon!
 				                </div>
 				            </div>
 				            <div>
-				                <a u=image href="#"><img src="http://joulepersecond.com/js/slider/img/screenshots/advanced-settings.png" /></a>
-				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0; min-width:300px; height:auto;"> 
-				                Advanced settings - even more comprehensive settings will be available to paid members...
+				                <a u=image href="#"><img class="image-shadow" src="http://joulepersecond.com/js/slider/img/screenshots/advanced-settings.png" /></a>
+				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0;"> 
+				                    <img class="show-icon" src="http://joulepersecond.com/images/h3-icons/settings.png" alt="icon" />Advanced settings - even more comprehensive settings will be available to paid members...
 				                </div>
 				            </div>
 			            </div>
