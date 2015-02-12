@@ -103,6 +103,7 @@
             ];
 
             var options = {
+                $HWA: false,
             	$FillMode: 1,                                       //[Optional] The way to fill image in slide, 0 stretch, 1 contain (keep aspect ratio and put all inside slide), 2 cover (keep aspect ratio and cover whole slide), 4 actual size, 5 contain for large image, actual size for small image, default value is 0
                 $AutoPlay: true,                                    //[Optional] Whether to auto play, to enable slideshow, this option must be set to true, default value is false
                 $AutoPlaySteps: 1,                                  //[Optional] Steps to go for each navigation request (this options applys only when slideshow disabled), the default value is 1
@@ -222,9 +223,9 @@
 			    <!-- Jssor Slider Begin -->
 			    <!-- You can move inline styles to css file or css block. -->
 			        <div id="slider1_container" style="position: relative; margin: 0px 5px 5px 0px; float: left; top: 0px; left: 0px; width: 1000px;
-			            height: 420px; overflow: hidden;">
+			            height: 450px; overflow: hidden;">
 			            <!-- Slides Container -->
-			            <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1000px; height: 420px;
+			            <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1000px; height: 450px;
 			                overflow: hidden;">
 			                <div>
 				                <a u=image href="#"><img class="image-shadow"  src="http://joulepersecond.com/js/slider/img/screenshots/activity-finder.png" /></a>
@@ -372,10 +373,10 @@
 				            .jssora05rdn { background-position: -310px -40px; }
 				        </style>
 				        <!-- Arrow Left -->
-				        <span u="arrowleft" class="jssora05l" style="width: 40px; height: 40px; top: 123px; left: 8px;">
+				        <span u="arrowleft" class="jssora05l" style="width: 40px; height: 40px; top: 150px; left: 15px; background-repeat:no-repeat; border-radius: 50%; box-shadow: 0px 6px 8px -2px rgba(50, 50, 50, 0.75);">
 				        </span>
 				        <!-- Arrow Right -->
-				        <span u="arrowright" class="jssora05r" style="width: 40px; height: 40px; top: 123px; right: 8px">
+				        <span u="arrowright" class="jssora05r" style="width: 40px; height: 40px; top: 150px; right: 15px; background-repeat:no-repeat; border-radius: 50%; box-shadow: 0px 6px 8px -2px rgba(50, 50, 50, 0.75);">
 				        </span>
 				        <!-- Arrow Navigator Skin End -->
 				        <a style="display: none" href="http://www.jssor.com">jQuery Slider</a>

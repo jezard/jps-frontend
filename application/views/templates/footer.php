@@ -13,6 +13,11 @@
 			<li> | </li>
 			<li><a href="#">Contact us</a></li>
 		</ul>
+	</div>
+	<div class="col-1-2 footer-links-text-right">
+		<ul>
+			<li><a href="http://wizard.technology">&copy; Wizard Technology 2015</a></li>
+		</ul>
 	<div>
 </div>
 </footer>

@@ -167,6 +167,11 @@ textarea{
 	color:#6dd300;
 	text-shadow: 0 -1px #0d0d0d;
 }
+.footer-links-text-right li a{
+	color:#fb4b02;
+	text-shadow: 0 -1px #0d0d0d;
+	text-align: right;
+}
 .footer-links-text li {
 	color:#fff;
 	text-shadow: 0 -1px #0d0d0d;
