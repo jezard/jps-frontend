@@ -8,6 +8,7 @@ class Upload extends CI_Controller {
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('upload');
 		$this->load->helper('cookie');
+		$this->load->model('user_model', 'user', TRUE);
 		if ($this->input->cookie('valid_user'))
 		{
 			$this->email = $this->input->cookie('valid_user', false);
@@ -16,7 +17,8 @@ class Upload extends CI_Controller {
 
 	function index()
 	{
-		$this->load->view('templates/header', array('title' => 'Upload - '.$this->config->item('site_name')));
+		$user_image = $this->user->get_user_image($this->email);
+		$this->load->view('templates/header', array('title' => 'Upload - '.$this->config->item('site_name'), 'user_image' => $user_image));
 		$this->load->view('upload_form', array('message' => 'Upload your .fit or .tcx files below (we recommend uploading in smaller batches):'));
 		$this->load->view('templates/footer');
 	}

@@ -23,7 +23,7 @@ class User_file_model extends CI_Model{
 	}
 
 	function getjobs($email){
-		$jobs = [];
+		$jobs = array();
 		$query = $this->db->query("SELECT DISTINCT filename, filetype FROM user_file WHERE email = '$email'");
 		foreach($query->result_array() as $row){
 			//array_push($jobs, $row['filename']);
@@ -46,13 +46,28 @@ class User_file_model extends CI_Model{
 	}
 
 	function get_recent_activities($email){
-		$activities = [];
-		$query = $this->db->query("SELECT * FROM user_activity WHERE email = '$email'  ORDER BY activity_date DESC LIMIT 10");
+		$activities = array();
+		$query = $this->db->query("SELECT * FROM user_activity WHERE email = '$email'  ORDER BY activity_date DESC");
 		foreach($query->result_array() as $row){
 			array_push($activities, array('activity_id'=> $row['activity_id'], 'activity_date' => $row['activity_date'], 'activity_name' => $row['activity_name'], 'activity_type' => $row['activity_type']));
 		}
 		return $activities;
 	}
+
+	function get_activity_basic($id){
+		$query = $this->db->query("SELECT * FROM user_activity WHERE activity_id = '$id'");
+		foreach($query->result_array() as $row){
+			$activity_title = $row['activity_name'];
+			$activity_notes = $row['activity_notes'];
+			$activity_date = $row['activity_date'];
+		}
+		echo $activity_title.'^'.$activity_notes.'^'.$activity_date;
+	}
+
+	function update_basic($id, $name, $notes){
+		$query = $this->db->query("UPDATE user_activity SET activity_name = '$name', activity_notes = '$notes' WHERE activity_id = '$id'");
+	}
+
 	//delete intermediate record
 	function _deleteIntRec($filename){
 		$this->db->where('filename', $filename);

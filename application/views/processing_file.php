@@ -1,13 +1,18 @@
-<h3>File processing in progress</h3>
+
 
 <!-- this is the static outer frame use to house the ajax parse progress window  -->
-<div id="parse-window">
-	<!-- this is the dynamic inner section -->
-	<div id="parse-progress">
-		<!-- ajax content -->
+<section class="section-ln">
+	<h3>File processing ...</h3>
+	<div class="content-container">
+		<div id="parse-window">
+			<!-- this is the dynamic inner section -->
+			<div id="parse-progress">
+				<!-- ajax content -->
+			</div>
+			<div id="parse-results"></div>
+		</div>
 	</div>
-	<div id="parse-results"></div>
-</div>
+</section>
 <script type="text/javascript">
 
 //list of files, and progression
@@ -30,7 +35,6 @@ function getJobList(){
 
 		//let the user know how many files are left to process
 		jQuery('#parse-progress').html('<p class="backlog">Files left to process: [<span class="highlight">' + files.length + '</span>]</p><progress value="'+ progress + '" max="' + totalfiles + '"></progress>');
-		
 		//decide whether more files still need to be processed, or whether to end now
 		if(files.length > 0)
 		{
@@ -46,13 +50,18 @@ function getJobList(){
 		else
 		{
 			console.log('alls done');
+			jQuery('#parse-results').html('<p>' + localStorage.getItem("joulepersecond.com/upload_status") + '</p>');
+			localStorage.setItem("joulepersecond.com/upload_status", '');
 		}
 	});
+	
 }
 getJobList();
 
 
+
 function parseFiles(){
+	var status
 	console.log('parsing file: ' + files[0].filename);
 	jQuery.post(<?php echo '"'.$this->config->item('base_url').'index.php/process/parse"'; ?>, {filename: files[0].filename,
 																								filetype: files[0].filetype
@@ -66,6 +75,16 @@ function parseFiles(){
 		}).done(function(){
 			progress++;
 			console.log('progress: ' + progress, 'files-length: ' + files.length);
+			status = localStorage.getItem("joulepersecond.com/upload_status");
+			if (status == null) status = '';
+			localStorage.setItem("joulepersecond.com/upload_status", status + '<br>' + files[0].filename.slice(34) + ": Succeeded");
+			files = [];
+			getJobList();
+		}).fail(function(){
+			status = localStorage.getItem("joulepersecond.com/upload_status");
+			if (status == null) status = '';
+			localStorage.setItem("joulepersecond.com/upload_status",  status + '<br>' + files[0].filename.slice(34) + ": FAILED");
+			progress++;
 			files = [];
 			getJobList();
 		});

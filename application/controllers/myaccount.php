@@ -12,6 +12,7 @@ class Myaccount extends CI_Controller {
 		if ($this->input->cookie('valid_user'))
 		{
 			$this->email = $this->input->cookie('valid_user', false);
+			$this->user_image = $this->user->get_user_image($this->email);
 		}
 
 		$this->form_validation->set_rules('set_autofill', 'Autofill', 'required');
@@ -25,12 +26,14 @@ class Myaccount extends CI_Controller {
 		$this->form_validation->set_rules('my_rhr', 'Resting Heart Rate', 'integer|max_length[3]|less_than[120]');
 		$this->form_validation->set_rules('my_ftp', 'Functional Threshold Power', 'integer|max_length[3]|less_than[600]');
 		$this->form_validation->set_rules('my_vo2', 'VO2 Max', 'integer|max_length[2]|less_than[70]');
+		$this->form_validation->set_rules('my_location', 'Location', 'alpha|max_length[4]');
+
 
 
 		if ($this->form_validation->run() == FALSE)
 		{
-
-			$this->load->view('templates/header', array('title' => 'My Account - '.$this->config->item('site_name')));
+			
+			$this->load->view('templates/header', array('title' => 'My Account - '.$this->config->item('site_name'), 'user_image' => $this->user_image));
 			$this->load->view('my_account', $this->user->getsettings($this->email));
 			$this->load->view('templates/footer');
 		}
@@ -41,6 +44,7 @@ class Myaccount extends CI_Controller {
 			{
 				//update the settings cookies (these are retrieved by go for use in app)
 				$settings = $this->user->getsettings($this->email);
+
 
 				$cookie = array(
 				    'name'   => 'set_autofill',
@@ -143,14 +147,14 @@ class Myaccount extends CI_Controller {
 				$this->input->set_cookie($cookie);
 
 
-    			$this->load->view('templates/header', array('title' => 'Settings saved! - '.$this->config->item('site_name')));
-				$this->load->view('my_account');
+    			$this->load->view('templates/header', array('title' => 'Settings saved! - '.$this->config->item('site_name'), 'user_image' => $this->user_image));
+				$this->load->view('my_account', $settings);
 				$this->load->view('templates/footer');
 			}
 			//on database error
 			else
 			{
-				$this->load->view('templates/header', array('title' => 'Database error - '.$this->config->item('site_name')));
+				$this->load->view('templates/header', array('title' => 'Database error - '.$this->config->item('site_name'), 'user_image' => $this->user_image));
 				$this->load->view('my_account');
 				$this->load->view('templates/footer');
 			}

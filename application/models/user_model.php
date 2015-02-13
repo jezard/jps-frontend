@@ -20,6 +20,23 @@ class User_model extends CI_Model {
     	return $this->db->insert_id();
 
     }
+     function addViaSocialUser(){
+       //insert record to database
+      $this->username = $this->input->post('username');
+      $this->my_firstname = $this->input->post('my_firstname');
+      $this->my_lastname = $this->input->post('my_lastname');
+      $this->password ="via-social";
+      $this->verified = 1;
+      $this->email = $this->input->post('email');
+      $this->my_portrait = $this->input->post('my_portrait');
+      $this->db->insert('user', $this);
+
+      //TODO need to handle situation/error when attempt to sign up with email via social and address already exists from previous sign up using same email address
+
+      //return id
+      return $this->db->insert_id();
+
+    }
 	   //check that a user's credentials are valid, and that they have verified their email address
     function validate(){
     	$password = $this->input->post('password');
@@ -42,6 +59,28 @@ class User_model extends CI_Model {
     	return $validuser;
     }
 
+     //check that a user's credentials are valid
+    function validateViaSocial(){
+      //$password = $this->input->post('password');
+      $email = $this->input->post('email');
+      //$password = do_hash($this->config->item('salt').$password);
+
+      $this->db->where(array('email' => $email, 'verified' => 1));
+      $this->db->from('user'); 
+      $this->db->limit(1);
+      $query = $this->db->get();
+
+      $validuser = array();
+
+      foreach ($query->result() as $row)
+      {
+          array_push($validuser, $row->user_id);
+          array_push($validuser, $row->username);
+          array_push($validuser, $row->email);
+      }
+      return $validuser;
+    }
+
     
     function accountexists(){
 	//check that a user account exists
@@ -60,6 +99,17 @@ class User_model extends CI_Model {
            }
         }
         return false;
+    }
+
+    function get_user_image($email){
+      $this->db->select('user.my_portrait');
+      $this->db->where(array('email' => $email));
+      $this->db->from('user'); 
+      $this->db->limit(1);
+      $query = $this->db->get();
+      $image_link = $query->result();
+
+      return $image_link[0]->my_portrait;
     }
 
 
@@ -134,6 +184,8 @@ class User_model extends CI_Model {
       $this->my_rhr = $this->input->post('my_rhr');
       $this->my_ftp = $this->input->post('my_ftp');
       $this->my_vo2 = $this->input->post('my_vo2');
+      $this->my_location = $this->input->post('my_location');
+      $this->is_public = $this->input->post('is_public');
 
       $this->db->where('email', $email);
       if($this->db->update('user', array(
@@ -148,7 +200,9 @@ class User_model extends CI_Model {
         'my_thr' => $this->my_thr,
         'my_rhr' => $this->my_rhr,
         'my_ftp' => $this->my_ftp,
-        'my_vo2' => $this->my_vo2
+        'my_vo2' => $this->my_vo2,
+        'my_location' => $this->my_location,
+        'is_public'   => $this->is_public
         )))
       {
         return true;
@@ -173,7 +227,9 @@ class User_model extends CI_Model {
                         'my_thr' => $vals->my_thr,
                         'my_rhr' => $vals->my_rhr,
                         'my_ftp' => $vals->my_ftp,
-                        'my_vo2' => $vals->my_vo2
+                        'my_vo2' => $vals->my_vo2,
+                        'my_location' => $vals->my_location,
+                        'is_public' => $vals->is_public
       );
       return $settings;
     }

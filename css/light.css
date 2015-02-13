@@ -1,0 +1,194 @@
+body{
+	/*background: url(http://joulepersecond.com/images/logo_large_trans_bold.png) #fff no-repeat fixed center top;
+	background: url(http://joulepersecond.com/images/logo_large_trans_mono.png) #fff no-repeat fixed center top;*/
+	/*background: url(http://joulepersecond.com/images/MidTransBg.png) #6DD300;*/
+	/*background: url(http://joulepersecond.com/images/paper_bg.jpg) fixed;*/
+	margin: 0 0 40px 0;
+	background: url(http://joulepersecond.com/images/bg-img.jpg) fixed #ccc;
+	background-repeat:no-repeat;
+	/*background-position: center 100px;*/
+    background-size:cover;
+}
+.section-ln {
+	border: 1px #ddd solid;
+	/*background: url(http://joulepersecond.com/images/LightTransBg.png);*/
+	background-color: rgba(255,255,255,0.9);
+	-webkit-box-shadow: 0px 6px 8px -2px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    0px 6px 8px -2px rgba(50, 50, 50, 0.75);
+	box-shadow: 0px 6px 8px -2px rgba(50, 50, 50, 0.75);
+/*	-webkit-border-radius: 3px;
+	border-radius: 3px;*/
+}
+input[type="text"], input[type="number"]{
+	color: #999;
+	border: 1px solid #999;
+}
+.account-page input[type="number"] {
+	border-style: solid;
+}
+tr:hover{
+	background-color: #ccc;
+}
+.hdr-container{
+	background: #6dd300; /* Old browsers */
+	background: -moz-linear-gradient(top,  #6dd300 0%, #5eb300 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#6dd300), color-stop(100%,#5eb300)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #6dd300 0%,#5eb300 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #6dd300 0%,#5eb300 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #6dd300 0%,#5eb300 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #6dd300 0%,#5eb300 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6dd300', endColorstr='#5eb300',GradientType=0 ); /* IE6-9 */
+
+}
+nav.top-nav li{
+/*	background-color: #5EB300;*/
+	border: 1px solid #5EB300;
+	background: #396C00;
+	background: #417c00; /* Old browsers */
+	background: -moz-linear-gradient(top,  #417c00 0%, #396c00 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#417c00), color-stop(100%,#396c00)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #417c00 0%,#396c00 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #417c00 0%,#396c00 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #417c00 0%,#396c00 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #417c00 0%,#396c00 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#417c00', endColorstr='#396c00',GradientType=0 ); /* IE6-9 */
+
+}
+nav.top-nav li a{
+	color:white;
+}
+.account-settings h1{
+	color:#666;
+	margin: 0;
+}
+.account-settings .btn-default{
+	float:right;
+}
+h1{
+	font-weight: normal;
+}
+h1.primary-heading{
+	color:white;
+	text-shadow: 0 -1px #0d0d0d;
+}
+.value {
+	color: #000;
+	font-weight: bold;
+	font-family: monospace;
+}
+.heading-gray, .date_selected h3 {
+	background-color: #f9f9f9;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	color: #666;
+	padding: 5px 10px;
+	font-family: monospace;
+	font-size: 20px;
+	margin: 0;
+	border: 1px solid white;
+}
+h2{
+	color: #5A5A5D;
+	font-size: 25px;
+	margin: 10px 0;
+}
+ h3 ,.m-header {
+	padding: 5px 10px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	margin-bottom: 10px!important;
+	margin-top: 0;
+	text-shadow: 0 -1px #0d0d0d;
+
+	color: white;
+	background: #6dd300;
+	background: -moz-linear-gradient(top,  #6dd300 0%, #5eb300 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#6dd300), color-stop(100%,#5eb300)); 
+	background: -webkit-linear-gradient(top,  #6dd300 0%,#5eb300 100%); 
+	background: -o-linear-gradient(top,  #6dd300 0%,#5eb300 100%); 
+	background: -ms-linear-gradient(top,  #6dd300 0%,#5eb300 100%); 
+	background: linear-gradient(to bottom,  #6dd300 0%,#5eb300 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6dd300', endColorstr='#5eb300',GradientType=0 ); 
+
+}
+progress[value]::-webkit-progress-value {
+  background-image:
+	   -webkit-linear-gradient(top,  #6dd300 0%,#5eb300 100%);
+}
+progress[value]::-moz-progress-bar { 
+  background-image:
+	   -moz-linear-gradient(top,  #6dd300 0%,#5eb300 100%);
+}
+.account-settings h2{
+	color: #666;
+	font-size: 26px;
+	margin: 0;
+}
+h3, .h3{
+	font-size: 20px;
+}
+.m-header {
+	background-color: #5EB300!important;
+}
+.laps-container h3{
+	/*background: url(http://joulepersecond.com/images/GridBg.png);*/
+}
+#calendar .date_selected h3{
+	background: none!important;
+	color:#333;
+}
+table, .chart, #calendar, .basic-form, .forum-container, .content-container {
+	/*background-color: #efefef;*/
+	background-color: #f9f9f9;
+}
+table, .chart, #calendar, .basic-form, .forum-container, .content-container{
+	padding: 15px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	color: #666;
+	border: 1px #fff solid;
+}
+.forum-container, .content-container{
+	padding:15px;
+	margin-bottom: 20px;
+	overflow: hidden;
+}
+.blurb .content-container img{
+	float:left;
+	margin:10px 15px;
+}
+textarea{
+	color:#333;
+}
+.footer-links-text li a{
+	color:#6dd300;
+	text-shadow: 0 -1px #0d0d0d;
+}
+.footer-links-text-right li a{
+	color:#fb4b02;
+	text-shadow: 0 -1px #0d0d0d;
+	text-align: right;
+}
+.footer-links-text li {
+	color:#fff;
+	text-shadow: 0 -1px #0d0d0d;
+}
+/*--------------------------------------------------------------
+Links
+--------------------------------------------------------------*/
+a {
+	color:#fb4b02;
+	text-decoration:none;
+}
+a:visited {
+	color:#fb4b02;
+}
+a:hover,
+a:focus,
+a:active {
+	color: #fb4b02;
+	text-decoration:underline;
+}
