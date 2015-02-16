@@ -12,4 +12,5 @@
 
 		</form>
 	</div>
+	<span class="warning"><strong>Important Note:</strong> Do not navigate away during uploading and processing of files</span>
 </section>

@@ -187,7 +187,7 @@ class Process extends CI_Controller {
 			$CQLfilenamePiped = str_replace("/", "|", $CQLfilename);
 			//execute the insert at Golang app
 				$ch = curl_init("http://joulepersecond.com:8080/process/file/".$CQLfilenamePiped);
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+				//curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 				curl_setopt($ch, CURLOPT_HEADER, 0);
 				curl_exec($ch);
 

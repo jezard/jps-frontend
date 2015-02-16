@@ -406,11 +406,12 @@
 						<p>There isn’t much of a social function yet although this is important to us, we consider getting the basic app running first priority, but sharing (and showing off!) of your rides is next on our agenda. Most of what’s available in the Beta version will remain free in the release version. Exceptions from the free version likely to be (we reserve the right to change these during the Beta testing phase):</p>
 						<ul>
 							<li>Historical ride data only shown for the last 90 days (although training loads will still be calculated for periods extending up to one year)</li>
-							<li>Limitation on number of activities you can upload per week (limited to four)</li>
+							<li>Limitation on number of activities you can upload per month (limited to 10)</li>
 							<li>Activity files downloadable in .tcx format will not be available for free users</li>
 							<li>We propose to develop a range of advanced tools that spot trends and patterns in user’s ride data - eventually animated charts. Some of these new tools won’t be available to free users</li>
 							<li>Additional fine tuning settings (e.g. setting various zones) – some these won’t be available to free users</li>
 						</ul>
+                        <p>You can follow and track bugs and fixes on the <a href="https://trello.com/b/yphccBWK/fixes-and-minor-improvements">JoulePerSecond page at Trello.com</a>
 					</div>
 				</div>
 				<div class="col-1-2">
