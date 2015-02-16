@@ -32,6 +32,11 @@ class Process extends CI_Controller {
 		echo json_encode($jobs);
 	}
 
+	function failed(){
+		$filename = $this->input->post('filename');
+		$this->user_file->delete_activity_by_filename($filename);
+	}
+
 	
 	// ajaxhttp://joulepersecond.com/index.php/process/parse
 	function parse()

@@ -87,6 +87,8 @@ function parseFiles(){
 			progress++;
 			files = [];
 			getJobList();
+			//remove failed entry from mysql
+			jQuery.post(<?php echo '"'.$this->config->item('base_url').'index.php/process/failed"'; ?>, {filename: files[0].filename});
 		});
 		
 	});

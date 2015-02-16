@@ -45,6 +45,13 @@ class User_file_model extends CI_Model{
 		return false;
 	}
 
+	function delete_activity_by_id($id){
+		$this->db->query("DELETE * FROM user_activity WHERE activity_id = '$id' LIMIT 1");
+	}
+	function delete_activity_by_filename($id){
+		$this->db->query("DELETE * FROM user_activity WHERE filename = '$id' LIMIT 1");
+	}
+
 	function get_recent_activities($email){
 		$activities = array();
 		$query = $this->db->query("SELECT * FROM user_activity WHERE email = '$email'  ORDER BY activity_date DESC");
