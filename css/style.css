@@ -1111,6 +1111,24 @@ nav.top-nav a:hover {
 	display: block;
 	margin: 5px;
 }
+
+.jps{
+	display: inline-block;
+	color: white;
+	margin-left: 48px;
+	text-decoration: none;
+	line-height: 48px;
+	font-size: 20px;
+	width: 240px;
+	text-shadow: 0 -1px #0d0d0d;
+	position: absolute;
+}
+.jps span{
+	color:#fb4b02;
+	font-weight: bold;
+	font-style: italic;
+}
+
 .user-img{
 	right:0;
 }
@@ -1194,7 +1212,10 @@ h3 {
 }
 
 /* media queries */
-@media screen and (max-width: 860px) {
+@media screen and (max-width: 1140px) {
+	.jps{
+		display: none;
+	}
 
 	
 }
