@@ -32,12 +32,12 @@ class User_file_model extends CI_Model{
 		return $jobs;
 	}
 
-	function add_activity($uid, $date, $email, $type){
+	function add_activity($uid, $date, $email, $type, $filename){
 		//add the record
 		$format = "Y-m-dTH:i:sZ";
 		$timestamp = strtotime($date);
 		$timestamp = date("Y-m-d H:i:s", $timestamp);
-		$query = $this->db->query("INSERT IGNORE INTO user_activity (activity_id, activity_date, email, activity_type) VALUES ('$uid', '$timestamp','$email', '$type')");
+		$query = $this->db->query("INSERT IGNORE INTO user_activity (activity_id, activity_date, email, activity_type, filename) VALUES ('$uid', '$timestamp','$email', '$type', '$filename')");
 		if($query)
 		{
 			return true;

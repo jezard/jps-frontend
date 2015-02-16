@@ -1198,7 +1198,6 @@ h3 {
 	margin-left: 0px;
 	padding: 20px 20px 10px 20px;
 	overflow: hidden;
-	/*background: url(../images/graph-paper-blog.gif);*/
 	background-color: #333;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
@@ -1216,10 +1215,7 @@ h3 {
 	.jps{
 		display: none;
 	}
-
-	
 }
-
 
 
 @media (max-width: 767px) {
@@ -1230,10 +1226,7 @@ h3 {
 	.section-ln, .hdr-container{
 		margin-right:0!important;
 	}
-	
 }
-
-
 
 @media (max-width: 479px){
 	

@@ -69,6 +69,7 @@ class Process extends CI_Controller {
 			$_SESSION['ActivityKey'] = '';
 			$_SESSION['joulepersecdata'] = '';
 			$_SESSION['UserKey'] = $email;
+			$_SESSION['filename'] = $filename;
 
 
 			/*********************************************************************************************************
@@ -163,7 +164,7 @@ class Process extends CI_Controller {
 			
 
 			//add the activity to the db
-			if($this->user_file->add_activity($_SESSION['ActivityKey'], $_SESSION['ActivityID'], $_SESSION['UserKey'], $_SESSION['sport']))
+			if($this->user_file->add_activity($_SESSION['ActivityKey'], $_SESSION['ActivityID'], $_SESSION['UserKey'], $_SESSION['sport'], $_SESSION['filename']))
 			{
 				//echo 'Record added to mysql database.<br>';
 			}
@@ -186,10 +187,10 @@ class Process extends CI_Controller {
 			//make url acceptable
 			$CQLfilenamePiped = str_replace("/", "|", $CQLfilename);
 			//execute the insert at Golang app
-				$ch = curl_init("http://joulepersecond.com:8080/process/file/".$CQLfilenamePiped);
-				//curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-				curl_setopt($ch, CURLOPT_HEADER, 0);
-				curl_exec($ch);
+			$ch = curl_init("http://joulepersecond.com:8080/process/file/".$CQLfilenamePiped);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($ch, CURLOPT_HEADER, 0);
+			curl_exec($ch);
 
 			curl_close($ch);
 			unlink($CQLfilename);
@@ -209,6 +210,7 @@ class Process extends CI_Controller {
 			unset($_SESSION['ActivityID']);
 			unset($_SESSION['ActivityKey']);
 			unset($_SESSION['joulepersecdata']);
+			unset($_SESSION['filename']);
 
 			if (!$result)
 			{ 
