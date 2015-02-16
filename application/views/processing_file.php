@@ -2,7 +2,7 @@
 
 <!-- this is the static outer frame use to house the ajax parse progress window  -->
 <section class="section-ln">
-	<h3>File processing ...</h3>
+	<span class="warning"><strong>File processing:</strong> Do not navigate away during uploading and processing of files</span>
 	<div class="content-container">
 		<div id="parse-window">
 			<!-- this is the dynamic inner section -->
@@ -20,7 +20,7 @@ var files = [];
 var progress = 0;
 var totalfiles = 0;
 
-//do a query from the database getting the list of files
+
 function getJobList(){
 	jQuery.getJSON(<?php echo '"'.$this->config->item('base_url').'index.php/process/joblist"'; ?>, function(result){
 		jQuery.each(result, function(key, val){
