@@ -69,6 +69,7 @@
 		<div class="hdr-container">
 
 			<a class="logo" href="<?php echo $this->config->item('base_url'); ?>" title="<?php echo $this->config->item('site_name'); ?>" style="background: url(<?php echo $this->config->item('base_url'); ?>images/logo-small.png) center; background-size:cover"></a> 
+			<div class="jps">JoulePerSecond <span>Beta</span></div>
 
 			<?php if ($this->input->cookie('valid_user')): ?>
 				<a class="user-img" href="<?php echo $this->config->item('base_url'); ?>" title="<?php echo $message; ?> " style="background: url(<?php echo $user_image; ?>) center; background-size:cover"></a> 
