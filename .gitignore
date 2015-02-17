@@ -12,3 +12,4 @@
 /application/config/database.php
 /uploads/
 /temp/*
+*.pid
