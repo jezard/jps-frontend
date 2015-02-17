@@ -61,7 +61,7 @@ nav.top-nav li a{
 	color:#666;
 	margin: 0;
 }
-.account-settings .btn-default{
+.account-settings .btn-red{
 	float:right;
 }
 h1{
@@ -214,4 +214,19 @@ a:focus,
 a:active {
 	color: #fb4b02;
 	text-decoration:underline;
+}
+.btn-red{
+	background: #fb4b02; /* Old browsers */
+	background: -moz-linear-gradient(top,  #fb4b02 0%, #db4000 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fb4b02), color-stop(100%,#db4000)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #fb4b02 0%,#db4000 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #fb4b02 0%,#db4000 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #fb4b02 0%,#db4000 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #fb4b02 0%,#db4000 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fb4b02', endColorstr='#db4000',GradientType=0 ); /* IE6-9 */
+
+	font-size: 14px;
+	color: white;
+	text-shadow: 0 -1px #0d0d0d;
+
 }

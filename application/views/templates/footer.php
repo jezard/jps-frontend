@@ -9,9 +9,9 @@
 			<li> | </li>
 			<li><a href="termsofservice">Terms of Service</a></li>
 			<li> | </li>
-			<li><a href="https://trello.com/b/Li20FiFO/development-roadmap">Development Roadmap</a></li>
+			<li><a href="https://trello.com/b/Li20FiFO/development-roadmap" target="_blank">Development Roadmap</a></li>
 			<li> | </li>
-			<li><a href="http://wizard.technology/#contact-wizard-technology">Contact Us</a></li>
+			<li><a href="http://wizard.technology/#contact-wizard-technology" target="_blank">Contact Us</a></li>
 		</ul>
 	</div>
 	<div class="col-1-2 footer-links-text-right">
