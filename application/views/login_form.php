@@ -12,6 +12,9 @@
 
 				<h5>Password</h5>
 				<input type="password" name="password" value="<?php echo set_value('password'); ?>" size="50" />
+        <?php if(isset($message)): ?>
+          <span class="warning"><?php echo @$message; ?></span>
+        <?php endif; ?>
 				<a href="<?php echo $this->config->item('base_url'); ?>index.php/forgottenpassword">Forgotten Password?</a>
 
 				<div><button class="btn-default" type="submit">Login</button></div>

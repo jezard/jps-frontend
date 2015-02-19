@@ -157,7 +157,7 @@ class Login extends CI_Controller {
 			}
 			else
 			{
-				$this->load->view('templates/header', array('title' => 'Login Incorrect - '.$this->config->item('site_name')));
+				$this->load->view('templates/header', array('message' => 'Incorrect login', 'title' => 'Login Incorrect - '.$this->config->item('site_name')));
 				$this->load->view('login_form');
 				$this->load->view('templates/footer');
 			}

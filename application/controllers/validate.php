@@ -16,13 +16,13 @@ class Validate extends CI_Controller {
 
 		if($email)
 		{
-			$this->load->view('templates/header', array('title' => 'Verification successful - '.$this->config->item('site_name')));
+			$this->load->view('templates/header', array('title' => 'Verification successful - '.$this->config->item('site_name'), 'user_image' => '/images/icons/default-bust.png'));
 			$this->load->view('signup_success', array('email' => $email));
 			$this->load->view('templates/footer');
 		}
 		else
 		{
-			$this->load->view('templates/header', array('title' => 'Verification not successful - '.$this->config->item('site_name')));
+			$this->load->view('templates/header', array('title' => 'Verification not successful - '.$this->config->item('site_name'), 'user_image' => '/images/icons/default-bust.png'));
 			$this->load->view('verification_error');
 			$this->load->view('templates/footer');
 		}

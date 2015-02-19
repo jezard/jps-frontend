@@ -20,7 +20,7 @@ class Termsofservice extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('templates/header', array('title' => 'Home - '.$this->config->item('site_name'), 'user_image' => '/images/icons/default-bust.png'));
+		$this->load->view('templates/header', array('title' => 'Terms of Service - '.$this->config->item('site_name'), 'user_image' => '/images/icons/default-bust.png'));
 		$this->load->view('terms_service');
 		$this->load->view('templates/footer');
 	}

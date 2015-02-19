@@ -1,3 +1,6 @@
+<section class="section-ln">
+<h3>Password reset form</h3>
+<div class="content-container">
 <?php echo validation_errors(); ?>
 
 <?php echo form_open('replacepassword'); ?>
@@ -12,6 +15,8 @@
 
 
 
-<div><input type="submit" value="Reset" /></div>
+<div><button type="submit" value="Reset" class="btn-default" />Reset</div>
 
 </form>
+</div>
+</section>

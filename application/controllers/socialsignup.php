@@ -35,7 +35,7 @@ class Socialsignup extends CI_Controller {
 		        $this->email->subject('Welcome to '.$this->config->item('site_name'));
 		        $this->email->message('Hi '.$username.'. Thank you for signing up with JoulePerSecond.com via your Google account. Many thanks, Jeremy');  
 		        $this->email->send();
-		        echo $this->email->print_debugger();//remove for production
+		        //echo $this->email->print_debugger();//remove for production
 
 				echo "success";
 			}
