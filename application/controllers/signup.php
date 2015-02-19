@@ -38,7 +38,7 @@ class Signup extends CI_Controller {
 		        $this->email->subject('Validate your email - '.$this->config->item('site_name'));
 		        $this->email->message('Hi '.$username.'. Please use this link to valiate your email. '.$this->config->item('base_url').'index.php/validate?vl='.do_hash($this->config->item('salt').$email));  
 		        $this->email->send();
-		        echo $this->email->print_debugger();//remove for production
+		        //echo $this->email->print_debugger();//remove for production
 
 				$this->load->view('templates/header', array('title' => 'Verification sent! - '.$this->config->item('site_name')));
 				$this->load->view('verification_sent', array('email' => $email));

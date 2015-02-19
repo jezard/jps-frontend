@@ -6,7 +6,7 @@ body{
 	margin: 0 0 40px 0;
 	background: url(http://joulepersecond.com/images/bg-img.jpg) fixed #ccc;
 	background-repeat:no-repeat;
-	/*background-position: center 100px;*/
+	background-position: center top;
     background-size:cover;
 }
 .section-ln {
