@@ -219,6 +219,8 @@
     		
     		<h2>Product tour</h2>
     		<div class="content-container jps-slider" style="overflow:hidden; background: #fff<!-- url(http://joulepersecond.com/images/LightTransBg.png) -->;">
+                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                <div class="addthis_sharing_toolbox"></div>
 			    <!-- You can move inline styles to css file or css block. -->
 			    <!-- Jssor Slider Begin -->
 			    <!-- You can move inline styles to css file or css block. -->

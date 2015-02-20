@@ -1,5 +1,8 @@
 
 <section class="section-ln">
+	<!-- Go to www.addthis.com/dashboard to customize your tools -->
+   		<div class="addthis_sharing_toolbox"></div>
+
 	<div class="col-1-2">
 		<h3>Sign up to JoulePerSecond!</h3>
 		<div class="content-container signup-form">
