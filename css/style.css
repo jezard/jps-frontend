@@ -1208,11 +1208,20 @@ h3 {
 .calendar_list .time{
 	display: none;
 }
+.section-ln h1, .section-ln h2{
+	font-size: 22px;
+}
 
 /* media queries */
 @media screen and (max-width: 1140px) {
 	.jps{
 		display: none;
+	}
+	.footer-links-text li:nth-of-type(even){
+		display: none;
+	}
+	.site-footer{
+		height: auto;
 	}
 }
 
@@ -1225,9 +1234,44 @@ h3 {
 	.section-ln, .hdr-container{
 		margin-right:0!important;
 	}
+	.hdr-container{
+		display: none;
+	}
+	.section-ln{
+		padding:15px 5px;
+		-webkit-border-radius: 0px;
+		-moz-border-radius: 0px;
+		border-radius: 0px;
+		margin-bottom: 0;
+	}
+	.nav-collapse{
+		display: block;
+	}
+	main{
+		margin-top: 0;
+	}
+	.grid-pad{
+		padding:0;
+	}
+	.site-footer{
+		position: relative;
+	}
+	.footer-links-text ul{
+		margin-left: 0;
+	}
+	.footer-links-text li{
+		float:none;
+	}
+	body{
+		margin:0;
+	}
+	
 }
 
 @media (max-width: 479px){
+	.primary-heading{
+		display: none!important;
+	}
 	
 
 }

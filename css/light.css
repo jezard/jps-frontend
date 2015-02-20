@@ -70,6 +70,7 @@ h1{
 h1.primary-heading{
 	color:white;
 	text-shadow: 0 -1px #0d0d0d;
+	margin-top: 0;
 }
 .value {
 	color: #000;
@@ -143,8 +144,6 @@ progress[value]::-moz-progress-bar {
 }
 .account-settings h2{
 	color: #666;
-	font-size: 26px;
-	margin: 0;
 }
 h3, .h3{
 	font-size: 20px;
@@ -228,5 +227,33 @@ a:active {
 	font-size: 14px;
 	color: white;
 	text-shadow: 0 -1px #0d0d0d;
+
+}
+#home-nav-btn a{
+	color: #fb4b02;
+}
+
+/* media queries */
+@media screen and (max-width: 1140px) {
+	.jps{
+		display: none;
+	}
+	.footer-links-text li:nth-of-type(even){
+		display: none;
+	}
+	.site-footer{
+		height: auto;
+	}
+}
+
+
+@media (max-width: 767px) {
+	body{
+		margin:0;
+	}
+	
+}
+
+@media (max-width: 479px){
 
 }

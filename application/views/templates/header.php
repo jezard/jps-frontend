@@ -16,9 +16,9 @@
 <link rel='stylesheet' href='<?php echo $this->config->item('base_url'); ?>css/light.css' type='text/css' media='all' />
 <link href="http://joulepersecond.com/bootstrap-3.3.2/css/bootstrap-theme.css" rel="stylesheet">
 
-
 <link href="http://joulepersecond.com/js/calendar/css/dp_calendar.css" type="text/css" rel="stylesheet" />
 <link href="http://joulepersecond.com/js/calendar/themes/ui-lightness/jquery.ui.all.css" type="text/css" rel="stylesheet" />
+<link rel="stylesheet" href="http://joulepersecond.com/js/responsive-nav.js-master/responsive-nav.css">
 
 
 
@@ -39,6 +39,7 @@
 <script src="https://apis.google.com/js/client:platform.js"></script>
 <script src="http://joulepersecond.com/js/main.js"></script>
 <script src="http://joulepersecond.com/bootstrap-3.3.2/js/bootstrap.min.js"></script>
+<script src="http://joulepersecond.com/js/responsive-nav.js-master/responsive-nav.js"></script>
 
 
 
@@ -65,38 +66,60 @@
 	}
 ?>
 
+
 <header class="site-header">
+	<nav class="nav-collapse">
+		<ul>
+			<li id="home-nav-btn" style="background: url(<?php echo $this->config->item('base_url'); ?>images/logo-small.png) right center no-repeat #fff" id="home-btn" <?php echo $display; ?> ><?php echo anchor('/', 'JoulePerSecond.com');?></li>
+			<li id="signup" <?php echo $display; ?> ><?php echo anchor('signup', 'Sign up');?></li>
+			<li id="login" <?php echo $display; ?> ><?php echo anchor('login', 'Log in');?></li>
+			<li id="upload" <?php echo $display; ?> ><?php echo anchor('upload', 'Upload files'); ?></li>
+			<li id="activity" <?php echo $display; ?> ><?php echo anchor('activity', 'Activity'); ?></li>
+			<li id="analysis" <?php echo $display; ?> ><?php echo anchor('analysis', 'Analysis'); ?></li>
+			<li id="myaccount" <?php echo $display; ?> ><?php echo anchor('myaccount', 'My Account'); ?></li>
+			<li id="forum" <?php echo $display; ?> ><?php echo anchor('forum', 'Forum'); ?></li>
+			<!-- we coud do with hiding this button for google users -->
+			<li id="signout" <?php echo $display; ?> >
+				<?php if( $this->input->cookie('social_user') == 'no'): ?>
+					<?php echo anchor('signout', 'log out');?>
+				<?php else: ?>
+					<?php echo anchor('socialsignout', 'log out');?>
+				<?php endif; ?>
+			</li>
+		</ul>
+	</nav>
 
-		<div class="hdr-container">
 
-			<a class="logo" href="<?php echo $this->config->item('base_url'); ?>" title="<?php echo $this->config->item('site_name'); ?>" style="background: url(<?php echo $this->config->item('base_url'); ?>images/logo-small.png) center; background-size:cover"></a> 
-			<div class="jps"><a class="logo" href="<?php echo $this->config->item('base_url'); ?>" title="<?php echo $this->config->item('site_name'); ?>">JoulePerSecond <span>Beta</span></a></div>
+	<div class="hdr-container">
 
-			<?php if ($this->input->cookie('valid_user')): ?>
-				<a class="user-img" href="<?php echo $this->config->item('base_url'); ?>" title="<?php echo $message; ?> " style="background: url(<?php echo $user_image; ?>) center; background-size:cover"></a> 
-			<?php endif; ?>
-		
-			<nav class="top-nav col-1-1">
-			<ul>
-				<li id="signup" style="background-color:#FB4B02" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/sign-up.png" alt="sign-up"/><?php echo anchor('signup', 'Sign up');?></li>
-				<li id="login" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/log-in.png" alt="log-in"/><?php echo anchor('login', 'Log in');?></li>
-				<li id="upload" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/upload.png" alt="upload"/><?php echo anchor('upload', 'Upload files'); ?></li>
-				<li id="activity" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/activity.png" alt="activity"/><?php echo anchor('activity', 'Activity'); ?></li>
-				<li id="analysis" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/analysis.png" alt="analysis"/><?php echo anchor('analysis', 'Analysis'); ?></li>
-				<li id="myaccount" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/my-account.png" alt="my-account"/><?php echo anchor('myaccount', 'My Account'); ?></li>
-				<li id="forum" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/forum.png" alt="forum"/><?php echo anchor('forum', 'Forum'); ?></li>
-				<!-- we coud do with hiding this button for google users -->
-				<li id="signout" <?php echo $display; ?> >
-					<img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/log-out.png" alt="log-out"/>
-					<?php if( $this->input->cookie('social_user') == 'no'): ?>
-						<?php echo anchor('signout', 'log out');?>
-					<?php else: ?>
-						<?php echo anchor('socialsignout', 'log out');?>
-					<?php endif; ?>
-				</li>
-			</ul>
-			</nav>
-		</div>
+		<a class="logo" href="<?php echo $this->config->item('base_url'); ?>" title="<?php echo $this->config->item('site_name'); ?>" style="background: url(<?php echo $this->config->item('base_url'); ?>images/logo-small.png) center; background-size:cover"></a> 
+		<div class="jps"><a class="logo" href="<?php echo $this->config->item('base_url'); ?>" title="<?php echo $this->config->item('site_name'); ?>">JoulePerSecond <span>Beta</span></a></div>
+
+		<?php if ($this->input->cookie('valid_user')): ?>
+			<a class="user-img" href="<?php echo $this->config->item('base_url'); ?>" title="<?php echo $message; ?> " style="background: url(<?php echo $user_image; ?>) center; background-size:cover"></a> 
+		<?php endif; ?>
+	
+		<nav class="top-nav col-1-1">
+		<ul>
+			<li id="signup" style="background-color:#FB4B02" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/sign-up.png" alt="sign-up"/><?php echo anchor('signup', 'Sign up');?></li>
+			<li id="login" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/log-in.png" alt="log-in"/><?php echo anchor('login', 'Log in');?></li>
+			<li id="upload" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/upload.png" alt="upload"/><?php echo anchor('upload', 'Upload files'); ?></li>
+			<li id="activity" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/activity.png" alt="activity"/><?php echo anchor('activity', 'Activity'); ?></li>
+			<li id="analysis" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/analysis.png" alt="analysis"/><?php echo anchor('analysis', 'Analysis'); ?></li>
+			<li id="myaccount" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/my-account.png" alt="my-account"/><?php echo anchor('myaccount', 'My Account'); ?></li>
+			<li id="forum" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/forum.png" alt="forum"/><?php echo anchor('forum', 'Forum'); ?></li>
+			<!-- we coud do with hiding this button for google users -->
+			<li id="signout" <?php echo $display; ?> >
+				<img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/log-out.png" alt="log-out"/>
+				<?php if( $this->input->cookie('social_user') == 'no'): ?>
+					<?php echo anchor('signout', 'log out');?>
+				<?php else: ?>
+					<?php echo anchor('socialsignout', 'log out');?>
+				<?php endif; ?>
+			</li>
+		</ul>
+		</nav>
+	</div>
 
 </header>
 <main>

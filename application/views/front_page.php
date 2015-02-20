@@ -433,7 +433,7 @@
                     </div>
                     <h3><img src="http://joulepersecond.com/images/h3-icons/jps-logo.png" alt="icon" />Our brand</h3>
                     <div class="content-container">
-                        <a href="http://joulepersecond.com/images/quad-hd-logo.png"><img src="http://joulepersecond.com/images/quad-hd-logo-thumb.png" alt="JoulePerSecond logo" width="auto"/></a>
+                        <a href="http://joulepersecond.com/images/quad-hd-logo.png"><img src="http://joulepersecond.com/images/quad-hd-logo-thumb.png" alt="JoulePerSecond logo" width="auto" style="margin:0"/></a>
                         <p>Please use our logo for spreading the word about JoulePerSecond! We don't currently have any specific guidelines, so in the meantime just please respect the designer's feelings - give the logo some space! Click on the image above for a large image. If you need the image in other colors or formats, please contact us and we can supply the original vector. JoulePerSecond and the ChainWheel Logo remain the property of Wizard Technology.</p>
                     </div>
 				</div>
