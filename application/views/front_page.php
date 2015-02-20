@@ -214,13 +214,11 @@
     </script>
     <!-- Jssor Slider Begin -->
     <div class="grid grid-pad homepage">
-    	<h1 class="primary-heading">This is JoulePerSecond (Beta)!</h1>
-    	<section class="section-ln">
+    	<h1 class="primary-heading desktop">This is JoulePerSecond (Beta)!</h1>
+    	<section class="section-ln desktop">
     		
     		<h2>Product tour</h2>
-    		<div class="content-container jps-slider" style="overflow:hidden; background: #fff<!-- url(http://joulepersecond.com/images/LightTransBg.png) -->;">
-                <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                <div class="addthis_sharing_toolbox"></div>
+    		<div class="content-container jps-slider " style="overflow:hidden; background: #fff<!-- url(http://joulepersecond.com/images/LightTransBg.png) -->;">
 			    <!-- You can move inline styles to css file or css block. -->
 			    <!-- Jssor Slider Begin -->
 			    <!-- You can move inline styles to css file or css block. -->
@@ -388,21 +386,22 @@
 			</div>
 		</section>
 		<section class="section-ln">
+            <h1 class="mobile" style="color: rgb(251, 75, 2); font-weight:bold">This is JoulePerSecond (Beta)!</h1>
 			<article class="blurb">
 				<h2>What is JoulePerSecond?</h2>
 				<div class="col-1-2">
 					
-					<h3><img src="http://joulepersecond.com/images/h3-icons/objectives.png" alt="icon" />Objectives</h3>
+					<h3><img src="http://joulepersecond.com/images/h3-icons/objectives.png" alt="icon" /><span>Objectives</span></h3>
 					<div class="content-container" style="background-image: url(http://joulepersecond.com/images/background-icons/objectives.png)" >
 						<p><strong>JoulePerSecond is an analytical fitness tool for amateur and professional cyclists</strong>. Our Primary goal: To provide a decision support system for your training rides – what to do and when to do it, so that you can be at your peak fitness when you need to be.  Or put another way, to provide the tools which will help you to go faster when it counts.</p>
 						<p>JoulePerSecond <abbr title="A pre-release of software that is given out to a large group of users to try under real conditions. Beta versions have gone through alpha testing inhouse and are generally fairly close in look, feel and function to the final product; however, design changes often occur as a result.">Beta</abbr> provides a toolkit with some very useful features – there’s a lot to do before we can begin to say we’re finished – we’d like your input – what are your requirements for perfect cycling analytics? Tell us <a href="/index.php/forum">here</a>. Popular requests are likely candidates for early implementation to JoulePerSecond. JoulePerSecond is a tool for Cyclists, made by Cyclists. The reason for building JoulePerSecond was borne out of frustration at a certain other online tools not listening to the requests of its premium users.</p>
 						<p>JoulePerSecond is about showing performance data rather that where you’ve been or who you’ve beaten on a certain stretch of road. Many of us spend hours and hours cycling indoors, and JoulePerSecond is particularly useful when extending the analysis provided by other systems such as <a href="http://www.trainerroad.com">TrainerRoad</a>, whilst merging in other outdoor training and race data.</p>
 					</div>
-					<h3><img src="http://joulepersecond.com/images/h3-icons/whats-watt.png" alt="icon" />JoulePerSecond? Watt's with that?</h3>
+					<h3><img src="http://joulepersecond.com/images/h3-icons/whats-watt.png" alt="icon" /><span>JoulePerSecond? Watt's with that?</span></h3>
 					<div class="content-container" >
 						<p>For those that don’t know, one Joule per Second is one Watt, the commonly used unit of power in many applications including cycling. Our web app is best suited to those who use a power meter, although we use algorithms based on heart rate when riding a bike without a power meter (or attend a spin class), and our power meter batteries die - we allow a manual override of the training load for an activity, so as not to render training load charts useless when disaster strikes.</p>
 					</div>
-					<h3><img src="http://joulepersecond.com/images/h3-icons/bug-fixing.png" alt="icon" />What are the limitations of the Beta version?</h3>
+					<h3><img src="http://joulepersecond.com/images/h3-icons/bug-fixing.png" alt="icon" /><span>What are the limitations of the Beta version?</span></h3>
 					<div class="content-container" style="background-image: url(http://joulepersecond.com/images/background-icons/bug-fixing.png)">
 						<p>The Beta version is free to use – its purpose is to iron out bugs and serious issues. We might need to change the structure of stored activities during this time – so we can't make any guarantees about retaining your ride data. Obviously we won’t remove any ride data unless we really have to - we use JoulePerSecond too! Hopefully, we’re already beyond the need for that. The servers used in the Beta version are scaled down from that which we will use in production; hence (especially) data processing is likely to be slower than what you can expect in the production version. There may also be times when the site is down so that we can implement the feedback you give us.</p>
 						<p>There isn’t much of a social function yet although this is very important to us, we consider getting the basic app running first priority, but sharing (and showing off!) of your rides is next on our agenda. Most of what’s available in the Beta version will remain free in the release version. Exceptions from the free version likely to be (we reserve the right to change these during the Beta testing phase):</p>
@@ -417,7 +416,7 @@
 					</div>
 				</div>
 				<div class="col-1-2">
-					<h3><img src="http://joulepersecond.com/images/h3-icons/technical.png" alt="icon" />Technical information</h3>
+					<h3><img src="http://joulepersecond.com/images/h3-icons/technical.png" alt="icon" /><span>Technical information</span></h3>
 					<div class="content-container" style="background-image: url(http://joulepersecond.com/images/background-icons/technical.png)" >
 						<ul>
 							<li>JoulePerSecond requires a modern HTML5 capable browser – we think our resources are better spent adding great new features rather than supporting dinosaur browsers. We recommend <a href=" https://www.google.com/chrome/browser/desktop/" target="_blank">Chrome</a> browser.</li>
@@ -428,16 +427,18 @@
 						</ul>
 						<small>Note: screenshots above are taken from a development version, and may not reflect the official release version</small>
 					</div>
-                    <h3><img src="http://joulepersecond.com/images/h3-icons/wt-logo.png" alt="icon" />Powered by Wizard Technology</h3>
+                    <h3><img src="http://joulepersecond.com/images/h3-icons/wt-logo.png" alt="icon" /><span>Powered by Wizard Technology</span></h3>
                     <div class="content-container">
                         <a href="http://wizard.technology"><img src="http://joulepersecond.com/images/wt-logo.png" alt="Wizard Technology logo" width="130"/></a>
                         <p><a href="http://joulepersecond.com">JoulePerSecond</a> is designed and built by <a href="http://wizard.technology">Wizard Technology</a>. View the development <a href="http://wizard.technology/projects/peak-power-wizard/">here</a>.</p>
                     </div>
-                    <h3><img src="http://joulepersecond.com/images/h3-icons/jps-logo.png" alt="icon" />Our brand</h3>
+                    <h3><img src="http://joulepersecond.com/images/h3-icons/jps-logo.png" alt="icon" /><span>Our brand</span></h3>
                     <div class="content-container">
-                        <a href="http://joulepersecond.com/images/quad-hd-logo.png"><img src="http://joulepersecond.com/images/quad-hd-logo-thumb.png" alt="JoulePerSecond logo" width="auto" style="margin:0"/></a>
+                        <a href="http://joulepersecond.com/images/quad-hd-logo.png"><img src="http://joulepersecond.com/images/quad-hd-logo-thumb.png" alt="JoulePerSecond logo" width="100%" style="margin:0"/></a>
                         <p>Please use our logo for spreading the word about JoulePerSecond! We don't currently have any specific guidelines, so in the meantime just please respect the designer's feelings - give the logo some space! Click on the image above for a large image. If you need the image in other colors or formats, please contact us and we can supply the original vector. JoulePerSecond and the ChainWheel Logo remain the property of Wizard Technology.</p>
                     </div>
+                     <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                    <div class="addthis_sharing_toolbox"></div>
 				</div>
 			</article>
 		</section>
