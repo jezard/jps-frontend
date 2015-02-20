@@ -1,10 +1,22 @@
 body{
 
 }
-#signup.logged-in, #login.logged-in{
+#signup.logged-in, 
+#login.logged-in, 
+#signup-mob.logged-in, 
+#login-mob.logged-in{
 	display: none;
 }
-#signout.logged-out, #myaccount.logged-out, #analysis.logged-out, #upload.logged-out, #activity.logged-out{
+#signout.logged-out, 
+#myaccount.logged-out, 
+#analysis.logged-out, 
+#upload.logged-out, 
+#activity.logged-out,
+#signout-mob.logged-out, 
+#myaccount-mob.logged-out, 
+#analysis-mob.logged-out, 
+#upload-mob.logged-out, 
+#activity-mob.logged-out{
 	display:none;
 }
 

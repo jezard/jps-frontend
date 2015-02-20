@@ -71,13 +71,13 @@
 	<nav class="nav-collapse">
 		<ul>
 			<li id="home-nav-btn" style="background: url(<?php echo $this->config->item('base_url'); ?>images/logo-small.png) right center no-repeat #fff" id="home-btn" <?php echo $display; ?> ><?php echo anchor('/', 'JoulePerSecond.com');?></li>
-			<li id="signup" <?php echo $display; ?> ><?php echo anchor('signup', 'Sign up');?></li>
-			<li id="login" <?php echo $display; ?> ><?php echo anchor('login', 'Log in');?></li>
-			<li id="upload" <?php echo $display; ?> ><?php echo anchor('upload', 'Upload files'); ?></li>
-			<li id="activity" <?php echo $display; ?> ><?php echo anchor('activity', 'Activity'); ?></li>
-			<li id="analysis" <?php echo $display; ?> ><?php echo anchor('analysis', 'Analysis'); ?></li>
-			<li id="myaccount" <?php echo $display; ?> ><?php echo anchor('myaccount', 'My Account'); ?></li>
-			<li id="forum" <?php echo $display; ?> ><?php echo anchor('forum', 'Forum'); ?></li>
+			<li id="signup-mob" <?php echo $display; ?> ><?php echo anchor('signup', 'Sign up');?></li>
+			<li id="login-mob" <?php echo $display; ?> ><?php echo anchor('login', 'Log in');?></li>
+			<li id="upload-mob" <?php echo $display; ?> ><?php echo anchor('upload', 'Upload files'); ?></li>
+			<li id="activity-mob" <?php echo $display; ?> ><?php echo anchor('activity', 'Activity'); ?></li>
+			<li id="analysis-mob" <?php echo $display; ?> ><?php echo anchor('analysis', 'Analysis'); ?></li>
+			<li id="myaccount-mob" <?php echo $display; ?> ><?php echo anchor('myaccount', 'My Account'); ?></li>
+			<li id="forum-mob" <?php echo $display; ?> ><?php echo anchor('forum', 'Forum'); ?></li>
 			<!-- we coud do with hiding this button for google users -->
 			<li id="signout" <?php echo $display; ?> >
 				<?php if( $this->input->cookie('social_user') == 'no'): ?>
