@@ -1265,6 +1265,9 @@ h3 {
 	body{
 		margin:0;
 	}
+	#slider1_container{
+		display: none;
+	}
 	
 }
 
