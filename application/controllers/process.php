@@ -12,6 +12,10 @@ class Process extends CI_Controller {
 		{
 			$this->email = $this->input->cookie('valid_user', false);
 		}
+		else
+		{
+			redirect('/login', 'refresh');
+		}
 		$this->load->model('user_file_model', 'user_file', TRUE);
 
 	}

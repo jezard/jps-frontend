@@ -14,6 +14,10 @@ class Activity extends CI_Controller {
 		{
 			$this->email = $this->input->cookie('valid_user', false);
 		}
+		else
+		{
+			redirect('/login', 'refresh');
+		}
 
 	}
 

@@ -14,6 +14,10 @@ class Myaccount extends CI_Controller {
 			$this->email = $this->input->cookie('valid_user', false);
 			$this->user_image = $this->user->get_user_image($this->email);
 		}
+		else
+		{
+			redirect('/login', 'refresh');
+		}
 
 		$this->form_validation->set_rules('set_autofill', 'Autofill', 'required');
 		$this->form_validation->set_rules('set_data_cutoff', 'Data Cutoff', 'required');
