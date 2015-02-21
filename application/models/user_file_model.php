@@ -72,7 +72,7 @@ class User_file_model extends CI_Model{
 	}
 
 	function update_basic($id, $name, $notes){
-		$query = $this->db->query("UPDATE user_activity SET activity_name = '$name', activity_notes = '$notes' WHERE activity_id = '$id'");
+		$query = $this->db->query("UPDATE user_activity SET activity_name = ".$this->db->escape($name).", activity_notes = ".$this->db->escape($notes)."  WHERE activity_id = '$id'");
 	}
 
 	//delete intermediate record

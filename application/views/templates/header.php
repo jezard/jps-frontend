@@ -112,9 +112,9 @@
 			<li id="signout" <?php echo $display; ?> >
 				<img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/log-out.png" alt="log-out"/>
 				<?php if( $this->input->cookie('social_user') == 'no'): ?>
-					<?php echo anchor('signout', 'log out');?>
+					<?php echo anchor('signout', 'Log out');?>
 				<?php else: ?>
-					<?php echo anchor('socialsignout', 'log out');?>
+					<?php echo anchor('socialsignout', 'Log out');?>
 				<?php endif; ?>
 			</li>
 		</ul>
