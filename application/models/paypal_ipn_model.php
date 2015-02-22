@@ -1,13 +1,13 @@
 <?php 
 class Paypal_ipn_model extends CI_Model{
-	function store(){
+	function store($data){
 		//insert record to database
-    	$this->item_name = $this->input->post('item_name');
-    	$this->item_number = $this->input->post('item_number');
-    	$this->payment_status = $this->input->post('payment_status');
-    	$this->payment_currency = $this->input->post('payment_currency');
-    	$this->payment_email = $this->input->post('payment_email');
-    	$this->txn_type = $this->input->post('txn_type');
+    	$this->item_name = $data['item_name'];
+    	$this->item_number = $data['item_number'];
+    	$this->payment_status = $data['payment_status'];
+    	$this->payment_currency = $data['payment_currency'];
+    	$this->payment_email = $data['payer_email'];
+    	$this->txn_type = $data['txn_type'];
 
     	$this->db->insert('paypal_ipn', $this);
 	}

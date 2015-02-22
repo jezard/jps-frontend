@@ -104,16 +104,16 @@ class Ipn extends CI_Controller {
 			// check that payment_amount/payment_currency are correct
 			// process payment and mark item as paid.
 			// assign posted variables to local variables
-			$item_name = $_POST['item_name1'];
-			$item_number = $_POST['item_number1'];
-			$payment_status = $_POST['payment_status'];
-			$payment_amount = $_POST['mc_gross1'];
-			$payment_currency = $_POST['mc_currency'];
-			$txn_id = $_POST['txn_id'];
-			$receiver_email = $_POST['receiver_email'];
-			$payer_email = $_POST['payer_email'];
+			$data['item_name'] = $_POST['item_name'];
+			$data['item_number'] = $_POST['item_number'];
+			$data['payment_status'] = $_POST['payment_status'];
+			$data['payment_amount'] = $_POST['mc_gross'];
+			$data['payment_currency'] = $_POST['mc_currency'];
+			$data['txn_id'] = $_POST['txn_id'];
+			$data['receiver_email'] = $_POST['receiver_email'];
+			$data['payer_email'] = $_POST['payer_email'];
 
-			$this->ipn->store();
+			$this->ipn->store($data);
 			
 			if(DEBUG == true) {
 				error_log(date('[Y-m-d H:i e] '). "Verified IPN: $req ". PHP_EOL, 3, LOG_FILE);
