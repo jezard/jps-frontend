@@ -1,5 +1,5 @@
 <?php 
-class User_file_model extends CI_Model{
+class Paypal_ipn_model extends CI_Model{
 	function store(){
 		//insert record to database
     	$this->item_name = $this->input->post('item_name');
@@ -8,7 +8,7 @@ class User_file_model extends CI_Model{
     	$this->payment_currency = $this->input->post('payment_currency');
     	$this->payment_email = $this->input->post('payment_email');
     	$this->txn_type = $this->input->post('txn_type');
-    	
+
     	$this->db->insert('paypal_ipn', $this);
 	}
 }

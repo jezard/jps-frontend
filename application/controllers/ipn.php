@@ -113,6 +113,8 @@ class Ipn extends CI_Controller {
 			$receiver_email = $_POST['receiver_email'];
 			$payer_email = $_POST['payer_email'];
 			
+			$this->ipn->store();
+			
 			if(DEBUG == true) {
 				error_log(date('[Y-m-d H:i e] '). "Verified IPN: $req ". PHP_EOL, 3, LOG_FILE);
 			}
