@@ -104,12 +104,14 @@ class Ipn extends CI_Controller {
 			// check that payment_amount/payment_currency are correct
 			// process payment and mark item as paid.
 			// assign posted variables to local variables
+			$data['user_id'] = $_POST['custom'];
 			$data['item_name'] = $_POST['item_name1'];
 			$data['item_number'] = $_POST['item_number1'];
 			$data['payment_status'] = $_POST['payment_status'];
 			$data['payment_amount'] = $_POST['mc_gross1'];
 			$data['payment_currency'] = $_POST['mc_currency'];
 			$data['txn_id'] = $_POST['txn_id'];
+			$data['txn_type'] = $_POST['txn_type'];
 			//$data['receiver_email'] = $_POST['receiver_email'];
 			$data['payer_email'] = $_POST['payer_email'];
 
