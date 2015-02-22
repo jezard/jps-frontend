@@ -7,7 +7,7 @@ class Paypal_ipn_model extends CI_Model{
     	$this->payment_status = $data['payment_status'];
     	$this->payment_currency = $data['payment_currency'];
     	$this->payment_email = $data['payer_email'];
-    	$this->txn_type = $data['txn_type'];
+    	$this->txn_type = $data['txn_id'];
 
     	$this->db->insert('paypal_ipn', $this);
 	}
