@@ -5,7 +5,7 @@ class Ipn extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->helper('cookie');
-		$this->load->model('user_model', 'user', TRUE);
+		$this->load->model('paypal_ipn_model', 'ipn', TRUE);
 
 	}
 
@@ -104,14 +104,14 @@ class Ipn extends CI_Controller {
 			// check that payment_amount/payment_currency are correct
 			// process payment and mark item as paid.
 			// assign posted variables to local variables
-			//$item_name = $_POST['item_name'];
-			//$item_number = $_POST['item_number'];
-			//$payment_status = $_POST['payment_status'];
-			//$payment_amount = $_POST['mc_gross'];
-			//$payment_currency = $_POST['mc_currency'];
-			//$txn_id = $_POST['txn_id'];
-			//$receiver_email = $_POST['receiver_email'];
-			//$payer_email = $_POST['payer_email'];
+			$item_name = $_POST['item_name'];
+			$item_number = $_POST['item_number'];
+			$payment_status = $_POST['payment_status'];
+			$payment_amount = $_POST['mc_gross'];
+			$payment_currency = $_POST['mc_currency'];
+			$txn_id = $_POST['txn_id'];
+			$receiver_email = $_POST['receiver_email'];
+			$payer_email = $_POST['payer_email'];
 			
 			if(DEBUG == true) {
 				error_log(date('[Y-m-d H:i e] '). "Verified IPN: $req ". PHP_EOL, 3, LOG_FILE);
