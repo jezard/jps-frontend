@@ -52,10 +52,11 @@ class User_model extends CI_Model {
 
     	foreach ($query->result() as $row)
   		{
-  		   	array_push($validuser, $row->id);
+  		   	array_push($validuser, $row->user_id);
   		  	array_push($validuser, $row->username);
   		   	array_push($validuser, $row->email);
   		}
+
     	return $validuser;
     }
 
@@ -231,7 +232,8 @@ class User_model extends CI_Model {
                         'my_vo2' => $vals->my_vo2,
                         'my_location' => $vals->my_location,
                         'is_public' => $vals->is_public,
-                        'paid_account' => $vals->paid_account
+                        'paid_account' => $vals->paid_account,
+                        'verified'    => $vals->verified
       );
       return $settings;
     }

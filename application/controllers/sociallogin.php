@@ -51,6 +51,16 @@ class Sociallogin extends CI_Controller {
 				$settings = $this->user->getsettings($details[2]);
 
 				$cookie = array(
+				    'name'   => 'paid_account',
+				    'value'  => $settings['paid_account'],
+				    'expire' => -100,
+				    'domain' => $this->config->item('site_name'),
+				    'prefix' => '',
+				    'secure' => false
+				);
+				$this->input->set_cookie($cookie);
+
+				$cookie = array(
 				    'name'   => 'set_autofill',
 				    'value'  => $settings['set_autofill'],
 				    'expire' => -100,

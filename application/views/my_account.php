@@ -344,7 +344,7 @@
 		
 		
 	</form>
-	<?php if($paid_account > 0): ?>
+<!-- 	<?php if($paid_account > 0): ?>
 		<section class="section-ln">
 
 			<h2>Subscribe and Go Premium</h2>
@@ -353,6 +353,7 @@
 				<h3>Subscription benefits</h3>
 				<div class="content-container">
 					<p>Table of benefits</p>
+					Coming soon!
 				</div>
 			</div>
 			<div class="col-1-2">
@@ -385,7 +386,7 @@
 
 		</section>
 	<?php endif; ?>
-
+ -->
 
 
 </div>
