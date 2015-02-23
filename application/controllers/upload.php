@@ -26,6 +26,7 @@ class Upload extends CI_Controller {
 		$user_image = $this->user->get_user_image($this->email);
 		$settings = $this->user->getsettings($this->email);
 		$data['paid_account'] = $settings['paid_account'];
+		$data['user_id'] = $settings['user_id'];
 
 		$this->load->view('templates/header', array('title' => 'Upload - '.$this->config->item('site_name'), 'user_image' => $user_image));
 		//if user has remaining credits
@@ -40,7 +41,7 @@ class Upload extends CI_Controller {
 		}
 		else
 		{
-			$data['message'] = 'Get unlimited uploads and unlock addtional Premium features for just &pound;3.99 billed monthly';
+			$data['message'] = 'Get unlimited uploads and unlock addtional Premium features for just <strong>&pound;3.99</strong>, billed monthly';
 			$this->load->view('go_premium', $data);
 		}
 

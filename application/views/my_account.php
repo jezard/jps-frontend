@@ -344,7 +344,49 @@
 		
 		
 	</form>
-	<?php echo $this->config->item('subscribe_button'); ?>
+	<?php if($paid_account > 0): ?>
+		<section class="section-ln">
+
+			<h2>Subscribe and Go Premium</h2>
+			
+			<div class="col-1-2">
+				<h3>Subscription benefits</h3>
+				<div class="content-container">
+					<p>Table of benefits</p>
+				</div>
+			</div>
+			<div class="col-1-2">
+				<h3>Subscribe now</h3> 
+				<div class="content-container">
+					<p>More info...</p>
+					<?php include 'includes/subscribe_btn.php'; ?>
+		        </div>
+			</div>
+			<div class="clear"></div>
+
+		</section>
+	<?php else: ?>
+		<section class="section-ln">
+			<h2>Your subscription</h2>
+		
+			<div class="col-1-2">
+				<h3>Info 1</h3>
+				<div class="content-container">
+					<p>Information about subscriptions</p>
+				</div>
+			</div>
+			<div class="col-1-2">
+				<h3>Info 2</h3>
+				<div class="content-container">
+					<p>More information about subscriptions</p>
+				</div>
+			</div>
+
+
+		</section>
+	<?php endif; ?>
+
+
 
 </div>
 <script>
