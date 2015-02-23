@@ -216,7 +216,8 @@ class User_model extends CI_Model {
     function getsettings($email){
       $query = $this->db->query("SELECT * FROM user WHERE email = '$email'");
       $vals = $query->row();
-      $settings = array('set_autofill'=> $vals->set_autofill, 
+      $settings = array('user_id' => $vals->user_id,
+                        'set_autofill'=> $vals->set_autofill, 
                         'set_data_cutoff' => $vals->set_data_cutoff,
                         'my_firstname' => $vals->my_firstname,
                         'my_lastname' => $vals->my_lastname,
@@ -229,7 +230,8 @@ class User_model extends CI_Model {
                         'my_ftp' => $vals->my_ftp,
                         'my_vo2' => $vals->my_vo2,
                         'my_location' => $vals->my_location,
-                        'is_public' => $vals->is_public
+                        'is_public' => $vals->is_public,
+                        'paid_account' => $vals->paid_account
       );
       return $settings;
     }

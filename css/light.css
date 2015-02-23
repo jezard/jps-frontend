@@ -232,6 +232,12 @@ a:active {
 #home-nav-btn a{
 	color: #fb4b02;
 }
+.note{
+	background: #eee;
+	border-radius: 5px;
+	padding: 6px;
+	display: inline-block;
+}
 
 /* media queries */
 @media screen and (max-width: 1140px) {

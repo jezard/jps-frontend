@@ -344,6 +344,8 @@
 		
 		
 	</form>
+	<?php echo $this->config->item('subscribe_button'); ?>
+
 </div>
 <script>
 	function showValue(newValue){
