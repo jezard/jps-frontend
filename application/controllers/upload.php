@@ -53,7 +53,16 @@ class Upload extends CI_Controller {
 	//upload files, converting .fit to .tcx, and store record of upload in database
 	function do_upload()
 	{
+		$user_image = $this->user->get_user_image($this->email);
+		
+		//limit uploads for free users
+		$settings = $this->user->getsettings($this->email);
+		if($settings['paid_account'] == 0){
+			$data = $this->user_activity->get_spent_num($this->email);
+		}
+
 		$this->upload->initialize(array(
+			'max_num' =>  (isset($data['balance']) ?  $data['balance'] : 0),
 			'upload_path' => './uploads/',
 			'allowed_types' => 'tcx|fit|gpx',
 			'max_size'	=> 5000,
@@ -64,8 +73,8 @@ class Upload extends CI_Controller {
 
 		if (! $this->upload->do_multi_upload("powerfiles",md5($this->email))) {
        		$error = array('error' => $this->upload->display_errors());
-       		$this->load->view('templates/header', array('title' => 'Upload - '.$this->config->item('site_name')));
-			$this->load->view('upload_form', array('message' => 'Failed. Please upload only .fit or .tcx files, or try uploading fewer files:'));
+       		$this->load->view('templates/header', array('title' => 'Upload - '.$this->config->item('site_name'), 'user_image' => $user_image));
+			$this->load->view('upload_form', array('message' => '<span class="note"><strong>Upload Failed</strong>: Please upload only .fit or .tcx files, or try uploading fewer files</span>'));
 			$this->load->view('templates/footer');
        	}
 
@@ -75,7 +84,7 @@ class Upload extends CI_Controller {
 			//print_r($data);
 			$this->load->model('user_file_model', 'user_file', TRUE);
 			$this->user_file->linkuser($this->email, $data);
-			$this->load->view('templates/header', array('title' => 'Upload Success - '.$this->config->item('site_name')));
+			$this->load->view('templates/header', array('title' => 'Upload Success - '.$this->config->item('site_name'), 'user_image' => $user_image));
        		$this->load->view('upload_success', array('fileinfo' => $data));
        		$this->load->view('templates/footer');
 		}

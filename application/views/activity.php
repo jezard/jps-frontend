@@ -14,8 +14,13 @@
 				<label for="activity_description">Notes:</label>
 				<textarea id="activity_notes" rows="5" name="activity_notes"></textarea>
 				<button class="btn-default" type="submit">Update</button>
+				
 			</form>
-		</div>
+			<?php echo form_open('activity/delete'); ?>
+				<input type="hidden" id="activity_id2" name="activity_id" value="">
+				<button class="btn-danger" type="submit">Delete Activity</button>
+			</form>
+			</div>
 		</div>
 	</section>
 	<iframe id="activity-container" allowTransparency="true" scrolling="no"></iframe>
@@ -29,7 +34,7 @@ $(document).on("click", ".active", function(e){
 		localStorage.setItem("selectedDate", jQuery.fn.dp_calendar.getDate());
 		//go to activity when clicking the calendar day
 		var url = <?php echo '"http://'.$this->config->item('go_ip').'/view/activity/"'; ?> + activity_id;
-		jQuery('#activity_id').val(activity_id);
+		jQuery('#activity_id, #activity_id2').val(activity_id);
 
 		//get title/name of activity 
 		jQuery.post( '<?php echo $this->config->item('base_url') .'index.php/activity/get'; ?>', { activity_id: activity_id }, function(data){
@@ -48,7 +53,7 @@ jQuery(document).ready(function(){
 	//direct user to most recent activity or just updated
 	var activity_id = <?php echo '"'.$displayActivity.'"'; ?>;
 	var url = <?php echo '"http://'.$this->config->item('go_ip').'/view/activity/"'; ?> + activity_id;
-	jQuery('#activity_id').val(activity_id);
+	jQuery('#activity_id, #activity_id2').val(activity_id);
 	//get title/name of activity 
 	jQuery.post( '<?php echo $this->config->item('base_url') .'index.php/activity/get'; ?>', { activity_id: activity_id }, function(data){
 		data_array = data.split('^');
@@ -67,7 +72,7 @@ jQuery(document).ready(function(){
 		localStorage.setItem("selectedDate", jQuery.fn.dp_calendar.getDate());
 
 		var url = <?php echo '"http://'.$this->config->item('go_ip').'/view/activity/"'; ?> + activity_id;
-		jQuery('#activity_id').val(activity_id);
+		jQuery('#activity_id, #activity_id2').val(activity_id);
 
 		//get title/name of activity 
 		jQuery.post( '<?php echo $this->config->item('base_url') .'index.php/activity/get'; ?>', { activity_id: activity_id }, function(data){
@@ -76,7 +81,6 @@ jQuery(document).ready(function(){
 			jQuery('#activity_notes').val(data_array[1]);
 			jQuery('#activity-date').text(data_array[2]);
 		});
-
 		jQuery('#activity-container').attr('src', url);
     });
 

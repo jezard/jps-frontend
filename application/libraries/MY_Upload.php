@@ -31,6 +31,7 @@
 				public function initialize($config = array()){
 					//Upload default settings.
 					$defaults = array(
+									"max_num"			=> 0,
 									"max_size"			=> 0,
 									"max_width"			=> 0,
 									"max_height"		=> 0,
@@ -71,7 +72,9 @@
 							$this->$key = $val;
 						}
 					}
-					
+
+
+
 					//Check if file_name was provided.
 					if(!empty($this->file_name)){
 						//Multiple file upload.
@@ -282,6 +285,14 @@
 					//Loop through $_FILES[$field]["name"] as representative of total number of files. Use count as key in
 					//corresponding elements of the $_FILES[$field] elements.
 					for($i=0; $i<count($_FILES[$field]["name"]); $i++){
+						if($this->max_num > 0)
+						{
+							if($i > $this->max_num -1){
+								$this->set_error("not_enough_upload_credit");
+								return FALSE;
+							}
+						}
+
 						//Was the file able to be uploaded? If not, determine the reason why.
 						if(!is_uploaded_file($_FILES[$field]["tmp_name"][$i])){
 							//Determine error number.

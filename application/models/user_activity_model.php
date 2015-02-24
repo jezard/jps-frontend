@@ -12,4 +12,17 @@ class User_activity_model extends CI_Model{
 		return $data;
 	}
 
+	//TODO
+	function delete($id){
+		$result = $this->db->query("DELETE FROM user_activity WHERE activity_id = '$id' LIMIT 1");
+		if($result){
+			//also need to send a delete signal to go and create delete functionality there too.
+			$ch = curl_init("http://joulepersecond.com:8080/delete/activity/".$id);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($ch, CURLOPT_HEADER, 0);
+			curl_exec($ch);
+
+			curl_close($ch);
+		}
+	}
 }
