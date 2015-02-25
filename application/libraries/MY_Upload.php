@@ -480,7 +480,7 @@
 						}
 						/*convert gpx files*/
 						//it turns out that gpx files don't hold power data. The functionality will be left here incase we want to do something with these in the future...
-						if($this->file_ext == '.gpx')
+						/*if($this->file_ext == '.gpx')
 						{
 							$infile = $this->upload_path.$this->file_name;
 							$outfile = str_replace('.gpx', '.tcx', $infile);
@@ -491,7 +491,7 @@
 							
 							//delete fit files after conversion
 							unlink($infile);
-						}
+						}*/
 
 					}
 					
