@@ -218,6 +218,7 @@ class User_model extends CI_Model {
       $query = $this->db->query("SELECT * FROM user WHERE email = '$email'");
       $vals = $query->row();
       $settings = array('user_id' => $vals->user_id,
+                        'email' => $email,
                         'set_autofill'=> $vals->set_autofill, 
                         'set_data_cutoff' => $vals->set_data_cutoff,
                         'my_firstname' => $vals->my_firstname,
@@ -236,6 +237,33 @@ class User_model extends CI_Model {
                         'verified'    => $vals->verified
       );
       return $settings;
+    }
+
+    function has_subscription($email){
+      $query = $this->db->query("SELECT paid_account FROM user WHERE email = '$email'");
+      $vals = $query->row();
+      if($vals->paid_account == 1){
+        return true;
+      }else{
+        return false;
+      }
+    }
+    function set_as_subscriber($email){
+      $this->db->where('email', $email);
+      if($this->db->update('user', array('paid_account' => 1))){
+        return true;
+      }else{
+        return false;
+      }
+    }
+
+    function unset_as_subscriber($email){
+      $this->db->where('email', $email);
+      if($this->db->update('user', array('paid_account' => 0))){
+        return true;
+      }else{
+        return false;
+      }
     }
 
 }

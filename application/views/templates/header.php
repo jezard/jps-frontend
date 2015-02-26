@@ -76,7 +76,7 @@
 			<li id="upload-mob" <?php echo $display; ?> ><?php echo anchor('upload', 'Upload files'); ?></li>
 			<li id="activity-mob" <?php echo $display; ?> ><a href="http://joulepersecond.com/index.php/activity">Activity</a></li>
 			<li id="analysis-mob" <?php echo $display; ?> ><a href="http://joulepersecond.com/index.php/analysis">Analysis</a></li>
-			<li id="myaccount-mob" <?php echo $display; ?> ><?php echo anchor('myaccount', 'My Account'); ?></li>
+			<li id="myaccount-mob" <?php echo $display; ?> ><a href="https://joulepersecond.com/index.php/myaccount">My Account</a></li>
 			<li id="forum-mob" <?php echo $display; ?> ><?php echo anchor('forum', 'Forum'); ?></li>
 			<!-- we coud do with hiding this button for google users -->
 			<li id="signout" <?php echo $display; ?> >
@@ -106,7 +106,7 @@
 			<li id="upload" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/upload.png" alt="upload"/><?php echo anchor('upload', 'Upload files'); ?></li>
 			<li id="activity" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/activity.png" alt="activity"/><a href="http://joulepersecond.com/index.php/activity">Activity</a></li>
 			<li id="analysis" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/analysis.png" alt="analysis"/><a href="http://joulepersecond.com/index.php/analysis">Analysis</a></li>
-			<li id="myaccount" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/my-account.png" alt="my-account"/><?php echo anchor('myaccount', 'My Account'); ?></li>
+			<li id="myaccount" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/my-account.png" alt="my-account"/><a href="https://joulepersecond.com/index.php/myaccount">My Account</a></li>
 			<li id="forum" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/forum.png" alt="forum"/><?php echo anchor('forum', 'Forum'); ?></li>
 			<!-- we coud do with hiding this button for google users -->
 			<li id="signout" <?php echo $display; ?> >

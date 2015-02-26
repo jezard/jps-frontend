@@ -344,7 +344,7 @@
 		
 		
 	</form>
-<!-- 	<?php if($paid_account > 0): ?>
+	<?php if($paid_account == 0): ?>
 		<section class="section-ln">
 
 			<h2>Subscribe and Go Premium</h2>
@@ -360,7 +360,43 @@
 				<h3>Subscribe now</h3> 
 				<div class="content-container">
 					<p>More info...</p>
-					<?php include 'includes/subscribe_btn.php'; ?>
+					<script src="https://checkout.stripe.com/checkout.js"></script>
+					<input id="customButton" type="image" src="http://joulepersecond.com/images/go-premium.png" border="0" alt="Purchase">
+					<script>
+						  var handler = StripeCheckout.configure({
+						    key: "<?php echo $this->config->item('stripe_publishable_key'); ?>",
+						    //image: '/img/documentation/checkout/marketplace.png',
+						    token: function(token) {
+						    	jQuery.post("<?php echo $this->config->item('base_url'); ?>index.php/subscribe", {
+						    			stripeToken: token.id,
+						    			email: "<?php echo $email; ?>"
+						    		},
+						    		function (data){
+						    			console.log(data);
+						    	} );
+						      // Use the token to create the charge with a server-side script.
+						      // You can access the token ID with `token.id`
+						    }
+						  });
+
+						  $('#customButton').on('click', function(e) {
+						    // Open Checkout with further options
+						    handler.open({
+						    	email: '<?php echo @$email; ?>',
+						      	name: 'JoulePerSecond.com',
+						      	description: 'Premium subscription £3.99 Monthly',
+						      	currency: "gbp"
+						    });
+						    e.preventDefault();
+						  });
+
+						  // Close Checkout on page navigation
+						  $(window).on('popstate', function() {
+						    handler.close();
+						  });
+					</script>
+					</form>
+					<!--<?php include 'includes/subscribe_btn.php'; ?> (paypal)-->
 		        </div>
 			</div>
 			<div class="clear"></div>
@@ -386,7 +422,7 @@
 
 		</section>
 	<?php endif; ?>
- -->
+
 
 
 </div>
