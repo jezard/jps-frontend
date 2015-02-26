@@ -234,6 +234,7 @@ class User_model extends CI_Model {
                         'my_location' => $vals->my_location,
                         'is_public' => $vals->is_public,
                         'paid_account' => $vals->paid_account,
+                        'stripe_id' => $vals->stripe_id,
                         'verified'    => $vals->verified
       );
       return $settings;
@@ -264,6 +265,11 @@ class User_model extends CI_Model {
       }else{
         return false;
       }
+    }
+    function set_stripe_id($email, $id){
+      $this->db->where('email', $email);
+      $this->db->update('user', array('stripe_id' => $id));
+
     }
 
 }

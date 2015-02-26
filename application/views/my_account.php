@@ -346,20 +346,55 @@
 	</form>
 	<?php if($paid_account == 0): ?>
 		<section class="section-ln">
+			<style>.section-ln td, .section-ln th{width:auto; padding:0 10px 10px; line-height: 15px}</style>
 
 			<h2>Subscribe and Go Premium</h2>
 			
 			<div class="col-1-2">
 				<h3>Subscription benefits</h3>
 				<div class="content-container">
-					<p>Table of benefits</p>
-					Coming soon!
+					<h4>Table of benefits</h4>
+					<table>
+						<tr>
+							<th>&nbsp;</th>
+							<th>Free user</th>
+							<th>Premium user</th>
+
+						</tr>
+						<tr>
+							<td><strong>Uploads</strong></td>
+							<td>10 per rolling 28 day period</td>
+							<td>Unlimited</td>
+						</tr>
+						<tr>
+							<td><strong>Deep&nbsp;analysis</strong></td>
+							<td>View up to last 90 days</td>
+							<td>Any period</td>
+						</tr>
+						<tr>
+							<td><strong>Uploaded&nbsp;files</strong></td>
+							<td>Ride data stored in our superfast database</td>
+							<td>Stored as .tcx, and in our superfast database</td>
+						</tr>
+						<tr>
+							<td><strong>New&nbsp;features</strong></td>
+							<td>Selected</td>
+							<td>Premium users get all new features</td>
+						</tr>
+						<tr>
+							<td><strong>Use&nbsp;forum</strong></td>
+							<td>Yes</td>
+							<td>Yes</td>
+						</tr>
+
+
+					</table>
 				</div>
 			</div>
 			<div class="col-1-2">
-				<h3>Subscribe now</h3> 
+				<h3>Subscribe now for just <span class="neon-orange"><em>&pound;3.99</em>/Mo</span></h3> 
 				<div class="content-container">
-					<p>More info...</p>
+					<p><span class="note">Pay securely using with your credit card, <strong><em>Paypal</em></strong> option coming soon.</span></p>
 					<script src="https://checkout.stripe.com/checkout.js"></script>
 					<input id="customButton" type="image" src="http://joulepersecond.com/images/go-premium.png" border="0" alt="Purchase">
 					<script>
@@ -407,18 +442,17 @@
 			<h2>Your subscription</h2>
 		
 			<div class="col-1-2">
-				<h3>Info 1</h3>
+				<h3>Subscription information</h3>
 				<div class="content-container">
-					<p>Information about subscriptions</p>
+					<p>For any queries relating to your subscription please contact us <a href="mailto:admin@joulepersecond.com?subject=Subscription%20Query">here</a></p>
 				</div>
 			</div>
 			<div class="col-1-2">
-				<h3>Info 2</h3>
+				<h3>Update or cancel</h3>
 				<div class="content-container">
-					<p>More information about subscriptions</p>
+					<p>To update or cancel your subscription please contact us <a href="mailto:admin@joulepersecond.com?subject=Subscription%20Query">here</a></p>
 				</div>
 			</div>
-
 
 		</section>
 	<?php endif; ?>

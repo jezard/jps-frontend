@@ -30,20 +30,25 @@ class Subscribe extends CI_Controller {
 
 		//check whether a subscription already is in place...
 		if($this->user->has_subscription($email)){
-			echo 'user_already_subscribed';
+			echo 'You are already subscribed';
 			return;
 		}
 
-		$customer = \Stripe\Customer::create(array(
-		  "source" => $token,
-		  "plan" => "001",
-		  "email" => $email)
-		);
+		try{
+			$customer = \Stripe\Customer::create(array(
+			  "source" => $token,
+			  "plan" => "001",
+			  "email" => $email)
+			);
+		}catch(Exception $e){
+			echo 'You have not been subscribed: ',  $e->getMessage(), "\n";
+		}
+		
 
-		//print_r($customer);
+		$this->user->set_stripe_id($email, $customer->id);
 
 		if($this->user->set_as_subscriber($email)){
-			echo 'user_now_subscribed';
+			echo 'You are now subscribed!';
 		}
 	}
 }
