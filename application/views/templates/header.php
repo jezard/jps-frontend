@@ -12,13 +12,13 @@
 <!-- <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,100italic,300italic,400italic' rel='stylesheet' type='text/css'> -->
 <link rel='stylesheet' href='<?php echo $this->config->item('base_url'); ?>css/style.css' type='text/css' media='all' />
 <!-- Bootstrap -->
-<link href="http://joulepersecond.com/bootstrap-3.3.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="<?php echo $this->config->item('base_url'); ?>/bootstrap-3.3.2/css/bootstrap.min.css" rel="stylesheet">
 <link rel='stylesheet' href='<?php echo $this->config->item('base_url'); ?>css/light.css' type='text/css' media='all' />
-<link href="http://joulepersecond.com/bootstrap-3.3.2/css/bootstrap-theme.css" rel="stylesheet">
+<link href="<?php echo $this->config->item('base_url'); ?>/bootstrap-3.3.2/css/bootstrap-theme.css" rel="stylesheet">
 
-<link href="http://joulepersecond.com/js/calendar/css/dp_calendar.css" type="text/css" rel="stylesheet" />
-<link href="http://joulepersecond.com/js/calendar/themes/ui-lightness/jquery.ui.all.css" type="text/css" rel="stylesheet" />
-<link rel="stylesheet" href="http://joulepersecond.com/js/responsive-nav.js-master/responsive-nav.css">
+<link href="<?php echo $this->config->item('base_url'); ?>/js/calendar/css/dp_calendar.css" type="text/css" rel="stylesheet" />
+<link href="<?php echo $this->config->item('base_url'); ?>/js/calendar/themes/ui-lightness/jquery.ui.all.css" type="text/css" rel="stylesheet" />
+<link rel="stylesheet" href="<?php echo $this->config->item('base_url'); ?>/js/responsive-nav.js-master/responsive-nav.css">
 
 
 
@@ -29,17 +29,17 @@
 <!-- jQuery --> 
 <!-- <script src='js/jquery-1.5.2.min.js'></script> --> 
 <!-- required plugins --> 
-<script src="http://joulepersecond.com/js/calendar/ui/jquery.ui.core.js"></script> 
-<script src="http://joulepersecond.com/js/calendar/ui/jquery.ui.position.js"></script> 
-<script src="http://joulepersecond.com/js/calendar/ui/jquery.ui.datepicker.js"></script> 
-<script src="http://joulepersecond.com/js/calendar/js/date.js"></script> 
-<script src="http://joulepersecond.com/js/calendar/js/jquery.dp_calendar.js"></script>
+<script src="<?php echo $this->config->item('base_url'); ?>/js/calendar/ui/jquery.ui.core.js"></script> 
+<script src="<?php echo $this->config->item('base_url'); ?>/js/calendar/ui/jquery.ui.position.js"></script> 
+<script src="<?php echo $this->config->item('base_url'); ?>/js/calendar/ui/jquery.ui.datepicker.js"></script> 
+<script src="<?php echo $this->config->item('base_url'); ?>/js/calendar/js/date.js"></script> 
+<script src="<?php echo $this->config->item('base_url'); ?>/js/calendar/js/jquery.dp_calendar.js"></script>
 
 
 <script src="https://apis.google.com/js/client:platform.js"></script>
-<script src="http://joulepersecond.com/js/main.js"></script>
-<script src="http://joulepersecond.com/bootstrap-3.3.2/js/bootstrap.min.js"></script>
-<script src="http://joulepersecond.com/js/responsive-nav.js-master/responsive-nav.js"></script>
+<script src="<?php echo $this->config->item('base_url'); ?>/js/main.js"></script>
+<script src="<?php echo $this->config->item('base_url'); ?>/bootstrap-3.3.2/js/bootstrap.min.js"></script>
+<script src="<?php echo $this->config->item('base_url'); ?>/js/responsive-nav.js-master/responsive-nav.js"></script>
 
 
 

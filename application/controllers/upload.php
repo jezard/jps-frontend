@@ -74,7 +74,7 @@ class Upload extends CI_Controller {
 		if (! $this->upload->do_multi_upload("powerfiles",md5($this->email))) {
        		$error = array('error' => $this->upload->display_errors());
        		$this->load->view('templates/header', array('title' => 'Upload - '.$this->config->item('site_name'), 'user_image' => $user_image));
-			$this->load->view('upload_form', array('message' => '<span class="note"><strong>Upload Failed</strong>: Please upload only .fit or .tcx files, or try uploading fewer files <br>('.implode(", ", $error).')</span>'));
+			$this->load->view('upload_form', array('message' => '<span class="note"><strong>Upload Failed</strong>: Please upload only .fit or .tcx files, or try uploading fewer files</span><br>'.implode(", ", $error)));
 			$this->load->view('templates/footer');
        	}
 

@@ -1,4 +1,4 @@
-<script type="text/javascript" src="http://joulepersecond.com/js/slider/js/jssor.slider.mini.js"></script>
+<script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>/js/slider/js/jssor.slider.mini.js"></script>
     <!-- Caption Style -->
     <style> 
         .captionOrange, .captionBlack
@@ -55,7 +55,7 @@
         }
         .bricon
         {
-            background: url(http://joulepersecond.com/js/slider/img/browser-icons.png);
+            background: url(<?php echo $this->config->item('base_url'); ?>/js/slider/img/browser-icons.png);
         }
     </style>
 
@@ -218,7 +218,7 @@
     	<section class="section-ln desktop">
     		
     		<h2>Product tour</h2>
-    		<div class="content-container jps-slider " style="overflow:hidden; background: #fff<!-- url(http://joulepersecond.com/images/LightTransBg.png) -->;">
+    		<div class="content-container jps-slider " style="overflow:hidden; background: #fff<!-- url(<?php echo $this->config->item('base_url'); ?>/images/LightTransBg.png) -->;">
 			    <!-- You can move inline styles to css file or css block. -->
 			    <!-- Jssor Slider Begin -->
 			    <!-- You can move inline styles to css file or css block. -->
@@ -228,99 +228,99 @@
 			            <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1000px; height: 450px;
 			                overflow: hidden;">
 			                <div>
-				                <a u=image href="#"><img class="image-shadow"  src="http://joulepersecond.com/js/slider/img/screenshots/activity-finder.png" /></a>
+				                <a u=image href="#"><img class="image-shadow"  src="<?php echo $this->config->item('base_url'); ?>/js/slider/img/screenshots/activity-finder.png" /></a>
 				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top: 0;"> 
-				                    <img class="show-icon" src="http://joulepersecond.com/images/h3-icons/wt-logo.png" alt="icon" />Find activities easily and make notes
+				                    <img class="show-icon" src="<?php echo $this->config->item('base_url'); ?>/images/h3-icons/wt-logo.png" alt="icon" />Find activities easily and make notes
 				                </div>
 				            </div>
 				            <div>
-				                <a u=image href="#"><img class="image-shadow" src="http://joulepersecond.com/js/slider/img/screenshots/ride-summary.png" /></a>
+				                <a u=image href="#"><img class="image-shadow" src="<?php echo $this->config->item('base_url'); ?>/js/slider/img/screenshots/ride-summary.png" /></a>
 				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top: 0;"> 
-				                    <img class="show-icon" src="http://joulepersecond.com/images/h3-icons/pie-chart.png" alt="icon" />At a glance stats
+				                    <img class="show-icon" src="<?php echo $this->config->item('base_url'); ?>/images/h3-icons/pie-chart.png" alt="icon" />At a glance stats
 				                </div>
 				            </div>
 				            <div>
-				                <a u=image href="#"><img class="image-shadow" src="http://joulepersecond.com/js/slider/img/screenshots/activity-overview.png" /></a>
+				                <a u=image href="#"><img class="image-shadow" src="<?php echo $this->config->item('base_url'); ?>/js/slider/img/screenshots/activity-overview.png" /></a>
 				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top: 0;"> 
-				                    <img class="show-icon" src="http://joulepersecond.com/images/h3-icons/magnifier.png" alt="icon" />Zoom in on an activity
+				                    <img class="show-icon" src="<?php echo $this->config->item('base_url'); ?>/images/h3-icons/magnifier.png" alt="icon" />Zoom in on an activity
 				                </div>
 				            </div>
 				            <div>
-				                <a u=image href="#"><img class="image-shadow" src="http://joulepersecond.com/js/slider/img/screenshots/heartrate-dist.png" /></a>
+				                <a u=image href="#"><img class="image-shadow" src="<?php echo $this->config->item('base_url'); ?>/js/slider/img/screenshots/heartrate-dist.png" /></a>
 				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top: 0;"> 
-				                    <img class="show-icon" src="http://joulepersecond.com/images/h3-icons/pie-chart.png" alt="icon" />Heartrate distribution
+				                    <img class="show-icon" src="<?php echo $this->config->item('base_url'); ?>/images/h3-icons/pie-chart.png" alt="icon" />Heartrate distribution
 				                </div>
 				            </div>
 				            <div>
-				                <a u=image href="#"><img class="image-shadow" src="http://joulepersecond.com/js/slider/img/screenshots/power-dist.png" /></a>
+				                <a u=image href="#"><img class="image-shadow" src="<?php echo $this->config->item('base_url'); ?>/js/slider/img/screenshots/power-dist.png" /></a>
 				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0;"> 
-				                    <img class="show-icon" src="http://joulepersecond.com/images/h3-icons/pie-chart.png" alt="icon" />Power distribution
+				                    <img class="show-icon" src="<?php echo $this->config->item('base_url'); ?>/images/h3-icons/pie-chart.png" alt="icon" />Power distribution
 				                </div>
 				            </div>
 				            <div>
-				                <a u=image href="#"><img class="image-shadow" src="http://joulepersecond.com/js/slider/img/screenshots/mmp-activity.png" /></a>
+				                <a u=image href="#"><img class="image-shadow" src="<?php echo $this->config->item('base_url'); ?>/js/slider/img/screenshots/mmp-activity.png" /></a>
 				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0;"> 
-				                    <img class="show-icon" src="http://joulepersecond.com/images/h3-icons/target.png" alt="icon" />Mean Maximal power
+				                    <img class="show-icon" src="<?php echo $this->config->item('base_url'); ?>/images/h3-icons/target.png" alt="icon" />Mean Maximal power
 				                </div>
 				            </div>
 				            <div>
-				                <a u=image href="#"><img class="image-shadow" src="http://joulepersecond.com/js/slider/img/screenshots/lap-summaries.png" /></a>
+				                <a u=image href="#"><img class="image-shadow" src="<?php echo $this->config->item('base_url'); ?>/js/slider/img/screenshots/lap-summaries.png" /></a>
 				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0;"> 
-				                    <img class="show-icon" src="http://joulepersecond.com/images/h3-icons/calculation.png" alt="icon" />Lap summaries
+				                    <img class="show-icon" src="<?php echo $this->config->item('base_url'); ?>/images/h3-icons/calculation.png" alt="icon" />Lap summaries
 				                </div>
 				            </div>
 				            <div>
-				                <a u=image href="#"><img class="image-shadow" src="http://joulepersecond.com/js/slider/img/screenshots/analysis-filter.png" /></a>
+				                <a u=image href="#"><img class="image-shadow" src="<?php echo $this->config->item('base_url'); ?>/js/slider/img/screenshots/analysis-filter.png" /></a>
 				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0;"> 
-				                    <img class="show-icon" src="http://joulepersecond.com/images/h3-icons/settings.png" alt="icon" />Show only what you need
+				                    <img class="show-icon" src="<?php echo $this->config->item('base_url'); ?>/images/h3-icons/settings.png" alt="icon" />Show only what you need
 				                </div>
 				            </div>
 				            <div>
-				                <a u=image href="#"><img class="image-shadow" src="http://joulepersecond.com/js/slider/img/screenshots/training-load.png" /></a>
+				                <a u=image href="#"><img class="image-shadow" src="<?php echo $this->config->item('base_url'); ?>/js/slider/img/screenshots/training-load.png" /></a>
 				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0;"> 
-				                    <img class="show-icon" src="http://joulepersecond.com/images/h3-icons/whats-watt.png" alt="icon" />Compare performance with fitness and fatigue
+				                    <img class="show-icon" src="<?php echo $this->config->item('base_url'); ?>/images/h3-icons/whats-watt.png" alt="icon" />Compare performance with fitness and fatigue
 				                </div>
 				            </div>
 				            <div>
-				                <a u=image href="#"><img class="image-shadow" src="http://joulepersecond.com/js/slider/img/screenshots/mean-max-power-3.png" /></a>
+				                <a u=image href="#"><img class="image-shadow" src="<?php echo $this->config->item('base_url'); ?>/js/slider/img/screenshots/mean-max-power-3.png" /></a>
 				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0;"> 
-				                    <img class="show-icon" src="http://joulepersecond.com/images/h3-icons/monitoring.png" alt="icon" />Compare Mean Maximal power against previous periods
+				                    <img class="show-icon" src="<?php echo $this->config->item('base_url'); ?>/images/h3-icons/monitoring.png" alt="icon" />Compare Mean Maximal power against previous periods
 				                </div>
 				            </div>
 				            <div>
-				                <a u=image href="#"><img class="image-shadow" src="http://joulepersecond.com/js/slider/img/screenshots/tss-vs-duration.png" /></a>
+				                <a u=image href="#"><img class="image-shadow" src="<?php echo $this->config->item('base_url'); ?>/js/slider/img/screenshots/tss-vs-duration.png" /></a>
 				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0;"> 
-				                    <img class="show-icon" src="http://joulepersecond.com/images/h3-icons/monitoring.png" alt="icon" />Monitor weekly training load and duration
+				                    <img class="show-icon" src="<?php echo $this->config->item('base_url'); ?>/images/h3-icons/monitoring.png" alt="icon" />Monitor weekly training load and duration
 				                </div>
 				            </div>
 				            <div>
-				                <a u=image href="#"><img class="image-shadow" src="http://joulepersecond.com/js/slider/img/screenshots/heartrate-by-zone.png" /></a>
+				                <a u=image href="#"><img class="image-shadow" src="<?php echo $this->config->item('base_url'); ?>/js/slider/img/screenshots/heartrate-by-zone.png" /></a>
 				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0;"> 
-				                    <img class="show-icon" src="http://joulepersecond.com/images/h3-icons/objectives.png" alt="icon" />Analyse time in heartrate zones
+				                    <img class="show-icon" src="<?php echo $this->config->item('base_url'); ?>/images/h3-icons/objectives.png" alt="icon" />Analyse time in heartrate zones
 				                </div>
 				            </div>
 				            <div>
-				                <a u=image href="#"><img class="image-shadow" src="http://joulepersecond.com/js/slider/img/screenshots/power-by-zone.png" /></a>
+				                <a u=image href="#"><img class="image-shadow" src="<?php echo $this->config->item('base_url'); ?>/js/slider/img/screenshots/power-by-zone.png" /></a>
 				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0;"> 
-				                    <img class="show-icon" src="http://joulepersecond.com/images/h3-icons/objectives.png" alt="icon" />Analyse time in power zones
+				                    <img class="show-icon" src="<?php echo $this->config->item('base_url'); ?>/images/h3-icons/objectives.png" alt="icon" />Analyse time in power zones
 				                </div>
 				            </div>
 				            <div>
-				                <a u=image href="#"><img class="image-shadow" src="http://joulepersecond.com/js/slider/img/screenshots/heart-vs-power.png" /></a>
+				                <a u=image href="#"><img class="image-shadow" src="<?php echo $this->config->item('base_url'); ?>/js/slider/img/screenshots/heart-vs-power.png" /></a>
 				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0;"> 
-				                    <img class="show-icon" src="http://joulepersecond.com/images/h3-icons/intelligence.png" alt="icon" />Note trends between key metrics
+				                    <img class="show-icon" src="<?php echo $this->config->item('base_url'); ?>/images/h3-icons/intelligence.png" alt="icon" />Note trends between key metrics
 				                </div>
 				            </div>
 				            <div>
-				                <a u=image href="#"><img class="image-shadow" src="http://joulepersecond.com/js/slider/img/screenshots/settings.png" /></a>
+				                <a u=image href="#"><img class="image-shadow" src="<?php echo $this->config->item('base_url'); ?>/js/slider/img/screenshots/settings.png" /></a>
 				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0;"> 
-				                    <img class="show-icon" src="http://joulepersecond.com/images/h3-icons/settings.png" alt="icon" />Basic settings. Sharing and API coming soon!
+				                    <img class="show-icon" src="<?php echo $this->config->item('base_url'); ?>/images/h3-icons/settings.png" alt="icon" />Basic settings. Sharing and API coming soon!
 				                </div>
 				            </div>
 				            <div>
-				                <a u=image href="#"><img class="image-shadow" src="http://joulepersecond.com/js/slider/img/screenshots/advanced-settings.png" /></a>
+				                <a u=image href="#"><img class="image-shadow" src="<?php echo $this->config->item('base_url'); ?>/js/slider/img/screenshots/advanced-settings.png" /></a>
 				                <div u=caption t="*" class="captionOrange"  style="position:absolute; left:0; top:0;"> 
-				                    <img class="show-icon" src="http://joulepersecond.com/images/h3-icons/settings.png" alt="icon" />Advanced settings - even more comprehensive settings will be available to paid members...
+				                    <img class="show-icon" src="<?php echo $this->config->item('base_url'); ?>/images/h3-icons/settings.png" alt="icon" />Advanced settings - even more comprehensive settings will be available to paid members...
 				                </div>
 				            </div>
 			            </div>
@@ -362,7 +362,7 @@
 				            	position: absolute;
 				            	cursor: pointer;
 				            	display: block;
-				                background: url(http://joulepersecond.com/js/slider/img/a17.png) no-repeat;
+				                background: url(<?php echo $this->config->item('base_url'); ?>/js/slider/img/a17.png) no-repeat;
 				                overflow:hidden;
 				            }
 				            .jssora05l { background-position: -10px -40px; }
@@ -391,18 +391,18 @@
 				<h2>What is JoulePerSecond?</h2>
 				<div class="col-1-2">
 					
-					<h3><img src="http://joulepersecond.com/images/h3-icons/objectives.png" alt="icon" /><span>Objectives</span></h3>
-					<div class="content-container" style="background-image: url(http://joulepersecond.com/images/background-icons/objectives.png)" >
+					<h3><img src="<?php echo $this->config->item('base_url'); ?>/images/h3-icons/objectives.png" alt="icon" /><span>Objectives</span></h3>
+					<div class="content-container" style="background-image: url(<?php echo $this->config->item('base_url'); ?>/images/background-icons/objectives.png)" >
 						<p><strong>JoulePerSecond is an analytical fitness tool for amateur and professional cyclists</strong>. Our Primary goal: To provide a decision support system for your training rides – what to do and when to do it, so that you can be at your peak fitness when you need to be.  Or put another way, to provide the tools which will help you to go faster when it counts.</p>
 						<p>JoulePerSecond <abbr title="A pre-release of software that is given out to a large group of users to try under real conditions. Beta versions have gone through alpha testing inhouse and are generally fairly close in look, feel and function to the final product; however, design changes often occur as a result.">Beta</abbr> provides a toolkit with some very useful features – there’s a lot to do before we can begin to say we’re finished – we’d like your input – what are your requirements for perfect cycling analytics? Tell us <a href="/index.php/forum">here</a>. Popular requests are likely candidates for early implementation to JoulePerSecond. JoulePerSecond is a tool for Cyclists, made by Cyclists. The reason for building JoulePerSecond was borne out of frustration at a certain other online tools not listening to the requests of its premium users.</p>
 						<p>JoulePerSecond is about showing performance data rather that where you’ve been or who you’ve beaten on a certain stretch of road. Many of us spend hours and hours cycling indoors, and JoulePerSecond is particularly useful when extending the analysis provided by other systems such as <a href="http://www.trainerroad.com">TrainerRoad</a>, whilst merging in other outdoor training and race data.</p>
 					</div>
-					<h3><img src="http://joulepersecond.com/images/h3-icons/whats-watt.png" alt="icon" /><span>JoulePerSecond? Watt's with that?</span></h3>
+					<h3><img src="<?php echo $this->config->item('base_url'); ?>/images/h3-icons/whats-watt.png" alt="icon" /><span>JoulePerSecond? Watt's with that?</span></h3>
 					<div class="content-container" >
 						<p>For those that don’t know, one Joule per Second is one Watt, the commonly used unit of power in many applications including cycling. Our web app is best suited to those who use a power meter, although we use algorithms based on heart rate when riding a bike without a power meter (or attend a spin class), and our power meter batteries die - we allow a manual override of the training load for an activity, so as not to render training load charts useless when disaster strikes.</p>
 					</div>
-					<h3><img src="http://joulepersecond.com/images/h3-icons/bug-fixing.png" alt="icon" /><span>What are the limitations of the Beta version?</span></h3>
-					<div class="content-container" style="background-image: url(http://joulepersecond.com/images/background-icons/bug-fixing.png)">
+					<h3><img src="<?php echo $this->config->item('base_url'); ?>/images/h3-icons/bug-fixing.png" alt="icon" /><span>What are the limitations of the Beta version?</span></h3>
+					<div class="content-container" style="background-image: url(<?php echo $this->config->item('base_url'); ?>/images/background-icons/bug-fixing.png)">
 						<p>The Beta version is free to use – its purpose is to iron out bugs and serious issues. We might need to change the structure of stored activities during this time – so we can't make any guarantees about retaining your ride data. Obviously we won’t remove any ride data unless we really have to - we use JoulePerSecond too! Hopefully, we’re already beyond the need for that. The servers used in the Beta version are scaled down from that which we will use in production; hence (especially) data processing is likely to be slower than what you can expect in the production version. There may also be times when the site is down so that we can implement the feedback you give us.</p>
 						<p>There isn’t much of a social function yet although this is very important to us, we consider getting the basic app running first priority, but sharing (and showing off!) of your rides is next on our agenda. Most of what’s available in the Beta version will remain free in the release version. Exceptions from the free version likely to be (we reserve the right to change these during the Beta testing phase):</p>
 						<ul>
@@ -416,8 +416,8 @@
 					</div>
 				</div>
 				<div class="col-1-2">
-					<h3><img src="http://joulepersecond.com/images/h3-icons/technical.png" alt="icon" /><span>Technical information</span></h3>
-					<div class="content-container" style="background-image: url(http://joulepersecond.com/images/background-icons/technical.png)" >
+					<h3><img src="<?php echo $this->config->item('base_url'); ?>/images/h3-icons/technical.png" alt="icon" /><span>Technical information</span></h3>
+					<div class="content-container" style="background-image: url(<?php echo $this->config->item('base_url'); ?>/images/background-icons/technical.png)" >
 						<ul>
 							<li>JoulePerSecond requires a modern HTML5 capable browser – we think our resources are better spent adding great new features rather than supporting dinosaur browsers. We recommend <a href=" https://www.google.com/chrome/browser/desktop/" target="_blank">Chrome</a> browser.</li>
 							<li>JavaScript must be enabled</li>
@@ -427,14 +427,14 @@
 						</ul>
 						<small>Note: screenshots above are taken from a development version, and may not reflect the official release version</small>
 					</div>
-                    <h3><img src="http://joulepersecond.com/images/h3-icons/wt-logo.png" alt="icon" /><span>Powered by Wizard Technology</span></h3>
+                    <h3><img src="<?php echo $this->config->item('base_url'); ?>/images/h3-icons/wt-logo.png" alt="icon" /><span>Powered by Wizard Technology</span></h3>
                     <div class="content-container">
-                        <a href="http://wizard.technology"><img src="http://joulepersecond.com/images/wt-logo.png" alt="Wizard Technology logo" width="130"/></a>
-                        <p><a href="http://joulepersecond.com">JoulePerSecond</a> is designed and built by <a href="http://wizard.technology">Wizard Technology</a>. View the development <a href="http://wizard.technology/projects/peak-power-wizard/">here</a>.</p>
+                        <a href="http://wizard.technology"><img src="<?php echo $this->config->item('base_url'); ?>/images/wt-logo.png" alt="Wizard Technology logo" width="130"/></a>
+                        <p><a href="<?php echo $this->config->item('base_url'); ?>">JoulePerSecond</a> is designed and built by <a href="http://wizard.technology">Wizard Technology</a>. View the development <a href="http://wizard.technology/projects/peak-power-wizard/">here</a>.</p>
                     </div>
-                    <h3><img src="http://joulepersecond.com/images/h3-icons/jps-logo.png" alt="icon" /><span>Our brand</span></h3>
+                    <h3><img src="<?php echo $this->config->item('base_url'); ?>/images/h3-icons/jps-logo.png" alt="icon" /><span>Our brand</span></h3>
                     <div class="content-container">
-                        <a href="http://joulepersecond.com/images/quad-hd-logo.png"><img src="http://joulepersecond.com/images/quad-hd-logo-thumb.png" alt="JoulePerSecond logo" width="100%" style="margin:0"/></a>
+                        <a href="<?php echo $this->config->item('base_url'); ?>/images/quad-hd-logo.png"><img src="<?php echo $this->config->item('base_url'); ?>/images/quad-hd-logo-thumb.png" alt="JoulePerSecond logo" width="100%" style="margin:0"/></a>
                         <p>Please use our logo for spreading the word about JoulePerSecond! We don't currently have any specific guidelines, so in the meantime just please respect the designer's feelings - give the logo some space! Click on the image above for a large image. If you need the image in other colors or formats, please contact us and we can supply the original vector. JoulePerSecond and the ChainWheel Logo remain the property of Wizard Technology.</p>
                     </div>
                      <!-- Go to www.addthis.com/dashboard to customize your tools -->

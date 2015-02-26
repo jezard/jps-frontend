@@ -84,9 +84,9 @@ var helper = (function() {
         for (var i=0; i < profile.emails.length; i++) {
 		  	if (profile.emails[i].type === 'account') primaryEmail = profile.emails[i].value;
 		}
-        jQuery.post("http://joulepersecond.com/index.php/sociallogin/", {email: primaryEmail, username: display_name })
+        jQuery.post("<?php echo $this->config->item('base_url'); ?>/index.php/sociallogin/", {email: primaryEmail, username: display_name })
 		.done(function(data){
-			window.location = "http://joulepersecond.com/index.php/myaccount";
+			window.location = "<?php echo $this->config->item('base_url'); ?>/index.php/myaccount";
 		});
 
       }, function(err) {
