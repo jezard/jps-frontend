@@ -428,7 +428,7 @@
 						    handler.open({
 						    	email: '<?php echo @$email; ?>',
 						      	name: 'JoulePerSecond.com',
-						      	description: 'Premium subscription £3.99 Monthly',
+						      	description: 'Premium subscription £4.99 Monthly',
 						      	currency: "gbp"
 						    });
 						    e.preventDefault();

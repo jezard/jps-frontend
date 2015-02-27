@@ -95,7 +95,7 @@ var helper = (function() {
         for (var i=0; i < profile.emails.length; i++) {
 		  	if (profile.emails[i].type === 'account') primaryEmail = profile.emails[i].value;
 		}
-		jQuery.post("<?php echo $this->config->item('base_url'); ?>/index.php/socialsignup/", {
+		jQuery.post("<?php echo $this->config->item('base_url'); ?>/socialsignup/", {
 							username: display_name, 
 							email: primaryEmail,
 							my_firstname: givenName,
