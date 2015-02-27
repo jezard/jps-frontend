@@ -71,8 +71,8 @@
 	<nav class="nav-collapse">
 		<ul>
 			<li id="home-nav-btn" style="background: url(<?php echo $this->config->item('base_url'); ?>images/logo-small.png) right center no-repeat #fff" id="home-btn" <?php echo $display; ?> ><?php echo anchor('/', 'JoulePerSecond.com');?></li>
-			<li id="signup-mob" <?php echo $display; ?> ><?php echo anchor('signup', 'Sign up');?></li>
-			<li id="login-mob" <?php echo $display; ?> ><?php echo anchor('login', 'Log in');?></li>
+			<li id="signup-mob" <?php echo $display; ?> ><a href="https://joulepersecond.com/index.php/login">Sign Up</a></li>
+			<li id="login-mob" <?php echo $display; ?> ><a href="https://joulepersecond.com/index.php/login">Log In</a></li>
 			<li id="upload-mob" <?php echo $display; ?> ><a href="http://joulepersecond.com/index.php/upload">Upload Files</a></li>
 			<li id="activity-mob" <?php echo $display; ?> ><a href="http://joulepersecond.com/index.php/activity">Activity</a></li>
 			<li id="analysis-mob" <?php echo $display; ?> ><a href="http://joulepersecond.com/index.php/analysis">Analysis</a></li>
@@ -81,9 +81,9 @@
 			<!-- we coud do with hiding this button for google users -->
 			<li id="signout" <?php echo $display; ?> >
 				<?php if( $this->input->cookie('social_user') == 'no'): ?>
-					<?php echo anchor('signout', 'log out');?>
+					<?php echo anchor('signout', 'log Out');?>
 				<?php else: ?>
-					<?php echo anchor('socialsignout', 'log out');?>
+					<?php echo anchor('socialsignout', 'log Out');?>
 				<?php endif; ?>
 			</li>
 		</ul>
@@ -101,8 +101,8 @@
 	
 		<nav class="top-nav col-1-1">
 		<ul>
-			<li id="signup" style="background-color:#FB4B02" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/sign-up.png" alt="sign-up"/><?php echo anchor('signup', 'Sign up');?></li>
-			<li id="login" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/log-in.png" alt="log-in"/><?php echo anchor('login', 'Log in');?></li>
+			<li id="signup" style="background-color:#FB4B02" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/sign-up.png" alt="sign-up"/><a href="https://joulepersecond.com/index.php/login">Sign Up</a></li>
+			<li id="login" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/log-in.png" alt="log-in"/><a href="https://joulepersecond.com/index.php/login">Log In</a></li>
 			<li id="upload" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/upload.png" alt="upload"/><a href="http://joulepersecond.com/index.php/upload">Upload Files</a></li>
 			<li id="activity" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/activity.png" alt="activity"/><a href="http://joulepersecond.com/index.php/activity">Activity</a></li>
 			<li id="analysis" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/analysis.png" alt="analysis"/><a href="http://joulepersecond.com/index.php/analysis">Analysis</a></li>
@@ -112,9 +112,9 @@
 			<li id="signout" <?php echo $display; ?> >
 				<img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/log-out.png" alt="log-out"/>
 				<?php if( $this->input->cookie('social_user') == 'no'): ?>
-					<?php echo anchor('signout', 'Log out');?>
+					<?php echo anchor('signout', 'Log Out');?>
 				<?php else: ?>
-					<?php echo anchor('socialsignout', 'Log out');?>
+					<?php echo anchor('socialsignout', 'Log Out');?>
 				<?php endif; ?>
 			</li>
 		</ul>

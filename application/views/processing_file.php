@@ -70,7 +70,8 @@ function parseFiles(){
 		jQuery.ajax({
 			url: "http://joulepersecond.com:8080/process/activity/" + data,
 			xhrFields: {
-		      withCredentials: true
+		      withCredentials: true,
+		      dataType: 'jsonp'
 		   }
 		}).done(function(){
 			progress++;
