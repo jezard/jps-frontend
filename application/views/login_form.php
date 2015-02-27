@@ -27,7 +27,9 @@
 	<div class="col-1-2">
 		<h3>Or sign in using your Google account</h3>
 		<div class="content-container signup-form">
-			<div id="gConnect" class="button">
+      <span class="note"><strong>Note:</strong> Only use this option if you originally signed-up to <span class="jps-em"><span>Joule</span><span>Per</span><span>Second</span></span> with Google</span>
+			<p>&nbsp;</p>
+      <div id="gConnect" class="button">
 				<button class="g-signin"
 					data-scope="email"
 					data-clientid="944557324013-bqebngtmsou4omlgb48us86g9brq9113.apps.googleusercontent.com"
