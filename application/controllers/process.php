@@ -236,7 +236,6 @@ class Process extends CI_Controller {
 			//delete record of this file from intermediate table else we're going to keep trying to load a file that ain't there...
 			$this->user_file->_deleteIntRec($filename);
 		}
-		echo $debug;
 
 		
 	}

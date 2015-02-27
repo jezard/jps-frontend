@@ -4,7 +4,7 @@ body{
 	/*background: url(http://joulepersecond.com/images/MidTransBg.png) #6DD300;*/
 	/*background: url(http://joulepersecond.com/images/paper_bg.jpg) fixed;*/
 	margin: 0 0 40px 0;
-	background: url(http://joulepersecond.com/images/bg-img.jpg) fixed #ccc;
+	background: url(/images/bg-img.jpg) fixed #ccc;
 	background-repeat:no-repeat;
 	background-position: center top;
     background-size:cover;
@@ -231,6 +231,12 @@ a:active {
 }
 #home-nav-btn a{
 	color: #fb4b02;
+}
+.note{
+	background: #eee;
+	border-radius: 5px;
+	padding: 6px;
+	display: inline-block;
 }
 
 /* media queries */

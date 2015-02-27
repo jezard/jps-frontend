@@ -1134,11 +1134,16 @@ nav.top-nav a:hover {
 	text-shadow: 0 -1px #0d0d0d;
 	position: absolute;
 }
-.jps span{
+.jps-em span:nth-of-type(1){
 	color:#fb4b02;
-	font-weight: bold;
+}
+.jps-em span:nth-of-type(2){
 	font-style: italic;
 }
+.jps-em span:nth-of-type(3){
+	font-weight: bold;
+}
+
 
 .user-img{
 	right:0;

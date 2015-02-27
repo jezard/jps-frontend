@@ -344,6 +344,123 @@
 		
 		
 	</form>
+	<?php if($paid_account == 0): ?>
+		<section class="section-ln">
+			<style>.section-ln td, .section-ln th{width:auto; padding:0 10px 10px; line-height: 15px}</style>
+
+			<h2>Subscribe and Go Premium</h2>
+			
+			<div class="col-1-2">
+				<h3>Subscription benefits</h3>
+				<div class="content-container">
+					<h4>Table of benefits</h4>
+					<table>
+						<tr>
+							<th>&nbsp;</th>
+							<th>Free user</th>
+							<th>Premium user</th>
+
+						</tr>
+						<tr>
+							<td><strong>Uploads</strong></td>
+							<td>10 per rolling 28 day period</td>
+							<td>Unlimited</td>
+						</tr>
+						<tr>
+							<td><strong>Deep&nbsp;analysis</strong></td>
+							<td>View up to last 90 days</td>
+							<td>Any period</td>
+						</tr>
+						<tr>
+							<td><strong>Uploaded&nbsp;files</strong></td>
+							<td>Ride data stored in our superfast database</td>
+							<td>Stored as .tcx, and in our superfast database</td>
+						</tr>
+						<tr>
+							<td><strong>New&nbsp;features</strong></td>
+							<td>Selected</td>
+							<td>Premium users get all new features</td>
+						</tr>
+						<tr>
+							<td><strong>Use&nbsp;forum</strong></td>
+							<td>Yes</td>
+							<td>Yes</td>
+						</tr>
+
+
+					</table>
+				</div>
+			</div>
+			<div class="col-1-2">
+				<h3>Subscribe now for just <span class="neon-orange"><em>&pound;3.99</em>/Mo</span></h3> 
+				<div class="content-container">
+					<p><span class="note">Pay securely using with your credit card, <strong><em>Paypal</em></strong> option coming soon.</span></p>
+					<script src="https://checkout.stripe.com/checkout.js"></script>
+					<input id="customButton" type="image" src="/images/go-premium.png" border="0" alt="Purchase">
+					<script>
+						  var handler = StripeCheckout.configure({
+						    key: "<?php echo $this->config->item('stripe_publishable_key'); ?>",
+						    //image: '/img/documentation/checkout/marketplace.png',
+						    token: function(token) {
+						    	jQuery.post("<?php echo $this->config->item('base_url'); ?>index.php/subscribe", {
+						    			stripeToken: token.id,
+						    			email: "<?php echo $email; ?>"
+						    		},
+						    		function (data){
+						    			alert(data);
+						    			location.reload();
+
+						    	} );
+						      // Use the token to create the charge with a server-side script.
+						      // You can access the token ID with `token.id`
+						    }
+						  });
+
+						  $('#customButton').on('click', function(e) {
+						    // Open Checkout with further options
+						    handler.open({
+						    	email: '<?php echo @$email; ?>',
+						      	name: 'JoulePerSecond.com',
+						      	description: 'Premium subscription £3.99 Monthly',
+						      	currency: "gbp"
+						    });
+						    e.preventDefault();
+						  });
+
+						  // Close Checkout on page navigation
+						  $(window).on('popstate', function() {
+						    handler.close();
+						  });
+					</script>
+					</form>
+					<!--<?php include 'includes/subscribe_btn.php'; ?> (paypal)-->
+		        </div>
+			</div>
+			<div class="clear"></div>
+
+		</section>
+	<?php else: ?>
+		<section class="section-ln">
+			<h2>Your subscription</h2>
+		
+			<div class="col-1-2">
+				<h3>Subscription information</h3>
+				<div class="content-container">
+					<p>For any queries relating to your subscription please contact us <a href="mailto:admin@joulepersecond.com?subject=Subscription%20Query">here</a></p>
+				</div>
+			</div>
+			<div class="col-1-2">
+				<h3>Update or cancel</h3>
+				<div class="content-container">
+					<p>To update or cancel your subscription please contact us <a href="mailto:admin@joulepersecond.com?subject=Subscription%20Query">here</a></p>
+				</div>
+			</div>
+
+		</section>
+	<?php endif; ?>
+
+
+
 </div>
 <script>
 	function showValue(newValue){

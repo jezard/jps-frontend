@@ -8,6 +8,7 @@ class Socialsignout extends CI_Controller {
 
 		delete_cookie('valid_user', $this->config->item('site_name'),'/', '');
 		delete_cookie('social_user', $this->config->item('site_name'),'/', '');
+		delete_cookie('paid_account', $this->config->item('site_name'),'/', '');
 
 		$this->load->view('templates/header', array('title' => 'Log out of social - '.$this->config->item('site_name')));
 		$this->load->view('social_signout');

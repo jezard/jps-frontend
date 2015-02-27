@@ -52,10 +52,11 @@ class User_model extends CI_Model {
 
     	foreach ($query->result() as $row)
   		{
-  		   	array_push($validuser, $row->id);
+  		   	array_push($validuser, $row->user_id);
   		  	array_push($validuser, $row->username);
   		   	array_push($validuser, $row->email);
   		}
+
     	return $validuser;
     }
 
@@ -216,7 +217,9 @@ class User_model extends CI_Model {
     function getsettings($email){
       $query = $this->db->query("SELECT * FROM user WHERE email = '$email'");
       $vals = $query->row();
-      $settings = array('set_autofill'=> $vals->set_autofill, 
+      $settings = array('user_id' => $vals->user_id,
+                        'email' => $email,
+                        'set_autofill'=> $vals->set_autofill, 
                         'set_data_cutoff' => $vals->set_data_cutoff,
                         'my_firstname' => $vals->my_firstname,
                         'my_lastname' => $vals->my_lastname,
@@ -229,9 +232,44 @@ class User_model extends CI_Model {
                         'my_ftp' => $vals->my_ftp,
                         'my_vo2' => $vals->my_vo2,
                         'my_location' => $vals->my_location,
-                        'is_public' => $vals->is_public
+                        'is_public' => $vals->is_public,
+                        'paid_account' => $vals->paid_account,
+                        'stripe_id' => $vals->stripe_id,
+                        'verified'    => $vals->verified
       );
       return $settings;
+    }
+
+    function has_subscription($email){
+      $query = $this->db->query("SELECT paid_account FROM user WHERE email = '$email'");
+      $vals = $query->row();
+      if($vals->paid_account == 1){
+        return true;
+      }else{
+        return false;
+      }
+    }
+    function set_as_subscriber($email){
+      $this->db->where('email', $email);
+      if($this->db->update('user', array('paid_account' => 1))){
+        return true;
+      }else{
+        return false;
+      }
+    }
+
+    function unset_as_subscriber($email){
+      $this->db->where('email', $email);
+      if($this->db->update('user', array('paid_account' => 0))){
+        return true;
+      }else{
+        return false;
+      }
+    }
+    function set_stripe_id($email, $id){
+      $this->db->where('email', $email);
+      $this->db->update('user', array('stripe_id' => $id));
+
     }
 
 }
