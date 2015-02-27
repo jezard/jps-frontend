@@ -21,24 +21,29 @@ class Myaccount extends CI_Controller {
 
 		$this->form_validation->set_rules('set_autofill', 'Autofill', 'required');
 		$this->form_validation->set_rules('set_data_cutoff', 'Data Cutoff', 'required');
-		$this->form_validation->set_rules('my_firstname', 'First name', 'alpha');
-		$this->form_validation->set_rules('my_lastname', 'Last name', 'alpha');
-		$this->form_validation->set_rules('my_age', 'Age', 'integer|max_length[3]|less_than[120]');
-		$this->form_validation->set_rules('my_weight', 'Weight Kg', 'integer|max_length[3]|less_than[150]');
-		$this->form_validation->set_rules('my_mhr', 'Max Heart Rate', 'integer|max_length[3]|less_than[220]');
-		$this->form_validation->set_rules('my_thr', 'Threshold Heart Rate', 'integer|max_length[3]|less_than[220]');
-		$this->form_validation->set_rules('my_rhr', 'Resting Heart Rate', 'integer|max_length[3]|less_than[120]');
-		$this->form_validation->set_rules('my_ftp', 'Functional Threshold Power', 'integer|max_length[3]|less_than[600]');
-		$this->form_validation->set_rules('my_vo2', 'VO2 Max', 'integer|max_length[2]|less_than[70]');
-		$this->form_validation->set_rules('my_location', 'Location', 'alpha|max_length[4]');
+		$this->form_validation->set_rules('my_firstname', 'First name', 'min_length[5]|alpha|required');
+		$this->form_validation->set_rules('my_lastname', 'Last name', 'alpha|required');
+		$this->form_validation->set_rules('my_age', 'Age', 'integer|max_length[3]|less_than[120]|required');
+		$this->form_validation->set_rules('my_weight', 'Weight Kg', 'integer|max_length[3]|less_than[150]|required');
+		$this->form_validation->set_rules('my_mhr', 'Max Heart Rate', 'integer|max_length[3]|less_than[220]|required');
+		$this->form_validation->set_rules('my_thr', 'Threshold Heart Rate', 'integer|max_length[3]|less_than[220]|required');
+		$this->form_validation->set_rules('my_rhr', 'Resting Heart Rate', 'integer|max_length[3]|less_than[120]|required');
+		$this->form_validation->set_rules('my_ftp', 'Functional Threshold Power', 'integer|max_length[3]|less_than[600]|required');
+		$this->form_validation->set_rules('my_vo2', 'VO2 Max', 'integer|max_length[2]|less_than[70]|required');
+		$this->form_validation->set_rules('my_location', 'Location', 'alpha|max_length[4]|required');
 
+		
 
 
 		if ($this->form_validation->run() == FALSE)
 		{
+			$data = $this->user->getsettings($this->email);
+			if($this->input->server('REQUEST_METHOD') == 'POST'){
+				$data = array_merge($data, array('validated'=>'no'));
+			}
 			
 			$this->load->view('templates/header', array('title' => 'My Account - '.$this->config->item('site_name'), 'user_image' => $this->user_image));
-			$this->load->view('my_account', $this->user->getsettings($this->email));
+			$this->load->view('my_account', $data);
 			$this->load->view('templates/footer');
 		}
 		else

@@ -3,6 +3,9 @@
 		
 		<section class="account-settings">
 			<div class="section-ln">
+				<?php if($user_set == 0): ?>
+					<div class="warning"><strong>Note:</strong> Users must update their settings before uploading files</div>
+				<?php endif; ?>
 				<div class="col-1-2">
 					<h1>Account settings</h1>
 				</div>
@@ -303,6 +306,10 @@
 						<p><br><span class="neon-orange">*</span> If values for <em><abbr title="Functional Threshold Power">FTP</abbr></em> or <em>VO<sub>2</sub> Max</em> are unknown, set value to <code>0</code></p>
 					</div>
 				</div>
+				<div class="clear"></div>
+				<?php if(@$validated == 'no'): ?>
+					<div class="warning"><strong>Not updated:</strong> Users must complete all fields</div>
+				<?php endif; ?>
 			</div>
 			<div class="section-ln">
 
