@@ -29,6 +29,10 @@ class Upload extends CI_Controller {
 		$data = $this->user_activity->get_spent_num($this->email);
 		$user_image = $this->user->get_user_image($this->email);
 		$settings = $this->user->getsettings($this->email);
+		if($settings['user_set']==0){//user hasn't saved their first run settings
+			redirect('https://joulepersecond.com/myaccount', 'refresh');
+			return;
+		}
 		$data['paid_account'] = $settings['paid_account'];
 		$data['user_id'] = $settings['user_id'];
 

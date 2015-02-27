@@ -190,6 +190,7 @@ class User_model extends CI_Model {
 
       $this->db->where('email', $email);
       if($this->db->update('user', array(
+        'user_set' => 1,
         'set_autofill' => $this->set_autofill, 
         'set_data_cutoff' => $this->set_data_cutoff,
         'my_firstname' => $this->my_firstname,
@@ -219,6 +220,7 @@ class User_model extends CI_Model {
       $vals = $query->row();
       $settings = array('user_id' => $vals->user_id,
                         'email' => $email,
+                        'user_set' => $vals->user_set,
                         'set_autofill'=> $vals->set_autofill, 
                         'set_data_cutoff' => $vals->set_data_cutoff,
                         'my_firstname' => $vals->my_firstname,

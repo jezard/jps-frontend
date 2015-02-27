@@ -23,7 +23,7 @@ class Myaccount extends CI_Controller {
 		$this->form_validation->set_rules('set_data_cutoff', 'Data Cutoff', 'required');
 		$this->form_validation->set_rules('my_firstname', 'First name', 'alpha');
 		$this->form_validation->set_rules('my_lastname', 'Last name', 'alpha');
-		$this->form_validation->set_rules('my_age', 'Firstname', 'integer|max_length[3]|less_than[120]');
+		$this->form_validation->set_rules('my_age', 'Age', 'integer|max_length[3]|less_than[120]');
 		$this->form_validation->set_rules('my_weight', 'Weight Kg', 'integer|max_length[3]|less_than[150]');
 		$this->form_validation->set_rules('my_mhr', 'Max Heart Rate', 'integer|max_length[3]|less_than[220]');
 		$this->form_validation->set_rules('my_thr', 'Threshold Heart Rate', 'integer|max_length[3]|less_than[220]');
