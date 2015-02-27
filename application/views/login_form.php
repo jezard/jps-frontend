@@ -84,7 +84,7 @@ var helper = (function() {
         for (var i=0; i < profile.emails.length; i++) {
 		  	if (profile.emails[i].type === 'account') primaryEmail = profile.emails[i].value;
 		}
-        jQuery.post("<?php echo $this->config->item('base_url'); ?>/index.php/sociallogin/", {email: primaryEmail, username: display_name })
+        jQuery.post("<?php echo $this->config->item('base_url'); ?>/sociallogin/", {email: primaryEmail, username: display_name })
 		.done(function(data){
 			window.location = "<?php echo $this->config->item('base_url'); ?>/index.php/myaccount";
 		});

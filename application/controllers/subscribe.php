@@ -30,7 +30,7 @@ class Subscribe extends CI_Controller {
 
 		//check whether a subscription already is in place...
 		if($this->user->has_subscription($email)){
-			echo 'You are already subscribed';
+			echo 'It appears that you are already subscribed';
 			return;
 		}
 
@@ -41,14 +41,14 @@ class Subscribe extends CI_Controller {
 			  "email" => $email)
 			);
 		}catch(Exception $e){
-			echo 'You have not been subscribed: ',  $e->getMessage(), "\n";
+			echo 'Unfortunately, You have not been subscribed: ',  $e->getMessage(), "\n";
 		}
 		
 
 		$this->user->set_stripe_id($email, $customer->id);
 
 		if($this->user->set_as_subscriber($email)){
-			echo 'You are now subscribed!';
+			echo 'Thank you very much. You are now subscribed!';
 		}
 	}
 }

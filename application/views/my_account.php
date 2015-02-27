@@ -396,7 +396,7 @@
 				<div class="content-container">
 					<p><span class="note">Pay securely using with your credit card, <strong><em>Paypal</em></strong> option coming soon.</span></p>
 					<script src="https://checkout.stripe.com/checkout.js"></script>
-					<input id="customButton" type="image" src="http://joulepersecond.com/images/go-premium.png" border="0" alt="Purchase">
+					<input id="customButton" type="image" src="/images/go-premium.png" border="0" alt="Purchase">
 					<script>
 						  var handler = StripeCheckout.configure({
 						    key: "<?php echo $this->config->item('stripe_publishable_key'); ?>",
@@ -407,7 +407,9 @@
 						    			email: "<?php echo $email; ?>"
 						    		},
 						    		function (data){
-						    			console.log(data);
+						    			alert(data);
+						    			location.reload();
+
 						    	} );
 						      // Use the token to create the charge with a server-side script.
 						      // You can access the token ID with `token.id`

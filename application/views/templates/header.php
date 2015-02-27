@@ -73,7 +73,7 @@
 			<li id="home-nav-btn" style="background: url(<?php echo $this->config->item('base_url'); ?>images/logo-small.png) right center no-repeat #fff" id="home-btn" <?php echo $display; ?> ><?php echo anchor('/', 'JoulePerSecond.com');?></li>
 			<li id="signup-mob" <?php echo $display; ?> ><?php echo anchor('signup', 'Sign up');?></li>
 			<li id="login-mob" <?php echo $display; ?> ><?php echo anchor('login', 'Log in');?></li>
-			<li id="upload-mob" <?php echo $display; ?> ><?php echo anchor('upload', 'Upload files'); ?></li>
+			<li id="upload-mob" <?php echo $display; ?> ><a href="http://joulepersecond.com/index.php/upload">Upload Files</a></li>
 			<li id="activity-mob" <?php echo $display; ?> ><a href="http://joulepersecond.com/index.php/activity">Activity</a></li>
 			<li id="analysis-mob" <?php echo $display; ?> ><a href="http://joulepersecond.com/index.php/analysis">Analysis</a></li>
 			<li id="myaccount-mob" <?php echo $display; ?> ><a href="https://joulepersecond.com/index.php/myaccount">My Account</a></li>
@@ -103,7 +103,7 @@
 		<ul>
 			<li id="signup" style="background-color:#FB4B02" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/sign-up.png" alt="sign-up"/><?php echo anchor('signup', 'Sign up');?></li>
 			<li id="login" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/log-in.png" alt="log-in"/><?php echo anchor('login', 'Log in');?></li>
-			<li id="upload" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/upload.png" alt="upload"/><?php echo anchor('upload', 'Upload files'); ?></li>
+			<li id="upload" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/upload.png" alt="upload"/><a href="http://joulepersecond.com/index.php/upload">Upload Files</a></li>
 			<li id="activity" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/activity.png" alt="activity"/><a href="http://joulepersecond.com/index.php/activity">Activity</a></li>
 			<li id="analysis" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/analysis.png" alt="analysis"/><a href="http://joulepersecond.com/index.php/analysis">Analysis</a></li>
 			<li id="myaccount" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/my-account.png" alt="my-account"/><a href="https://joulepersecond.com/index.php/myaccount">My Account</a></li>
