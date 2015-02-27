@@ -93,7 +93,7 @@
 	<div class="hdr-container">
 
 		<a class="logo" href="<?php echo $this->config->item('base_url'); ?>" title="<?php echo $this->config->item('site_name'); ?>" style="background: url(<?php echo $this->config->item('base_url'); ?>images/logo-small.png) center; background-size:cover"></a> 
-		<div class="jps"><a class="logo" href="<?php echo $this->config->item('base_url'); ?>" title="<?php echo $this->config->item('site_name'); ?>">JoulePerSecond <span>Beta</span></a></div>
+		<div class="jps jps-em"><a class="logo" href="<?php echo $this->config->item('base_url'); ?>" title="<?php echo $this->config->item('site_name'); ?>"><span>Joule</span><span>Per</span><span>Second</span></a></div>
 
 		<?php if ($this->input->cookie('valid_user')): ?>
 			<a class="user-img" href="<?php echo $this->config->item('base_url'); ?>" title="<?php echo $message; ?> " style="background: url(<?php echo $user_image; ?>) center; background-size:cover"></a> 
