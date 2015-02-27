@@ -14,7 +14,7 @@ class Upload extends CI_Controller {
 		{
 			$this->email = $this->input->cookie('valid_user', false);
 			if((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443){
-				redirect('http://joulepsersecond.com/upload', 'refresh');
+				redirect('http://joulepersecond.com/upload', 'refresh');
 			}
 
 		}
