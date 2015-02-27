@@ -4,7 +4,7 @@
    		<div class="addthis_sharing_toolbox"></div>
 
 	<div class="col-1-2">
-		<h3>Sign up to JoulePerSecond!</h3>
+		<h3>Sign up to <span class="jps-em"><span>Joule</span><span>Per</span><span>Second</span></span>!</h3>
 		<div class="content-container signup-form">
 			<?php echo validation_errors(); ?>
 
@@ -23,13 +23,14 @@
 			<input type="password" id="passconf" name="passconf" value="<?php echo set_value('passconf'); ?>" size="50" />
 
 
-			<div><button class="btn-default" type="submit">Sign up</button></div>
+			<div><button class="btn-default" type="submit">Sign up - It's free! <sup>&dagger;</sup></button></div>
+			<p>&nbsp;</p>
 			</form>
 		</div>
 	</div>
 	<!--https://developers.google.com/+/web/people/ -->
 	<div class="col-1-2">
-		<h3>Or sign up using your Google account</h3>
+		<h3>Or sign up using your Google account <sup>&dagger;</sup></button></h3>
 		<div class="content-container signup-form">
 			<div id="gConnect" class="button">
 				<button class="g-signin"
@@ -43,6 +44,11 @@
 		    </div>
 		</div>
 
+	</div>
+</section>
+<section class="section-ln">
+	<div class="content-container">
+		<div class="note" style="width:100%;"><strong><sup>&dagger;</sup></strong> You must agree to our <?php echo anchor('termsofservice', 'Terms of Service'); ?> and <?php echo anchor('privacypolicy', 'Privacy Policy'); ?>. <span class="jps-em"><span>Joule</span><span>Per</span><span>Second</span></span> is free forever, but you can upgrade to our premuim service if you wish.</div>
 	</div>
 </section>
 <script>
