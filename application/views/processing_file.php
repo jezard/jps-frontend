@@ -4,6 +4,7 @@
 <section class="section-ln">
 	<span class="warning"><strong>File processing:</strong> Do not navigate away during uploading and processing of files</span>
 	<div class="content-container">
+		<p><span class="note">Please be patient. We are now pre-processing your ride data into a format where it can be retrieved and read quickly and efficiently.</span></p>
 		<div id="parse-window">
 			<!-- this is the dynamic inner section -->
 			<div id="parse-progress">
