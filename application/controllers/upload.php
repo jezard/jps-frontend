@@ -49,7 +49,7 @@ class Upload extends CI_Controller {
 		}
 		else
 		{
-			$data['message'] = 'Get unlimited uploads and unlock addtional Premium features for just <strong>&pound;3.99</strong>, billed monthly';
+			$data['message'] = 'Get unlimited uploads and unlock addtional Premium features for just <strong>&pound;4.99</strong>, billed monthly';
 			$this->load->view('go_premium', $data);
 		}
 

@@ -399,7 +399,7 @@
 				</div>
 			</div>
 			<div class="col-1-2">
-				<h3>Subscribe now for just <span class="neon-orange"><em>&pound;3.99</em>/Mo</span></h3> 
+				<h3>Subscribe now for just <span class="neon-orange"><em>&pound;4.99</em>/Mo</span></h3> 
 				<div class="content-container">
 					<p><span class="note">Pay securely using with your credit card, <strong><em>Paypal</em></strong> option coming soon.</span></p>
 					<script src="https://checkout.stripe.com/checkout.js"></script>
