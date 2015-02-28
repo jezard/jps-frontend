@@ -114,6 +114,16 @@ h2{
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6dd300', endColorstr='#5eb300',GradientType=0 ); 
 
 }
+h3::after{
+	content: '';
+	background: url(/images/arrow_down.png);
+	display: block;
+	position: relative;
+	width: 20px;
+	height: 10px;
+	top: 5px;
+	left: 90%;
+}
 .warning {
 	padding: 5px 10px;
 	-webkit-border-radius: 5px;
@@ -147,6 +157,10 @@ progress[value]::-moz-progress-bar {
 }
 h3, .h3{
 	font-size: 20px;
+	max-height: 32px;
+}
+h3.home-h3{
+	max-height: 58px;
 }
 .warning{
 	font-size: 14px;
