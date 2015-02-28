@@ -49,7 +49,7 @@
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
-  background: url(/images/icons/menu.png) no-repeat 5px center #fff;
+  background: url(/images/icons/menu.png) no-repeat 5px center #666;
   display: block;
   height:42px;
 }
