@@ -162,6 +162,9 @@ h3, .h3{
 h3.home-h3{
 	max-height: 58px;
 }
+.date_selected h3::after{
+	content:none;
+}
 .warning{
 	font-size: 14px;
 }
