@@ -319,7 +319,7 @@
 					<h3>Data Cutoff</h3>
 					<div class="content-container">
 						<p>This setting determines how long the gap in the data should be before stopping analysis. The autofill settings determine what to record during this period. Default value is 15 Seconds</p>
-						<div id="range" class="neon-green"><?php echo set_value('set_data_cutoff', @$set_data_cutoff); ?> Seconds</div>
+						<div id="range" class="note"><?php echo set_value('set_data_cutoff', @$set_data_cutoff); ?> Seconds</div>
 						<input type="range" name="set_data_cutoff" min="3" max="150" value="<?php echo set_value('set_data_cutoff', @$set_data_cutoff); ?>"  onchange="showValue(this.value)" />
 					</div>
 				</div>
@@ -328,9 +328,9 @@
 					<div class="content-container">
 						<p>These settings allow the user to decide how to handle data which isn't recorded at a rate of once per second. We recommend you do not use features such as Garmin's Auto Pause and particularly <em>Smart Recording</em> which can skew your data. It is a good idea to play around with these settings to suit your equipment and acitivity style.</p>
 						<ul>
-							<li><span class="neon-green">Autofill</span> (default): this fills in missing sample data up until the setting Data Cutoff point is reached. This is a good option where equipment doesn't record at the rate of once per second, or where frequent dropouts occur</li>
-							<li><span class="neon-green">SetZero</span>: works well with systems like TrainerRoad or where data dropouts are infrequent and data is recorded once per second. Try setting Data Cutoff low for best results.</li>
-							<li><span class="neon-green">Remove</span>: This removes all missing data from the activity, if data is missing - not recorded at once per second some acitivity charts will become shorter.</li>
+							<li><strong>Autofill</strong> (default): this fills in missing sample data up until the setting Data Cutoff point is reached. This is a good option where equipment doesn't record at the rate of once per second, or where frequent dropouts occur</li>
+							<li><strong>SetZero</strong>: works well with systems like TrainerRoad or where data dropouts are infrequent and data is recorded once per second. Try setting Data Cutoff low for best results.</li>
+							<li><strong>Remove</strong>: This removes all missing data from the activity, if data is missing - not recorded at once per second some acitivity charts will become shorter.</li>
 						</ul>
 						<?php
 						$options = array(

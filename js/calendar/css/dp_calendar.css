@@ -90,14 +90,6 @@
 
 .dp_calendar .div_dates li.has_events {
 	/*background:url(../images/dp_calendar/hover_dates_has_event.png) #6DD300 no-repeat 50% 0;*/
-	background: #fb4b02; /* Old browsers */
-	background: -moz-linear-gradient(top,  #fb4b02 0%, #db4000 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fb4b02), color-stop(100%,#db4000)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #fb4b02 0%,#db4000 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #fb4b02 0%,#db4000 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #fb4b02 0%,#db4000 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #fb4b02 0%,#db4000 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fb4b02', endColorstr='#db4000',GradientType=0 ); /* IE6-9 */
 	
 	color:#fff !important;
 	font-weight: 700;
@@ -179,7 +171,6 @@
 	margin-bottom: 10px;
 	min-height:41px;
 	padding:11px;
-	background-color: #6DD300;
 	cursor:pointer;
 	line-height:normal;
 	list-style:none;

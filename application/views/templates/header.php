@@ -14,9 +14,10 @@
 <!-- Bootstrap -->
 <link href="<?php echo $this->config->item('base_url'); ?>/bootstrap-3.3.2/css/bootstrap.min.css" rel="stylesheet">
 <link rel='stylesheet' href='<?php echo $this->config->item('base_url'); ?>css/light.css' type='text/css' media='all' />
+<link href="<?php echo $this->config->item('base_url'); ?>/js/calendar/css/dp_calendar.css" type="text/css" rel="stylesheet" />
+<link rel='stylesheet' href='<?php echo $this->config->item('base_url'); ?>includes/colors.php' type='text/css' media='all' />
 <link href="<?php echo $this->config->item('base_url'); ?>/bootstrap-3.3.2/css/bootstrap-theme.css" rel="stylesheet">
 
-<link href="<?php echo $this->config->item('base_url'); ?>/js/calendar/css/dp_calendar.css" type="text/css" rel="stylesheet" />
 <link href="<?php echo $this->config->item('base_url'); ?>/js/calendar/themes/ui-lightness/jquery.ui.all.css" type="text/css" rel="stylesheet" />
 <link rel="stylesheet" href="<?php echo $this->config->item('base_url'); ?>/js/responsive-nav.js-master/responsive-nav.css">
 
@@ -70,7 +71,7 @@
 <header class="site-header">
 	<nav class="nav-collapse">
 		<ul>
-			<li id="home-nav-btn" style="background: url(<?php echo $this->config->item('base_url'); ?>images/logo-small.png) right center no-repeat #fff" id="home-btn" <?php echo $display; ?> ><?php echo anchor('/', 'JoulePerSecond.com');?></li>
+			<li id="home-nav-btn"  id="home-btn" <?php echo $display; ?> ><?php echo anchor('/', 'JoulePerSecond.com');?></li>
 			<li id="signup-mob" <?php echo $display; ?> ><a href="https://joulepersecond.com/index.php/signup">Sign Up</a></li>
 			<li id="login-mob" <?php echo $display; ?> ><a href="https://joulepersecond.com/index.php/login">Log In</a></li>
 			<li id="upload-mob" <?php echo $display; ?> ><a href="http://joulepersecond.com/index.php/upload">Upload Files</a></li>
@@ -92,7 +93,7 @@
 
 	<div class="hdr-container">
 
-		<a class="logo" href="<?php echo $this->config->item('base_url'); ?>" title="<?php echo $this->config->item('site_name'); ?>" style="background: url(<?php echo $this->config->item('base_url'); ?>images/logo-small.png) center; background-size:cover"></a> 
+		<a class="logo logo-img" href="<?php echo $this->config->item('base_url'); ?>" title="<?php echo $this->config->item('site_name'); ?>" ></a> 
 		<div class="jps jps-em"><a class="logo" href="<?php echo $this->config->item('base_url'); ?>" title="<?php echo $this->config->item('site_name'); ?>"><span>Joule</span><span>Per</span><span>Second</span></a></div>
 
 		<?php if ($this->input->cookie('valid_user')): ?>

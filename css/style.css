@@ -1134,9 +1134,7 @@ nav.top-nav a:hover {
 	text-shadow: 0 -1px #0d0d0d;
 	position: absolute;
 }
-.jps-em span:nth-of-type(1){
-	color:#fb4b02;
-}
+
 .jps-em span:nth-of-type(2){
 	font-style: italic;
 }
@@ -1159,18 +1157,7 @@ nav.top-nav li {
 	line-height: 1em;
 	text-shadow: 0 -1px #0d0d0d;
 }
-nav.top-nav li:hover{
-	background: #fb4b02; /* Old browsers */
-	background: -moz-linear-gradient(top,  #fb4b02 0%, #db4000 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fb4b02), color-stop(100%,#db4000)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #fb4b02 0%,#db4000 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #fb4b02 0%,#db4000 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #fb4b02 0%,#db4000 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #fb4b02 0%,#db4000 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fb4b02', endColorstr='#db4000',GradientType=0 ); /* IE6-9 */
 
-
-}
 .blurb p, .blurb li{
 	line-height: 2em;
 }
@@ -1214,7 +1201,6 @@ h3 {
 	margin-left: 0px;
 	padding: 20px 20px 10px 20px;
 	overflow: hidden;
-	background-color: #333;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
