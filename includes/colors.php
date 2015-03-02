@@ -49,7 +49,15 @@
 
 ?>
 
-<?php $color = 'gray' ?>
+<?php 
+	if(isset($_COOKIE['theme'])){
+		$color = $_COOKIE['theme'];
+	}else{
+		$color = 'green';
+	}
+?>
+
+
 <?php if($color == 'green'): ?>
 	body{
 		background: url(/images/bg-img.jpg) fixed #ccc; background-size:cover;
@@ -119,6 +127,12 @@
 	}
 	.dp_calendar .calendar_list #list li {
 		<?php echo $green_gradient; ?>
+	}
+	.footer-links-text li a{
+		color:#6dd300;
+	}
+	.footer-links-text-right li a{
+		color:#fb4b02;
 	}
 }
 
