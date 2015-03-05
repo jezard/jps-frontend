@@ -139,7 +139,7 @@
 <?php endif; ?>
 <?php if($color == 'gray'): ?>
 	body{
-		background: #A6A6AA;
+		background: #58585C;
 	}
 	#home-nav-btn{
 		background: url(/images/logo-small-gray.png) right center no-repeat #fff;

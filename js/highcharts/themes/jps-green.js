@@ -101,6 +101,7 @@ Highcharts.theme = {
 			nullColor: '#444444'
 		},
 		line: {
+			lineWidth: 1,
 			dataLabels: {
 				color: '#CCC'
 			},
@@ -141,7 +142,15 @@ Highcharts.theme = {
 						[0.6, '#333333']
 					]
 				},
-				stroke: '#000000'
+				stroke: '#000000',
+				states: {
+                    hover: {
+                        fill: '#fb4b02'
+                    },
+                    select: {
+                        fill: '#fb4b02'
+                    }
+                }
 			}
 		}
 	},
