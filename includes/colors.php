@@ -142,7 +142,7 @@
 		background: #58585C;
 	}
 	#home-nav-btn{
-		background: url(/images/logo-small-gray.png) right center no-repeat #fff;
+		background: url(/images/logo-small-gray.png) right center no-repeat #000;
 	}
 	.logo-img{
 		background: url(/images/logo-small-gray.png) center; background-size:cover;
