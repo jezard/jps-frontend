@@ -1220,6 +1220,37 @@ h3 {
 .mobile{
 	display: none;
 }
+.intro{
+	width:100%;
+	font-size: 40px;
+	text-align: center;
+	margin: 30px auto;
+	text-shadow:0 -1px #0d0d0d;
+}
+.fp-ride,
+.fp-upload,
+.fp-engage,
+.fp-learn{
+	margin-top: 30px;
+	margin-bottom: 30px;
+	min-height:160px;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.fp-ride{
+	background-image:url(/images/fp-icons/ride-wht.png);
+}
+.fp-upload{
+	background-image:url(/images/fp-icons/upload-wht.png);
+}
+.fp-engage{
+	background-image:url(/images/fp-icons/engage-wht.png);
+}
+.fp-learn{
+	background-image:url(/images/fp-icons/learn-wht.png);
+}
+
+
 /* media queries */
 @media screen and (max-width: 1140px) {
 	.jps{

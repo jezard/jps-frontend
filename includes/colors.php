@@ -134,6 +134,10 @@
 	.footer-links-text-right li a{
 		color:#fb4b02;
 	}
+		.intro{
+		color:white;
+	}
+
 }
 
 <?php endif; ?>
@@ -206,6 +210,11 @@
 	.dp_calendar .calendar_list #list li {
 		<?php echo $gray_gradient; ?>
 	}
+
+	.intro{
+		color:#d90000;
+	}
+
 }
 
 <?php endif; ?>
