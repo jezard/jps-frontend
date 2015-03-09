@@ -134,8 +134,20 @@
 	.footer-links-text-right li a{
 		color:#fb4b02;
 	}
-		.intro{
+	.intro{
 		color:white;
+	}
+	.fp-ride{
+		background-image:url(/images/fp-icons/ride-wht.png);
+	}
+	.fp-upload{
+		background-image:url(/images/fp-icons/upload-wht.png);
+	}
+	.fp-engage{
+		background-image:url(/images/fp-icons/engage-wht.png);
+	}
+	.fp-learn{
+		background-image:url(/images/fp-icons/learn-wht.png);
 	}
 
 }
@@ -143,7 +155,7 @@
 <?php endif; ?>
 <?php if($color == 'gray'): ?>
 	body{
-		background: #58585C;
+		background: url(/images/dots.png) #DFDFE1 fixed;
 	}
 	#home-nav-btn{
 		background: url(/images/logo-small-gray.png) right center no-repeat #000;
@@ -190,7 +202,7 @@
 		   -moz-linear-gradient(top,  #6dd300 0%,#5eb300 100%);
 	}
 	.m-header {
-		background-color: #5EB300!important;
+		background-color: #d90000!important;
 	}
 	.jps-em span:nth-of-type(1){
 		color:#d90000;
@@ -212,7 +224,19 @@
 	}
 
 	.intro{
-		color:#d90000;
+		color:white;
+	}
+	.fp-ride{
+		background-image:url(/images/fp-icons/ride-red.png);
+	}
+	.fp-upload{
+		background-image:url(/images/fp-icons/upload-red.png);
+	}
+	.fp-engage{
+		background-image:url(/images/fp-icons/engage-red.png);
+	}
+	.fp-learn{
+		background-image:url(/images/fp-icons/learn-red.png);
 	}
 
 }
