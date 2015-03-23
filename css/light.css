@@ -101,6 +101,7 @@ h3, .h3{
 }
 h3.home-h3{
 	max-height: 58px;
+	background: #3C3C3E;
 }
 .date_selected h3::after{
 	content:none;

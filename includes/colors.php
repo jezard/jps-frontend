@@ -96,9 +96,10 @@
 		<?php echo $green_gradient; ?>
 
 	}
-	h3::after{
+
+	/*h3::after{
 		background: url(/images/arrow_down.png);
-	}
+	}*/
 	progress[value]::-webkit-progress-value {
 	  background-image:
 		   -webkit-linear-gradient(top,  #6dd300 0%,#5eb300 100%);
@@ -149,6 +150,13 @@
 	.fp-learn{
 		background-image:url(/images/fp-icons/learn-wht.png);
 	}
+	.signup-cta{
+		<?php echo $orange_gradient; ?>
+	}
+	.signup-cta a{
+		color:white;
+	}
+
 
 }
 
@@ -190,9 +198,9 @@
 		color: white;
 		<?php echo $gray_gradient; ?>
 	}
-	h3::after{
+	/*h3::after{
 		background: url(/images/arrow_down_gray.png);
-	}
+	}*/
 	progress[value]::-webkit-progress-value {
 	  background-image:
 		   -webkit-linear-gradient(top,  #6dd300 0%,#5eb300 100%);
@@ -237,6 +245,12 @@
 	}
 	.fp-learn{
 		background-image:url(/images/fp-icons/learn-red.png);
+	}
+	.signup-cta{
+		<?php echo $red_gradient; ?>
+	}
+	.signup-cta a{
+		color:white;
 	}
 
 }

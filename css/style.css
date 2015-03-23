@@ -701,7 +701,7 @@ body {
 
 .grid {
 	width: 100%;
-	max-width: 1330px;
+	/*max-width: 1330px;*/
 	min-width: 755px;
 	margin: 0 auto;
 	overflow: hidden;
@@ -1174,6 +1174,7 @@ main{
 	/*background: url(http://joulepersecond.com/images/pillow-logo.png) no-repeat center -30px;*/
 	min-height: 600px;
 	margin-top: 48px;
+	background-color: rgba(0,0,0,0.3);
 }
 
 main p{
@@ -1201,9 +1202,9 @@ h3 {
 	margin-left: 0px;
 	padding: 20px 20px 10px 20px;
 	overflow: hidden;
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 	margin-right: 20px;
 	margin-bottom: 20px;
 	border: 1px #fff solid;
@@ -1233,7 +1234,7 @@ h3 {
 .fp-learn{
 	margin-top: 30px;
 	margin-bottom: 30px;
-	min-height:160px;
+	min-height:169px;
 	background-repeat: no-repeat;
 	background-position: center;
 }
@@ -1248,6 +1249,23 @@ h3 {
 }
 .fp-learn{
 	background-image:url(/images/fp-icons/learn-wht.png);
+}
+.signup-cta{
+	width:100%;
+	font-size: 3em;
+	text-align: center;
+	/*font-weight: bold;*/
+	color:white;
+	text-shadow:0 -1px #0d0d0d;
+}
+.signup-cta a{
+	display: block;
+}
+.signup-cta a:hover{
+	text-decoration: none;
+}
+.trans-bg{
+	background-color: rgba(255,255,255,0.8);
 }
 
 
