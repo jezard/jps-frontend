@@ -201,7 +201,7 @@ $(function () {
         <div class="col-1-4"><div class="fp-learn"></div>Learn</div>
     </div>
 </div>
-<div class="signup-cta"><a href="https://joulepersecond.com/signup" alt="Sign up!" title="Sign up"><strong>Start now</strong> - (it's free) &raquo;</a></div>
+<div class="signup-cta"><a href="https://joulepersecond.com/signup" alt="Sign up!" title="Sign up">It's free, <strong>Start now</strong> &raquo;</a></div>
 
 <div class="grid trans-bg">
     <div style="margin:20px">
