@@ -151,11 +151,9 @@
 		background-image:url(/images/fp-icons/learn-wht.png);
 	}
 	.signup-cta{
-		<?php echo $orange_gradient; ?>
+		background:white;
 	}
-	.signup-cta a{
-		color:white;
-	}
+
 
 
 }
@@ -163,7 +161,8 @@
 <?php endif; ?>
 <?php if($color == 'gray'): ?>
 	body{
-		background: url(/images/dots.png) #DFDFE1 fixed;
+		/*background: url(/images/dots.png) #DFDFE1 fixed;*/
+		background: #3C3C3E;
 	}
 	#home-nav-btn{
 		background: url(/images/logo-small-gray.png) right center no-repeat #000;
