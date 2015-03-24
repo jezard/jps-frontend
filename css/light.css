@@ -128,7 +128,7 @@ table, .chart, #calendar, .basic-form, .forum-container, .content-container{
 	border-radius: 5px;
 }
 table, .chart, #calendar, .basic-form, .forum-container, .content-container{
-	padding: 50px;
+	padding: 20px 30px;
   	margin-bottom: 30px;
 	overflow: hidden;
 }
