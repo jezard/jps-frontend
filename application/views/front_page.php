@@ -10,12 +10,12 @@
     if(isset($_COOKIE['theme'])){
         $color = $_COOKIE['theme'];
     }else{
-        $color = 'green';
+        $color = 'gray';
     }
 ?>
 var linecolors
 
-    if('<h3 class="home-h3">' == 'gray'){
+    if('<?php echo $color; ?>' == 'gray'){
         linecolors = ["#5A5A5D", "#8D3638", "#D90000"];
         powersymbol = "url(http://joulepersecond.com/images/PowerIcon-small-gray.png)";
         color1 = 2;

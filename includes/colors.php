@@ -53,7 +53,7 @@
 	if(isset($_COOKIE['theme'])){
 		$color = $_COOKIE['theme'];
 	}else{
-		$color = 'green';
+		$color = 'gray';
 	}
 ?>
 
