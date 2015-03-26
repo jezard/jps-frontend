@@ -105,6 +105,12 @@ h3.home-h3{
 	background: #F3F3F3;
 	color:#B5B5BD;
 	border: 1px white solid;
+	font-size: 2em;
+	text-shadow:none;
+	 color: #5A5A5D;
+}
+h3.home-h3 .fine{
+	font-weight: 100;
 }
 .date_selected h3::after{
 	content:none;

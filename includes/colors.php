@@ -151,7 +151,10 @@
 		background-image:url(/images/fp-icons/learn-wht.png);
 	}
 	.signup-cta{
-		background:white;
+		<?php echo $orange_gradient; ?>
+	}
+	.signup-cta a{
+		color:white;
 	}
 
 
