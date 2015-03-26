@@ -287,6 +287,14 @@
 				        ?><br>
 				        <label for="is_public">Set profile to public:</label>
 				        <?php echo form_checkbox('is_public', '1', (@$is_public == '1'), 'id="is-public"'); ?>
+				        <a href="https://www.strava.com/oauth/authorize?
+							client_id=4992
+							&response_type=code
+							&redirect_uri=http://joulepersecond.com/token_exchange
+							&scope=write
+							&state=connect
+						  &approval_prompt=force"><img src="images/ConnectWithStrava.png" alt="Connect with strava" /></a>
+
 				    </div>
 
 				</div>
