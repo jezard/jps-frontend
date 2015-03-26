@@ -1161,6 +1161,9 @@ nav.top-nav li {
 .blurb p, .blurb li{
 	line-height: 2em;
 }
+.blurb li{
+	margin-left: -15px
+}
 .jps-slider img.image-shadow{
 	border-radius: 5px;
 	/*padding: 5px;*/
@@ -1293,6 +1296,12 @@ h3 {
 	}
 	.homepage h3:after{
 		clear:both;
+	}
+}
+@media (max-width: 1024px) {
+	h3.home-h3 span, h3.home-h3 .fine {
+		font-size: 18px;
+		font-weight: bold!important;
 	}
 }
 
