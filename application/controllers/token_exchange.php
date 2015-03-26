@@ -20,14 +20,14 @@ class Token_exchange extends CI_Controller {
 
 	}
 	function index(){
-		$access_token = trim($this->input->get('code'));
+		$code = trim($this->input->get('code'));
 		$state = trim($this->input->get('state'));
 
 		$url = "https://www.strava.com/oauth/token?";
 		$fields = array(
 				'client_id' => '4992',
 				'client_secret' => '23d7ed5e568e57db69e88271218c8ae959489e75',
-				'code' => $access_token
+				'code' => $code
 			);
 
 		//url-ify the data for the POST
@@ -45,18 +45,25 @@ class Token_exchange extends CI_Controller {
 		curl_setopt($ch,CURLOPT_URL, $url);
 		curl_setopt($ch,CURLOPT_POST, count($fields));
 		curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
 		//execute post
 		$result = curl_exec($ch);
 
+
 		//close connection
 		curl_close($ch);
 
-		echo $result;
+		//$user_data contains all our user's strava data
+		$user_data = json_decode(trim($result), true);
+
+
+		//var_dump($user_data);
+		$access_token = $user_data['access_token'];
 
 
 		//set strava access token
-		/*$cookie = array(
+/*		$cookie = array(
 		    'name'   => 'strava_token',
 		    'value'  => $access_token,
 		    'expire' => -100,
@@ -64,7 +71,7 @@ class Token_exchange extends CI_Controller {
 		    'prefix' => '',
 		    'secure' => false
 		);
-		$this->input->set_cookie($cookie);
+		$this->input->set_cookie($cookie);*/
 		switch ($state){
 			case "connect":
 				redirect('/myaccount', 'refresh');
@@ -72,7 +79,10 @@ class Token_exchange extends CI_Controller {
 			case "authorise":
 				redirect('/activity', 'refresh');
 				break;
-		}*/
+			case "upload":
+				//do upload stuff
+				break;
+		}
 
 	}
 }
