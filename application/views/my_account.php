@@ -290,7 +290,7 @@
 				        <a href="https://www.strava.com/oauth/authorize?
 							client_id=4992
 							&response_type=code
-							&redirect_uri=http://joulepersecond.com/token_exchange
+							&redirect_uri=http://joulepersecond.com/strava/authorise
 							&scope=write
 							&state=connect
 						  &approval_prompt=force"><img src="images/ConnectWithStrava.png" alt="Connect with strava" /></a>

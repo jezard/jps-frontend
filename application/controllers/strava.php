@@ -1,11 +1,12 @@
 <?php
 
-class Token_exchange extends CI_Controller {
+class Strava extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
 		$this->load->helper('cookie');
 		$this->load->helper(array('form', 'url'));
+		$this->load->model('user_model', 'user', TRUE);
 		if ($this->input->cookie('valid_user'))
 		{
 			$this->email = $this->input->cookie('valid_user', false);
@@ -19,7 +20,7 @@ class Token_exchange extends CI_Controller {
 		}
 
 	}
-	function index(){
+	function authorise(){
 		$code = trim($this->input->get('code'));
 		$state = trim($this->input->get('state'));
 
@@ -57,21 +58,13 @@ class Token_exchange extends CI_Controller {
 		//$user_data contains all our user's strava data
 		$user_data = json_decode(trim($result), true);
 
-
 		//var_dump($user_data);
 		$access_token = $user_data['access_token'];
 
-
 		//set strava access token
-/*		$cookie = array(
-		    'name'   => 'strava_token',
-		    'value'  => $access_token,
-		    'expire' => -100,
-		    'domain' => $this->config->item('site_name'),
-		    'prefix' => '',
-		    'secure' => false
-		);
-		$this->input->set_cookie($cookie);*/
+		$this->user->set_strava_access_token($this->email, $access_token);
+
+		
 		switch ($state){
 			case "connect":
 				redirect('/myaccount', 'refresh');
@@ -85,4 +78,54 @@ class Token_exchange extends CI_Controller {
 		}
 
 	}
+
+	function upload(){
+		$name = trim($this->input->post('name'));
+		$description = trim($this->input->post('description'));
+		$filename = trim('uploads/'.$this->input->post('file'));
+		$actual_file = realpath($filename);
+
+		//direct a user back to the account page if they don't have the strava connection
+		$user_settings = $this->user->getSettings($this->email);
+		if(!isset($user_settings['strava_access_token']) || $user_settings['strava_access_token'] == ''){
+			redirect('/myaccount', 'refresh');
+		}else{
+
+			$url = "https://www.strava.com/api/v3/uploads?";
+			$fields = array(
+					'activity_type' => 'ride',
+					'name' => $name,
+					'description' => $description,
+					'data_type' => 'tcx',
+					"file" => '@' . $actual_file . ";type=application/xml"
+				);
+			
+			//open connection
+			$ch = curl_init();
+
+			$headers = array('Authorization: Bearer ' . $user_settings['strava_access_token']);
+
+			curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, FALSE);
+			curl_setopt($ch,CURLOPT_URL, $url);
+			curl_setopt($ch,CURLOPT_POSTFIELDS, $fields);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+			//execute post
+			$result = curl_exec($ch);
+
+			//close connection
+			curl_close($ch);
+
+			$upload_status = json_decode(trim($result), true);
+
+			if(isset($upload_status['id'])){
+				echo $upload_status['id'];
+			}else{
+				echo 'error';
+			}
+
+		}
+	}
+
 }

@@ -69,8 +69,8 @@ class Activity extends CI_Controller {
 	function get(){
 		//TODO get id from post/get and return and show in view
 		$id = $this->input->post('activity_id');
-		$activity_title = $this->user_file->get_activity_basic($id);
-		echo $activity_title;
+		$activity_info = $this->user_file->get_activity_basic($id);
+		echo $activity_info;
 	}
 
 }

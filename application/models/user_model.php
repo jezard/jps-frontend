@@ -237,7 +237,8 @@ class User_model extends CI_Model {
                         'is_public' => $vals->is_public,
                         'paid_account' => $vals->paid_account,
                         'stripe_id' => $vals->stripe_id,
-                        'verified'    => $vals->verified
+                        'verified'    => $vals->verified,
+                        'strava_access_token' => $vals->strava_access_token
       );
       return $settings;
     }
@@ -268,11 +269,15 @@ class User_model extends CI_Model {
         return false;
       }
     }
+
     function set_stripe_id($email, $id){
       $this->db->where('email', $email);
       $this->db->update('user', array('stripe_id' => $id));
-
     }
 
+    function set_strava_access_token($email, $access_token){
+      $this->db->where('email', $email);
+      $this->db->update('user', array('strava_access_token' => $access_token));
+    }
 }
 ?>

@@ -7,13 +7,14 @@
 		<div class="col-1-2 ride-basic">
 			<h3>Basic ride info <date id="activity-date"></date></h3>
 			<div class="basic-form">
-			<?php echo form_open('activity'); ?>
+			<?php echo form_open('activity', array('id' => 'frm_activity')); ?>
 				<input type="hidden" id="activity_id" name="activity_id" value="">
 				<label for="activity_title">Name:</label>
 				<input id="activity_title" name="activity_title" type="text">
 				<label for="activity_description">Notes:</label>
 				<textarea id="activity_notes" rows="5" name="activity_notes"></textarea>
 				<button class="btn-default" type="submit">Update</button>
+				<button id="strava-it" class="btn-default">Update and save to <span style="color:#FB4B02; font-weight:bold; letter-spacing: -1px">STRAVA</span></button>
 				
 			</form>
 			<?php echo form_open('activity/delete'); ?>
@@ -49,8 +50,10 @@ $(document).on("click", ".active", function(e){
 });
 
 
+
 jQuery(document).ready(function(){
 	//direct user to most recent activity or just updated
+	var filename;
 	var activity_id = <?php echo '"'.$displayActivity.'"'; ?>;
 	var url = <?php echo '"http://'.$this->config->item('go_ip').'/view/activity/"'; ?> + activity_id;
 	jQuery('#activity_id, #activity_id2').val(activity_id);
@@ -60,9 +63,29 @@ jQuery(document).ready(function(){
 		jQuery('#activity_title').val(data_array[0]);
 		jQuery('#activity_notes').val(data_array[1]);
 		jQuery('#activity-date').text(data_array[2]);
+		filename = data_array[3];
+
 	});
 
 	jQuery('#activity-container').attr('src', url);
+
+	//send the form data to strava uploader before saving
+	jQuery('#strava-it').on("click", function(e){
+		e.preventDefault();
+		var name = $('#activity_title').val();
+		var desc = $('#activity_notes').val();
+
+		jQuery.post( '<?php echo $this->config->item('base_url') .'index.php/strava/upload'; ?>', { name: name, description:desc, file: filename }, function(data){
+			if(data == "error"){
+				alert("There was an issue uploading to Strava, If the problem continues try reconnecting to Strava (Menu -> My Account)");
+			}else{
+				console.log(data);
+			}
+			//$( "#frm_activity" ).submit();
+
+		});
+	});
+
 
 	//show all activities for day
 	$(document).on("click", ".urgent", function(e){
@@ -80,6 +103,7 @@ jQuery(document).ready(function(){
 			jQuery('#activity_title').val(data_array[0]);
 			jQuery('#activity_notes').val(data_array[1]);
 			jQuery('#activity-date').text(data_array[2]);
+			filename = data_array[3];
 		});
 		jQuery('#activity-container').attr('src', url);
     });
