@@ -29,7 +29,16 @@ class Activity extends CI_Controller {
 	{
 		$user_image = $this->user->get_user_image($this->email);
 		$validated = true;
-		$this->load->view('templates/header', array('title' => 'My Profile - '.$this->config->item('site_name'), 'user_image' => $user_image));
+
+		//determine if strava user
+		$user_settings = $this->user->getSettings($this->email);
+		if(!isset($user_settings['strava_access_token']) || $user_settings['strava_access_token'] == ''){
+			$strava_user = false;
+		}else{
+			$strava_user = true;
+		}
+
+		$this->load->view('templates/header', array('title' => 'My Profile - '.$this->config->item('site_name'), 'user_image' => $user_image, 'strava_user' => $strava_user));
 
 		$count = count($this->user_file->get_recent_activities($this->email));
 			
@@ -46,6 +55,13 @@ class Activity extends CI_Controller {
 			//get the user's recent activities
 			$recentActivities = $this->user_file->get_recent_activities($this->email);
 
+			//check for strava upload flag
+			if(isset($_POST['strava_upload'])){
+				$poll_strava = true;
+			}else{
+				$poll_strava = false;
+			}
+
 			//if user is updating use id to show on load, else show the most recent activity
 			if(isset($id)){
 				$displayActivity = $id;
@@ -53,7 +69,7 @@ class Activity extends CI_Controller {
 				$displayActivity = @$recentActivities[0]['activity_id'];
 			}
 
-			$this->load->view('activity', array('recentActivities' => $recentActivities, 'displayActivity' => @$displayActivity));
+			$this->load->view('activity', array('recentActivities' => $recentActivities, 'displayActivity' => @$displayActivity, 'poll_strava' => $poll_strava));
 		}else
 			$this->load->view('upload_form', array('message' => 'Upload your .fit or .tcx files below (we recommend uploading in smaller batches):'));
 			
@@ -69,8 +85,8 @@ class Activity extends CI_Controller {
 	function get(){
 		//TODO get id from post/get and return and show in view
 		$id = $this->input->post('activity_id');
-		$activity_title = $this->user_file->get_activity_basic($id);
-		echo $activity_title;
+		$activity_info = $this->user_file->get_activity_basic($id);
+		echo $activity_info;
 	}
 
 }

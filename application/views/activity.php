@@ -7,14 +7,30 @@
 		<div class="col-1-2 ride-basic">
 			<h3>Basic ride info <date id="activity-date"></date></h3>
 			<div class="basic-form">
-			<?php echo form_open('activity'); ?>
+			<?php echo form_open('activity', array('id' => 'frm_activity')); ?>
 				<input type="hidden" id="activity_id" name="activity_id" value="">
 				<label for="activity_title">Name:</label>
 				<input id="activity_title" name="activity_title" type="text">
 				<label for="activity_description">Notes:</label>
 				<textarea id="activity_notes" rows="5" name="activity_notes"></textarea>
 				<button class="btn-default" type="submit">Update</button>
-				
+
+				<!-- only for strava connected users -->
+				<?php if($strava_user): ?>
+				<input type="hidden" id="strava_upload" name="strava_upload" value="">
+				<span class="strava-options">
+
+					<!-- don't show buttons if uploading or uploaded to strava instead show link on strava -->
+					<button id="strava-it" class="btn-default" style="<?php echo ($poll_strava)? 'display:none' : ''; ?>"><strong><em>OR</em></strong> Update and save to <span style="color:#FB4B02; font-weight:bold; letter-spacing: -1px">STRAVA</span></button>
+
+					<div id="upload-status" style="display:none">
+						<span id="status-text" class="note" style="display:block"></span>
+					</div>
+					
+
+				</span>
+				<?php endif; ?>
+
 			</form>
 			<?php echo form_open('activity/delete'); ?>
 				<input type="hidden" id="activity_id2" name="activity_id" value="">
@@ -37,35 +53,93 @@ $(document).on("click", ".active", function(e){
 		jQuery('#activity_id, #activity_id2').val(activity_id);
 
 		//get title/name of activity 
-		jQuery.post( '<?php echo $this->config->item('base_url') .'index.php/activity/get'; ?>', { activity_id: activity_id }, function(data){
+		jQuery.post( '<?php echo $this->config->item('base_url') .'/activity/get'; ?>', { activity_id: activity_id }, function(data){
 			data_array = data.split('^');
 			jQuery('#activity_title').val(data_array[0]);
 			jQuery('#activity_notes').val(data_array[1]);
 			jQuery('#activity-date').text(data_array[2]);
+
+			var strava_activity_id = data_array[4];
+			reset_strava_controls(strava_activity_id);
 		});
 
 		jQuery('#activity-container').attr('src', url);
+
+		
 	}		
 });
 
 
+
 jQuery(document).ready(function(){
 	//direct user to most recent activity or just updated
+	var filename;
 	var activity_id = <?php echo '"'.$displayActivity.'"'; ?>;
 	var url = <?php echo '"http://'.$this->config->item('go_ip').'/view/activity/"'; ?> + activity_id;
 	jQuery('#activity_id, #activity_id2').val(activity_id);
 	//get title/name of activity 
-	jQuery.post( '<?php echo $this->config->item('base_url') .'index.php/activity/get'; ?>', { activity_id: activity_id }, function(data){
+	jQuery.post( '<?php echo $this->config->item('base_url') .'/activity/get'; ?>', { activity_id: activity_id }, function(data){
 		data_array = data.split('^');
 		jQuery('#activity_title').val(data_array[0]);
 		jQuery('#activity_notes').val(data_array[1]);
 		jQuery('#activity-date').text(data_array[2]);
+		filename = data_array[3];
+
+		var strava_activity_id = data_array[4];
+		reset_strava_controls(strava_activity_id);
+
 	});
 
 	jQuery('#activity-container').attr('src', url);
 
+	//send the form data to strava uploader before saving
+	jQuery('#strava-it').on("click", function(e){
+		activity_id = $('#activity_id').val();
+		console.log(activity_id);
+		e.preventDefault();
+		$('#status-text').html('Uploading activity to <span style="color:#FB4B02; font-weight:bold; letter-spacing: -1px">STRAVA</span>');
+		var name = $('#activity_title').val();
+		var desc = $('#activity_notes').val();
+
+		$('#strava_upload').val('1');
+
+		jQuery.post( '<?php echo $this->config->item('base_url') .'/strava/upload'; ?>', { name: name, description:desc, activity_id: activity_id }, function(data){
+			if(data == "error"){
+				alert("There was an issue uploading to Strava, If the problem continues try reconnecting to Strava (Menu -> My Account)");
+			}else{
+				console.log(data);
+				$('#upload-status').slideDown(500, function(){
+					$( "#frm_activity" ).delay(500).submit();
+				});
+			}
+			
+
+		});
+	});
+	//still on the strava tip... 
+	<?php if($poll_strava): ?>
+
+	var interval;
+	interval = setInterval(poll_strava, 5000);
+
+
+	function poll_strava(){
+		jQuery.post( '<?php echo $this->config->item('base_url') .'/strava/upload_status'; ?>', { activity_id: activity_id }, function(data){
+			console.log(data);
+			data_array = data.split('^');
+			$('#upload-status').show();
+			$('#status-text').html(data_array[0]);
+			if(data_array[1] == 'failed' || data_array[1] == 'success'){
+				//window.location = document.URL;
+				clearInterval(interval);	
+			}
+		});
+	}
+	<?php endif; ?>
+
+
 	//show all activities for day
-	$(document).on("click", ".urgent", function(e){
+	$(document).on("click", ".urgent", function(e){//big button with date and activity name
 
 		var activity_id = jQuery(this).find('p').text();
 
@@ -75,13 +149,19 @@ jQuery(document).ready(function(){
 		jQuery('#activity_id, #activity_id2').val(activity_id);
 
 		//get title/name of activity 
-		jQuery.post( '<?php echo $this->config->item('base_url') .'index.php/activity/get'; ?>', { activity_id: activity_id }, function(data){
+		jQuery.post( '<?php echo $this->config->item('base_url') .'/activity/get'; ?>', { activity_id: activity_id }, function(data){
 			data_array = data.split('^');
 			jQuery('#activity_title').val(data_array[0]);
 			jQuery('#activity_notes').val(data_array[1]);
 			jQuery('#activity-date').text(data_array[2]);
+			filename = data_array[3];
+
+			var strava_activity_id = data_array[4];
+			reset_strava_controls(strava_activity_id);
 		});
 		jQuery('#activity-container').attr('src', url);
+
+		
     });
 
 	var events_array = new Array(
@@ -119,9 +199,18 @@ jQuery(document).ready(function(){
 	});
 
 
-
 });
 
-
+function reset_strava_controls(strava_activity_id){
+	//if an activity has already been uploaded to strava for the selected activity
+	if(strava_activity_id.length > 0){
+		$('#upload-status').show();
+		$('#strava-it').hide();
+		$('#status-text').html('View activity on <a href="https://www.strava.com/activities/'+ strava_activity_id +'" target="_blank"><span style="color:#FB4B02; font-weight:bold; letter-spacing: -1px">STRAVA</span></a>');
+	}else{
+		$('#upload-status').hide();
+		$('#strava-it').show();
+	}
+}
 
 </script>
