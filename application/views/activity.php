@@ -24,7 +24,7 @@
 					<button id="strava-it" class="btn-default" style="<?php echo ($poll_strava)? 'display:none' : ''; ?>"><strong><em>OR</em></strong> Update and save to <span style="color:#FB4B02; font-weight:bold; letter-spacing: -1px">STRAVA</span></button>
 
 					<div id="upload-status" style="display:none">
-						<span id="status-text" class="note"></span>
+						<span id="status-text" class="note" style="display:block"></span>
 					</div>
 					
 
@@ -206,7 +206,7 @@ function reset_strava_controls(strava_activity_id){
 	if(strava_activity_id.length > 0){
 		$('#upload-status').show();
 		$('#strava-it').hide();
-		$('#status-text').html('View activity on <a href="https://www.strava.com/activities/'+ strava_activity_id +'"><span style="color:#FB4B02; font-weight:bold; letter-spacing: -1px" target="_blank">STRAVA</span></a>');
+		$('#status-text').html('View activity on <a href="https://www.strava.com/activities/'+ strava_activity_id +'" target="_blank"><span style="color:#FB4B02; font-weight:bold; letter-spacing: -1px">STRAVA</span></a>');
 	}else{
 		$('#upload-status').hide();
 		$('#strava-it').show();
