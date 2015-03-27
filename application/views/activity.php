@@ -21,10 +21,8 @@
 				<span class="strava-options">
 
 					<!-- don't show buttons if uploading or uploaded to strava instead show link on strava -->
-					<?php if($poll_strava == false): ?>
-					
-					<button id="strava-it" class="btn-default"><strong><em>OR</em></strong> Update and save to <span style="color:#FB4B02; font-weight:bold; letter-spacing: -1px">STRAVA</span></button>
-					<?php endif; ?>
+					<button id="strava-it" class="btn-default" style="<?php echo ($poll_strava)? 'display:none' : ''; ?>"><strong><em>OR</em></strong> Update and save to <span style="color:#FB4B02; font-weight:bold; letter-spacing: -1px">STRAVA</span></button>
+
 					<div id="upload-status" style="display:none">
 						<span id="status-text" class="note"></span>
 					</div>
@@ -55,7 +53,7 @@ $(document).on("click", ".active", function(e){
 		jQuery('#activity_id, #activity_id2').val(activity_id);
 
 		//get title/name of activity 
-		jQuery.post( '<?php echo $this->config->item('base_url') .'index.php/activity/get'; ?>', { activity_id: activity_id }, function(data){
+		jQuery.post( '<?php echo $this->config->item('base_url') .'/activity/get'; ?>', { activity_id: activity_id }, function(data){
 			data_array = data.split('^');
 			jQuery('#activity_title').val(data_array[0]);
 			jQuery('#activity_notes').val(data_array[1]);
@@ -80,7 +78,7 @@ jQuery(document).ready(function(){
 	var url = <?php echo '"http://'.$this->config->item('go_ip').'/view/activity/"'; ?> + activity_id;
 	jQuery('#activity_id, #activity_id2').val(activity_id);
 	//get title/name of activity 
-	jQuery.post( '<?php echo $this->config->item('base_url') .'index.php/activity/get'; ?>', { activity_id: activity_id }, function(data){
+	jQuery.post( '<?php echo $this->config->item('base_url') .'/activity/get'; ?>', { activity_id: activity_id }, function(data){
 		data_array = data.split('^');
 		jQuery('#activity_title').val(data_array[0]);
 		jQuery('#activity_notes').val(data_array[1]);
@@ -132,6 +130,7 @@ jQuery(document).ready(function(){
 			$('#upload-status').show();
 			$('#status-text').html(data_array[0]);
 			if(data_array[1] == 'failed' || data_array[1] == 'success'){
+				//window.location = document.URL;
 				clearInterval(interval);	
 			}
 		});
@@ -150,7 +149,7 @@ jQuery(document).ready(function(){
 		jQuery('#activity_id, #activity_id2').val(activity_id);
 
 		//get title/name of activity 
-		jQuery.post( '<?php echo $this->config->item('base_url') .'index.php/activity/get'; ?>', { activity_id: activity_id }, function(data){
+		jQuery.post( '<?php echo $this->config->item('base_url') .'/activity/get'; ?>', { activity_id: activity_id }, function(data){
 			data_array = data.split('^');
 			jQuery('#activity_title').val(data_array[0]);
 			jQuery('#activity_notes').val(data_array[1]);
