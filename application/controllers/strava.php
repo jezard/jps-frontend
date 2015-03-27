@@ -82,10 +82,11 @@ class Strava extends CI_Controller {
 
 	function upload(){
 		$activity_id = trim($this->input->post('activity_id'));
+		$activity = $this->user_activity->get_activity($activity_id);
 
 		$name = trim($this->input->post('name'));
 		$description = trim($this->input->post('description'));
-		$filename = trim('uploads/'.$this->input->post('file'));
+		$filename = trim('uploads/'.$activity['filename']);
 		$actual_file = realpath($filename);
 
 		//direct a user back to the account page if they don't have the strava connection
@@ -159,11 +160,11 @@ class Strava extends CI_Controller {
 
 			if(isset($upload_status['activity_id'])){
 				$this->user_activity->set_strava_activity_id($activity_id, $upload_status['activity_id']);
-				echo $upload_status['status'].' <a href="https://www.strava.com/activities/'.$upload_status['activity_id'].'">View it on <span style="color:#FB4B02; font-weight:bold; letter-spacing: -1px">STRAVA</span></a>'.'^success';
+				echo $upload_status['status'].' View it on <a href="https://www.strava.com/activities/'.$upload_status['activity_id'].'"><span style="color:#FB4B02; font-weight:bold; letter-spacing: -1px" target="_blank">STRAVA</span></a>'.'^success';
 			}elseif(isset($upload_status['error'])){
-				echo $upload_status['status'].': '.$upload_status['error'].'^failed';
+				echo '<span style="color:#FB4B02; font-weight:bold; letter-spacing: -1px" target="_blank">STRAVA</span> message: '.$upload_status['status'].': '.$upload_status['error'].'^failed';
 			}else{
-				echo $upload_status['status'].'^polling';
+				echo '<span style="color:#FB4B02; font-weight:bold; letter-spacing: -1px" target="_blank">STRAVA</span> message: '.$upload_status['status'].'^polling';
 			}
 		}
 

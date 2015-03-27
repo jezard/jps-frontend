@@ -61,6 +61,8 @@ class User_file_model extends CI_Model{
 		return $activities;
 	}
 
+	
+
 	function get_activity_basic($id){
 		$query = $this->db->query("SELECT * FROM user_activity WHERE activity_id = '$id'");
 		foreach($query->result_array() as $row){
@@ -68,8 +70,9 @@ class User_file_model extends CI_Model{
 			$activity_notes = $row['activity_notes'];
 			$activity_date = $row['activity_date'];
 			$filename = $row['filename'];
+			$strava_activity_id = $row['strava_activity_id'];
 		}
-		echo $activity_title.'^'.$activity_notes.'^'.$activity_date.'^'.$filename;
+		echo $activity_title.'^'.$activity_notes.'^'.$activity_date.'^'.$filename.'^'.$strava_activity_id;
 	}
 
 	function update_basic($id, $name, $notes){

@@ -40,9 +40,21 @@ class User_activity_model extends CI_Model{
 		return $strava_upload_id;
 	}
 
-	function set_strava_activity_id($activity_id, $activity_id){
+	function set_strava_activity_id($activity_id, $strava_activity_id){
 		$query = $this->db->query("UPDATE user_activity 
-										SET strava_activity_id = '$activity_id', strava_upload_id = 'NULL' 
+										SET strava_activity_id = '$strava_activity_id', strava_upload_id = NULL 
 										WHERE activity_id = '$activity_id'");
+	}
+
+	function get_activity($id){
+		$query = $this->db->query("SELECT * FROM user_activity WHERE activity_id = '$id'");
+		foreach($query->result_array() as $row){
+			$data['activity_name'] = $row['activity_name'];
+			$data['activity_notes'] = $row['activity_notes'];
+			$data['activity_date'] = $row['activity_date'];
+			$data['filename'] = $row['filename'];
+			$data['strava_activity_id'] = $row['strava_activity_id'];
+		}
+		return $data;
 	}
 }
