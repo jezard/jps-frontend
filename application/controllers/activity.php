@@ -55,6 +55,13 @@ class Activity extends CI_Controller {
 			//get the user's recent activities
 			$recentActivities = $this->user_file->get_recent_activities($this->email);
 
+			//check for strava upload flag
+			if(isset($_POST['strava_upload'])){
+				$poll_strava = true;
+			}else{
+				$poll_strava = false;
+			}
+
 			//if user is updating use id to show on load, else show the most recent activity
 			if(isset($id)){
 				$displayActivity = $id;
@@ -62,7 +69,7 @@ class Activity extends CI_Controller {
 				$displayActivity = @$recentActivities[0]['activity_id'];
 			}
 
-			$this->load->view('activity', array('recentActivities' => $recentActivities, 'displayActivity' => @$displayActivity));
+			$this->load->view('activity', array('recentActivities' => $recentActivities, 'displayActivity' => @$displayActivity, 'poll_strava' => $poll_strava));
 		}else
 			$this->load->view('upload_form', array('message' => 'Upload your .fit or .tcx files below (we recommend uploading in smaller batches):'));
 			

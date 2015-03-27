@@ -7,6 +7,7 @@ class Strava extends CI_Controller {
 		$this->load->helper('cookie');
 		$this->load->helper(array('form', 'url'));
 		$this->load->model('user_model', 'user', TRUE);
+		$this->load->model('user_activity_model', 'user_activity', TRUE);
 		if ($this->input->cookie('valid_user'))
 		{
 			$this->email = $this->input->cookie('valid_user', false);
@@ -80,6 +81,8 @@ class Strava extends CI_Controller {
 	}
 
 	function upload(){
+		$activity_id = trim($this->input->post('activity_id'));
+
 		$name = trim($this->input->post('name'));
 		$description = trim($this->input->post('description'));
 		$filename = trim('uploads/'.$this->input->post('file'));
@@ -120,10 +123,49 @@ class Strava extends CI_Controller {
 			$upload_status = json_decode(trim($result), true);
 
 			if(isset($upload_status['id'])){
-				echo $upload_status['id'];
+				$this->user_activity->set_strava_upload_id($activity_id, $upload_status['id']);
+				echo 'uploading';
 			}else{
 				echo 'error';
 			}
 		}
+	}
+
+	function upload_status(){
+		$activity_id = trim($this->input->post('activity_id'));
+		$strava_upload_id = trim($this->user_activity->get_strava_upload_id($activity_id));
+		$user_settings = $this->user->getSettings($this->email);
+
+		if(isset($strava_upload_id) && $strava_upload_id != ''){
+			$url = "https://www.strava.com/api/v3/uploads/".$strava_upload_id;
+
+			//open connection
+			$ch = curl_init();
+
+			$headers = array('Authorization: Bearer ' . $user_settings['strava_access_token']);
+
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+			curl_setopt($ch, CURLOPT_URL, $url);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+			//execute post
+			$result = curl_exec($ch);
+
+			//close connection
+			curl_close($ch);
+
+			$upload_status = json_decode(trim($result), true);
+
+			if(isset($upload_status['activity_id'])){
+				$this->user_activity->set_strava_activity_id($activity_id, $upload_status['activity_id']);
+				echo $upload_status['status'].' <a href="https://www.strava.com/activities/'.$upload_status['activity_id'].'">View it on <span style="color:#FB4B02; font-weight:bold; letter-spacing: -1px">STRAVA</span></a>'.'^success';
+			}elseif(isset($upload_status['error'])){
+				echo $upload_status['status'].': '.$upload_status['error'].'^failed';
+			}else{
+				echo $upload_status['status'].'^polling';
+			}
+		}
+
 	}
 }

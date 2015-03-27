@@ -14,12 +14,25 @@
 				<label for="activity_description">Notes:</label>
 				<textarea id="activity_notes" rows="5" name="activity_notes"></textarea>
 				<button class="btn-default" type="submit">Update</button>
+
+				<!-- only for strava connected users -->
 				<?php if($strava_user): ?>
-				<span class="strava-options"><strong><em> OR </em></strong> 
+				<input type="hidden" id="strava_upload" name="strava_upload" value="">
+				<span class="strava-options">
+
+					<!-- don't show buttons if uploading or uploaded to strava instead show link on strava -->
+					<?php if(!$poll_strava): ?>
+					<strong><em> OR </em></strong> 
 					<button id="strava-it" class="btn-default">Update and save to <span style="color:#FB4B02; font-weight:bold; letter-spacing: -1px">STRAVA</span></button>
-					<div id="upload-status" style="display:none"><span class="note">Uploading activity to <span style="color:#FB4B02; font-weight:bold; letter-spacing: -1px">STRAVA</span></span></div>
+					<?php endif; ?>
+					<div id="upload-status" style="display:none">
+						<span id="status-text" class="note">Uploading activity to <span style="color:#FB4B02; font-weight:bold; letter-spacing: -1px">STRAVA</span></span>
+					</div>
+					
+
 				</span>
 				<?php endif; ?>
+
 			</form>
 			<?php echo form_open('activity/delete'); ?>
 				<input type="hidden" id="activity_id2" name="activity_id" value="">
@@ -79,7 +92,9 @@ jQuery(document).ready(function(){
 		var name = $('#activity_title').val();
 		var desc = $('#activity_notes').val();
 
-		jQuery.post( '<?php echo $this->config->item('base_url') .'index.php/strava/upload'; ?>', { name: name, description:desc, file: filename }, function(data){
+		$('#strava_upload').val('1');
+
+		jQuery.post( '<?php echo $this->config->item('base_url') .'/strava/upload'; ?>', { name: name, description:desc, file: filename, activity_id: activity_id }, function(data){
 			if(data == "error"){
 				alert("There was an issue uploading to Strava, If the problem continues try reconnecting to Strava (Menu -> My Account)");
 			}else{
@@ -92,6 +107,24 @@ jQuery(document).ready(function(){
 
 		});
 	});
+	//still on the strava tip... 
+	<?php if($poll_strava): ?>
+
+	var interval;
+	interval = setInterval(poll_strava, 5000);
+
+	function poll_strava(){
+		jQuery.post( '<?php echo $this->config->item('base_url') .'/strava/upload_status'; ?>', { activity_id: activity_id }, function(data){
+			data_array = data.split('^');
+			console.log(data);
+			$('#upload-status').show();
+			$('#status-text').html(data_array[0]);
+			if(data_array[1] == 'failed' || data_array[1] == 'success'){
+				clearInterval(interval);	
+			}
+		});
+	}
+	<?php endif; ?>
 
 
 	//show all activities for day

@@ -25,4 +25,24 @@ class User_activity_model extends CI_Model{
 			curl_close($ch);
 		}
 	}
+
+	function set_strava_upload_id($activity_id, $upload_id){
+		$query = $this->db->query("UPDATE user_activity 
+										SET strava_upload_id = '$upload_id' 
+										WHERE activity_id = '$activity_id'");
+	}
+
+	function get_strava_upload_id($activity_id){
+		$query = $this->db->query("SELECT strava_upload_id FROM user_activity WHERE activity_id = '$activity_id' LIMIT 1");
+		foreach($query->result_array() as $row){
+			$strava_upload_id = $row['strava_upload_id'];
+		}
+		return $strava_upload_id;
+	}
+
+	function set_strava_activity_id($activity_id, $activity_id){
+		$query = $this->db->query("UPDATE user_activity 
+										SET strava_activity_id = '$activity_id', strava_upload_id = 'NULL' 
+										WHERE activity_id = '$activity_id'");
+	}
 }
