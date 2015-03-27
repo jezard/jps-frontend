@@ -29,7 +29,16 @@ class Activity extends CI_Controller {
 	{
 		$user_image = $this->user->get_user_image($this->email);
 		$validated = true;
-		$this->load->view('templates/header', array('title' => 'My Profile - '.$this->config->item('site_name'), 'user_image' => $user_image));
+
+		//determine if strava user
+		$user_settings = $this->user->getSettings($this->email);
+		if(!isset($user_settings['strava_access_token']) || $user_settings['strava_access_token'] == ''){
+			$strava_user = false;
+		}else{
+			$strava_user = true;
+		}
+
+		$this->load->view('templates/header', array('title' => 'My Profile - '.$this->config->item('site_name'), 'user_image' => $user_image, 'strava_user' => $strava_user));
 
 		$count = count($this->user_file->get_recent_activities($this->email));
 			

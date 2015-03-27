@@ -105,9 +105,9 @@ class Strava extends CI_Controller {
 
 			$headers = array('Authorization: Bearer ' . $user_settings['strava_access_token']);
 
-			curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, FALSE);
-			curl_setopt($ch,CURLOPT_URL, $url);
-			curl_setopt($ch,CURLOPT_POSTFIELDS, $fields);
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+			curl_setopt($ch, CURLOPT_URL, $url);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
 			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -124,8 +124,6 @@ class Strava extends CI_Controller {
 			}else{
 				echo 'error';
 			}
-
 		}
 	}
-
 }

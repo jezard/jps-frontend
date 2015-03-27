@@ -14,8 +14,12 @@
 				<label for="activity_description">Notes:</label>
 				<textarea id="activity_notes" rows="5" name="activity_notes"></textarea>
 				<button class="btn-default" type="submit">Update</button>
-				<button id="strava-it" class="btn-default">Update and save to <span style="color:#FB4B02; font-weight:bold; letter-spacing: -1px">STRAVA</span></button>
-				
+				<?php if($strava_user): ?>
+				<span class="strava-options"><strong><em> OR </em></strong> 
+					<button id="strava-it" class="btn-default">Update and save to <span style="color:#FB4B02; font-weight:bold; letter-spacing: -1px">STRAVA</span></button>
+					<div id="upload-status" style="display:none"><span class="note">Uploading activity to <span style="color:#FB4B02; font-weight:bold; letter-spacing: -1px">STRAVA</span></span></div>
+				</span>
+				<?php endif; ?>
 			</form>
 			<?php echo form_open('activity/delete'); ?>
 				<input type="hidden" id="activity_id2" name="activity_id" value="">
@@ -80,8 +84,11 @@ jQuery(document).ready(function(){
 				alert("There was an issue uploading to Strava, If the problem continues try reconnecting to Strava (Menu -> My Account)");
 			}else{
 				console.log(data);
+				$('#upload-status').slideDown(500, function(){
+					$( "#frm_activity" ).delay(500).submit();
+				});
 			}
-			//$( "#frm_activity" ).submit();
+			
 
 		});
 	});
