@@ -62,13 +62,7 @@ h2{
 	margin: 10px 0;
 }
  h3 ,.m-header {
-	padding: 5px 10px;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	margin-bottom: 10px!important;
 	margin-top: 0;
-	text-shadow: 0 -1px #0d0d0d;
 }
 h3::after{
 	content: '';
@@ -96,18 +90,16 @@ h3::after{
 	color: #666;
 }
 h3, .h3{
-	font-size: 20px;
+	font-size: 28px;
 	max-height: 32px;
+	font-weight: 100
 }
 h3.home-h3{
 	max-height: 58px;
-	/*background: #3C3C3E;*/
-	background: #F3F3F3;
-	color:#B5B5BD;
-	border: 1px white solid;
+	background: none;
 	font-size: 2em;
 	text-shadow:none;
-	 color: #5A5A5D;
+	color: #5A5A5D;
 }
 h3.home-h3 .fine{
 	font-weight: 100;

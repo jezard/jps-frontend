@@ -91,11 +91,6 @@
 		<?php echo $dark_green_gradient; ?>
 
 	}
-	 h3 ,.m-header {
-		color: white;
-		<?php echo $green_gradient; ?>
-
-	}
 
 	/*h3::after{
 		background: url(/images/arrow_down.png);
@@ -196,13 +191,7 @@
 		<?php echo $red_gradient; ?>
 
 	}
-	 h3 ,.m-header {
-		color: white;
-		<?php echo $gray_gradient; ?>
-	}
-	/*h3::after{
-		background: url(/images/arrow_down_gray.png);
-	}*/
+
 	progress[value]::-webkit-progress-value {
 	  background-image:
 		   -webkit-linear-gradient(top,  #6dd300 0%,#5eb300 100%);

@@ -205,7 +205,6 @@ $(function () {
 
 <div class="grid trans-bg">
     <div style="margin:20px">
-        <h2>What is <span class="jps-em"><span>Joule</span><span>Per</span><span>Second</span></span>?</h2>
         <div class="content-container">
             <div id="ff-graph"></div>
             <span class="note"><strong>This example graph</strong> shows CTL, ATL &amp; TSB for a 500 day period - you may show up to 90 days in the free version. You can switch the <a href="http://joulepersecond.com/index.php/theme?ret=">theme</a> too. The graph also displays notable critical power performances (60 minute power shown). Compare where these fall against the training loads around the same time. Noting any trends can help you to train more <em>effectively</em>. Although designed primarily with power meter users in mind, <span class="jps-em"><span>Joule</span><span>Per</span><span>Second</span></span> also calculates values based on heart rate or manual entry when power data is not available. This and many other useful graphs and charts are available in <span class="jps-em"><span>Joule</span><span>Per</span><span>Second</span></span>. <a href="<?php echo $this->config->item('base_url'); ?>/signup/">Join us</a> now to see more (it's free).</span>
