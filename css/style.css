@@ -1273,6 +1273,17 @@ h3 {
 .dashport{
 	height: 250px;
 }
+.dashtop{
+	font-size: 1.2em;
+	border-bottom: 1px dotted;
+	padding-bottom: 5px;
+	margin-bottom: 15px;
+}
+.laps-container td{
+	width:auto;
+	padding:5px;
+
+}
 
 
 /* media queries */

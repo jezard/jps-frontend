@@ -44,18 +44,7 @@ h1.primary-heading{
 	font-weight: bold;
 	font-family: monospace;
 }
-.heading-gray, .date_selected h3 {
-	background-color: #f9f9f9;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	color: #666;
-	padding: 5px 10px;
-	font-family: monospace;
-	font-size: 20px;
-	margin: 0;
-	border: 1px solid white;
-}
+
 h2{
 	color: #5A5A5D;
 	font-size: 25px;
@@ -104,6 +93,11 @@ h3.home-h3{
 h3.home-h3 .fine{
 	font-weight: 100;
 }
+.h4, h4 {
+  font-style: italic;
+  font-weight: bold;
+  color:silver;
+}
 .date_selected h3::after{
 	content:none;
 }
@@ -125,14 +119,13 @@ table, .chart, #calendar, .basic-form, .forum-container, .content-container{
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 }
-table, .chart, #calendar, .basic-form, .forum-container, .content-container{
+table, .chart, #calendar, .basic-form, .forum-container, .content-container, .home-content-container{
 	padding: 20px 30px;
   	margin-bottom: 30px;
 	overflow: hidden;
 }
-.blurb .content-container img{
-	float:left;
-	margin:10px 15px;
+.blurb .home-content-container img{
+	margin: 0 15px 0 0;
 }
 textarea{
 	color:#333;
