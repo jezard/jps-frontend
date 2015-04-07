@@ -207,7 +207,7 @@ $(function () {
     <div style="margin:20px">
         <div class="content-container">
             <div id="ff-graph"></div>
-            <span class="note"><strong>This example graph</strong> shows CTL, ATL &amp; TSB for a 500 day period - you may show up to 90 days in the free version. You can switch the <a href="http://joulepersecond.com/index.php/theme?ret=">theme</a> too. The graph also displays notable critical power performances (60 minute power shown). Compare where these fall against the training loads around the same time. Noting any trends can help you to train more <em>effectively</em>. Although designed primarily with power meter users in mind, <span class="jps-em"><span>Joule</span><span>Per</span><span>Second</span></span> also calculates values based on heart rate or manual entry when power data is not available. This and many other useful graphs and charts are available in <span class="jps-em"><span>Joule</span><span>Per</span><span>Second</span></span>. <a href="<?php echo $this->config->item('base_url'); ?>/signup/">Join us</a> now to see more (it's free).</span>
+            <span class="note" style="margin-bottom:50px"><strong>This example graph</strong> shows CTL, ATL &amp; TSB for a 500 day period - you may show up to 90 days in the free version. You can switch the <a href="http://joulepersecond.com/index.php/theme?ret=">theme</a> too. The graph also displays notable critical power performances (60 minute power shown). Compare where these fall against the training loads around the same time. Noting any trends can help you to train more <em>effectively</em>. Although designed primarily with power meter users in mind, <span class="jps-em"><span>Joule</span><span>Per</span><span>Second</span></span> also calculates values based on heart rate or manual entry when power data is not available. This and many other useful graphs and charts are available in <span class="jps-em"><span>Joule</span><span>Per</span><span>Second</span></span>. <a href="<?php echo $this->config->item('base_url'); ?>/signup/">Join us</a> now to see more (it's free).</span>
 
     		<section>
                 <h1 class="mobile jps-em">This is <span class="jps-em"><span>Joule</span><span>Per</span><span>Second</span></span>!</h1>
@@ -258,9 +258,9 @@ $(function () {
                             <h3 class="home-h3"><img src="<?php echo $this->config->item('base_url'); ?>/images/h3-icons/jps-logo-gray.png" alt="icon" /><span class="fine">Our brand</span></h3>
                             <a href="<?php echo $this->config->item('base_url'); ?>/images/quad-hd-logo.png"><img src="<?php echo $this->config->item('base_url'); ?>/images/quad-hd-logo-thumb.png" alt="JoulePerSecond logo" width="100%" style="margin:0"/></a>
                             <br>&nbsp;<p>Please use our logo for spreading the word about <span class="jps-em"><span>Joule</span><span>Per</span><span>Second</span></span>! We don't currently have any specific guidelines, so in the meantime just please respect our designer's feelings - and give the logo some space! Click on the image above for a large image. If you need the image in other colors or formats, please contact us and we can supply the original vector. <span class="jps-em"><span>Joule</span><span>Per</span><span>Second</span></span> and the Chain Wheel Logo remain the property of Wizard Technology.</p>
+                            <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                            <div class="addthis_sharing_toolbox"></div>
                         </div>
-                         <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                        <div class="addthis_sharing_toolbox"></div>
     				</div>
     			</article>
     		</section>
