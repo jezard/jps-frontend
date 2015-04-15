@@ -1219,7 +1219,7 @@ h3 {
 	font-size: 22px;
 }
 .desktop{
-	display: block;
+	display: inline-block;
 }
 .mobile{
 	display: none;
@@ -1284,6 +1284,50 @@ h3 {
 	padding:5px;
 
 }
+.feature-table{
+	background-color: white;
+}
+.feature-table p{
+	font-weight: 300;
+	font-size: 0.9em;
+	line-height: 20px;
+	padding-bottom: 10px;
+	width:80%;
+	display: inline-block;
+	padding-left: 15px;
+}
+.bullet{
+	display: inline-block;
+	width: 30px;
+	vertical-align: top;
+	padding-left: 15px;
+}
+.feature-table td{
+	vertical-align: top;
+}
+.feature-table th{
+	padding-bottom: 20px;
+}
+.feature-table tr:hover{
+	background: none;
+	cursor: auto;
+}
+.feature-table tr td:first-of-type:hover{
+	padding-left: 0;
+	margin-right: 0;
+}
+.feature-table tr td:first-of-type:hover{
+	padding-left: 0;
+	margin-right: 0;
+}
+aside.intro{
+	color:rgb(148,148,148);
+	font-size: 28px;
+}
+.addthis_sharing_toolbox{
+	float:right;
+}
+
 
 
 /* media queries */
@@ -1311,6 +1355,8 @@ h3 {
 	.homepage h3:after{
 		clear:both;
 	}
+	
+
 }
 @media (max-width: 1024px) {
 	h3.home-h3 span, h3.home-h3 .fine {
@@ -1363,10 +1409,37 @@ h3 {
 		display: none;
 	}
 	.mobile{
-		display: block;
+		display: inline-block;
 	}
 	ul, ol {
 		margin: 0 0 1.5em 1.5em;
+	}
+	.addthis_sharing_toolbox{
+		float:none;
+	}
+	.feature-table tr, th{
+		display: block;
+	}
+	.feature-table td{
+		display: inline-block;
+		width:100%;
+	}
+	.feature-table td:before{
+		display: inline-block;
+		vertical-align: top;
+		width:50px;
+	}
+	.feature-table td:nth-of-type(even):before{
+		content:"Does";
+		font-weight: bold;
+	}
+	.feature-table td:nth-of-type(odd):before{
+		content:"Doesn't";
+		font-style: italic;
+
+	}
+	.feature-table .bullet{
+		display: none;
 	}
 
 }

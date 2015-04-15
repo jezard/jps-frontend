@@ -151,6 +151,12 @@
 	.signup-cta a{
 		color:white;
 	}
+	#home-nav-btn a {
+		color: #fb4b02;
+	}
+	.nav-toggle {
+	  	background: url(/images/icons/menu.png) no-repeat 5px center #fff;
+	}
 
 
 
@@ -242,6 +248,12 @@
 	}
 	.signup-cta a{
 		color:white;
+	}
+	#home-nav-btn a {
+		color: #d90000;
+	}
+	.nav-toggle {
+	  	background: url(/images/icons/menu.png) no-repeat 5px center #d90000;
 	}
 
 }

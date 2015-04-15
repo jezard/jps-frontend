@@ -141,6 +141,12 @@ textarea{
 	color:#fff;
 	text-shadow: 0 -1px #0d0d0d;
 }
+.feature-box{
+	border: 1px silver dotted;
+	border-radius: 5px;
+	padding: 10px 10px 20px;
+	background-color: white;
+}
 /*--------------------------------------------------------------
 Links
 --------------------------------------------------------------*/
@@ -159,9 +165,7 @@ a:active {
 	text-shadow: 0 -1px #0d0d0d;
 
 }
-#home-nav-btn a{
-	color: #fb4b02;
-}
+
 .note{
 	background: #DFDFE1;
 	border-radius: 5px;
