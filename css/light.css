@@ -119,13 +119,16 @@ table, .chart, #calendar, .basic-form, .forum-container, .content-container{
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 }
-table, .chart, #calendar, .basic-form, .forum-container, .content-container, .home-content-container{
+table, .chart, #calendar, .basic-form, .forum-container, .content-container{
 	padding: 20px 30px;
   	margin-bottom: 30px;
 	overflow: hidden;
 }
 .blurb .home-content-container img{
 	margin: 0 15px 0 0;
+}
+.blurb{
+	margin-right:-20px;
 }
 textarea{
 	color:#333;
@@ -192,6 +195,9 @@ a:active {
 @media (max-width: 767px) {
 	body{
 		margin:0;
+	}
+	.blurb{
+		margin-left:-20px;
 	}
 	
 }
