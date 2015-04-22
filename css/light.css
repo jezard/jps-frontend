@@ -17,8 +17,11 @@ input[type="text"], input[type="number"]{
 .account-page input[type="number"] {
 	border-style: solid;
 }
-tr:hover{
+tr:not(.table-group):hover{
 	background-color: #ccc;
+}
+.feature-table tr:hover{
+	background-color: transparent; 
 }
 
 nav.top-nav li a{
@@ -123,6 +126,7 @@ table, .chart, #calendar, .basic-form, .forum-container, .content-container{
 	padding: 20px 30px;
   	margin-bottom: 30px;
 	overflow: hidden;
+	min-height: 200px;
 }
 .blurb .home-content-container img{
 	margin: 0 15px 0 0;

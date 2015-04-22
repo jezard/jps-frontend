@@ -940,13 +940,13 @@ hr{
 	width:80px;
 }
 
-tr:hover{
+tr:not(.table-group):hover{
 	cursor: pointer;
 }
 .section-ln td{
 	width:50%;
 }
-tr td:first-of-type:hover{
+tr:not(.table-group) td:first-of-type:hover{
 	padding-left: 5px;
 	margin-right: -5px;
 }
@@ -959,7 +959,7 @@ tspan{
 label{
 
 }
-#filter-update input[type="number"], #tss-update input[type="number"]{
+#filter-update input[type="number"], #activity-meta input[type="number"]{
 	font-size: 12px;
 	font-family: monospace;
 	color:#333;
@@ -969,7 +969,21 @@ label{
 	display: inline;
 	font-weight: bold;
 }
-/*#filter-update button, #tss-update button, .upload-form button, .login-form button, .signup-form button{
+#activity-meta select{
+	margin: 3% 10% 3% 0;
+	font-family: monospace;
+	font-size: 0.9em;
+	width: 90%;
+}
+/*.table-group{
+	background-color: #DFDFE1;
+}*/
+
+/*.table-group td:first-child{
+	padding-left: 5px;
+}*/
+	
+/*#filter-update button, #activity-meta button, .upload-form button, .login-form button, .signup-form button{
 	padding:4px;
 	margin-left: 10px;
 	background: #6DD300;
@@ -1313,6 +1327,7 @@ h3 {
 }
 .feature-table tr:hover{
 	background: none;
+	background-color: none;
 	cursor: auto;
 }
 .feature-table tr td:first-of-type:hover{
