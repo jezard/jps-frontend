@@ -145,6 +145,9 @@
 	.fp-learn{
 		background-image:url(/images/fp-icons/learn-wht.png);
 	}
+	.fp-develop{
+		background-image:url(/images/fp-icons/develop-wht.png);
+	}
 	.signup-cta{
 		<?php echo $orange_gradient; ?>
 	}
@@ -165,8 +168,7 @@
 <?php endif; ?>
 <?php if($color == 'gray'): ?>
 	body{
-		/*background: url(/images/dots.png) #DFDFE1 fixed;*/
-		background: #3C3C3E;
+		background: url(/images/GridBg.png) #DFDFE1 fixed;
 	}
 	#home-nav-btn{
 		background: url(/images/logo-small-gray.png) right center no-repeat #000;
@@ -242,6 +244,9 @@
 	}
 	.fp-learn{
 		background-image:url(/images/fp-icons/learn-red.png);
+	}
+	.fp-develop{
+		background-image:url(/images/fp-icons/develop-red.png);
 	}
 	.signup-cta{
 		<?php echo $red_gradient; ?>

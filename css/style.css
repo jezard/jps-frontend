@@ -1191,10 +1191,23 @@ main{
 	/*background: url(http://joulepersecond.com/images/pillow-logo.png) no-repeat center -30px;*/
 	min-height: 600px;
 	margin-top: 48px;
-	background-color: rgba(0,0,0,0.3);
+	/*background-color: rgba(0,0,0,0.3);*/
 	max-width: 1280px;
 	margin-left:auto;
 	margin-right: auto;
+
+background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 22%, rgba(0,0,0,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(22%,rgba(0,0,0,1)), color-stop(100%,rgba(0,0,0,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 22%,rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 22%,rgba(0,0,0,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 22%,rgba(0,0,0,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 22%,rgba(0,0,0,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+
+
+
+
+
 }
 
 main p{
@@ -1251,12 +1264,15 @@ h3 {
 .fp-ride,
 .fp-upload,
 .fp-engage,
-.fp-learn{
+.fp-learn,
+.fp-develop{
 	margin-top: 30px;
 	margin-bottom: 30px;
 	min-height:169px;
 	background-repeat: no-repeat;
 	background-position: center;
+  	border-radius: 10px;
+  	background-color: rgba(0,0,0, 0.3);
 }
 .fp-ride{
 	background-image:url(/images/fp-icons/ride-wht.png);
@@ -1467,6 +1483,13 @@ aside.intro{
 	[class*='col-'] {
 		padding-left: 0;
 		padding-right: 0;
+	}
+	.fp-ride,
+	.fp-upload,
+	.fp-engage,
+	.fp-learn,
+	.fp-develop{
+		background-color: transparent;
 	}
 	
 

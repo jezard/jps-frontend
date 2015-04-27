@@ -205,10 +205,11 @@ $(function () {
         </div>
     </div>
     <div class="intro grid">
-        <div class="col-1-4"><div class="fp-ride"></div>Ride</div>
-        <div class="col-1-4"><div class="fp-upload"></div>Upload</div>
-        <div class="col-1-4"><div class="fp-engage"></div>Engage</div>
-        <div class="col-1-4"><div class="fp-learn"></div>Learn</div>
+        <div class="col-1-5"><div class="fp-ride"></div>Ride</div>
+        <div class="col-1-5"><div class="fp-upload"></div>Upload</div>
+        <div class="col-1-5"><div class="fp-engage"></div>Engage</div>
+        <div class="col-1-5"><div class="fp-learn"></div>Learn</div>
+        <div class="col-1-5"><div class="fp-develop"></div>Develop</div>
     </div>
 </div>
 <div class="signup-cta"><a href="https://joulepersecond.com/signup" alt="Sign up!" title="Sign up">It's free, <strong>Start now</strong> &raquo;</a></div>
