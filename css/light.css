@@ -101,6 +101,7 @@ h3.home-h3 .fine{
   font-weight: bold;
   color:silver;
 }
+
 .date_selected h3::after{
 	content:none;
 }

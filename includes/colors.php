@@ -70,14 +70,14 @@
 	}
 	.section-ln {
 		border: 1px #ddd solid;
-		background-color: rgba(255,255,255,0.9);
+		background-color: #f5f5f5;
 	}
 	table, .chart, #calendar, .basic-form, .forum-container, .content-container {
-		background-color: #f9f9f9;
+		/*background-color: #f9f9f9;*/
 	}
 	table, .chart, #calendar, .basic-form, .forum-container, .content-container{
 		color: #666;
-		border: 1px #fff solid;
+		/*border: 1px #fff solid;*/
 	}
 	nav.top-nav li:hover{
 		<?php echo $orange_gradient; ?>
@@ -168,7 +168,10 @@
 <?php endif; ?>
 <?php if($color == 'gray'): ?>
 	body{
-		background: url(/images/GridBg.png) #DFDFE1 fixed;
+		/*background: url(/images/GridBg.png) #DFDFE1 fixed;*/
+		background: rgb(119,62,62); /* Old browsers */
+
+
 	}
 	#home-nav-btn{
 		background: url(/images/logo-small-gray.png) right center no-repeat #000;
@@ -177,15 +180,15 @@
 		background: url(/images/logo-small-gray.png) center; background-size:cover;
 	}
 	table, .chart, #calendar, .basic-form, .forum-container, .content-container {
-		background-color: #F3F3F3;
+		/*background-color: #F3F3F3;
 	}
 	table, .chart, #calendar, .basic-form, .forum-container, .content-container{
 		color: #666;
-		border: 1px #fff solid;
+		/*border: 1px #fff solid;*/
 	}
 	.section-ln{
 		border: 1px #ddd solid;
-		background-color:#DFDFE1;
+		background-color:#F5F5F5;
 	}
 	nav.top-nav li:hover{
 
