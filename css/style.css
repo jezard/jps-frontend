@@ -1305,7 +1305,6 @@ h3 {
 }
 .dashtop{
 	font-size: 1.2em;
-	border-bottom: 1px dotted;
 	padding-bottom: 5px;
 	margin-bottom: 15px;
 }
@@ -1358,7 +1357,17 @@ aside.intro{
 .addthis_sharing_toolbox{
 	float:right;
 }
-
+.value-space{
+	min-width:50px;
+	display: inline-block;
+	margin: 0 10px;
+}
+.tsb{
+	  border: 1px gray dotted;
+	  border-radius: 5px;
+	  text-align: center;
+	  background-color: white;
+}
 
 
 /* media queries */
