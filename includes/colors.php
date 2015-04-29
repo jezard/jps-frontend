@@ -62,6 +62,10 @@
 	body{
 		background: url(/images/bg-img.jpg) fixed #ccc; background-size:cover;
 	}
+	h1.primary-heading{
+		color:white;
+		text-shadow: 0 -1px #0d0d0d;
+	}
 	#home-nav-btn{
 		background: url(/images/logo-small.png) right center no-repeat #fff;
 	}
@@ -169,7 +173,7 @@
 <?php if($color == 'gray'): ?>
 	body{
 		/*background: url(/images/GridBg.png) #DFDFE1 fixed;*/
-		background: rgb(119,62,62); /* Old browsers */
+		background: rgb(255,255,255); /* Old browsers */
 
 
 	}
@@ -186,10 +190,6 @@
 		color: #666;
 		/*border: 1px #fff solid;*/
 	}
-	.section-ln{
-		border: 1px #ddd solid;
-		background-color:#F5F5F5;
-	}
 	nav.top-nav li:hover{
 
 	}
@@ -202,6 +202,7 @@
 		<?php echo $red_gradient; ?>
 
 	}
+
 
 	progress[value]::-webkit-progress-value {
 	  background-image:
@@ -233,9 +234,6 @@
 		<?php echo $gray_gradient; ?>
 	}
 
-	.intro{
-		color:white;
-	}
 	.fp-ride{
 		background-image:url(/images/fp-icons/ride-red.png);
 	}
