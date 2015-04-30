@@ -201,7 +201,7 @@ $(function () {
         background-repeat: repeat-x;
     }
 </style>
-<? endif; ?>
+<?php endif; ?>
 
 
 
