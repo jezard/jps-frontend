@@ -145,4 +145,4 @@ $zopim(function() {
 </header>
 
 <main>
-<div class="grid grid-pad">
+<div class="grid grid-pad main-content">

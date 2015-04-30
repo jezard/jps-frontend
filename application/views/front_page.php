@@ -194,7 +194,14 @@ $(function () {
 
 });
 </script>
-
+<?php if ($color == 'gray'): ?>
+<style>
+    body{
+        background: url(images/stripey-bg.png);
+        background-repeat: repeat-x;
+    }
+</style>
+<? endif; ?>
 
 
 

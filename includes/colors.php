@@ -174,9 +174,8 @@
 	body{
 		/*background: url(/images/GridBg.png) #DFDFE1 fixed;*/
 		background: rgb(255,255,255); /* Old browsers */
-
-
 	}
+
 	#home-nav-btn{
 		background: url(/images/logo-small-gray.png) right center no-repeat #000;
 	}
