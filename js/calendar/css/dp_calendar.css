@@ -19,12 +19,13 @@
 }
 
 .dp_calendar .div_main_date {
-	text-align:center;
+	/*text-align:center;*/
+	font-weight: normal;
 }
 
 .dp_calendar .main_date {
 	font-size:24px;
-	font-weight: 700;
+	font-weight: 300;
 	position:relative;
 	height: 50px;
 }
@@ -32,23 +33,26 @@
 .dp_calendar .main_date a {
 	color:inherit;
 	text-decoration:none;
+	display: inline-block;
 }
 
 .dp_calendar .main_date a#next_month {
-	position:absolute;
-	right:20px;
-	top:0;
+	/*position:absolute;
+	right:5px;
+	top:0;*/
+	padding-left: 5px;
 }
 
 .dp_calendar .main_date a#prev_month {
-	position:absolute;
-	left:20px;
-	top: 0;
+	/*position:absolute;
+	left:5px;
+	top: 0;*/
+	padding-right: 5px;
 }
 
 .dp_calendar .div_dates {
 	text-align:center;
-	background:url(../images/dp_calendar/box_border.jpg) 0 100% repeat-x;
+	/*background:url(../images/dp_calendar/box_border.jpg) 0 100% repeat-x;*/
 }
 
 .dp_calendar .div_dates ul {
@@ -229,4 +233,9 @@
 
 .calendar_list h2, #cl_sort_by{
 	display: none;
+}
+#toggleDP{
+	width: 200px;
+	text-align: center;
+}
 }

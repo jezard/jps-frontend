@@ -824,14 +824,15 @@ textarea{
 	width:60px;
 }
 .ride-basic input[type="text"], .ride-basic textarea{ 
-	max-width:450px;
+	border: 1px dotted #ddd;
+	width:100%;
 }
 textarea{
 	font-family: monospace;
 	font-size: 16px;
 }
 .basic-form form{
-	padding:30px 10px 0;
+	/*padding:30px 10px 0;*/
 }
 table, .chart, #calendar, .basic-form{
 	margin-bottom: 15px;
