@@ -206,6 +206,22 @@ jQuery(document).ready(function(){
 		}
 	})
 
+	//bit gak but this routine will first submit the child (iframe) form and then the parent
+	var childSaved = false;//need this to stop a submit loop
+	jQuery('#frm_activity').submit(function(e){
+		if(childSaved == false){
+			e.preventDefault();
+			var o = document.getElementById('activity-container');
+			o.contentWindow.postMessage(jQuery('#activity_title').val(), "*");
+			childSaved = true;
+			jQuery('#frm_activity').submit();
+		}		
+	});
+
+
+
+
+
 
 });
 
