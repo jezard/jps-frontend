@@ -164,6 +164,9 @@
 	.nav-toggle {
 	  	background: url(/images/icons/menu.png) no-repeat 5px center #fff;
 	}
+	#filter-update .default-btn{
+		color: #fb4b02;
+	}
 
 
 
@@ -259,6 +262,9 @@
 	}
 	.nav-toggle {
 	  	background: url(/images/icons/menu.png) no-repeat 5px center #d90000;
+	}
+	#filter-update .default-btn{
+		color: #d90000;
 	}
 
 }

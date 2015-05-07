@@ -1366,6 +1366,20 @@ aside.intro{
 	padding-top: 15px;
 }
 
+#pc-options label{
+	margin-left: 15px;
+	width:185px;
+	font-size: 0.8em;
+	font-weight: normal;
+	font-style: italic;
+	line-height: 15px;
+}
+.filter-blurb{
+	max-width: 380px;
+	display: block;
+	margin-top: 30px;
+}
+
 
 /* media queries */
 @media screen and (max-width: 1140px) {

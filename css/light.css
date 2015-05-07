@@ -149,6 +149,20 @@ textarea{
 	background-color: white;
 	margin-bottom: 30px;
 }
+.feature-table h3{
+	margin-top: 30px;
+	margin-bottom: 30px;
+	font-size: 38px;
+}
+.feature-table{
+	border-radius: 12px;
+}
+#filter-update .default-btn {
+  font-size: 20px;
+  padding: 8px;
+  width: 100%;
+  margin-top: 30px
+}
 /*--------------------------------------------------------------
 Links
 --------------------------------------------------------------*/
@@ -188,6 +202,11 @@ a:active {
 	.site-footer{
 		height: auto;
 	}
+	.feature-table h3{
+		margin-top: 20px;
+		margin-bottom: 20px;
+		font-size: 22px;
+	}
 }
 
 
@@ -198,6 +217,7 @@ a:active {
 	.blurb{
 		margin-left:-20px;
 	}
+	
 	
 }
 
