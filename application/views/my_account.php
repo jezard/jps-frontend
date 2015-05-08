@@ -17,13 +17,13 @@
 				<div class="col-1-2 about-me">
 					<h3>About me</h3>
 					<div class="basic-form">
-						<label for="my_firstname">First name:</label>
+						<label for="my_firstname">First name*:</label>
 						<input type="text" id="my_firstname" name="my_firstname" value="<?php echo set_value('my_firstname', @$my_firstname); ?>" maxlength="50" size="20" placeholder="First name" ><br>
-						<label for="my_lastname">Last name:</label>
+						<label for="my_lastname">Last name*:</label>
 						<input type="text" id="my_lastname" name="my_lastname" value="<?php echo set_value('my_lastname', @$my_lastname); ?>" maxlength="50" size="20" placeholder="Last name" ><br>
-						<label for="my_age">Age (years):</label>
+						<label for="my_age">Age (years)*:</label>
 						<input type="number" id="my_age" name="my_age" value="<?php echo set_value('my_age', @$my_age); ?>" maxlength="3" size="3" placeholder="Age" max="120" min="5" ><br>
-						<label for="my_weight">Weight (Kg):</label>
+						<label for="my_weight">Weight (Kg)*:</label>
 						<input type="number" id="my_weight" name="my_weight" value="<?php echo set_value('my_weight', @$my_weight); ?>" maxlength="3" size="3" placeholder="Kg" max="150" min="30" ><br>
 						<label for="my_gender">Gender:</label>
 						<?php
@@ -301,11 +301,11 @@
 				<div class="col-1-2 my-vital-stats">
 					<h3>My vital statistics</h3>
 					<div class="basic-form">
-						<label for="my_mhr">Maximum Heart Rate:</label>
+						<label for="my_mhr">Maximum Heart Rate*:</label>
 						<input type="number" id="my_mhr" name="my_mhr" value="<?php echo set_value('my_mhr', @$my_mhr); ?>" maxlength="3" size="3" placeholder="BPM" max="220" min="90" ><br>
-						<label for="my_rhr">Resting Heart Rate:</label>
+						<label for="my_rhr">Resting Heart Rate*:</label>
 						<input type="number" id="my_rhr" name="my_rhr" value="<?php echo set_value('my_rhr', @$my_rhr); ?>" maxlength="3" size="3" placeholder="BPM" max="120" min="30" ><br>
-						<label for="my_thr">Threshold Heart Rate:</label>
+						<label for="my_thr">Threshold Heart Rate*:</label>
 						<input type="number" id="my_thr" name="my_thr" value="<?php echo set_value('my_thr', @$my_thr); ?>" maxlength="3" size="3" placeholder="BPM" max="220" min="60" ><br>
 						<label for="my_ftp">Functional Threshold Power<span class="neon-orange">*</span>:</label>
 						<input type="number" id="my_ftp" name="my_ftp" value="<?php echo set_value('my_ftp', @$my_ftp); ?>" maxlength="3" size="3" placeholder="Watts" max="600" min="0" ><br>
