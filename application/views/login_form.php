@@ -12,6 +12,7 @@
 
 				<h5>Password</h5>
 				<input type="password" name="password" value="<?php echo set_value('password'); ?>" size="50" />
+        <input type="checkbox" id="remember" name="remember" value="1"></input><label for="remember">&nbsp;Stay logged in on this device?</label>
         <?php if(isset($message)): ?>
           <span class="warning"><?php echo @$message; ?></span>
         <?php endif; ?>

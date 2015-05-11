@@ -16,13 +16,13 @@ class Passwordreset extends CI_Controller {
 
 		if($email)
 		{
-			$this->load->view('templates/header', array('title' => 'Verification successful - '.$this->config->item('site_name')));
+			$this->load->view('templates/header', array('title' => 'Reset password - '.$this->config->item('site_name')));
 			$this->load->view('new_password_form', array('email' => $email));
 			$this->load->view('templates/footer');
 		}
 		else
 		{
-			$this->load->view('templates/header', array('title' => 'Verification not successful - '.$this->config->item('site_name')));
+			$this->load->view('templates/header', array('title' => 'No record found - '.$this->config->item('site_name')));
 			$this->load->view('passworderror');
 			$this->load->view('templates/footer');
 		}

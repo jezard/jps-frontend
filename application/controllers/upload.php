@@ -37,19 +37,14 @@ class Upload extends CI_Controller {
 		$data['user_id'] = $settings['user_id'];
 
 		$this->load->view('templates/header', array('title' => 'Upload - '.$this->config->item('site_name'), 'user_image' => $user_image));
-		//if user has remaining credits
-		if($data['balance'] > 0)
-		{
-			$this->load->view('upload_form', array($data, 'message' => '<span class="note">You have <strong>'.$data['balance'].'</strong> upload credits remaining. </span><br>Upload your .fit or .tcx files below (we recommend uploading in smaller batches):'));
-		}
-		//or is a subscriber
-		elseif($settings['paid_account'] > 0)
+		//if user has remaining credits or is a subscriber 
+		if($settings['paid_account'] > 0 || $data['balance'] > 0)
 		{
 			$this->load->view('upload_form', array('message' => 'Upload your .fit or .tcx files below (we recommend uploading in smaller batches):'));
 		}
 		else
 		{
-			$data['message'] = 'Get unlimited uploads and unlock addtional Premium features for just <strong>&pound;4.99</strong>, billed monthly';
+			$data['message'] = 'You have run out of upload credits (20 allocated per rolling 28 day basis). Get unlimited uploads and unlock addtional Premium features for just <strong>&pound;4.99</strong>, billed monthly, or try uploading tomorrow';
 			$this->load->view('go_premium', $data);
 		}
 

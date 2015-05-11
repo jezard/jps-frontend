@@ -1,8 +1,16 @@
 <?php session_start(); ?>
-<?php $this->load->helper('url'); ?>
+<?php $this->load->helper(array('form', 'url')); ?>
 <?php $this->load->helper('cookie'); ?>
 <?php $loggedIn = false; ?>
 <?php $display = 'class="logged-out"'; ?>
+
+<?php
+	if($this->input->cookie('valid_user')!='' && $this->input->cookie('valid_user')!='jez@gemini3.co.uk'){
+		$user_id = $this->input->cookie('valid_user');
+		$url = uri_string();
+		$this->db->query("INSERT INTO recent_users (user_id, url) VALUES ('$user_id', '$url')");
+	}
+?>
 
 
 
