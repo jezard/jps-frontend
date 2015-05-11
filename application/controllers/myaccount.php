@@ -54,11 +54,17 @@ class Myaccount extends CI_Controller {
 				//update the settings cookies (these are retrieved by go for use in app)
 				$settings = $this->user->getsettings($this->email);
 
+				if($this->input->cookie('remember') == '1'){
+					$expire = (10 * 365 * 24 * 60 * 60);
+				}else{
+					$expire = -100;
+				}
+
 
 				$cookie = array(
 				    'name'   => 'set_autofill',
 				    'value'  => $settings['set_autofill'],
-				    'expire' => -100,
+				    'expire' => $expire,
 				    'domain' => $this->config->item('site_name'),
 				    'prefix' => '',
 				    'secure' => false
@@ -68,7 +74,7 @@ class Myaccount extends CI_Controller {
 				$cookie = array(
 				    'name'   => 'my_gender',
 				    'value'  => $settings['my_gender'],
-				    'expire' => -100,
+				    'expire' => $expire,
 				    'domain' => $this->config->item('site_name'),
 				    'prefix' => '',
 				    'secure' => false
@@ -78,7 +84,7 @@ class Myaccount extends CI_Controller {
 				$cookie = array(
 				    'name'   => 'set_data_cutoff',
 				    'value'  => $settings['set_data_cutoff'],
-				    'expire' => -100,
+				    'expire' => $expire,
 				    'domain' => $this->config->item('site_name'),
 				    'prefix' => '',
 				    'secure' => false
@@ -88,7 +94,7 @@ class Myaccount extends CI_Controller {
 				$cookie = array(
 				    'name'   => 'my_mhr',
 				    'value'  => $settings['my_mhr'],
-				    'expire' => -100,
+				    'expire' => $expire,
 				    'domain' => $this->config->item('site_name'),
 				    'prefix' => '',
 				    'secure' => false
@@ -98,7 +104,7 @@ class Myaccount extends CI_Controller {
 				$cookie = array(
 				    'name'   => 'my_rhr',
 				    'value'  => $settings['my_rhr'],
-				    'expire' => -100,
+				    'expire' => $expire,
 				    'domain' => $this->config->item('site_name'),
 				    'prefix' => '',
 				    'secure' => false
@@ -108,7 +114,7 @@ class Myaccount extends CI_Controller {
 				$cookie = array(
 				    'name'   => 'my_vo2',
 				    'value'  => $settings['my_vo2'],
-				    'expire' => -100,
+				    'expire' => $expire,
 				    'domain' => $this->config->item('site_name'),
 				    'prefix' => '',
 				    'secure' => false
@@ -118,7 +124,7 @@ class Myaccount extends CI_Controller {
 				$cookie = array(
 				    'name'   => 'my_weight',
 				    'value'  => $settings['my_weight'],
-				    'expire' => -100,
+				    'expire' => $expire,
 				    'domain' => $this->config->item('site_name'),
 				    'prefix' => '',
 				    'secure' => false
@@ -128,7 +134,7 @@ class Myaccount extends CI_Controller {
 				$cookie = array(
 				    'name'   => 'my_thr',
 				    'value'  => $settings['my_thr'],
-				    'expire' => -100,
+				    'expire' => $expire,
 				    'domain' => $this->config->item('site_name'),
 				    'prefix' => '',
 				    'secure' => false
@@ -138,7 +144,7 @@ class Myaccount extends CI_Controller {
 				$cookie = array(
 				    'name'   => 'my_ftp',
 				    'value'  => $settings['my_ftp'],
-				    'expire' => -100,
+				    'expire' => $expire,
 				    'domain' => $this->config->item('site_name'),
 				    'prefix' => '',
 				    'secure' => false
@@ -148,7 +154,7 @@ class Myaccount extends CI_Controller {
 				$cookie = array(
 				    'name'   => 'my_age',
 				    'value'  => $settings['my_age'],
-				    'expire' => -100,
+				    'expire' => $expire,
 				    'domain' => $this->config->item('site_name'),
 				    'prefix' => '',
 				    'secure' => false
