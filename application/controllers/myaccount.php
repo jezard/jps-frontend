@@ -21,8 +21,8 @@ class Myaccount extends CI_Controller {
 
 		$this->form_validation->set_rules('set_autofill', 'Autofill', 'required');
 		$this->form_validation->set_rules('set_data_cutoff', 'Data Cutoff', 'required');
-		$this->form_validation->set_rules('my_firstname', 'First name', 'alpha|max_length[50]|required');
-		$this->form_validation->set_rules('my_lastname', 'Last name', 'alpha|max_length[50]|required');
+		$this->form_validation->set_rules('my_firstname', 'First name', 'alpha_dash|max_length[50]|required');
+		$this->form_validation->set_rules('my_lastname', 'Last name', 'alpha_dash|max_length[50]|required');
 		$this->form_validation->set_rules('my_age', 'Age', 'integer|max_length[3]|less_than[120]|required');
 		$this->form_validation->set_rules('my_weight', 'Weight Kg', 'integer|max_length[3]|less_than[150]|required');
 		$this->form_validation->set_rules('my_mhr', 'Max Heart Rate', 'integer|max_length[3]|less_than[220]|required');

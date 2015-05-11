@@ -31,10 +31,12 @@ class Forgottenpassword extends CI_Controller {
 		        $email = $this->input->post('email');
 		        $this->email->from('no-reply@'.$this->config->item('site_name'), 'Jeremy');
 		        $this->email->to($email); 
-		        $this->email->subject('Validate your email - '.$this->config->item('site_name'));
-		        $this->email->message('Please use this link to validate your email. '.$this->config->item('base_url').'index.php/passwordreset?vl='.do_hash($this->config->item('salt').$email));  
+		        $this->email->subject('Password reset link - '.$this->config->item('site_name'));
+		        $this->email->message('Please use this link to reset your password. '.$this->config->item('base_url').'index.php/passwordreset?vl='.do_hash($this->config->item('salt').$email));  
 		        $this->email->send();
 		        //echo $this->email->print_debugger();//remove for production
+		        //go to the uploads page
+				redirect('/', 'refresh');
 			}
 			else
 			{

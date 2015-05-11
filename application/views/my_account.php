@@ -9,9 +9,6 @@
 				<div class="col-1-2">
 					<h1>Account settings</h1>
 				</div>
-				<div class="col-1-2">
-					<button class="btn-default" type="submit">Update All Settings</button>
-				</div>
 				
 				<div class="clear"></div>
 				<div class="col-1-2 about-me">
@@ -312,11 +309,12 @@
 						<label for="my_vo2">VO<sub>2</sub> Max<span class="neon-orange">*</span> (ml/kg/min):</label>
 						<input type="number" id="my_vo2" name="my_vo2" value="<?php echo set_value('my_vo2', @$my_vo2); ?>" maxlength="3" size="3" placeholder="Val" max="70" min="0" >
 						<p><br><span class="neon-orange">*</span> If value unknown, set value to <code>0</code></p>
+						<button class="btn-default" type="submit"><b>UPDATE</b> all settings</button>
 					</div>
 				</div>
 				<div class="clear"></div>
 				<?php if(@$validated == 'no'): ?>
-					<div class="warning"><strong>Not updated:</strong> Users must complete all fields</div>
+					<div class="warning"><strong>Not updated </strong> Users must complete all fields correctly: <?php echo validation_errors(); ?></div>
 				<?php endif; ?>
 			</div>
 			<div class="section-ln">
@@ -351,7 +349,7 @@
 			        </div>
 				</div>
 				<div class="clear"></div>
-				<div class="col-1-1 bottom-update"><button class="btn-default" type="submit">Update All Settings</button></div>
+				<div class="col-1-1 bottom-update"><button class="btn-default" type="submit"><b>UPDATE</b> all settings</button></div>
 			</div>
 			
 
@@ -378,7 +376,7 @@
 						</tr>
 						<tr>
 							<td><strong>Uploads</strong></td>
-							<td>10 per rolling 28 day period</td>
+							<td>20 per rolling 28 day period</td>
 							<td>Unlimited</td>
 						</tr>
 						<tr>

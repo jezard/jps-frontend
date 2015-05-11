@@ -38,7 +38,7 @@ class Theme extends CI_Controller {
 		{
 			$cookie = array(
 			    'name'   => 'theme',
-			    'value'  => 'gray',
+			    'value'  => 'green',
 			    'expire' => time() + (10 * 365 * 24 * 60 * 60),
 			    'domain' => $this->config->item('site_name'),
 			    'prefix' => '',
