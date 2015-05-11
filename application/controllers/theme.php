@@ -47,8 +47,6 @@ class Theme extends CI_Controller {
 			$this->input->set_cookie($cookie);
 			
 		}
-		
-		
 	}
 
 	function index(){

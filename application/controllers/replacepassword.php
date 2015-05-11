@@ -25,9 +25,7 @@ class Replacepassword extends CI_Controller {
 			//add to the database
 			if($this->user->updatepassword())
 			{
-				$this->load->view('templates/header', array('title' => 'Home - '.$this->config->item('site_name')));
-				$this->load->view('front_page');
-				$this->load->view('templates/footer');
+				redirect('/login', 'refresh');
 			}
 			else
 			{
