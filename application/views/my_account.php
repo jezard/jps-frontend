@@ -305,13 +305,13 @@
 						<input type="number" id="my_mhr" name="my_mhr" value="<?php echo set_value('my_mhr', @$my_mhr); ?>" maxlength="3" size="3" placeholder="BPM" max="220" min="90" ><br>
 						<label for="my_rhr">Resting Heart Rate*:</label>
 						<input type="number" id="my_rhr" name="my_rhr" value="<?php echo set_value('my_rhr', @$my_rhr); ?>" maxlength="3" size="3" placeholder="BPM" max="120" min="30" ><br>
-						<label for="my_thr">Threshold Heart Rate*:</label>
+						<label for="my_thr">Threshold Heart Rate <a href="http://www.joefrielsblog.com/2011/04/determining-your-lthr.html" title="Help" target="_blank"><b>[?]</b></a>*:</label>
 						<input type="number" id="my_thr" name="my_thr" value="<?php echo set_value('my_thr', @$my_thr); ?>" maxlength="3" size="3" placeholder="BPM" max="220" min="60" ><br>
-						<label for="my_ftp">Functional Threshold Power<span class="neon-orange">*</span>:</label>
-						<input type="number" id="my_ftp" name="my_ftp" value="<?php echo set_value('my_ftp', @$my_ftp); ?>" maxlength="3" size="3" placeholder="Watts" max="600" min="0" ><br>
+						<label for="my_ftp">Functional Threshold Power <a href="http://www.joefrielsblog.com/2010/08/estimating-your-ftp.html" title="Help" target="_blank"><b>[?]</b></a>*:</label>
+						<input type="number" id="my_ftp" name="my_ftp" value="<?php echo set_value('my_ftp', @$my_ftp); ?>" maxlength="3" size="3" placeholder="Watts" max="600" min="100" ><br>
 						<label for="my_vo2">VO<sub>2</sub> Max<span class="neon-orange">*</span> (ml/kg/min):</label>
 						<input type="number" id="my_vo2" name="my_vo2" value="<?php echo set_value('my_vo2', @$my_vo2); ?>" maxlength="3" size="3" placeholder="Val" max="70" min="0" >
-						<p><br><span class="neon-orange">*</span> If values for <em><abbr title="Functional Threshold Power">FTP</abbr></em> or <em>VO<sub>2</sub> Max</em> are unknown, set value to <code>0</code></p>
+						<p><br><span class="neon-orange">*</span> If value unknown, set value to <code>0</code></p>
 					</div>
 				</div>
 				<div class="clear"></div>

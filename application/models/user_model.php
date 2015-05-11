@@ -94,7 +94,25 @@ class User_model extends CI_Model {
            $email = $row['email'];
 
            //if there is a match
-           if($email == $this->email)
+           if(strtolower($email) == strtolower($this->email))
+           {
+                return true;
+           }
+        }
+        return false;
+    }
+    //existing username?
+    function usernameexists(){
+      $this->username =  $this->input->post('username');
+
+       $query = $this->db->query("SELECT username FROM user");
+
+        foreach ($query->result_array() as $row)
+        {
+           $username = $row['username'];
+
+           //if there is a match
+           if(strtolower($username) == strtolower($this->username))
            {
                 return true;
            }
