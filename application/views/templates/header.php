@@ -106,6 +106,7 @@ $zopim(function() {
 			<li id="myaccount-mob" <?php echo $display; ?> ><a href="https://joulepersecond.com/index.php/myaccount">My Account</a></li>
 			<li id="theme-mob" <?php echo $display; ?> ><a href="http://joulepersecond.com/index.php/theme">Theme</a></li>
 			<li id="forum-mob" <?php echo $display; ?> ><a href="http://joulepersecond.com/index.php/forum">Forum</a></li>
+			<!-- <li id="demo-mob" <?php echo $display; ?> ><a href="http://joulepersecond.com/#demo">Demo</a></li> -->
 			<!-- we coud do with hiding this button for google users -->
 			<li id="signout" <?php echo $display; ?> >
 				<?php if( $this->input->cookie('social_user') == 'no'): ?>
@@ -137,6 +138,7 @@ $zopim(function() {
 			<li id="myaccount" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/my-account.png" alt="my-account"/><a href="https://joulepersecond.com/index.php/myaccount">My Account</a></li>
 			<li id="theme" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/theme.png" alt="my-account"/><a href="http://joulepersecond.com/index.php/theme?ret=<?php echo uri_string(); ?>">Theme</a></li>
 			<li id="forum" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/forum.png" alt="forum"/><a href="http://joulepersecond.com/index.php/forum">Forum</a></li>
+			<!-- <li id="demo" <?php echo $display; ?> ><img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/demo.png" alt="forum"/><a href="http://joulepersecond.com/#demo">Demo</a></li> -->
 			<!-- we coud do with hiding this button for google users -->
 			<li id="signout" <?php echo $display; ?> >
 				<img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/log-out.png" alt="log-out"/>
