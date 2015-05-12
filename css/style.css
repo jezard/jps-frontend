@@ -12,11 +12,13 @@ body{
 #analysis.logged-out, 
 #upload.logged-out, 
 #activity.logged-out,
+#forum.logged-out,
 #signout-mob.logged-out, 
 #myaccount-mob.logged-out, 
 #analysis-mob.logged-out, 
 #upload-mob.logged-out, 
-#activity-mob.logged-out{
+#activity-mob.logged-out,
+#forum-mob.logged-out{
 	display:none;
 }
 
@@ -1198,6 +1200,9 @@ main{
 	margin-right: auto;
 
 }
+.main-content{
+	max-width:1280px;
+}
 
 main p{
 	font-size: 1.1em;
@@ -1258,11 +1263,12 @@ h3 {
 .fp-develop{
 	margin-top: 30px;
 	margin-bottom: 30px;
-	min-height:169px;
+	min-height:210px;
 	background-repeat: no-repeat;
-	background-position: center;
-  	border-radius: 10px;
-  	background-color: rgba(0,0,0, 0.3);
+	background-position: center 33%;
+  	border-radius: 10px 0;
+  	background-color: rgba(0,0,0, 0.1);
+  	position: relative;
 }
 .fp-ride{
 	background-image:url(/images/fp-icons/ride-wht.png);
@@ -1276,6 +1282,12 @@ h3 {
 .fp-learn{
 	background-image:url(/images/fp-icons/learn-wht.png);
 }
+.intro-text{
+	position: absolute;
+  	bottom: 10px;
+  	width:100%;
+}
+
 .signup-cta{
 	width:100%;
 	font-size: 3em;
@@ -1327,9 +1339,12 @@ h3 {
 }
 .feature-table td{
 	vertical-align: top;
+	width:50%;
+	padding-left: 60px;
 }
 .feature-table th{
 	padding-bottom: 20px;
+	text-align: center;
 }
 .feature-table tr:hover{
 	background: none;
@@ -1337,13 +1352,10 @@ h3 {
 	cursor: auto;
 }
 .feature-table tr td:first-of-type:hover{
-	padding-left: 0;
+	padding-left: 60px;
 	margin-right: 0;
 }
-.feature-table tr td:first-of-type:hover{
-	padding-left: 0;
-	margin-right: 0;
-}
+
 aside.intro{
 	color:rgb(148,148,148);
 	font-size: 28px;
@@ -1378,6 +1390,23 @@ aside.intro{
 	max-width: 380px;
 	display: block;
 	margin-top: 30px;
+}
+.main-feature{
+	text-align: center;
+	font-weight: normal;
+	font-size: 26px;
+}
+.main-feature aside{
+	margin: 20px;
+}
+.main-features{
+	margin-bottom: 30px;
+  	overflow: hidden;
+}
+.strava{
+	color:#FB4B02; 
+	font-weight:bold; 
+	letter-spacing: -1px;
 }
 
 
@@ -1490,6 +1519,13 @@ aside.intro{
 	.feature-table .bullet{
 		display: none;
 	}
+	.feature-table tr td:first-of-type:hover{
+		padding-left: 0;
+		margin-right: 0;
+	}
+	.feature-table td{
+		padding-left: 0;
+	}
 
 }
 
@@ -1508,6 +1544,7 @@ aside.intro{
 	.fp-develop{
 		background-color: transparent;
 	}
+
 	
 
 }

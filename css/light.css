@@ -156,6 +156,7 @@ textarea{
 }
 .feature-table{
 	border-radius: 12px;
+	padding:60px;
 }
 #filter-update .default-btn {
   font-size: 20px;

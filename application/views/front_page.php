@@ -26,16 +26,6 @@
 
 
 
-<?php if ($color == 'gray'): ?>
-<style>
-    body{
-        background: url(images/stripey-bg.png);
-        background-repeat: repeat-x;
-    }
-</style>
-<?php endif; ?>
-
-
 
         <div class="grid homepage">
         	<div class="col-1-2"><h1 class="primary-heading desktop jps-em">This is <span>Joule</span><span>Per</span><span>Second</span>!</h1></div>
@@ -44,23 +34,26 @@
             </div>
         </div>
         <div class="intro grid">
-            <div class="col-1-5"><div class="fp-ride"></div>Ride</div>
-            <div class="col-1-5"><div class="fp-upload"></div>Upload</div>
-            <div class="col-1-5"><div class="fp-engage"></div>Engage</div>
-            <div class="col-1-5"><div class="fp-learn"></div>Learn</div>
-            <div class="col-1-5"><div class="fp-develop"></div>Develop</div>
+            <div class="col-1-5"><div class="fp-ride"><div class="intro-text">Ride…</div></div></div>
+            <div class="col-1-5"><div class="fp-upload"><div class="intro-text">Upload…</div></div></div>
+            <div class="col-1-5"><div class="fp-engage"><div class="intro-text">Engage…</div></div></div>
+            <div class="col-1-5"><div class="fp-learn"><div class="intro-text">Learn…</div></div></div>
+            <div class="col-1-5"><div class="fp-develop"><div class="intro-text">Develop.</div></div></div>
         </div>
     </div>
 </div>
 <div class="signup-cta"><a href="https://joulepersecond.com/signup" alt="Sign up!" title="Sign up">It's free, <strong>Start now</strong> &raquo;</a></div>
 <div class="grid grid-pad trans-bg">
-    <div class="grid ">
-        <h2>Skip the blurb and play with the <a href="#demo"><b>demo</b></a>...</h2>
+    <div class="grid main-content">
+        <h2 style="text-align:center">Skip the blurb and play with the <a href="#demo"><b>demo</b></a>...</h2>
         <div style="margin:20px">
             <div class="content-container">
-                
-                <aside class="intro"><span class="jps-em"><span>Joule</span><span>Per</span><span>Second</span></span> compliments apps such as TrainerRoad, Strava and Zwift</aside>
-                <table border="1" cellspacing="0" cellpadding="0" class="feature-table">
+                <section class="main-features">
+                    <div class="col-1-3 main-feature"><img src="/images/fp-icons/integration.png" alt="Compliments other cycling apps" /><aside>Connects with <span class="strava">STRAVA</span></aside></div>
+                    <div class="col-1-3 main-feature"><img src="/images/fp-icons/easy.png" alt="Simple yet Powerful" /><aside>Simple yet Powerful</aside></div>
+                    <div class="col-1-3 main-feature"><img src="/images/fp-icons/access.png" alt="" /><aside>Cloud based app</aside></div>
+                </section>
+                <table border="1" cellspacing="0" cellpadding="0" class="feature-table feature-box">
                     <tr>
                         <th valign="top"><h3><span class="jps-em"><span>Joule</span><span>Per</span><span>Second</span></span> <span class="desktop">Doesn&rsquo;t</span></h3></th>
                         <th valign="top"><h3 class="desktop"><span class="jps-em"><span>Joule</span><span>Per</span><span>Second</span></span> Does</h3></th>
@@ -106,7 +99,6 @@
                         <td valign="top"><span class="bullet">&bull;</span><p> Think a great app depends on listening to user feedback. </p></td>
                     </tr>
                 </table>
-                <div id="ff-graph"></div>
                
         		<section>
                     <h1 class="mobile jps-em">This is <span class="jps-em"><span>Joule</span><span>Per</span><span>Second</span></span>!</h1>

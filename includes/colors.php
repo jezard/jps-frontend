@@ -175,8 +175,8 @@
 <?php endif; ?>
 <?php if($color == 'gray'): ?>
 	body{
-		/*background: url(/images/GridBg.png) #DFDFE1 fixed;*/
-		background: rgb(255,255,255); /* Old browsers */
+		background: url(/images/stripey-bg.png)fixed; 
+		background-repeat: repeat-x;
 	}
 
 	#home-nav-btn{
@@ -184,6 +184,9 @@
 	}
 	.logo-img{
 		background: url(/images/logo-small-gray.png) center; background-size:cover;
+	}
+	.section-ln {
+		background-color: #fff;
 	}
 	table, .chart, #calendar, .basic-form, .forum-container, .content-container {
 		/*background-color: #F3F3F3;
