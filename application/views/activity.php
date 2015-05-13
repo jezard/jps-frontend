@@ -22,8 +22,8 @@
 
 					<!-- don't show buttons if uploading or uploaded to strava instead show link on strava -->
 					<button id="strava-it" class="btn-default" style="<?php echo ($poll_strava)? 'display:none' : ''; ?>"><strong><em>OR</em></strong> Update and save to <span style="color:#FB4B02; font-weight:bold; letter-spacing: -1px">STRAVA</span></button>
-					<form>
-					<?php echo form_open('activity/delete'); ?>
+					</form>
+					<?php echo form_open('activity/delete', array('style' => 'display:inline-block')); ?>
 						<input type="hidden" id="activity_id2" name="activity_id" value="">
 						<button id="del-activity" class="btn-danger" type="submit">Delete Activity</button>
 					</form>
@@ -94,6 +94,7 @@ jQuery(document).ready(function(){
 
 	//send the form data to strava uploader before saving
 	jQuery('#strava-it').on("click", function(e){
+		jQuery(this).attr("disabled","disabled");
 		activity_id = $('#activity_id').val();
 		console.log(activity_id);
 		e.preventDefault();
@@ -118,6 +119,7 @@ jQuery(document).ready(function(){
 	});
 	//still on the strava tip... 
 	<?php if($poll_strava): ?>
+	jQuery('#strava-it').attr("disabled","disabled");
 
 	var interval;
 	interval = setInterval(poll_strava, 5000);
@@ -131,7 +133,8 @@ jQuery(document).ready(function(){
 			$('#status-text').html(data_array[0]);
 			if(data_array[1] == 'failed' || data_array[1] == 'success'){
 				//window.location = document.URL;
-				clearInterval(interval);	
+				clearInterval(interval);
+				jQuery('#strava-it').removeAttr("disabled");	
 			}
 		});
 	}

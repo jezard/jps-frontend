@@ -72,7 +72,7 @@
                     </tr>
                     <tr>
                         <td valign="top"><span class="bullet">&bull;</span><p> Let you show off your rides to your friends - but we&rsquo;re working on it!</p></td>
-                        <td valign="top"><span class="bullet">&bull;</span><p> Allow you to enter a manual <abbr title="Training Toll Score">TTS</abbr><sup>&dagger;</sup> score or use one based on heart rate if you ride without a power meter, or if stops working mid-ride!</p></td>
+                        <td valign="top"><span class="bullet">&bull;</span><p> Allow you to enter a manual Training load Score<sup>&dagger;</sup> score or use one based on heart rate if you ride without a power meter, or if stops working mid-ride!</p></td>
                     </tr>
                     <tr>
                         <td valign="top"><span class="bullet">&bull;</span><p> Clean your bike for you - but we can send you a bike sticker!</p></td>
