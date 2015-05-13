@@ -191,6 +191,9 @@ a:active {
 	line-height: 25px;
 	margin: 10px 0;
 }
+sup{
+	font-size: 8px;
+}
 
 /* media queries */
 @media screen and (max-width: 1140px) {

@@ -94,6 +94,7 @@ jQuery(document).ready(function(){
 
 	//send the form data to strava uploader before saving
 	jQuery('#strava-it').on("click", function(e){
+		jQuery(this).attr("disabled","disabled");
 		activity_id = $('#activity_id').val();
 		console.log(activity_id);
 		e.preventDefault();
@@ -118,6 +119,7 @@ jQuery(document).ready(function(){
 	});
 	//still on the strava tip... 
 	<?php if($poll_strava): ?>
+	jQuery('#strava-it').attr("disabled","disabled");
 
 	var interval;
 	interval = setInterval(poll_strava, 5000);
@@ -131,7 +133,8 @@ jQuery(document).ready(function(){
 			$('#status-text').html(data_array[0]);
 			if(data_array[1] == 'failed' || data_array[1] == 'success'){
 				//window.location = document.URL;
-				clearInterval(interval);	
+				clearInterval(interval);
+				jQuery('#strava-it').removeAttr("disabled");	
 			}
 		});
 	}
