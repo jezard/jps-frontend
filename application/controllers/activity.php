@@ -78,7 +78,7 @@ class Activity extends CI_Controller {
 	function delete(){
 		$activity_id = $this->input->post('activity_id');
 		$this->user_activity->delete($activity_id);
-		redirect('/activity', 'refresh');
+		redirect('/activity', 'location');
 
 	}
 
