@@ -14,6 +14,19 @@ class Activity extends CI_Controller {
 		if ($this->input->cookie('valid_user'))
 		{
 			$this->email = $this->input->cookie('valid_user', false);
+
+/*			$key = $this->config->item('rc4_cypher');
+			$val = $this->input->cookie('s_valid_user', false);
+			echo $val.'<br>';
+			$test = rc4($key, $val);
+			echo $test.'<br>';
+			$test2 = rc4($key, $test);
+			echo $test2.'<br>';
+			$test3 = rc4($key, $test2);
+			echo $test3.'<br>';
+
+			return;*/
+
 			if((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443){
 				redirect('http://joulepersecond.com/activity', 'refresh');
 			}
