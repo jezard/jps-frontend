@@ -41,7 +41,18 @@ class Login extends CI_Controller {
 				}else{
 					$expire = -100;
 				}
-				/*need to add a cookie or other setting here*/
+				
+				/*secured user cookie*/
+				$cookie = array(
+				    'name'   => 's_valid_user',
+				    'value'  => rc4($this->config->item('rc4_cypher'), $details[2]),
+				    'expire' => $expire,
+				    'domain' => $this->config->item('site_name'),
+				    'prefix' => '',
+				    'secure' => false
+				);
+				$this->input->set_cookie($cookie);			
+
 				$cookie = array(
 				    'name'   => 'valid_user',
 				    'value'  => $details[2],

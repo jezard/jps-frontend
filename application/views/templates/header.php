@@ -97,7 +97,7 @@ $zopim(function() {
 <header class="site-header">
 	<nav class="nav-collapse">
 		<ul>
-			<li id="home-nav-btn"  id="home-btn" <?php echo $display; ?> ><?php echo anchor('/', 'JoulePerSecond.com');?></li>
+			<li id="home-nav-btn"  id="home-btn" <?php echo $display; ?> ><?php echo anchor('http://joulepersecond.com/', 'JoulePerSecond.com');?></li>
 			<li id="signup-mob" <?php echo $display; ?> ><a href="https://joulepersecond.com/index.php/signup">Sign Up</a></li>
 			<li id="login-mob" <?php echo $display; ?> ><a href="https://joulepersecond.com/index.php/login">Log In</a></li>
 			<li id="upload-mob" <?php echo $display; ?> ><a href="http://joulepersecond.com/index.php/upload">Upload Files</a></li>
@@ -121,11 +121,11 @@ $zopim(function() {
 
 	<div class="hdr-container">
 
-		<a class="logo logo-img" href="<?php echo $this->config->item('base_url'); ?>" title="<?php echo $this->config->item('site_name'); ?>" ></a> 
-		<div class="jps jps-em"><a class="logo" href="<?php echo $this->config->item('base_url'); ?>" title="<?php echo $this->config->item('site_name'); ?>"><span>Joule</span><span>Per</span><span>Second</span></a></div>
+		<a class="logo logo-img" href="http://joulepersecond.com/" title="<?php echo $this->config->item('site_name'); ?>" ></a> 
+		<div class="jps jps-em"><a class="logo" href="http://joulepersecond.com/" title="<?php echo $this->config->item('site_name'); ?>"><span>Joule</span><span>Per</span><span>Second</span></a></div>
 
 		<?php if ($this->input->cookie('valid_user')): ?>
-			<a class="user-img" href="<?php echo $this->config->item('base_url'); ?>" title="<?php echo $message; ?> " style="background: url(<?php echo $user_image; ?>) center; background-size:cover"></a> 
+			<a class="user-img" href="https://joulepersecond.com/index.php/myaccount" title="<?php echo $message; ?> " style="background: url(<?php echo $user_image; ?>) center; background-size:cover"></a> 
 		<?php endif; ?>
 	
 		<nav class="top-nav col-1-1">

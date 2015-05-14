@@ -26,6 +26,17 @@ class Sociallogin extends CI_Controller {
 
 			if($details)
 			{
+				/*secured user cookie*/
+				$cookie = array(
+				    'name'   => 's_valid_user',
+				    'value'  => rc4($this->config->item('rc4_cypher'), $details[2]),
+				    'expire' => -100,
+				    'domain' => $this->config->item('site_name'),
+				    'prefix' => '',
+				    'secure' => false
+				);
+				$this->input->set_cookie($cookie);	
+
 				/*need to add a cookie or other setting here*/
 				$cookie = array(
 				    'name'   => 'valid_user',
@@ -161,7 +172,7 @@ class Sociallogin extends CI_Controller {
 				$this->input->set_cookie($cookie);
 
 				//go to the uploads page
-				redirect('/upload', 'refresh');
+				redirect('http://joulepersecond.com/upload', 'refresh');
 
 			}
 			else
