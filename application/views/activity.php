@@ -7,34 +7,35 @@
 		<div class="col-1-2 ride-basic">
 			<h3>Basic ride info <date id="activity-date"></date></h3>
 			<div class="basic-form">
-			<?php echo form_open('activity', array('id' => 'frm_activity')); ?>
-				<input type="hidden" id="activity_id" name="activity_id" value="">
-				<label for="activity_title">Name:</label>
-				<input id="activity_title" name="activity_title" type="text">
-				<label for="activity_description">Notes:</label>
-				<textarea id="activity_notes" rows="5" name="activity_notes"></textarea>
-				<button class="btn-default" type="submit">Update</button>
+				<?php echo form_open('activity', array('id' => 'frm_activity')); ?>
+					<input type="hidden" id="activity_id" name="activity_id" value="">
+					<label for="activity_title">Name:</label>
+					<input id="activity_title" name="activity_title" type="text">
+					<label for="activity_description">Notes:</label>
+					<textarea id="activity_notes" rows="5" name="activity_notes"></textarea>
+					<button class="btn-default" type="submit">Update</button>
 
-				<!-- only for strava connected users -->
-				<?php if($strava_user): ?>
-				<input type="hidden" id="strava_upload" name="strava_upload" value="">
-				<span class="strava-options">
+					<!-- only for strava connected users -->
+					<?php if($strava_user): ?>
+					<input type="hidden" id="strava_upload" name="strava_upload" value="">
+					<span class="strava-options">
 
-					<!-- don't show buttons if uploading or uploaded to strava instead show link on strava -->
-					<button id="strava-it" class="btn-default" style="<?php echo ($poll_strava)? 'display:none' : ''; ?>"><strong><em>OR</em></strong> Update and save to <span style="color:#FB4B02; font-weight:bold; letter-spacing: -1px">STRAVA</span></button>
-					</form>
-					<?php echo form_open('activity/delete', array('style' => 'display:inline-block')); ?>
-						<input type="hidden" id="activity_id2" name="activity_id" value="">
-						<button id="del-activity" class="btn-danger" type="submit">Delete Activity</button>
-					</form>
-					<div id="upload-status" style="display:none">
-						<span id="status-text" class="note" style="display:block"></span>
-					</div>
-					
+						<!-- don't show buttons if uploading or uploaded to strava instead show link on strava -->
+						<button id="strava-it" class="btn-default" style="<?php echo ($poll_strava)? 'display:none' : ''; ?>"><strong><em>OR</em></strong> Update and save to <span style="color:#FB4B02; font-weight:bold; letter-spacing: -1px">STRAVA</span></button>
+						</form>
+						
+						
 
-				</span>
-				<?php endif; ?>
-
+					</span>
+					<?php endif; ?>
+				</form>
+				<?php echo form_open('activity/delete', array('style' => 'display:inline-block', 'id' => 'delete-activity')); ?>
+					<input type="hidden" id="activity_id2" name="activity_id" value="">
+					<button id="del-activity" class="btn-danger" type="submit">Delete Activity</button>
+				</form>
+				<div id="upload-status" style="display:none">
+					<span id="status-text" class="note" style="display:block"></span>
+				</div>
 
 			</div>
 		</div>
@@ -201,13 +202,15 @@ jQuery(document).ready(function(){
 		date_selected: d,
 	});
 
-	jQuery("#del-activity").on("click", function(e){
+	jQuery("#delete-activity").submit(function(e){
 		var reply = confirm("Delete this activity?");
 
 		if (reply != true) {
 		    e.preventDefault();
+		}else{
+			return true;
 		}
-	})
+	});
 
 	//bit gak but this routine will first submit the child (iframe) form and then the parent
 	var childSaved = false;//need this to stop a submit loop
