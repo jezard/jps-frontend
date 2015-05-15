@@ -297,5 +297,10 @@ class User_model extends CI_Model {
       $this->db->where('email', $email);
       $this->db->update('user', array('strava_access_token' => $access_token));
     }
+
+/*    function set_access_token($email, $access_token){
+      $this->db->where('email', $email);
+      $this->db->update('user', array('access_token' => $access_token));
+    }*/
 }
 ?>

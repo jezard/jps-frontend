@@ -1,18 +1,16 @@
-<?php session_start(); ?>
 <?php $this->load->helper(array('form', 'url')); ?>
 <?php $this->load->helper('cookie'); ?>
+
 <?php $loggedIn = false; ?>
 <?php $display = 'class="logged-out"'; ?>
 
 <?php
-	if($this->input->cookie('valid_user')!='' && $this->input->cookie('valid_user')!='jez@gemini3.co.uk'){
-		$user_id = $this->input->cookie('valid_user');
+	if(get_user() !='jez@gemini3.co.uk'){
+		$user_id = get_user();
 		$url = uri_string();
 		$this->db->query("INSERT INTO recent_users (user_id, url) VALUES ('$user_id', '$url')");
 	}
 ?>
-
-
 
 <!doctype html>
 <html>
@@ -79,9 +77,9 @@ $zopim(function() {
 
 <?php
 
-	if ($this->input->cookie('valid_user'))
+	if (get_user() != "")
 	{
-		$message = "logged in as " . $this->input->cookie('valid_user', false);
+		$message = "logged in as " . get_user();
 		$loggedIn = true;
 		$display = 'class="logged-in main-nav-item"';
 	}
@@ -124,7 +122,7 @@ $zopim(function() {
 		<a class="logo logo-img" href="http://joulepersecond.com/" title="<?php echo $this->config->item('site_name'); ?>" ></a> 
 		<div class="jps jps-em"><a class="logo" href="http://joulepersecond.com/" title="<?php echo $this->config->item('site_name'); ?>"><span>Joule</span><span>Per</span><span>Second</span></a></div>
 
-		<?php if ($this->input->cookie('valid_user')): ?>
+		<?php if (get_user() != ""): ?>
 			<a class="user-img" href="https://joulepersecond.com/index.php/myaccount" title="<?php echo $message; ?> " style="background: url(<?php echo $user_image; ?>) center; background-size:cover"></a> 
 		<?php endif; ?>
 	

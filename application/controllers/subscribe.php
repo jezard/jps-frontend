@@ -9,7 +9,7 @@ class Subscribe extends CI_Controller {
 		$this->load->model('user_model', 'user', TRUE);
 		$this->load->helper('cookie');
 		$this->load->helper(array('form', 'url'));
-		if (!($this->input->cookie('valid_user')))
+		if (!(get_user()!=""))
 		{
 			redirect('/login', 'refresh');
 		}

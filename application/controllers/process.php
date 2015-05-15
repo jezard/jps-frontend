@@ -8,9 +8,9 @@ class Process extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->helper(array('form', 'cookie'));
-		if ($this->input->cookie('valid_user'))
+		if (get_user()!="")
 		{
-			$this->email = $this->input->cookie('valid_user', false);
+			$this->email = get_user();
 		}
 		else
 		{

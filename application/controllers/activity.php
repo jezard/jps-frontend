@@ -11,21 +11,9 @@ class Activity extends CI_Controller {
 		$this->load->helper('cookie');
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
-		if ($this->input->cookie('valid_user'))
+		if (get_user() != "")
 		{
-			$this->email = $this->input->cookie('valid_user', false);
-
-/*			$key = $this->config->item('rc4_cypher');
-			$val = $this->input->cookie('s_valid_user', false);
-			echo $val.'<br>';
-			$test = rc4($key, $val);
-			echo $test.'<br>';
-			$test2 = rc4($key, $test);
-			echo $test2.'<br>';
-			$test3 = rc4($key, $test2);
-			echo $test3.'<br>';
-
-			return;*/
+			$this->email = get_user();
 
 			if((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443){
 				redirect('http://joulepersecond.com/activity', 'refresh');
@@ -55,7 +43,7 @@ class Activity extends CI_Controller {
 
 		$count = count($this->user_file->get_recent_activities($this->email));
 			
-		if ($count > 0 && $this->input->cookie('valid_user'))
+		if ($count > 0 && get_user() != "")
 		{
 			//if updating activity
 			if (isset($_POST['activity_id']))

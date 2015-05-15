@@ -10,9 +10,9 @@ class Upload extends CI_Controller {
 		$this->load->helper('cookie');
 		$this->load->model('user_model', 'user', TRUE);
 		$this->load->model('user_activity_model', 'user_activity', TRUE);
-		if ($this->input->cookie('valid_user'))
+		if (get_user() != "")
 		{
-			$this->email = $this->input->cookie('valid_user', false);
+			$this->email = get_user();
 			if((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443){
 				redirect('http://joulepersecond.com/upload', 'refresh');
 			}

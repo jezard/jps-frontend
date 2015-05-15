@@ -12,8 +12,8 @@ class User_activity_model extends CI_Model{
 		return $data;
 	}
 
-	//TODO need to test why this isn't working in IE, go seems to be receiving the correct signal so check front end.
-	//aside from that I need to check the operation of the full system with a range of email addresses
+	//TODO
+	//Need to check the operation of the full system with a range of email addressess
 	//additionally it would be good to swap to the s_valid_user from the valid_user. Testing for this is being carried out
 	//in /controllers/activity.php - see you next time!
 	function delete($id, $email){

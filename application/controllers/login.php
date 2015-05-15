@@ -25,6 +25,13 @@ class Login extends CI_Controller {
 			//get the user's details
 			$details = $this->user->validate();
 
+			//log out a user if the remember cookie doesn't exist
+			if($this->input->cookie('remember') != ""){
+				//happy days
+			}else{
+				unset_user();
+			}
+
 			if($details)
 			{
 				if(isset($_POST['remember'])){
@@ -41,8 +48,8 @@ class Login extends CI_Controller {
 				}else{
 					$expire = -100;
 				}
-				
-				/*secured user cookie*/
+			
+				/*secured user cookie - used mainly for go operations*/
 				$cookie = array(
 				    'name'   => 's_valid_user',
 				    'value'  => rc4($this->config->item('rc4_cypher'), $details[2]),
@@ -51,17 +58,9 @@ class Login extends CI_Controller {
 				    'prefix' => '',
 				    'secure' => false
 				);
-				$this->input->set_cookie($cookie);			
-
-				$cookie = array(
-				    'name'   => 'valid_user',
-				    'value'  => $details[2],
-				    'expire' => $expire,
-				    'domain' => $this->config->item('site_name'),
-				    'prefix' => '',
-				    'secure' => false
-				);
 				$this->input->set_cookie($cookie);
+				//set the session var
+				set_user($details[2]);
 
 				$cookie = array(
 				    'name'   => 'social_user',
@@ -199,4 +198,5 @@ class Login extends CI_Controller {
 		}
 	}
 }
+
 ?>

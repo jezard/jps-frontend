@@ -32,4 +32,33 @@
 		}
 		return $res;
 	}
+
+	function get_user(){
+		$CI =& get_instance();
+     	$CI->load->library('session'); // load library 
+		$email = $CI->session->userdata('email');
+		if($email != ""){
+			return $email;
+		}else{
+			return "";
+		}
+	}
+	function set_user($email){
+		$CI =& get_instance();
+     	$CI->load->library('session'); // load library 
+		$CI->session->set_userdata(array('email'=>$email));
+	}
+	function unset_user(){
+		$CI =& get_instance();
+     	$CI->load->library('session'); // load library 
+		$CI->session->unset_userdata('email');
+	}
+	function remember_user($choice = 0){
+		$CI =& get_instance();
+		$CI->load->library('session'); // load library 
+     	$CI->session->set_userdata(array('remember'=>$choice));
+     	if($choice == 0){
+     		return $CI->session->userdata('remember');
+     	}
+	}
 ?>
