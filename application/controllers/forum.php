@@ -11,9 +11,9 @@ class Forum extends CI_Controller {
 
 	function index()
 	{
-		if ($this->input->cookie('valid_user'))
+		if (get_user() != "")
 		{
-			$this->email = $this->input->cookie('valid_user', false);
+			$this->email = get_user();
 			$user_image = $this->user->get_user_image($this->email);
 			$this->load->view('templates/header', array('title' => 'JoulePerSecond Forum - '.$this->config->item('site_name'), 'user_image' => $user_image));
 		}else{

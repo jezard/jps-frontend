@@ -9,9 +9,9 @@ class Myaccount extends CI_Controller {
 		$this->load->library('form_validation');
 		//load the user model
 	    $this->load->model('user_model', 'user', TRUE);
-		if ($this->input->cookie('valid_user'))
+		if (get_user()!="")
 		{
-			$this->email = $this->input->cookie('valid_user', false);
+			$this->email = get_user();
 			$this->user_image = $this->user->get_user_image($this->email);
 		}
 		else

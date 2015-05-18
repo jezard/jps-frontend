@@ -10,9 +10,9 @@ class Analysis extends CI_Controller {
 		$this->load->helper('cookie');
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
-		if ($this->input->cookie('valid_user'))
+		if (get_user() != "")
 		{
-			$this->email = $this->input->cookie('valid_user', false);
+			$this->email = get_user();
 			if((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443){
 				redirect('http://joulepersecond.com/analysis', 'refresh');
 			}
