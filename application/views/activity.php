@@ -223,12 +223,6 @@ jQuery(document).ready(function(){
 			jQuery('#frm_activity').submit();
 		}		
 	});
-
-
-
-
-
-
 });
 
 function reset_strava_controls(strava_activity_id){

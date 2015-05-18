@@ -12,10 +12,6 @@ class User_activity_model extends CI_Model{
 		return $data;
 	}
 
-	//TODO
-	//Need to check the operation of the full system with a range of email addressess
-	//additionally it would be good to swap to the s_valid_user from the valid_user. Testing for this is being carried out
-	//in /controllers/activity.php - see you next time!
 	function delete($id, $email){
 		$uid = rc4($this->config->item('rc4_cypher'), $email);
 		$result = $this->db->query("DELETE FROM user_activity WHERE activity_id = '$id' LIMIT 1");
