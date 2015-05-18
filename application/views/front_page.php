@@ -132,7 +132,7 @@
         		</section>
 
                 <section>
-                    <a name="demo"></a>
+                    <a id="demo" name="demo"></a>
                     <h1>Demo</h1>
                         <article class="col-1-1">
                             <span class="note" style="margin-bottom:50px"><strong>The demonstration below</strong> shows a <em>subset</em> of <span class="jps-em"><span>Joule</span><span>Per</span><span>Second</span>'s</span> functionality. It allows you to slice and dice your ride data many ways - you may show up to 90 days in the free version. The demo features my own data (warts and all), there's a couple of years worth in there - however, as I'm always adding new features the later activities contain more information... It's just best to have a play around and see what you can reveal(!).  You can switch the <a href="http://joulepersecond.com/index.php/theme?ret=">theme</a> too!<br>&nbsp;<br><b>Have Fun!</b> - <a href="https://www.strava.com/athletes/exmoorbiker"><em>Jeremy</em><a></span>
