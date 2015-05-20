@@ -61,6 +61,12 @@ class User_file_model extends CI_Model{
 		return $activities;
 	}
 
+	function get_filename_by_activity_id($id){
+		$query = $this->db->query("SELECT filename FROM user_activity WHERE activity_id = '$id' LIMIT 1");
+		$row = $query->row(); 
+   		return $row->filename;
+	}
+
 	
 
 	function get_activity_basic($id){
