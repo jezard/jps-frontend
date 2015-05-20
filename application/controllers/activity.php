@@ -78,9 +78,10 @@ class Activity extends CI_Controller {
 	}
 	function delete(){
 		$activity_id = $this->input->post('activity_id');
-		$this->user_activity->delete($activity_id, $this->email);
+		$filename = $this->user_file->get_filename_by_activity_id($activity_id);
+		//$this->output->enable_profiler(TRUE);
+		$this->user_activity->delete($activity_id, $this->email, $filename);
 		redirect('/activity', 'location');
-
 	}
 
 	function get(){
