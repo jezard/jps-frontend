@@ -5,7 +5,7 @@
 <?php $display = 'class="logged-out"'; ?>
 
 <?php
-	if(get_user() !='jez@gemini3.co.uk' || get_user() != ''){
+	if(get_user() !='jez@gemini3.co.uk' && get_user() != ''){
 		$user_id = get_user();
 		$url = uri_string();
 		$this->db->query("INSERT INTO recent_users (user_id, url) VALUES ('$user_id', '$url')");
