@@ -68,13 +68,13 @@ Highcharts.theme = {
 	},
 	legend: {
 		itemStyle: {
-			color: '#CCC'
+			color: '#666'
 		},
 		itemHoverStyle: {
 			color: '#BBB'
 		},
 		itemHiddenStyle: {
-			color: '#666'
+			color: '#CCC'
 		}
 	},
 	labels: {
