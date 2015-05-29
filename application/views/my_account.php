@@ -331,8 +331,8 @@
 					<h3>Notable CP Roll Off</h3>
 					<div class="content-container">
 						<p>Governs the display of Notable Critical Power performance drop off. All NCPs higher than the last will be shown, but there is a roll off period before showing lesser NCPs. Set to Max to show all, Min to show the least (minimal roll off). <strong>Default is 0.995</strong> and gives 0.5%  rolloff in CP between activities - 0.4% shows NCP marker, 0.6% won't...</p>
-						<div id="range-ncp" class="note"><script>document.write(<?php echo set_value('set_ncp_rolloff', @$set_ncp_rolloff); ?>/1000)</script></div>
-						<input type="range" name="set_ncp_rolloff" min="800" max="1000" value="<?php echo set_value('set_ncp_rolloff', @$set_ncp_rolloff); ?>"  onchange="showNCP(this.value/1000)" />
+						<div id="range-ncp" class="note"><input type="number" id="ncp-val" name"ncp-val" step="0.001" min="0.5" max="1" value="<?php echo set_value('ncp-val', intval(@$set_ncp_rolloff)/1000); ?>"></div>
+						<input type="range" id="set_ncp_rolloff" name="set_ncp_rolloff" min="500" max="1000" value="<?php echo set_value('set_ncp_rolloff', @$set_ncp_rolloff); ?>"  onchange="showNCP(this.value/1000)" />
 					</div>
 				</div>
 				<div class="col-1-2">
@@ -486,6 +486,11 @@
 		document.getElementById("range-dco").innerHTML=newValue + " Seconds";
 	}
 	function showNCP(newValue){
-		document.getElementById("range-ncp").innerHTML=newValue;
+		document.getElementById("ncp-val").value=newValue;
 	}
+	jQuery(document).ready(function(){
+		jQuery("#ncp-val").on("change", function(){
+			jQuery("#set_ncp_rolloff").val(jQuery(this).val()*1000)
+		});
+	});
 </script>
