@@ -21,6 +21,7 @@ class Myaccount extends CI_Controller {
 
 		$this->form_validation->set_rules('set_autofill', 'Autofill', 'required');
 		$this->form_validation->set_rules('set_data_cutoff', 'Data Cutoff', 'required');
+		$this->form_validation->set_rules('set_ncp_rolloff', 'NCP Roll off', 'required');
 		$this->form_validation->set_rules('my_firstname', 'First name', 'alpha_dash|max_length[50]|required');
 		$this->form_validation->set_rules('my_lastname', 'Last name', 'alpha_dash|max_length[50]|required');
 		$this->form_validation->set_rules('my_age', 'Age', 'integer|max_length[3]|less_than[120]|required');
@@ -64,6 +65,16 @@ class Myaccount extends CI_Controller {
 				$cookie = array(
 				    'name'   => 'set_autofill',
 				    'value'  => $settings['set_autofill'],
+				    'expire' => $expire,
+				    'domain' => $this->config->item('site_name'),
+				    'prefix' => '',
+				    'secure' => false
+				);
+				$this->input->set_cookie($cookie);
+
+				$cookie = array(
+				    'name'   => 'set_ncp_rolloff',
+				    'value'  => $settings['set_ncp_rolloff'],
 				    'expire' => $expire,
 				    'domain' => $this->config->item('site_name'),
 				    'prefix' => '',
