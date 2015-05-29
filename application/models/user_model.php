@@ -193,6 +193,7 @@ class User_model extends CI_Model {
       //get values from form
       $this->set_autofill = $this->input->post('set_autofill');
       $this->set_data_cutoff = $this->input->post('set_data_cutoff');
+      $this->set_ncp_rolloff = $this->input->post('set_ncp_rolloff');
       $this->my_firstname = $this->input->post('my_firstname');
       $this->my_lastname = $this->input->post('my_lastname');
       $this->my_age = $this->input->post('my_age');
@@ -211,6 +212,7 @@ class User_model extends CI_Model {
         'user_set' => 1,
         'set_autofill' => $this->set_autofill, 
         'set_data_cutoff' => $this->set_data_cutoff,
+        'set_ncp_rolloff' => $this->set_ncp_rolloff,
         'my_firstname' => $this->my_firstname,
         'my_lastname' => $this->my_lastname,
         'my_age' => $this->my_age,
@@ -239,8 +241,9 @@ class User_model extends CI_Model {
       $settings = array('user_id' => $vals->user_id,
                         'email' => $email,
                         'user_set' => $vals->user_set,
-                        'set_autofill'=> $vals->set_autofill, 
-                        'set_data_cutoff' => $vals->set_data_cutoff,
+                        'set_autofill'=> $vals->set_autofill,
+                        'set_data_cutoff'=> $vals->set_data_cutoff,  
+                        'set_ncp_rolloff' => $vals->set_ncp_rolloff,
                         'my_firstname' => $vals->my_firstname,
                         'my_lastname' => $vals->my_lastname,
                         'my_age' => $vals->my_age,

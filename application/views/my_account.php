@@ -324,9 +324,15 @@
 				<div class="col-1-2">
 					<h3>Data Cutoff</h3>
 					<div class="content-container">
-						<p>This setting determines how long the gap in the data should be before stopping analysis. The autofill settings determine what to record during this period. Default value is 15 Seconds</p>
-						<div id="range" class="note"><?php echo set_value('set_data_cutoff', @$set_data_cutoff); ?> Seconds</div>
-						<input type="range" name="set_data_cutoff" min="3" max="150" value="<?php echo set_value('set_data_cutoff', @$set_data_cutoff); ?>"  onchange="showValue(this.value)" />
+						<p>This setting determines how long the gap in the data should be before stopping analysis. The autofill settings determine what to record during this period. <strong>Default value is 15 Seconds</strong></p>
+						<div id="range-dco" class="note"><?php echo set_value('set_data_cutoff', @$set_data_cutoff); ?> Seconds</div>
+						<input type="range" name="set_data_cutoff" min="3" max="150" value="<?php echo set_value('set_data_cutoff', @$set_data_cutoff); ?>"  onchange="showDCO(this.value)" />
+					</div>
+					<h3>Notable CP Roll Off</h3>
+					<div class="content-container">
+						<p>Governs the display of Notable Critical Power performance drop off. All NCPs higher than the last will be shown, but there is a roll off period before showing lesser NCPs. Set to Max to show all, Min to show the least (minimal roll off). <strong>Default is 0.995</strong> and gives 0.5%  rolloff in CP between activities - 0.4% shows NCP marker, 0.6% won't...</p>
+						<div id="range-ncp" class="note"><script>document.write(<?php echo set_value('set_ncp_rolloff', @$set_ncp_rolloff); ?>/1000)</script></div>
+						<input type="range" name="set_ncp_rolloff" min="800" max="1000" value="<?php echo set_value('set_ncp_rolloff', @$set_ncp_rolloff); ?>"  onchange="showNCP(this.value/1000)" />
 					</div>
 				</div>
 				<div class="col-1-2">
@@ -476,7 +482,10 @@
 
 </div>
 <script>
-	function showValue(newValue){
-		document.getElementById("range").innerHTML=newValue + " Seconds";
+	function showDCO(newValue){
+		document.getElementById("range-dco").innerHTML=newValue + " Seconds";
+	}
+	function showNCP(newValue){
+		document.getElementById("range-ncp").innerHTML=newValue;
 	}
 </script>

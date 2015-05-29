@@ -96,6 +96,16 @@ class Login extends CI_Controller {
 				$this->input->set_cookie($cookie);
 
 				$cookie = array(
+				    'name'   => 'set_ncp_rolloff',
+				    'value'  => $settings['set_ncp_rolloff'],
+				    'expire' => $expire,
+				    'domain' => $this->config->item('site_name'),
+				    'prefix' => '',
+				    'secure' => false
+				);
+				$this->input->set_cookie($cookie);
+
+				$cookie = array(
 				    'name'   => 'my_gender',
 				    'value'  => $settings['my_gender'],
 				    'expire' => $expire,
