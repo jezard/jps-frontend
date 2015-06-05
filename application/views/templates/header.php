@@ -1,15 +1,46 @@
 <?php $this->load->helper(array('form', 'url')); ?>
 <?php $this->load->helper('cookie'); ?>
+<?php 
+$CI =& get_instance();
+$CI->load->library('session'); 
+?>
 
 <?php $loggedIn = false; ?>
 <?php $display = 'class="logged-out"'; ?>
 
+
 <?php
+
 	if(get_user() !='jez@gemini3.co.uk' && get_user() != ''){
 		$user_id = get_user();
 		$url = uri_string();
 		$this->db->query("INSERT INTO recent_users (user_id, url) VALUES ('$user_id', '$url')");
 	}
+	//sign out social user if no secure user cookie
+	if($CI->session->userdata('is_social') && !isset($_COOKIE['s_valid_user'])){
+		redirect('/signout', 'refresh');
+	}
+
+	//check whether the user type standard cookie has expired - if it has, and remember me was set,restore the cookies, else unset (log out the user)
+	if($CI->session->userdata('remember') && (!isset($_COOKIE['s_valid_user']))){//is remember me is set? Reload the cookies, but check first to see if they are already set
+		if(!$CI->session->userdata('is_social')){//test for user type and test to see if the user type cookie is set
+			$user = get_user();
+			if($user != ""){
+				loadUser($user);
+			}else{
+				unset_user();
+			}
+		}
+		//else if remember me isn't set, but the per session cookies are still in existence, just unset their settings
+	}elseif(!isset($_COOKIE['s_valid_user'])){
+		$pre_signoutval = get_user();
+		unset_user();//sign out
+		$post_signoutval = get_user();
+		if($pre_signoutval != $post_signoutval){//equal if was not signed in...
+			redirect('/', 'refresh');//refresh if was a signed in user
+		}
+	}
+
 ?>
 
 <!doctype html>
@@ -107,10 +138,10 @@ $zopim(function() {
 			<!-- <li id="demo-mob" <?php echo $display; ?> ><a href="http://joulepersecond.com/#demo">Demo</a></li> -->
 			<!-- we coud do with hiding this button for google users -->
 			<li id="signout" <?php echo $display; ?> >
-				<?php if( $this->input->cookie('social_user') == 'no'): ?>
-					<?php echo anchor('signout', 'log Out');?>
-				<?php else: ?>
+				<?php if($CI->session->userdata('is_social')): ?>
 					<?php echo anchor('socialsignout', 'log Out');?>
+				<?php else: ?>
+					<?php echo anchor('signout', 'log Out');?>
 				<?php endif; ?>
 			</li>
 		</ul>
@@ -140,10 +171,10 @@ $zopim(function() {
 			<!-- we coud do with hiding this button for google users -->
 			<li id="signout" <?php echo $display; ?> >
 				<img class="menu-icon" src="<?php echo $this->config->item('base_url'); ?>images/icons/log-out.png" alt="log-out"/>
-				<?php if( $this->input->cookie('social_user') == 'no'): ?>
-					<?php echo anchor('signout', 'Log Out');?>
+				<?php if($CI->session->userdata('is_social')): ?>
+					<?php echo anchor('socialsignout', 'Log Out') ?>
 				<?php else: ?>
-					<?php echo anchor('socialsignout', 'Log Out');?>
+					<?php echo anchor('signout', 'Log Out')?>
 				<?php endif; ?>
 			</li>
 		</ul>
