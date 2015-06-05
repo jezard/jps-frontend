@@ -35,7 +35,7 @@ class Login extends CI_Controller {
 			if($details)
 			{
 				if(isset($_POST['remember'])){
-					$cookie = array(
+					/*$cookie = array(
 					    'name'   => 'remember',
 					    'value'  => $this->input->post('remember'),
 					    'expire' => (10 * 365 * 24 * 60 * 60),
@@ -43,9 +43,11 @@ class Login extends CI_Controller {
 					    'prefix' => '',
 					    'secure' => false
 					);
-					$this->input->set_cookie($cookie);
+					$this->input->set_cookie($cookie);*/
+					remember_user(true);
 					$expire = (10 * 365 * 24 * 60 * 60);
 				}else{
+					remember_user(false);
 					$expire = -100;
 				}
 			
@@ -60,7 +62,8 @@ class Login extends CI_Controller {
 				);
 				$this->input->set_cookie($cookie);
 				//set the session var
-				set_user($details[2]);
+				$is_social = false;
+				set_user($details[2], $is_social);
 
 				$cookie = array(
 				    'name'   => 'social_user',

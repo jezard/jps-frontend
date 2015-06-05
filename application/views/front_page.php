@@ -28,7 +28,7 @@
 
 
         <div class="grid homepage">
-        	<div class="col-9-12"><h1 class="primary-heading desktop jps-em"><span>Joule</span><span>Per</span><span>Second</span> is an analytical database for Cyclists</h1></div>
+        	<div class="col-9-12"><h1 class="primary-heading desktop jps-em"><span>Joule</span><span>Per</span><span>Second</span> <span class="title-blurb">is&nbsp;the&nbsp;performance&nbsp;tool&nbsp;for&nbsp;Racing&nbsp;Cyclists</span></h1></div>
             <div class="col-1-4">
                 <div class="addthis_sharing_toolbox"></div>
             </div>

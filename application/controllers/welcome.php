@@ -20,7 +20,7 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('templates/header', array('title' => 'JoulePerSecond is an analytical fitness tool for all cyclists.', 'user_image' => '/images/icons/default-bust.png'));
+		$this->load->view('templates/header', array('title' => 'JoulePerSecond is an analytical fitness tool for Racing Cyclists.', 'user_image' => '/images/icons/default-bust.png'));
 		$this->load->view('front_page');
 		$this->load->view('templates/footer');
 	}
