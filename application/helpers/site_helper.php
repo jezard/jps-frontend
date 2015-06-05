@@ -43,32 +43,22 @@
 			return "";
 		}
 	}
-	function is_social_user(){
-		$CI =& get_instance();
-     	$CI->load->library('session'); // load library 
-		$return = $CI->session->userdata('is_social');
-	}
 	function set_user($email, $is_social){
 		$CI =& get_instance();
      	$CI->load->library('session'); // load library 
-		$CI->session->set_userdata(array('email'=>$email));
-		$CI->session->set_userdata(array('is_social'=>$is_social));
+		$CI->session->set_userdata(array('email'=>$email, 'is_social'=>$is_social));
 	}
 	function unset_user(){
 		$CI =& get_instance();
-
      	$CI->load->library('session'); // load library 
 		$CI->session->unset_userdata('email');
 		$CI->session->unset_userdata('is_social');
-/*		$CI->load->helper('url');
-		redirect('http://joulepersecond.com/index.php/theme?ret='.uri_string(), 'refresh');*/
 	}
 	function remember_user($choice = false){
 		$CI =& get_instance();
 		$CI->load->library('session'); // load library 
      	$CI->session->set_userdata(array('remember'=>$choice));
 	}
-
 
 	function loadUser($id){
 		$CI =& get_instance();
@@ -236,6 +226,5 @@
 		    'secure' => false
 		);
 		$CI->input->set_cookie($cookie);
-		//redirect('http://joulepersecond.com/index.php/theme?ret='.uri_string(), 'refresh');
 	}
 ?>

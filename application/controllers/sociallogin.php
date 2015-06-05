@@ -37,7 +37,6 @@ class Sociallogin extends CI_Controller {
 				);
 				$this->input->set_cookie($cookie);	
 
-				set_user($details[2]);
 				//set the session var
 				$is_social = true;
 				set_user($details[2], $is_social);
