@@ -16,8 +16,8 @@ class Socialsignout extends CI_Controller {
 		$this->load->view('templates/footer');
 
 		//bit stubborn so refresh if cookie not deleted!
-		if(get_user()!="")
-			redirect('socialsignout', 'refresh');
+		/*if(get_user()!="")
+			redirect('socialsignout', 'refresh');*/
 	}
 }
 ?>

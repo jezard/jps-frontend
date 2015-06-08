@@ -25,21 +25,24 @@ class Login extends CI_Controller {
 			//get the user's details
 			$details = $this->user->validate();
 
-			//log out a user if the remember cookie doesn't exist
-			if($this->input->cookie('remember') != ""){
-				//happy days
-			}else{
-				unset_user();
-			}
 
 			if($details)
 			{
+				$expire = (10 * 365 * 24 * 60 * 60);
 				if(isset($_POST['remember'])){
-					remember_user(true);
-					$expire = (10 * 365 * 24 * 60 * 60);
+					$cookie = array(
+						'name'   => 'remember',
+					    'value'  => 'Yes',
+					    'expire' => $expire,
+					    'domain' => $this->config->item('site_name'),
+					    'prefix' => '',
+					    'secure' => false
+				    );
+				    $this->input->set_cookie($cookie);
+				    remember_user(true);
 				}else{
-					remember_user(false);
 					$expire = -100;
+					remember_user(false);
 				}
 			
 				/*secured user cookie - used mainly for go operations*/

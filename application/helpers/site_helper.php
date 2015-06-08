@@ -43,6 +43,11 @@
 			return "";
 		}
 	}
+	function is_social(){
+		$CI =& get_instance();
+     	$CI->load->library('session'); // load library 
+     	return $CI->session->userdata('is_social');
+	}
 	function set_user($email, $is_social){
 		$CI =& get_instance();
      	$CI->load->library('session'); // load library 
@@ -53,12 +58,13 @@
      	$CI->load->library('session'); // load library 
 		$CI->session->unset_userdata('email');
 		$CI->session->unset_userdata('is_social');
+		$CI->session->unset_userdata('remember');
 	}
 	function remember_user($choice = false){
-		$CI =& get_instance();
-		$CI->load->library('session'); // load library 
-     	$CI->session->set_userdata(array('remember'=>$choice));
-	}
+ 		$CI =& get_instance();
+ 		$CI->load->library('session'); // load library 
+      	$CI->session->set_userdata(array('remember'=>$choice));
+ 	}
 
 	function loadUser($id){
 		$CI =& get_instance();
@@ -67,15 +73,18 @@
 		//load the user model
 		$CI->load->model('user_model', 'user', TRUE);
 
-		//log out a user if the remember cookie doesn't exist
-		if($CI->input->cookie('remember') != ""){
-			//happy days
-		}else{
-			unset_user();
-		}
-
-		if($CI->input->cookie('remember') != ""){
+		//reset the remember cookie
+		if($CI->session->userdata('remember')){
 			$expire = (10 * 365 * 24 * 60 * 60);
+			$cookie = array(
+				'name'   => 'remember',
+				'value'  => 'Yes',
+				'expire' => (10 * 365 * 24 * 60 * 60),
+				'domain' => $CI->config->item('site_name'),
+				'prefix' => '',
+				'secure' => false
+			);
+			$CI->input->set_cookie($cookie);	
 		}else{
 			$expire = -100;
 		}

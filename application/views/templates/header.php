@@ -3,6 +3,7 @@
 <?php 
 $CI =& get_instance();
 $CI->load->library('session'); 
+
 ?>
 
 <?php $loggedIn = false; ?>
@@ -16,30 +17,19 @@ $CI->load->library('session');
 		$url = uri_string();
 		$this->db->query("INSERT INTO recent_users (user_id, url) VALUES ('$user_id', '$url')");
 	}
-	//sign out social user if no secure user cookie
-	if($CI->session->userdata('is_social') && !isset($_COOKIE['s_valid_user'])){
-		redirect('/signout', 'refresh');
+	if($this->input->cookie('s_valid_user') != "" && get_user() != ''){
+		//great
+	}elseif($this->input->cookie('remember') != "" || $CI->session->userdata('remember')){
+		$url = uri_string();
+		if($url != 'login'){
+			loadUser(get_user());//prevent never logging out
+		}else{
+			unset_user();//signout!
+		}
+	}else{
+		unset_user();
 	}
 
-	//check whether the user type standard cookie has expired - if it has, and remember me was set,restore the cookies, else unset (log out the user)
-	if($CI->session->userdata('remember') && (!isset($_COOKIE['s_valid_user']))){//is remember me is set? Reload the cookies, but check first to see if they are already set
-		if(!$CI->session->userdata('is_social')){//test for user type and test to see if the user type cookie is set
-			$user = get_user();
-			if($user != ""){
-				loadUser($user);
-			}else{
-				unset_user();
-			}
-		}
-		//else if remember me isn't set, but the per session cookies are still in existence, just unset their settings
-	}elseif(!isset($_COOKIE['s_valid_user'])){
-		$pre_signoutval = get_user();
-		unset_user();//sign out
-		$post_signoutval = get_user();
-		if($pre_signoutval != $post_signoutval){//equal if was not signed in...
-			redirect('/', 'refresh');//refresh if was a signed in user
-		}
-	}
 
 ?>
 
@@ -107,6 +97,7 @@ $zopim(function() {
 <body>
 
 <?php
+
 
 	if (get_user() != "")
 	{
