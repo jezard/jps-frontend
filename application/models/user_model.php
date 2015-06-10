@@ -291,9 +291,11 @@ class User_model extends CI_Model {
       }
     }
 
-    function set_stripe_id($email, $id){
+    function set_stripe_id($email, $id, $country_code){
+      $ip = $_SERVER['REMOTE_ADDR']?:($_SERVER['HTTP_X_FORWARDED_FOR']?:$_SERVER['HTTP_CLIENT_IP']);
+      $date = date("Y-m-d H:i:s");
       $this->db->where('email', $email);
-      $this->db->update('user', array('stripe_id' => $id));
+      $this->db->update('user', array('stripe_id' => $id, 'tax_location' => $country_code, 'tax_ip' => $ip, 'date_subscribed' => $date));
     }
 
     function set_strava_access_token($email, $access_token){
