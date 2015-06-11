@@ -10,7 +10,7 @@
 				<?php echo form_open('activity', array('id' => 'frm_activity')); ?>
 					<input type="hidden" id="activity_id" name="activity_id" value="">
 					<label for="activity_title">Name:</label>
-					<input id="activity_title" name="activity_title" type="text">
+					<input id="activity_title" name="activity_title" type="text" maxlength="50">
 					<label for="activity_description">Notes:</label>
 					<textarea id="activity_notes" rows="5" name="activity_notes"></textarea>
 					<button class="btn-default" type="submit">Update</button>

@@ -1411,6 +1411,12 @@ aside.intro{
 	letter-spacing: -1px;
 }
 
+#cp-results td > div {
+  width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
 
 /* media queries */
@@ -1547,6 +1553,10 @@ aside.intro{
 	.fp-develop{
 		background-color: transparent;
 	}
+	#cp-results td > div {
+	  width: 100px;
+	}
+
 
 	
 
