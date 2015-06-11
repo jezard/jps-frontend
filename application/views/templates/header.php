@@ -19,10 +19,10 @@ $CI->load->library('session');
 	}
 	if($this->input->cookie('s_valid_user') != "" && get_user() != ''){
 		//great
-	}elseif($this->input->cookie('remember') != "" || $CI->session->userdata('remember')){
+	}elseif(($this->input->cookie('remember') != "" || $CI->session->userdata('remember')) && get_user() != ''){
 		$url = uri_string();
 		if($url != 'login'){
-			loadUser(get_user());//prevent never logging out
+			loadUser(get_user());//prevent never logging out!
 		}else{
 			unset_user();//signout!
 		}
