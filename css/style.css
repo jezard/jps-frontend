@@ -1427,7 +1427,10 @@ aside.intro{
 
 .the-blurb p{
 	margin-bottom: 10px;
-	padding-left: 5px;
+	padding-left: 10px;
+}
+.the-blurb ul, .the-blurb ol{
+	margin-left: 30px;
 }
 
 .the-blurb h3{
@@ -1436,7 +1439,7 @@ aside.intro{
 	max-height:none;
 }
 .the-blurb p, .the-blurb ul, .the-blurb ol{
-	margin-right: 5px;
+	padding-right: 10px;
 }
 /* media queries */
 @media screen and (max-width: 1140px) {
