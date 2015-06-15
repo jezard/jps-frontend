@@ -1409,6 +1409,7 @@ aside.intro{
 	color:#FB4B02; 
 	font-weight:bold; 
 	letter-spacing: -1px;
+	text-transform: uppercase;
 }
 
 #cp-results td > div {
@@ -1432,6 +1433,7 @@ aside.intro{
 .the-blurb h3{
 	margin-bottom: 10px;
 	margin-top: 40px;
+	max-height:none;
 }
 .the-blurb p, .the-blurb ul, .the-blurb ol{
 	margin-right: 5px;
