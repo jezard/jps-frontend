@@ -330,7 +330,7 @@
 					</div>
 					<h3>Notable CP Roll Off</h3>
 					<div class="content-container">
-						<p>Governs the display of Notable Critical Power performance drop off. All NCPs higher than the last will be shown, but there is a roll off period before showing lesser NCPs. Set high to show fewer, but more notable performances<strong>Default is 0.995</strong></p>
+						<p>Governs the display of Notable Critical Power performance drop off. All NCPs higher than the last will be shown, but there is a roll off period before showing lesser NCPs. Set high to show fewer, but more notable performances. <strong>Default is 0.995</strong></p>
 						<div id="range-ncp" class="note"><input type="number" id="ncp-val" name"ncp-val" step="0.001" min="0.5" max="1" value="<?php echo set_value('ncp-val', intval(@$set_ncp_rolloff)/1000); ?>"></div>
 						<input type="range" id="set_ncp_rolloff" name="set_ncp_rolloff" min="500" max="1000" value="<?php echo set_value('set_ncp_rolloff', @$set_ncp_rolloff); ?>"  onchange="showNCP(this.value/1000)" />
 					</div>
