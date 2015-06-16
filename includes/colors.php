@@ -167,6 +167,9 @@
 	#filter-update .default-btn{
 		color: #fb4b02;
 	}
+	.fp-ride, .fp-upload, .fp-engage, .fp-learn, .fp-develop {
+  		background-color: rgba(0,0,0, 0.1);
+  	}
 
 
 
@@ -269,6 +272,9 @@
 	#filter-update .default-btn{
 		color: #d90000;
 	}
+	.fp-ride, .fp-upload, .fp-engage, .fp-learn, .fp-develop {
+  		background-color: white;
+  	}
 
 }
 

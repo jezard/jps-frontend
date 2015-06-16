@@ -26,7 +26,7 @@
                         data:[],
                         color: s.color ,
                         yAxis: s.yAxis ,
-                        lineWidth: 2,
+                        lineWidth: s.regressionSettings.lineWidth || 1,
                         marker: {enabled: false} ,
                         isRegressionLine: true,
                         type: s.regressionSettings.linetype || 'spline',
@@ -35,7 +35,9 @@
                         dashStyle: s.regressionSettings.dashStyle || 'solid',
                         tooltip:{ 
 	                        	valueSuffix : s.regressionSettings.tooltip.valueSuffix || ' '
-                    	}
+                    	},
+                        index: s.regressionSettings.index,
+                        states: s.regressionSettings.states,
                 };
                 
                 
