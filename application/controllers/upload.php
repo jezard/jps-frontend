@@ -68,7 +68,7 @@ class Upload extends CI_Controller {
 			'max_num' =>  (isset($data['balance']) ?  $data['balance'] : 0),
 			'upload_path' => './uploads/',
 			'allowed_types' => 'tcx|fit|gpx',
-			'max_size'	=> 5000,
+			'max_size'	=> 50000,
 			'remove_spaces' => TRUE,
 			'overwrite' => TRUE
 		));
