@@ -63,7 +63,7 @@
                             <p>I didn&rsquo;t want to clutter up my performance based tool with GPS route, speed/distance and elevation data as: </p>
                             <ol>
                               <li>Much of my valuable training time is spent  indoors on a turbo trainer - so these metrics are largely irrelevant, </li>
-                              <li>There are tools that do this very well already, notably <span class="strava">Strava</span>. As <span class="strava">Strava</span> offer an API which allows connectivity with external apps.  Although <span class="jps-em"><span>Joule</span><span>Per</span><span>Second</span></span> doesn&rsquo;t show data normally only associated with outdoor only rides, it does send it to <span class="strava">Strava</span>. </li>
+                              <li>There are tools that do this very well already, notably <span class="strava">Strava</span> who offer an API which allows connectivity with external apps.  Although <span class="jps-em"><span>Joule</span><span>Per</span><span>Second</span></span> doesn&rsquo;t show data normally only associated with outdoor only rides, it does send it to <span class="strava">Strava</span>. </li>
                               <li><span class="jps-em"><span>Joule</span><span>Per</span><span>Second</span></span> is designed to extend the functionality offered by other systems such as TrainerRoad and Zwift, rather than to replace them. <span class="jps-em"><span>Joule</span><span>Per</span><span>Second</span></span> accepts .fit and .tcx file formats. </li>
                             </ol>
                             <h3>Show changes in my  fitness</h3>
