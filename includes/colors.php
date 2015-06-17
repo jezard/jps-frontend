@@ -74,7 +74,7 @@
 	}
 	.section-ln {
 		border: 1px #ddd solid;
-		background-color: #f5f5f5;
+		background-color: #fff;
 	}
 	table, .chart, #calendar, .basic-form, .forum-container, .content-container {
 		/*background-color: #f9f9f9;*/
