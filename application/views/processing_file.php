@@ -4,7 +4,7 @@
 <section class="section-ln">
 	<span class="warning"><strong>File processing:</strong> Do not navigate away during uploading and processing of files</span>
 	<div class="content-container">
-		<p><span class="note">Please be patient. We are now pre-processing your ride data into a format where it can be retrieved and read quickly and efficiently.</span></p>
+		<p><span class="note">Please be patient. We are now pre-processing your ride data into a format where it can be retrieved and read quickly and efficiently.<br>If file processing <em>fails</em>, sign out and back in again - some browsers do not store persistent cookies correctly under some circumstances. If this solves the issue,don't choose the remember me option at sign in.</span></p>
 		<div id="parse-window">
 			<!-- this is the dynamic inner section -->
 			<div id="parse-progress">
