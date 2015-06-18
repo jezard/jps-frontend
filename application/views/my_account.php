@@ -309,7 +309,8 @@
 						<label for="my_vo2">VO<sub>2</sub> Max<span class="neon-orange">*</span> (ml/kg/min):</label>
 						<input type="number" id="my_vo2" name="my_vo2" value="<?php echo set_value('my_vo2', @$my_vo2); ?>" maxlength="3" size="3" placeholder="Val" max="70" min="0" >
 						<p><br><span class="neon-orange">*</span> If value unknown, set value to <code>0</code></p>
-						<button class="btn-default" type="submit"><b>UPDATE</b> all settings</button>
+						<?php ($user_set == 0)? $continue = ' <span style="color:red">TO CONTINUE</span> ' : $continue = ''; ?>
+						<button class="btn-default" type="submit"><b>UPDATE ALL SETTINGS <?php echo $continue ?>&raquo;<b></button>
 					</div>
 				</div>
 				<div class="clear"></div>
@@ -355,7 +356,8 @@
 			        </div>
 				</div>
 				<div class="clear"></div>
-				<div class="col-1-1 bottom-update"><button class="btn-default" type="submit"><b>UPDATE</b> all settings</button></div>
+				<?php ($user_set == 0)? $continue = ' <span style="color:red">TO CONTINUE</span> ' : $continue = ''; ?>
+				<button class="btn-default" type="submit"><b>UPDATE ALL SETTINGS <?php echo $continue ?>&raquo;<b></button>
 			</div>
 			
 
