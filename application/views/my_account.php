@@ -407,6 +407,11 @@
 							<td>Yes</td>
 							<td>Yes</td>
 						</tr>
+						<tr>
+							<td><strong>Ads</strong></td>
+							<td>Some</td>
+							<td>None</td>
+						</tr>
 
 
 					</table>

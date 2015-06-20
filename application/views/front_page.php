@@ -106,6 +106,18 @@
                             <h3>Cost</h3>
                             <p>Many of the advantages of using this system are genuinely available for no cost. Hosting requirements for an app of this type are much higher than for a normal website service due to the huge data processing requirement. This can get very expensive if we are to keep things moving freely. Those who subscribe will get an unlimited view of their ride data. <span class="jps-em"><span>Joule</span><span>Per</span><span>Second</span></span> has been in development for a considerable amount of time - I have to balance this with paying the bills and so uptake of subscriptions will also determine future development plans. This is a relatively specialised environment for a particular type of cyclist. <br />
                              If there are any passionate developer-cyclists or even cyclist-marketers out there who&rsquo;d like to partner up and share the load, contact me!</p>
+                             <?php if(@$paid_account == 0): ?>
+                             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- homepage_responsive -->
+                            <p><ins class="adsbygoogle"
+                                 style="display:block"
+                                 data-ad-client="ca-pub-8959768918251091"
+                                 data-ad-slot="9031020769"
+                                 data-ad-format="auto"></ins></p>
+                            <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                            <?php endif; ?>
                         </div>
                     </article>
                 </section>

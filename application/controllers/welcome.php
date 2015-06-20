@@ -20,8 +20,16 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
+		if (get_user()!="")
+		{
+			$this->load->model('user_model', 'user', TRUE);
+			$settings = $this->user->getsettings(get_user());
+		}else{
+			$settings = array();
+		}
+
 		$this->load->view('templates/header', array('title' => 'JoulePerSecond is an analytical fitness tool for Racing Cyclists.', 'user_image' => '/images/icons/default-bust.png'));
-		$this->load->view('front_page');
+		$this->load->view('front_page', $settings);
 		$this->load->view('templates/footer');
 	}
 }
