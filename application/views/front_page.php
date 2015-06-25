@@ -161,7 +161,7 @@
                         </article>
 
                     <article>
-                        <iframe id="analysis-container" allowTransparency="true" scrolling="no" src="http://joulepersecond.com:8000/analysis.html?mode=demo"></iframe>
+                        <iframe id="analysis-container" allowTransparency="true" scrolling="no" src="http://joulepersecond.com:8080/analysis?mode=demo"></iframe>
                     </article>
                 </section>
             </div>
