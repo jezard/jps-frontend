@@ -202,7 +202,7 @@ class Process extends CI_Controller {
 			curl_exec($ch);
 
 			curl_close($ch);
-			unlink($CQLfilename);
+			//unlink($CQLfilename);
 
 			echo $_SESSION['ActivityKey'];
 
