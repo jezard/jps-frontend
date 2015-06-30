@@ -43,6 +43,9 @@
 	<iframe id="activity-container" allowTransparency="true" scrolling="no"></iframe>
 </div>
 
+<?php $uid = rc4($this->config->item('rc4_cypher'), get_user()); ?>
+<?php $uid = ($uid != "") ? $uid : "unknown" ?>
+
 <script>
 $(document).on("click", ".active", function(e){
 	
@@ -50,7 +53,7 @@ $(document).on("click", ".active", function(e){
 		var activity_id = jQuery('.calendar_list li p').text();
 		localStorage.setItem("selectedDate", jQuery.fn.dp_calendar.getDate());
 		//go to activity when clicking the calendar day
-		var url = <?php echo '"http://'.$this->config->item('go_ip').'/view/activity/"'; ?> + activity_id;
+		var url = <?php echo '"http://'.$this->config->item('go_ip').'/view/activity/"'; ?> + activity_id + <?php echo '"/'.urlencode($uid).'/"'; ?>;
 		jQuery('#activity_id, #activity_id2').val(activity_id);
 
 		//get title/name of activity 
@@ -76,7 +79,7 @@ jQuery(document).ready(function(){
 	//direct user to most recent activity or just updated
 	var filename;
 	var activity_id = <?php echo '"'.$displayActivity.'"'; ?>;
-	var url = <?php echo '"http://'.$this->config->item('go_ip').'/view/activity/"'; ?> + activity_id;
+	var url = <?php echo '"http://'.$this->config->item('go_ip').'/view/activity/"'; ?> + activity_id + <?php echo '"/'.urlencode($uid).'/"'; ?>;
 	jQuery('#activity_id, #activity_id2').val(activity_id);
 	//get title/name of activity 
 	jQuery.post( '<?php echo $this->config->item('base_url') .'/activity/get'; ?>', { activity_id: activity_id }, function(data){
@@ -149,7 +152,7 @@ jQuery(document).ready(function(){
 
 		localStorage.setItem("selectedDate", jQuery.fn.dp_calendar.getDate());
 
-		var url = <?php echo '"http://'.$this->config->item('go_ip').'/view/activity/"'; ?> + activity_id;
+		var url = <?php echo '"http://'.$this->config->item('go_ip').'/view/activity/"'; ?> + activity_id  + <?php echo '"/'.urlencode($uid).'/"'; ?>;
 		jQuery('#activity_id, #activity_id2').val(activity_id);
 
 		//get title/name of activity 
