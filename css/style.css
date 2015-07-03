@@ -1440,6 +1440,11 @@ aside.intro{
 .the-blurb p, .the-blurb ul, .the-blurb ol{
 	padding-right: 10px;
 }
+h5.m-message{
+	  background-color: red;
+	  display: inline;
+	  color: white;
+}
 /* media queries */
 @media screen and (max-width: 1140px) {
 	.jps{
