@@ -60,7 +60,7 @@ class Process extends CI_Controller {
 			$xmlDoc = new DOMDocument();
 
 			//try to load file
-			$fileloaded = $xmlDoc->load($this->config->item('base_url').'uploads/'.$filename);
+			$fileloaded = $xmlDoc->load($this->config->item('upload_location').$filename);
 			if($fileloaded)
 			{
 				$fileok = true;
@@ -164,7 +164,7 @@ class Process extends CI_Controller {
 				$_SESSION['joulepersecdata'] .= "INSERT INTO joulepersecond.activity_data (activity_id, tp_cadence, tp_heartrate, tp_timestamp, tp_watts, lap_start, lap_number) VALUES ( '$PK', $tpCadence, $tpHeartRate, $tpTimestampCassa, $tpWatts, $lapstartCassa, $lapnumber);".PHP_EOL;
 
 			}
-			$result = MagicParser_parse($this->config->item('base_url').'uploads/'.$filename,"myRecordHandler","xml|TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/LAP/TRACK/TRACKPOINT/");
+			$result = MagicParser_parse($this->config->item('upload_location').$filename,"myRecordHandler","xml|TRAININGCENTERDATABASE/ACTIVITIES/ACTIVITY/LAP/TRACK/TRACKPOINT/");
 			/*********************************************************************************************************
 			*
 			* End of recursive section
