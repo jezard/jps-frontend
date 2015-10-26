@@ -7,7 +7,7 @@ class Process extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->helper(array('form', 'cookie'));
+		$this->load->helper(array('form', 'cookie', 'url'));
 		if (get_user()!="")
 		{
 			$this->email = get_user();
