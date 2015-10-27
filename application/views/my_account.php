@@ -377,7 +377,9 @@
 						<?php if($count == 0) echo $standard_ride_html; ?>
 					</div>
 					<div id="add-standard-ride">Create new filter [+]</div>
+					<button class="btn-default" type="submit"><b>UPDATE ALL SETTINGS »<b></b></b></button>
 				</div>
+
 			</div>
 			<div style="clear:both"></div>
 			<div class="section-ln">
@@ -421,8 +423,6 @@
 				<?php ($user_set == 0)? $continue = ' <span style="color:red">TO CONTINUE</span> ' : $continue = ''; ?>
 				<button class="btn-default" type="submit"><b>UPDATE ALL SETTINGS <?php echo $continue ?>&raquo;<b></button>
 			</div>
-			
-
 		</section>
 		
 		

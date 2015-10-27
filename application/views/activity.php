@@ -9,6 +9,15 @@
 			<div class="basic-form">
 				<?php echo form_open('activity', array('id' => 'frm_activity')); ?>
 					<input type="hidden" id="activity_id" name="activity_id" value="">
+					<label for="activity_title">Standard Rides:</label>
+					<select id="standard-ride-select">
+						<option value="[Activity Name]">Select a standard ride to copy options</option>
+						<?php 
+							foreach ($standard_rides as $standard_ride) {
+								echo '<option data-in_or_out="'.$standard_ride['in_or_out'].'" data-race_or_train="'.$standard_ride['race_or_train'].'" value="'.$standard_ride['ride_label'].'">'.$standard_ride['ride_label'].'</option>';
+							}
+						?>
+					</select>
 					<label for="activity_title">Name:</label>
 					<input id="activity_title" name="activity_title" type="text" maxlength="50">
 					<label for="activity_description">Notes:</label>
@@ -76,6 +85,13 @@ $(document).on("click", ".active", function(e){
 
 
 jQuery(document).ready(function(){
+	//send the standard ride data to the iframe
+	jQuery('#standard-ride-select').on("change", function(){
+		jQuery('#activity_title').val(jQuery('#standard-ride-select').val());
+		//set the values of the filters (radio buttons)
+		jQuery('#frm_activity').submit();
+	});
+
 	//direct user to most recent activity or just updated
 	var filename;
 	var activity_id = <?php echo '"'.$displayActivity.'"'; ?>;
@@ -220,8 +236,16 @@ jQuery(document).ready(function(){
 	jQuery('#frm_activity').submit(function(e){
 		if(childSaved == false){
 			e.preventDefault();
+			//get the value of the selected standard ride options
+			var activity_title = jQuery('#activity_title').val();
+			var in_or_out = jQuery("#standard-ride-select option:selected").data("in_or_out");
+			var race_or_train = jQuery("#standard-ride-select option:selected").data("race_or_train");
+
+			var data = {title: activity_title, in_or_out: in_or_out, race_or_train: race_or_train}
+
 			var o = document.getElementById('activity-container');
-			o.contentWindow.postMessage(jQuery('#activity_title').val(), "*");
+
+			o.contentWindow.postMessage(data, "*");
 			childSaved = true;
 			jQuery('#frm_activity').submit();
 		}		

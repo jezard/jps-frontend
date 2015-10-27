@@ -8,6 +8,7 @@ class Activity extends CI_Controller {
 		$this->load->model('user_file_model', 'user_file', TRUE);
 		$this->load->model('user_model', 'user', TRUE);
 		$this->load->model('user_activity_model', 'user_activity', TRUE);
+		$this->load->model('standard_rides_model', 'standard_rides', TRUE);
 		$this->load->helper('cookie');
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
@@ -69,8 +70,9 @@ class Activity extends CI_Controller {
 			}else{
 				$displayActivity = @$recentActivities[0]['activity_id'];
 			}
-
-			$this->load->view('activity', array('recentActivities' => $recentActivities, 'displayActivity' => @$displayActivity, 'poll_strava' => $poll_strava));
+			//get list of standard rides
+			$standard_rides = $this->standard_rides->get($this->email);
+			$this->load->view('activity', array('standard_rides' => $standard_rides, 'recentActivities' => $recentActivities, 'displayActivity' => @$displayActivity, 'poll_strava' => $poll_strava));
 		}else
 			$this->load->view('upload_form', array('message' => 'Upload your .fit or .tcx files below (we recommend uploading in smaller batches):'));
 			

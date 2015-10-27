@@ -825,7 +825,7 @@ textarea{
 
 .ride-basic label{
 	float:left;
-	width:60px;
+	width:110px;
 }
 .ride-basic input[type="text"], .ride-basic textarea{ 
 	border: 1px dotted #ddd;
