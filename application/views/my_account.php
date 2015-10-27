@@ -1,6 +1,6 @@
 <?php 
 
-	$standard_ride = '
+	$standard_ride_html = '
 
 	<div class="standard-ride-container">
 		<label>Ride Label:</label>
@@ -17,10 +17,25 @@
 	</div>
 
 '; ?>
-<div id="add-me" style="display:none">
-	<?php echo $standard_ride; ?>
-</div>
-
+<?php 
+	function get_standard_rides($ride_label = "", $in_or_out = "", $race_or_train = ""){
+		$html = '
+		<div class="standard-ride-container">
+			<label>Ride Label:</label>
+			<input type="text" name="ride_label[]" value="'.$ride_label.'" maxlength="50" size="50" placeholder="e.g. TrainerRoad Z2 &amp; 4 Sweet Spot (1:04)" >
+			<select name="in_or_out[]">
+				<option value="in" '.($in_or_out == "in"  ? " selected " : "" ).'>Indoor / Trainer</option>
+				<option value="out" '.($in_or_out == "out"  ? " selected " : "" ).'>Outdoor / Road</option>
+			</select>
+			<select name="race_or_train[]">
+				<option value="race" '.($race_or_train == "race"  ?  " selected " : "" ).'>Race</option>
+				<option value="train" '.($race_or_train == "train"  ?  " selected " : "" ).'>Training ride</option>
+			<select>
+			<div class="delete-standard-ride">Remove filter [x]</div>
+		</div>';
+		return $html;
+	}
+?>
 
 
 <div class="account-page">
@@ -352,9 +367,16 @@
 				</div>
 				<div class="col-1-2">
 					<div id="standard-rides">
-						<?php echo $standard_ride; ?>
+						<?php $count = 0;
+							 foreach ($standard_rides as $standard_ride) {
+								echo get_standard_rides($standard_ride['ride_label'], $standard_ride['in_or_out'], $standard_ride['race_or_train']);
+								$count++;
+							} 
+						?>
+						<!-- Don't show an empty box if there are results -->
+						<?php if($count == 0) echo $standard_ride_html; ?>
 					</div>
-					<div id="add-standard-ride">Create new filter &raquo;</div>
+					<div id="add-standard-ride">Create new filter [+]</div>
 				</div>
 			</div>
 			<div style="clear:both"></div>
@@ -541,7 +563,7 @@
 		});
 		//add a form element
 		jQuery('#add-standard-ride').on("click", function(){
-			var html = <?php echo json_encode($standard_ride); ?>;
+			var html = <?php echo json_encode($standard_ride_html); ?>;
 			jQuery('#standard-rides').append(html);
 		});
 		//delete a form element

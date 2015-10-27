@@ -40,10 +40,11 @@ class Myaccount extends CI_Controller {
 		if ($this->form_validation->run() == FALSE)
 		{
 			$data = $this->user->getsettings($this->email);
+			//merge our standard rides data...
+			$data = array_merge($data, array('standard_rides' => $this->standard_rides->get($this->email)));
 			if($this->input->server('REQUEST_METHOD') == 'POST'){
 				$data = array_merge($data, array('validated'=>'no'));
 			}
-			
 			$this->load->view('templates/header', array('title' => 'My Account - '.$this->config->item('site_name'), 'user_image' => $this->user_image));
 			$this->load->view('my_account', $data);
 			$this->load->view('templates/footer');
@@ -55,15 +56,22 @@ class Myaccount extends CI_Controller {
 			{
 				//update the settings cookies (these are retrieved by go for use in app)
 				$settings = $this->user->getsettings($this->email);
-
-				$data =  array('ride_label' => $_POST['ride_label'], 'in_or_out' => $_POST['in_or_out'], 'race_or_train' => $_POST['race_or_train']);
-				$this->standard_rides->set($this->email, $data);
+				
+				if(isset($_POST['ride_label'])){
+					$data =  array('ride_label' => $_POST['ride_label'], 'in_or_out' => $_POST['in_or_out'], 'race_or_train' => $_POST['race_or_train']);
+					$this->standard_rides->set($this->email, $data);
+				}
+				
+				
 
 				if($this->input->cookie('remember') == '1'){
 					$expire = (10 * 365 * 24 * 60 * 60);
 				}else{
 					$expire = -100;
 				}
+
+				//merge our standard rides data...
+				$settings = array_merge($settings, array('standard_rides' => $this->standard_rides->get($this->email)));
 
 
     			$this->load->view('templates/header', array('title' => 'Settings saved! - '.$this->config->item('site_name'), 'user_image' => $this->user_image));
