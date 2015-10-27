@@ -1160,7 +1160,24 @@ nav.top-nav a:hover {
 .jps-em span:nth-of-type(3){
 	font-weight: bold;
 }
-
+.standard-ride-container{
+	background-color: #eee;
+	padding:10px;
+	border-radius: 3px;
+	margin-bottom: 20px
+}
+.standard-ride-container input[type="text"]{
+	width: 100%;
+}
+.standard-ride-container input[type="text"], .standard-ride-container select{
+	margin-bottom: 10px;
+}
+.delete-standard-ride, #add-standard-ride{
+	cursor: pointer;
+	min-height: 48px;
+	min-width: 48px;
+	line-height: 48px;
+}
 
 .user-img{
 	right:0;

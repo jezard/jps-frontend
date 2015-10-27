@@ -9,6 +9,7 @@ class Myaccount extends CI_Controller {
 		$this->load->library('form_validation');
 		//load the user model
 	    $this->load->model('user_model', 'user', TRUE);
+	    $this->load->model('standard_rides_model', 'standard_rides', TRUE);
 		if (get_user()!="")
 		{
 			$this->email = get_user();
@@ -54,6 +55,9 @@ class Myaccount extends CI_Controller {
 			{
 				//update the settings cookies (these are retrieved by go for use in app)
 				$settings = $this->user->getsettings($this->email);
+
+				$data =  array('ride_label' => $_POST['ride_label'], 'in_or_out' => $_POST['in_or_out'], 'race_or_train' => $_POST['race_or_train']);
+				$this->standard_rides->set($this->email, $data);
 
 				if($this->input->cookie('remember') == '1'){
 					$expire = (10 * 365 * 24 * 60 * 60);

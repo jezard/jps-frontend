@@ -1,3 +1,28 @@
+<?php 
+
+	$standard_ride = '
+
+	<div class="standard-ride-container">
+		<label>Ride Label:</label>
+		<input type="text" name="ride_label[]" value="" maxlength="50" size="50" placeholder="e.g. TrainerRoad Z2 &amp; 4 Sweet Spot (1:04)" >
+		<select name="in_or_out[]">
+			<option value="in">Indoor / Trainer</option>
+			<option value="out">Outdoor / Road</option>
+		</select>
+		<select name="race_or_train[]">
+			<option value="race">Race</option>
+			<option value="train">Training ride</option>
+		<select>
+		<div class="delete-standard-ride">Remove filter [x]</div>
+	</div>
+
+'; ?>
+<div id="add-me" style="display:none">
+	<?php echo $standard_ride; ?>
+</div>
+
+
+
 <div class="account-page">
 	<?php echo form_open('myaccount'); ?>
 		
@@ -318,6 +343,21 @@
 					<div class="warning"><strong>Not updated </strong> Users must complete all fields correctly: <?php echo validation_errors(); ?></div>
 				<?php endif; ?>
 			</div>
+
+			<div class="section-ln set-rides">
+				<h2>My standard rides</h2>
+				<div class="col-1-2">
+					<p>Standard rides make it much easier to filter and compare performance over time when repeating workouts (by filtering out other rides). Works well with TrainerRoad and similar training setups:</p>
+					<p>Of course - you can also use the advanced filter for comparsion of other similar rides or races</p>
+				</div>
+				<div class="col-1-2">
+					<div id="standard-rides">
+						<?php echo $standard_ride; ?>
+					</div>
+					<div id="add-standard-ride">Create new filter &raquo;</div>
+				</div>
+			</div>
+			<div style="clear:both"></div>
 			<div class="section-ln">
 
 				<h2>Advanced settings</h2>
@@ -498,6 +538,15 @@
 	jQuery(document).ready(function(){
 		jQuery("#ncp-val").on("change", function(){
 			jQuery("#set_ncp_rolloff").val(jQuery(this).val()*1000)
+		});
+		//add a form element
+		jQuery('#add-standard-ride').on("click", function(){
+			var html = <?php echo json_encode($standard_ride); ?>;
+			jQuery('#standard-rides').append(html);
+		});
+		//delete a form element
+		jQuery(document).on("click", ".delete-standard-ride", function(){
+			jQuery(this).closest('.standard-ride-container').remove();
 		});
 	});
 </script>
