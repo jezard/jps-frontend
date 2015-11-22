@@ -14,7 +14,7 @@
 						<option value="[Activity Name]">Select a standard ride to copy options</option>
 						<?php 
 							foreach ($standard_rides as $standard_ride) {
-								echo '<option data-in_or_out="'.$standard_ride['in_or_out'].'" data-race_or_train="'.$standard_ride['race_or_train'].'" value="'.$standard_ride['ride_label'].'">'.$standard_ride['ride_label'].'</option>';
+								echo '<option data-standard_ride_id="'.$standard_ride['id'].'" data-in_or_out="'.$standard_ride['in_or_out'].'" data-race_or_train="'.$standard_ride['race_or_train'].'" value="'.$standard_ride['ride_label'].'">'.$standard_ride['ride_label'].'</option>';
 							}
 						?>
 					</select>
@@ -240,8 +240,9 @@ jQuery(document).ready(function(){
 			var activity_title = jQuery('#activity_title').val();
 			var in_or_out = jQuery("#standard-ride-select option:selected").data("in_or_out");
 			var race_or_train = jQuery("#standard-ride-select option:selected").data("race_or_train");
+			var standard_ride_id = jQuery("#standard-ride-select option:selected").data("standard_ride_id");
 
-			var data = {title: activity_title, in_or_out: in_or_out, race_or_train: race_or_train}
+			var data = {title: activity_title, in_or_out: in_or_out, race_or_train: race_or_train, standard_ride_id: standard_ride_id};
 
 			var o = document.getElementById('activity-container');
 

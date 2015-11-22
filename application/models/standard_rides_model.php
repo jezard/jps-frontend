@@ -17,7 +17,8 @@ class Standard_rides_model extends CI_Model{
 			array_push($data, array(
 					'ride_label' => $row['ride_label'],
 					'in_or_out' => $row['in_or_out'],
-					'race_or_train' => $row['race_or_train']
+					'race_or_train' => $row['race_or_train'],
+					'id' => $row['id']
 				));
 		}
 		return $data;
