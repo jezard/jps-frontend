@@ -10,14 +10,14 @@
 				<?php echo form_open('activity', array('id' => 'frm_activity')); ?>
 					<input type="hidden" id="activity_id" name="activity_id" value="">
 					<label for="activity_title">Standard Rides:</label>
-					<select id="standard-ride-select">
-						<option value="[Activity Name]">Select a standard ride to copy options</option>
+					<select id="standard-ride-select" name="standard_ride_id">
+						<option value="0" data-ride_label="[activity name]">Select a standard ride to copy options</option>
 						<?php 
 							foreach ($standard_rides as $standard_ride) {
-								echo '<option data-standard_ride_id="'.$standard_ride['id'].'" data-in_or_out="'.$standard_ride['in_or_out'].'" data-race_or_train="'.$standard_ride['race_or_train'].'" value="'.$standard_ride['ride_label'].'">'.$standard_ride['ride_label'].'</option>';
+								echo '<option '.($standard_ride_id == $standard_ride['id'] ? 'selected' : '').' data-ride_label="'.$standard_ride['ride_label'].'" data-in_or_out="'.$standard_ride['in_or_out'].'" data-race_or_train="'.$standard_ride['race_or_train'].'" value="'.$standard_ride['id'].'">'.$standard_ride['ride_label'].'</option>';
 							}
 						?>
-					</select>
+					</select><br>
 					<label for="activity_title">Name:</label>
 					<input id="activity_title" name="activity_title" type="text" maxlength="50">
 					<label for="activity_description">Notes:</label>
@@ -67,13 +67,12 @@ $(document).on("click", ".active", function(e){
 
 		//get title/name of activity 
 		jQuery.post( '<?php echo $this->config->item('base_url') .'/activity/get'; ?>', { activity_id: activity_id }, function(data){
-			data_array = data.split('^');
-			jQuery('#activity_title').val(data_array[0]);
-			jQuery('#activity_notes').val(data_array[1]);
-			jQuery('#activity-date').text(data_array[2]);
+			data = JSON.parse(data);
+			jQuery('#activity_title').val(data[0].activity_name);
+			jQuery('#activity_notes').val(data[0].activity_notes);
+			jQuery('#activity-date').text(data[0].activity_name);
 
-			var strava_activity_id = data_array[4];
-			reset_strava_controls(strava_activity_id);
+			reset_strava_controls(data[0].strava_activity_id);
 		});
 
 		jQuery('#activity-container').attr('src', url);
@@ -87,7 +86,8 @@ $(document).on("click", ".active", function(e){
 jQuery(document).ready(function(){
 	//send the standard ride data to the iframe
 	jQuery('#standard-ride-select').on("change", function(){
-		jQuery('#activity_title').val(jQuery('#standard-ride-select').val());
+		var title = jQuery("#standard-ride-select option:selected").data("ride_label");
+		jQuery('#activity_title').val(title);
 		//set the values of the filters (radio buttons)
 		jQuery('#frm_activity').submit();
 	});
@@ -99,14 +99,14 @@ jQuery(document).ready(function(){
 	jQuery('#activity_id, #activity_id2').val(activity_id);
 	//get title/name of activity 
 	jQuery.post( '<?php echo $this->config->item('base_url') .'/activity/get'; ?>', { activity_id: activity_id }, function(data){
-		data_array = data.split('^');
-		jQuery('#activity_title').val(data_array[0]);
-		jQuery('#activity_notes').val(data_array[1]);
-		jQuery('#activity-date').text(data_array[2]);
-		filename = data_array[3];
+		data = JSON.parse(data);
 
-		var strava_activity_id = data_array[4];
-		reset_strava_controls(strava_activity_id);
+		jQuery('#activity_title').val(data[0].activity_name);
+		jQuery('#activity_notes').val(data[0].activity_notes);
+		jQuery('#activity-date').text(data[0].activity_date);
+		filename = data[0].filename;
+
+		reset_strava_controls(data[0].strava_activity_id);
 
 	});
 
@@ -173,14 +173,14 @@ jQuery(document).ready(function(){
 
 		//get title/name of activity 
 		jQuery.post( '<?php echo $this->config->item('base_url') .'/activity/get'; ?>', { activity_id: activity_id }, function(data){
-			data_array = data.split('^');
-			jQuery('#activity_title').val(data_array[0]);
-			jQuery('#activity_notes').val(data_array[1]);
-			jQuery('#activity-date').text(data_array[2]);
-			filename = data_array[3];
+			data = JSON.parse(data);
+			console.log(data);
+			jQuery('#activity_title').val(data[0].activity_name);
+			jQuery('#activity_notes').val(data[0].activity_notes);
+			jQuery('#activity-date').text(data[0].activity_name);
+			filename = data[0].filename;
 
-			var strava_activity_id = data_array[4];
-			reset_strava_controls(strava_activity_id);
+			reset_strava_controls(data[0].strava_activity_id);
 		});
 		jQuery('#activity-container').attr('src', url);
 
@@ -240,7 +240,7 @@ jQuery(document).ready(function(){
 			var activity_title = jQuery('#activity_title').val();
 			var in_or_out = jQuery("#standard-ride-select option:selected").data("in_or_out");
 			var race_or_train = jQuery("#standard-ride-select option:selected").data("race_or_train");
-			var standard_ride_id = jQuery("#standard-ride-select option:selected").data("standard_ride_id");
+			var standard_ride_id = jQuery("#standard-ride-select option:selected").val();
 
 			var data = {title: activity_title, in_or_out: in_or_out, race_or_train: race_or_train, standard_ride_id: standard_ride_id};
 
@@ -255,7 +255,7 @@ jQuery(document).ready(function(){
 
 function reset_strava_controls(strava_activity_id){
 	//if an activity has already been uploaded to strava for the selected activity
-	if(strava_activity_id.length > 0){
+	if(strava_activity_id != null){
 		$('#upload-status').show();
 		$('#strava-it').hide();
 		$('#status-text').html('View activity on <a href="https://www.strava.com/activities/'+ strava_activity_id +'" target="_blank"><span style="color:#FB4B02; font-weight:bold; letter-spacing: -1px">STRAVA</span></a>');

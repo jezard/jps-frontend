@@ -59,5 +59,4 @@ class User_activity_model extends CI_Model{
 		return $data;
 	}
 
-
 }

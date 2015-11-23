@@ -69,7 +69,7 @@ class User_file_model extends CI_Model{
 
 	
 
-	function get_activity_basic($id){
+/*	function get_activity_basic($id){
 		$query = $this->db->query("SELECT * FROM user_activity WHERE activity_id = '$id'");
 		foreach($query->result_array() as $row){
 			$activity_title = $row['activity_name'];
@@ -79,10 +79,32 @@ class User_file_model extends CI_Model{
 			$strava_activity_id = $row['strava_activity_id'];
 		}
 		echo $activity_title.'^'.$activity_notes.'^'.$activity_date.'^'.$filename.'^'.$strava_activity_id;
+	}*/
+	function get_activity_basic($id){
+		$data = array();
+		$query = $this->db->query("SELECT * FROM user_activity WHERE activity_id = '$id'");
+/*		$query = $this->db->query("SELECT *
+			FROM user_activity
+			INNER JOIN standard_rides 
+			ON user_activity.email = standard_rides.email 
+			WHERE activity_id = '$id'
+		");*/
+
+		foreach($query->result_array() as $row){
+			array_push($data, array(
+				'activity_name' => $row['activity_name'],
+				'activity_notes' => $row['activity_notes'],
+				'activity_date' => $row['activity_date'],
+				'filename' => $row['filename'],
+				'strava_activity_id' => $row['strava_activity_id']
+			));
+
+		}
+		echo json_encode($data);
 	}
 
-	function update_basic($id, $name, $notes){
-		$query = $this->db->query("UPDATE user_activity SET activity_name = ".$this->db->escape($name).", activity_notes = ".$this->db->escape($notes)."  WHERE activity_id = '$id'");
+	function update_basic($id, $name, $notes, $standard_ride_id){
+		$query = $this->db->query("UPDATE user_activity SET activity_name = ".$this->db->escape($name).", activity_notes = ".$this->db->escape($notes).", standard_ride_id = $standard_ride_id  WHERE activity_id = '$id'");
 	}
 
 	//delete intermediate record

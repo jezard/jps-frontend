@@ -46,13 +46,15 @@ class Activity extends CI_Controller {
 			
 		if ($count > 0 && get_user() != "")
 		{
+
 			//if updating activity
 			if (isset($_POST['activity_id']))
 			{
 				$id = $_POST['activity_id'];
 				$name = $_POST['activity_title'];
 				$notes = $_POST['activity_notes'];
-				$this->user_file->update_basic($id, $name, $notes);
+				$standard_ride_id = $_POST['standard_ride_id'];
+				$this->user_file->update_basic($id, $name, $notes, $standard_ride_id);
 			}
 			//get the user's recent activities
 			$recentActivities = $this->user_file->get_recent_activities($this->email);
@@ -72,7 +74,7 @@ class Activity extends CI_Controller {
 			}
 			//get list of standard rides
 			$standard_rides = $this->standard_rides->get($this->email);
-			$this->load->view('activity', array('standard_rides' => $standard_rides, 'recentActivities' => $recentActivities, 'displayActivity' => @$displayActivity, 'poll_strava' => $poll_strava));
+			$this->load->view('activity', array('standard_ride_id' => $standard_ride_id, 'standard_rides' => $standard_rides, 'recentActivities' => $recentActivities, 'displayActivity' => @$displayActivity, 'poll_strava' => $poll_strava));
 		}else
 			$this->load->view('upload_form', array('message' => 'Upload your .fit or .tcx files below (we recommend uploading in smaller batches):'));
 			

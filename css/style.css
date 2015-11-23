@@ -824,7 +824,7 @@ textarea{
 }
 
 .ride-basic label{
-	float:left;
+	display: inline-block;
 	width:110px;
 }
 .ride-basic input[type="text"], .ride-basic textarea{ 
