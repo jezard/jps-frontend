@@ -66,7 +66,7 @@ $(document).on("click", ".active", function(e){
 		jQuery('#activity_id, #activity_id2').val(activity_id);
 
 		//get title/name of activity 
-		jQuery.post( '<?php echo $this->config->item('base_url') .'/activity/get'; ?>', { activity_id: activity_id }, function(data){
+		jQuery.post( '<?php echo $this->config->item('base_url') .'activity/get'; ?>', { activity_id: activity_id }, function(data){
 			data = JSON.parse(data);
 			jQuery('#activity_title').val(data[0].activity_name);
 			jQuery('#activity_notes').val(data[0].activity_notes);
@@ -98,7 +98,7 @@ jQuery(document).ready(function(){
 	var url = <?php echo '"http://'.$this->config->item('go_ip').'/view/activity/"'; ?> + activity_id + <?php echo '"/'.urlencode($uid).'/"'; ?>;
 	jQuery('#activity_id, #activity_id2').val(activity_id);
 	//get title/name of activity 
-	jQuery.post( '<?php echo $this->config->item('base_url') .'/activity/get'; ?>', { activity_id: activity_id }, function(data){
+	jQuery.post( '<?php echo $this->config->item('base_url') .'activity/get'; ?>', { activity_id: activity_id }, function(data){
 		data = JSON.parse(data);
 
 		jQuery('#activity_title').val(data[0].activity_name);
@@ -146,7 +146,7 @@ jQuery(document).ready(function(){
 
 
 	function poll_strava(){
-		jQuery.post( '<?php echo $this->config->item('base_url') .'/strava/upload_status'; ?>', { activity_id: activity_id }, function(data){
+		jQuery.post( '<?php echo $this->config->item('base_url') .'strava/upload_status'; ?>', { activity_id: activity_id }, function(data){
 			console.log(data);
 			data_array = data.split('^');
 			$('#upload-status').show();
@@ -172,7 +172,7 @@ jQuery(document).ready(function(){
 		jQuery('#activity_id, #activity_id2').val(activity_id);
 
 		//get title/name of activity 
-		jQuery.post( '<?php echo $this->config->item('base_url') .'/activity/get'; ?>', { activity_id: activity_id }, function(data){
+		jQuery.post( '<?php echo $this->config->item('base_url') .'activity/get'; ?>', { activity_id: activity_id }, function(data){
 			data = JSON.parse(data);
 			console.log(data);
 			jQuery('#activity_title').val(data[0].activity_name);

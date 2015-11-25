@@ -74,7 +74,7 @@ class Activity extends CI_Controller {
 			}
 			//get list of standard rides
 			$standard_rides = $this->standard_rides->get($this->email);
-			$this->load->view('activity', array('standard_ride_id' => $standard_ride_id, 'standard_rides' => $standard_rides, 'recentActivities' => $recentActivities, 'displayActivity' => @$displayActivity, 'poll_strava' => $poll_strava));
+			$this->load->view('activity', array('standard_ride_id' => (isset($standard_ride_id) ? $standard_ride_id : @$recentActivities[0]['standard_ride_id']) , 'standard_rides' => $standard_rides, 'recentActivities' => $recentActivities, 'displayActivity' => @$displayActivity, 'poll_strava' => $poll_strava));
 		}else
 			$this->load->view('upload_form', array('message' => 'Upload your .fit or .tcx files below (we recommend uploading in smaller batches):'));
 			
