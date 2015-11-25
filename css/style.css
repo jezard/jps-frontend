@@ -1462,6 +1462,12 @@ h5.m-message{
 	  display: inline;
 	  color: white;
 }
+select#standard-rides-filter{
+	width: 265px;
+}
+select#standard-rides-filter option:first-of-type{
+	font-style: italic
+}
 /* media queries */
 @media screen and (max-width: 1140px) {
 	.jps{
