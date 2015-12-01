@@ -1162,9 +1162,11 @@ nav.top-nav a:hover {
 }
 .standard-ride-container{
 	background-color: #eee;
-	padding:10px;
+	padding:5px;
 	border-radius: 3px;
-	margin-bottom: 20px
+	margin: 0 10px 10px 0;
+	max-width: 274px;
+    float:left;
 }
 .standard-ride-container input[type="text"]{
 	width: 100%;
@@ -1468,6 +1470,7 @@ select#standard-rides-filter{
 select#standard-rides-filter option:first-of-type{
 	font-style: italic
 }
+
 /* media queries */
 @media screen and (max-width: 1140px) {
 	.jps{

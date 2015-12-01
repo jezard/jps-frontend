@@ -1,8 +1,9 @@
 <?php 
 
 	$standard_ride_html = '
-
 	<div class="standard-ride-container">
+		<input type="hidden" name="id[]" value="0">
+		<input class="marked-deleted" type="hidden" name="marked_deleted[]" value="0">
 		<label>Ride Label:</label>
 		<input type="text" name="ride_label[]" value="" maxlength="50" size="50" placeholder="e.g. TrainerRoad Z2 &amp; 4 Sweet Spot (1:04)" >
 		<select name="in_or_out[]">
@@ -18,9 +19,11 @@
 
 '; ?>
 <?php 
-	function get_standard_rides($ride_label = "", $in_or_out = "", $race_or_train = ""){
+	function get_standard_rides($id = "", $ride_label = "", $in_or_out = "", $race_or_train = ""){
 		$html = '
 		<div class="standard-ride-container">
+			<input class="standard_ride_id" type="hidden" name="id[]" value="'.$id.'">
+			<input class="marked-deleted" type="hidden" name="marked_deleted[]" value="0">
 			<label>Ride Label:</label>
 			<input type="text" name="ride_label[]" value="'.$ride_label.'" maxlength="50" size="50" placeholder="e.g. TrainerRoad Z2 &amp; 4 Sweet Spot (1:04)" >
 			<select name="in_or_out[]">
@@ -363,24 +366,27 @@
 				<h2>My standard rides</h2>
 				<div class="col-1-2">
 					<p>Standard rides make it much easier to filter and compare performance over time when repeating workouts (by filtering out other rides). Works well with TrainerRoad and similar training setups:</p>
-					<p>Of course - you can also use the advanced filter for comparsion of other similar rides or races</p>
 				</div>
 				<div class="col-1-2">
-					<div id="standard-rides">
-						<?php $count = 0;
-							 foreach ($standard_rides as $standard_ride) {
-								echo get_standard_rides($standard_ride['ride_label'], $standard_ride['in_or_out'], $standard_ride['race_or_train']);
-								$count++;
-							} 
-						?>
-						<!-- Don't show an empty box if there are results -->
-						<?php if($count == 0) echo $standard_ride_html; ?>
-					</div>
-					<div id="add-standard-ride">Create new filter [+]</div>
-					<button class="btn-default" type="submit"><b>UPDATE ALL SETTINGS »<b></b></b></button>
+					<p>Of course - you can also use the advanced filter for comparsion of other similar rides or races</p>
 				</div>
-
+				<div class="clear:both"></div>
+				<div class="col-1-1" id="standard-rides">
+					<?php $count = 0;
+						 foreach ($standard_rides as $standard_ride) {
+							echo get_standard_rides($standard_ride['id'], $standard_ride['ride_label'], $standard_ride['in_or_out'], $standard_ride['race_or_train']);
+							$count++;
+						} 
+					?>
+					<!-- Don't show an empty box if there are results -->
+					<?php if($count == 0) echo $standard_ride_html; ?>
+				</div>
+				<div style="clear:both"></div>
+				<div id="add-standard-ride">Create new filter [+]</div>
+				<button class="btn-default" type="submit"><b>UPDATE ALL SETTINGS »<b></b></b></button>
 			</div>
+
+
 			<div style="clear:both"></div>
 			<div class="section-ln">
 
@@ -568,7 +574,7 @@
 		});
 		//delete a form element
 		jQuery(document).on("click", ".delete-standard-ride", function(){
-			jQuery(this).closest('.standard-ride-container').remove();
+			jQuery(this).closest('.standard-ride-container').hide().find('input.marked-deleted').val("1");
 		});
 	});
 </script>

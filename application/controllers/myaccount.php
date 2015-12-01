@@ -36,7 +36,6 @@ class Myaccount extends CI_Controller {
 
 		
 
-
 		if ($this->form_validation->run() == FALSE)
 		{
 			$data = $this->user->getsettings($this->email);
@@ -55,15 +54,11 @@ class Myaccount extends CI_Controller {
 			if($this->user->updatesettings($this->email))
 			{
 				//update the settings cookies (these are retrieved by go for use in app)
-				$settings = $this->user->getsettings($this->email);
-				
-				if(isset($_POST['ride_label'])){
-					$data =  array('ride_label' => $_POST['ride_label'], 'in_or_out' => $_POST['in_or_out'], 'race_or_train' => $_POST['race_or_train']);
-					$this->standard_rides->set($this->email, $data);
-				}
-				
-				
+				$settings = $this->user->getsettings($this->email);				
 
+				$data =  array('id' => $_POST['id'], 'marked_deleted' => $_POST['marked_deleted'], 'ride_label' => $_POST['ride_label'], 'in_or_out' => $_POST['in_or_out'], 'race_or_train' => $_POST['race_or_train']);
+				$this->standard_rides->set($this->email, $data);
+				
 				if($this->input->cookie('remember') == '1'){
 					$expire = (10 * 365 * 24 * 60 * 60);
 				}else{
