@@ -2,6 +2,32 @@
 	<section class="section-ln">
 		<div class="col-1-2">
 			<h3>Recent activities</h3>
+			<div id="recent-table">
+				<table>
+					<tr>
+						<th style="width:40px">Wk</th>
+						<th style="width:150px">Date</th>
+						<th style="width:auto">Activity</th>
+					</tr>
+					<?php $week_no = 0; ?>
+					<?php foreach ($recentActivities as $recentActivity): ?>
+						<tr data-id="<?php echo $recentActivity['activity_id']; ?>">
+							<?php $iter_week = date("W", strtotime($recentActivity['activity_date'])); ?>
+							<?php 
+								if($week_no == $iter_week){
+									$div = "";
+								}else{
+									$div = " border-top: 1px black solid;";
+								}
+							?>
+							<td style="width:initial; font-family: monospace;<?php echo $div; ?>"><?php echo $iter_week ?></td>
+							<td style="width:initial; font-family: monospace;<?php echo $div; ?>"><?php echo date("D dS M y", strtotime($recentActivity['activity_date'])); ?></td>
+							<td style="width:initial;<?php echo $div; ?>"><?php echo $recentActivity['activity_name']; ?></td>
+							<?php $week_no = $iter_week; ?>
+						</tr>
+					<?php endforeach; ?>
+				</table>
+			</div>
 			<div id="calendar"></div>
 		</div>
 		<div class="col-1-2 ride-basic">
@@ -156,6 +182,25 @@ jQuery(document).ready(function(){
 		});
 	}
 	<?php endif; ?>
+
+	$('#recent-table tr').on("click", function(e){
+		var activity_id = $(this).data('id');
+		var url = <?php echo '"http://'.$this->config->item('go_ip').'/view/activity/"'; ?> + activity_id  + <?php echo '"/'.urlencode($uid).'/"'; ?>;
+		jQuery('#activity_id, #activity_id2').val(activity_id);
+
+		//get title/name of activity 
+		jQuery.post( '<?php echo $this->config->item('base_url') .'activity/get'; ?>', { activity_id: activity_id }, function(data){
+			data = JSON.parse(data);
+			console.log(data);
+			jQuery('#activity_title').val(data[0].activity_name);
+			jQuery('#activity_notes').val(data[0].activity_notes);
+			jQuery('#activity-date').text(data[0].activity_name);
+			filename = data[0].filename;
+
+			reset_strava_controls(data[0].strava_activity_id);
+		});
+		jQuery('#activity-container').attr('src', url);
+	})
 
 
 	//show all activities for day

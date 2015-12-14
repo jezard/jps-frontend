@@ -42,7 +42,7 @@ class Activity extends CI_Controller {
 
 		$this->load->view('templates/header', array('title' => 'My Profile - '.$this->config->item('site_name'), 'user_image' => $user_image, 'strava_user' => $strava_user));
 
-		$count = count($this->user_file->get_recent_activities($this->email));
+		$count = $this->user_file->has_activities($this->email);
 			
 		if ($count > 0 && get_user() != "")
 		{
@@ -56,8 +56,9 @@ class Activity extends CI_Controller {
 				$standard_ride_id = $_POST['standard_ride_id'];
 				$this->user_file->update_basic($id, $name, $notes, $standard_ride_id);
 			}
-			//get the user's recent activities
+
 			$recentActivities = $this->user_file->get_recent_activities($this->email);
+
 
 			//check for strava upload flag
 			if(isset($_POST['strava_upload'])){

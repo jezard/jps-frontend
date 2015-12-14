@@ -1062,6 +1062,12 @@ progress[value]::-moz-progress-value {
     border-radius: 2px; 
     background-size: 35px 20px, 100% 100%, 100% 100%;
 }
+#recent-table{
+	height: 150px;
+	overflow-y: scroll;
+	resize: vertical;
+	font-size: 12px;
+}
 @media handheld, only screen and (max-width: 767px) {
 
 	
