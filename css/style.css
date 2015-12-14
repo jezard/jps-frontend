@@ -1067,6 +1067,7 @@ progress[value]::-moz-progress-value {
 	overflow-y: scroll;
 	resize: vertical;
 	font-size: 12px;
+	position: relative;
 }
 @media handheld, only screen and (max-width: 767px) {
 

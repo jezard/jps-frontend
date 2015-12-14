@@ -308,7 +308,7 @@
 			
 			/* Days and Months Labels*/
 			$(day_name).html("");
-			$(day_name).append('<div class="date_selected"><h3 style="background-image:none; border:none">Activities for ' + curr_day_name + ' ' + curr_month_name_short + ' ' + dp_str_pad(curr_date, 2, "0", "STR_PAD_LEFT") + ': </h3></div>');		
+			//$(day_name).append('<div class="date_selected"><h3 style="background-image:none; border:none">Activities for ' + curr_day_name + ' ' + curr_month_name_short + ' ' + dp_str_pad(curr_date, 2, "0", "STR_PAD_LEFT") + ': </h3></div>');		
 			   
 			$dp.datepicker("setDate", date_selected);
 			$(toggleDP).html(curr_month_name + " " + curr_year);
@@ -398,7 +398,7 @@
 							$(li_event).addClass("urgent");
 						}
 						
-						$(ul_list).append(li_event);
+						//$(ul_list).append(li_event);
 						
 						li_event_time = $('<div />').addClass('time');
 						if(this["allDay"]) {

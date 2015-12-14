@@ -11,17 +11,18 @@
 					</tr>
 					<?php $week_no = 0; ?>
 					<?php foreach ($recentActivities as $recentActivity): ?>
-						<tr data-id="<?php echo $recentActivity['activity_id']; ?>">
-							<?php $iter_week = date("W", strtotime($recentActivity['activity_date'])); ?>
-							<?php 
-								if($week_no == $iter_week){
-									$div = "";
-								}else{
-									$div = " border-top: 1px black solid;";
-								}
-							?>
+						<?php 
+							$iter_week = date("W", strtotime($recentActivity['activity_date'])); 
+							$timestamp = strtotime($recentActivity['activity_date']);
+							if($week_no == $iter_week){
+								$div = "";
+							}else{
+								$div = " border-top: 1px black solid;";
+							}
+						?>
+						<tr data-id="<?php echo $recentActivity['activity_id']; ?>" id="tr-<?php echo strtotime('today', $timestamp).'000';//round down to the midnight before, and match output of date finder ?>">
 							<td style="width:initial; font-family: monospace;<?php echo $div; ?>"><?php echo $iter_week ?></td>
-							<td style="width:initial; font-family: monospace;<?php echo $div; ?>"><?php echo date("D dS M y", strtotime($recentActivity['activity_date'])); ?></td>
+							<td style="width:initial; font-family: monospace;<?php echo $div; ?>"><?php echo date("D dS M y", $timestamp); ?></td>
 							<td style="width:initial;<?php echo $div; ?>"><?php echo $recentActivity['activity_name']; ?></td>
 							<?php $week_no = $iter_week; ?>
 						</tr>
@@ -80,28 +81,20 @@
 
 <script>
 $(document).on("click", ".active", function(e){
+	var timestamp = jQuery.fn.dp_calendar.getDate().getTime();
+	localStorage.setItem("selectedDate", jQuery.fn.dp_calendar.getDate());
+	var originalPos = $('#recent-table').scrollTop();//get original position of tr in table
+	$('#recent-table').scrollTop(0);//reset to top
 	
-	if(jQuery('#list h1').length == 1){
-		var activity_id = jQuery('.calendar_list li p').text();
-		localStorage.setItem("selectedDate", jQuery.fn.dp_calendar.getDate());
-		//go to activity when clicking the calendar day
-		var url = <?php echo '"http://'.$this->config->item('go_ip').'/view/activity/"'; ?> + activity_id + <?php echo '"/'.urlencode($uid).'/"'; ?>;
-		jQuery('#activity_id, #activity_id2').val(activity_id);
+	if($('#tr-' + timestamp).length == 0){
+		timestamp += 1000 * 60 *60;//add on extra hour if no match e.g. BST->GMT - might need test to check and subtract an hour 
+	}
 
-		//get title/name of activity 
-		jQuery.post( '<?php echo $this->config->item('base_url') .'activity/get'; ?>', { activity_id: activity_id }, function(data){
-			data = JSON.parse(data);
-			jQuery('#activity_title').val(data[0].activity_name);
-			jQuery('#activity_notes').val(data[0].activity_notes);
-			jQuery('#activity-date').text(data[0].activity_name);
+	var rowpos = $('#tr-' + timestamp).position(); //get pos of desired tr
+	$('#recent-table').scrollTop(originalPos);//and move back to original pos before anyone guesses what's happened
+	$('#recent-table').animate({scrollTop:rowpos.top}, 500, 'swing');//scroll smoothly to position, and then trigger the clicked event
+	$('#tr-' + timestamp).trigger("click");;
 
-			reset_strava_controls(data[0].strava_activity_id);
-		});
-
-		jQuery('#activity-container').attr('src', url);
-
-		
-	}		
 });
 
 
@@ -191,7 +184,6 @@ jQuery(document).ready(function(){
 		//get title/name of activity 
 		jQuery.post( '<?php echo $this->config->item('base_url') .'activity/get'; ?>', { activity_id: activity_id }, function(data){
 			data = JSON.parse(data);
-			console.log(data);
 			jQuery('#activity_title').val(data[0].activity_name);
 			jQuery('#activity_notes').val(data[0].activity_notes);
 			jQuery('#activity-date').text(data[0].activity_name);
@@ -203,32 +195,6 @@ jQuery(document).ready(function(){
 	})
 
 
-	//show all activities for day
-	$(document).on("click", ".urgent", function(e){//big button with date and activity name
-
-		var activity_id = jQuery(this).find('p').text();
-
-		localStorage.setItem("selectedDate", jQuery.fn.dp_calendar.getDate());
-
-		var url = <?php echo '"http://'.$this->config->item('go_ip').'/view/activity/"'; ?> + activity_id  + <?php echo '"/'.urlencode($uid).'/"'; ?>;
-		jQuery('#activity_id, #activity_id2').val(activity_id);
-
-		//get title/name of activity 
-		jQuery.post( '<?php echo $this->config->item('base_url') .'activity/get'; ?>', { activity_id: activity_id }, function(data){
-			data = JSON.parse(data);
-			console.log(data);
-			jQuery('#activity_title').val(data[0].activity_name);
-			jQuery('#activity_notes').val(data[0].activity_notes);
-			jQuery('#activity-date').text(data[0].activity_name);
-			filename = data[0].filename;
-
-			reset_strava_controls(data[0].strava_activity_id);
-		});
-		jQuery('#activity-container').attr('src', url);
-
-		
-    });
-
 	var events_array = new Array(
 		<?php
 			$html = '';
@@ -239,12 +205,7 @@ jQuery(document).ready(function(){
 				$html .= '{
 					startDate: new Date('.date_format($activityDate, 'Y, (n-1), j, G').'),
 					endDate: new Date('.date_format($activityDate, 'Y, (n-1), j, G').'),
-					//alternative method...
-					/*startDate: new Date('.date_format($activityDate, 'Y').', '. (int)(date_format($activityDate, 'm')-1) .', '.date_format($activityDate, 'd, H, i, s').'),
-					endDate: new Date('.date_format($activityDate, 'Y').', '. (int)(date_format($activityDate, 'm')-1) .', '.date_format($activityDate, 'd, H, i, s').'),*/
-					title: "'.date_format($activityDate, 'H:i').' :: '.$activity['activity_name'].' view: &raquo;",
-					description: "'.$activity['activity_id'].'"
-					},';
+				},';
 			}
 			$html = rtrim($html, ',');
 			echo $html;

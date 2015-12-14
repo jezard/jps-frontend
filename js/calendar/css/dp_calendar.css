@@ -125,7 +125,7 @@
 
 
 .dp_calendar .calendar_list {
-	min-height: 100px;
+	/*min-height: 100px;*/
 	text-align:left;
 	clear:left;
 }
