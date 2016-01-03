@@ -30,6 +30,7 @@
 			$s[$j] = $x;
 			$res .= $str[$y] ^ chr($s[($s[$i] + $s[$j]) % 256]);
 		}
+		$res = str_replace("/", "♥", $res);//stop forward slashes encoded from being passed
 		return $res;
 	}
 
