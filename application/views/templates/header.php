@@ -6,7 +6,6 @@ $CI->load->library('session');
 
 ?>
 
-<?php $loggedIn = false; ?>
 <?php $display = 'class="logged-out"'; ?>
 
 
@@ -17,14 +16,12 @@ $CI->load->library('session');
 		$url = uri_string();
 		$this->db->query("INSERT INTO recent_users (user_id, url) VALUES ('$user_id', '$url')");
 	}
-	if($this->input->cookie('s_valid_user') != "" && get_user() != ''){
-		//great
-	}elseif(($this->input->cookie('remember') != "" && $CI->session->userdata('remember')) && get_user() != ''){
+	if(get_token() != '' && get_user() != ''){
 		$url = uri_string();
 		if($url != 'login'){
-			loadUser(get_user());//prevent never logging out!
+			//
 		}else{
-			unset_user();//signout!
+			//unset_user();//signout!
 		}
 	}else{
 		unset_user();
@@ -100,7 +97,6 @@ $zopim(function() {
 	if (get_user() != "")
 	{
 		$message = "logged in as " . get_user();
-		$loggedIn = true;
 		$display = 'class="logged-in main-nav-item"';
 	}
 	  

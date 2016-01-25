@@ -76,8 +76,7 @@
 	<iframe id="activity-container" allowTransparency="true" scrolling="no"></iframe>
 </div>
 
-<?php $uid = rc4($this->config->item('rc4_cypher'), get_user()); ?>
-<?php $uid = ($uid != "") ? $uid : "unknown" ?>
+<?php $access_token = (get_token() != "") ? get_token() : "unknown" ?>
 
 <script>
 $(document).on("click", ".active", function(e){
@@ -111,7 +110,7 @@ jQuery(document).ready(function(){
 	//direct user to most recent activity or just updated
 	var filename;
 	var activity_id = <?php echo '"'.$displayActivity.'"'; ?>;
-	var url = <?php echo '"http://'.$this->config->item('go_ip').'/view/activity/"'; ?> + activity_id + <?php echo '"/'.urlencode($uid).'/"'; ?>;
+	var url = <?php echo '"http://'.$this->config->item('go_ip').'/view/activity/"'; ?> + activity_id + <?php echo '"/'.$access_token.'/"'; ?>;
 	jQuery('#activity_id, #activity_id2').val(activity_id);
 	//get title/name of activity 
 	jQuery.post( '<?php echo $this->config->item('base_url') .'activity/get'; ?>', { activity_id: activity_id }, function(data){
@@ -178,7 +177,7 @@ jQuery(document).ready(function(){
 
 	$('#recent-table tr').on("click", function(e){
 		var activity_id = $(this).data('id');
-		var url = <?php echo '"http://'.$this->config->item('go_ip').'/view/activity/"'; ?> + activity_id  + <?php echo '"/'.urlencode($uid).'/"'; ?>;
+		var url = <?php echo '"http://'.$this->config->item('go_ip').'/view/activity/"'; ?> + activity_id  + <?php echo '"/'.$access_token.'/"'; ?>;
 		jQuery('#activity_id, #activity_id2').val(activity_id);
 
 		//get title/name of activity 

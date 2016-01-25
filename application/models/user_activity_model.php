@@ -13,8 +13,8 @@ class User_activity_model extends CI_Model{
 	}
 
 	function delete($id, $email, $filename){
-		$uid = rc4($this->config->item('rc4_cypher'), $email);
-		$result = $this->db->query("DELETE FROM user_activity WHERE activity_id = '$id' LIMIT 1");
+		$uid = get_token();
+		$result = $this->db->query("DELETE FROM user_activity WHERE activity_id = '$id' LIMIT 1");//UNCOMMENT
 		if($result){
 			//also need to send a delete signal to go and create delete functionality there too.
 			$ch = curl_init("http://joulepersecond.com:8080/delete/activity/".$id."/".$uid."/".$filename);

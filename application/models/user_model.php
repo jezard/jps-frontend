@@ -50,21 +50,27 @@ class User_model extends CI_Model {
 
     	$validuser = array();
 
-    	foreach ($query->result() as $row)
-  		{
-  		   	array_push($validuser, $row->user_id);
-  		  	array_push($validuser, $row->username);
-  		   	array_push($validuser, $row->email);
-  		}
+      if ($query->num_rows() > 0){
+      	foreach ($query->result() as $row)
+    		{
+    		   	array_push($validuser, $row->user_id);
+            array_push($validuser, $row->username);
+            array_push($validuser, $row->email);
+
+            $access_token =  md5($row->email.date("U"));
+            $this->db->where('user_id', $row->user_id);
+            $this->db->update('user', array('access_token' => $access_token));
+
+            array_push($validuser, $access_token);
+    		}
+      }
 
     	return $validuser;
     }
 
      //check that a user's credentials are valid
     function validateViaSocial(){
-      //$password = $this->input->post('password');
       $email = $this->input->post('email');
-      //$password = do_hash($this->config->item('salt').$password);
 
       $this->db->where(array('email' => $email, 'verified' => 1));
       $this->db->from('user'); 
@@ -73,12 +79,22 @@ class User_model extends CI_Model {
 
       $validuser = array();
 
-      foreach ($query->result() as $row)
-      {
-          array_push($validuser, $row->user_id);
-          array_push($validuser, $row->username);
-          array_push($validuser, $row->email);
+      if ($query->num_rows() > 0){
+        foreach ($query->result() as $row)
+        {
+            array_push($validuser, $row->user_id);
+            array_push($validuser, $row->username);
+            array_push($validuser, $row->email);
+
+            $access_token =  md5($row->email.date("U"));
+            $this->db->where('user_id', $row->user_id);
+            $this->db->update('user', array('access_token' => $access_token));
+
+            array_push($validuser, $access_token);
+
+        }
       }
+
       return $validuser;
     }
 
@@ -259,7 +275,8 @@ class User_model extends CI_Model {
                         'paid_account' => $vals->paid_account,
                         'stripe_id' => $vals->stripe_id,
                         'verified'    => $vals->verified,
-                        'strava_access_token' => $vals->strava_access_token
+                        'strava_access_token' => $vals->strava_access_token,
+                        'access_token' => $vals->access_token
       );
       return $settings;
     }

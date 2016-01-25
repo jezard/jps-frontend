@@ -1,7 +1,6 @@
 <article  id="dashboard"></article>
-<?php $uid = rc4($this->config->item('rc4_cypher'), get_user()); ?>
-<?php $uid = ($uid != "") ? $uid : "unknown" ?>
-<iframe id="analysis-container" allowTransparency="true" scrolling="no" src="http://joulepersecond.com:8080/analysis/<?php echo urlencode($uid).'/'; ?>"></iframe>
+<?php $access_token = (get_token() != "") ? get_token() : "unknown" ?>
+<iframe id="analysis-container" allowTransparency="true" scrolling="no" src="http://joulepersecond.com:8080/analysis/<?php echo $access_token.'/'; ?>"></iframe>
 
 <?php
 	if(isset($_COOKIE['theme'])){
@@ -11,5 +10,5 @@
 	}
 ?>
 <script>
-  $('#dashboard').writeCapture().load("http://joulepersecond.com:8080/dashboard/<?php echo urlencode($uid).'/'.$color; ?>");
+  $('#dashboard').writeCapture().load("http://joulepersecond.com:8080/dashboard/<?php echo $access_token.'/'.$color; ?>");
 </script>

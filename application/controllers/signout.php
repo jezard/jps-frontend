@@ -10,14 +10,10 @@ class Signout extends CI_Controller {
 		{
 			delete_cookie($key, $this->config->item('site_name'),'/', '');
 		}
+		unset_user();
 
 		$this->load->helper('url');
 		redirect('/login', 'refresh');
-
-		/*if(get_user() != ""){
-			$this->load->helper('url');
-			redirect('/', 'refresh');
-		}	*/
 	}
 }
 ?>

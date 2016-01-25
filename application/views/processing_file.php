@@ -14,8 +14,7 @@
 		</div>
 	</div>
 </section>
-<?php $uid = rc4($this->config->item('rc4_cypher'), get_user()); ?>
-<?php $uid = ($uid != "") ? $uid : "unknown" ?>
+<?php $access_token = (get_token() != "") ? get_token() : "unknown" ?>
 <script type="text/javascript">
 
 //list of files, and progression
@@ -71,7 +70,7 @@ function parseFiles(){
 	}, function(data){
 		console.log(data);
 		jQuery.ajax({
-			url: "http://joulepersecond.com:8080/process/activity/" + data + <?php echo '"/'.urlencode($uid).'/"'; ?>,
+			url: "http://joulepersecond.com:8080/process/activity/" + data + <?php echo '"/'.$access_token.'/"'; ?>,
 			xhrFields: {
 		      withCredentials: true,
 		      dataType: 'jsonp'

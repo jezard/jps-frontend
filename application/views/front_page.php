@@ -169,8 +169,7 @@
                 </section>
             </div>
     	</div>
-      <?php $uid = rc4($this->config->item('rc4_cypher'), get_user()); ?>
-      <?php $uid = ($uid != "") ? $uid : "unknown" ?>
+      <?php $access_token = (get_token() != "") ? get_token() : "unknown" ?>
       <?php 
         if(isset($_COOKIE['theme'])){
           $color = $_COOKIE['theme'];
@@ -180,6 +179,6 @@
       ?>
 
       <script>
-          $('#dashboard').writeCapture().load("http://joulepersecond.com:8080/dashboard/<?php echo urlencode($uid).'/'.$color; ?>");
+          $('#dashboard').writeCapture().load("http://joulepersecond.com:8080/dashboard/<?php echo $access_token.'/'.$color; ?>");
       </script>
         

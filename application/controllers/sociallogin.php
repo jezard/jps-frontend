@@ -26,20 +26,11 @@ class Sociallogin extends CI_Controller {
 
 			if($details)
 			{
-				/*secured user cookie*/
-				$cookie = array(
-				    'name'   => 's_valid_user',
-				    'value'  => rc4($this->config->item('rc4_cypher'), $details[2]),
-				    'expire' => -100,
-				    'domain' => $this->config->item('site_name'),
-				    'prefix' => '',
-				    'secure' => false
-				);
-				$this->input->set_cookie($cookie);	
+
 
 				//set the session var
 				$is_social = true;
-				set_user($details[2], $is_social);
+				set_user($details[2], $is_social, $details[3]);
 
 				$cookie = array(
 				    'name'   => 'social_user',
