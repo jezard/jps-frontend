@@ -27,6 +27,19 @@ $CI->load->library('session');
 		unset_user();
 	}
 
+	if(!isset($_COOKIE['theme'])){
+		$cookie = array(
+		    'name'   => 'theme',
+		    'value'  => 'green',
+		    'expire' => time() + (10 * 365 * 24 * 60 * 60),
+		    'domain' => $this->config->item('site_name'),
+		    'prefix' => '',
+		    'secure' => false
+		);
+		$this->input->set_cookie($cookie);
+	}
+
+
 
 ?>
 

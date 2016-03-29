@@ -1,10 +1,6 @@
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
-<script src="http://joulepersecond.com/js/highcharts/highcharts.js"></script>
-<script src="http://joulepersecond.com/js/highcharts/highcharts-more.js"></script>
-<script src="http://joulepersecond.com/js/highcharts/modules/solid-gauge.src.js"></script>
-<script src="http://joulepersecond.com/js/highcharts/modules/exporting.js"></script>
-<script src="http://joulepersecond.com/js/highcharts/themes/jps-gray.js"></script>
+
 <div id="fb-root"></div>
 
 <script>(function(d, s, id) {
@@ -42,7 +38,7 @@
         </div>
     </div>
 </div>
-<div class="signup-cta"><a href="https://joulepersecond.com/signup" alt="Sign up!" title="Sign up">It's free, <strong>Start now</strong> &raquo;</a></div>
+<div class="signup-cta"><a href="https://joulepersecond.com/signup" alt="Sign up!" title="Sign up">Get a free or unlimited account, <strong>Start now</strong> &raquo;</a></div>
 <div class="grid grid-pad trans-bg">
     <div class="grid main-content">
         <h2 style="text-align:center">Skip the blurb and play with the <a href="#demo"><b>demo</b></a>...</h2>
