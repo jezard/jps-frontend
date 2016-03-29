@@ -112,32 +112,32 @@
                 <div style="clear:both"></div>
                
         		<section>
-                    <h1 class="mobile jps-em">This is <span class="jps-em"><span>Joule</span><span>Per</span><span>Second</span></span>!</h1>
+              <h1 class="mobile jps-em">This is <span class="jps-em"><span>Joule</span><span>Per</span><span>Second</span></span>!</h1>
         			<article class="blurb">
         				
-                        <div class="col-1-2">
-                            <div class="home-content-container">
-                                <h3 class="home-h3"><img src="<?php echo $this->config->item('base_url'); ?>/images/h3-icons/social-gray.png" alt="icon" /><span class="fine">Let's be friends</span></h3>
-                                <div class="feature-box">
-                                    <div class="fb-comments" data-href="http://joulepersecond.com" data-numposts="5" data-colorscheme="light" data-width="100%"></div>
-                                    
-                                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                                    <div class="addthis_horizontal_follow_toolbox"></div>
-                                </div>
-                            </div>
+                <div class="col-1-2">
+                    <div class="home-content-container">
+                        <h3 class="home-h3"><img src="<?php echo $this->config->item('base_url'); ?>/images/h3-icons/social-gray.png" alt="icon" /><span class="fine">Let's be friends</span></h3>
+                        <div class="feature-box">
+                            <div class="fb-comments" data-href="http://joulepersecond.com" data-numposts="5" data-colorscheme="light" data-width="100%"></div>
+                            
+                            <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                            <div class="addthis_horizontal_follow_toolbox"></div>
+                        </div>
+                    </div>
         				</div>
 
-                        <div class="col-1-2">
-                            <div class="home-content-container">
-                                <h3 class="home-h3"><img src="<?php echo $this->config->item('base_url'); ?>/images/h3-icons/wt-logo-gray.png" alt="icon" /><span class="fine">Powered by</span></h3>
-                                <div class="feature-box">
-                                    <div>&nbsp;</div>
-                                    <a href="http://wizard.technology"><img src="<?php echo $this->config->item('base_url'); ?>/images/wt-logo.png" alt="Wizard Technology logo" width="130"/></a>
+                <div class="col-1-2">
+                    <div class="home-content-container">
+                        <h3 class="home-h3"><img src="<?php echo $this->config->item('base_url'); ?>/images/h3-icons/wt-logo-gray.png" alt="icon" /><span class="fine">Powered by</span></h3>
+                        <div class="feature-box">
+                            <div>&nbsp;</div>
+                            <a href="http://wizard.technology"><img src="<?php echo $this->config->item('base_url'); ?>/images/wt-logo.png" alt="Wizard Technology logo" width="130"/></a>
 
-                                    <p><a href="<?php echo $this->config->item('base_url'); ?>"><span class="jps-em"><span>Joule</span><span>Per</span><span>Second</span></span></a> is designed and engineered by Jeremy at <a href="http://wizard.technology">Wizard&nbsp;Technology</a>.</p>
-                                </div>
-                            </div>
+                            <p><a href="<?php echo $this->config->item('base_url'); ?>"><span class="jps-em"><span>Joule</span><span>Per</span><span>Second</span></span></a> is designed and engineered by Jeremy at <a href="http://wizard.technology">Wizard&nbsp;Technology</a>.</p>
                         </div>
+                    </div>
+                </div>
         			</article>
         		</section>
 
