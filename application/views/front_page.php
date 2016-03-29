@@ -49,9 +49,9 @@
         <div style="margin:20px">
             <div class="content-container">
                 <section class="main-features">
-                    <div class="col-1-3 main-feature"><img src="/images/fp-icons/integration.png" alt="Compliments other cycling apps" /><aside>Connects with <span class="strava">STRAVA</span></aside></div>
-                    <div class="col-1-3 main-feature"><img src="/images/fp-icons/easy.png" alt="Simple yet Powerful" /><aside>Simple yet Powerful</aside></div>
-                    <div class="col-1-3 main-feature"><img src="/images/fp-icons/access.png" alt="" /><aside>Cloud based app</aside></div>
+                    <div class="col-1-3 main-feature"><img src="/images/fp-icons/integration.png" alt="Compliments other cycling apps" /><aside>Connect with <span class="strava">STRAVA</span></aside></div>
+                    <div class="col-1-3 main-feature"><img src="/images/fp-icons/powerful.png" alt="Simple yet Powerful" /><aside>Powerful analytics</aside></div>
+                    <div class="col-1-3 main-feature"><img src="/images/fp-icons/access.png" alt="" /><aside>Cloud based</aside></div>
                 </section>
                 <section>
                     <article class="the-blurb">
