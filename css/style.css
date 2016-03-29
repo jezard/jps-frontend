@@ -1426,6 +1426,9 @@ aside.intro{
 .main-feature aside{
 	margin: 20px;
 }
+.main-feature img{
+	max-width: 33%;
+}
 .main-features{
 	margin-bottom: 30px;
   	overflow: hidden;
