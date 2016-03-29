@@ -59,7 +59,7 @@
                     <article class="the-blurb">
                         <div class="col-1-2">
                             <h3>About <span class="jps-em"><span>Joule</span><span>Per</span><span>Second</span></span></h3>
-                            <p><span class="jps-em"><span>Joule</span><span>Per</span><span>Second</span></span> JoulePerSecond is a tool for racing cyclists; those participating in power based training approaches. <br>Objectives include:</p>
+                            <p><span class="jps-em"><span>Joule</span><span>Per</span><span>Second</span></span> JoulePerSecond is a tool for racing cyclists; those participating in power based training approaches. Objectives include:</p>
                             <ul>
                               <li>Show performance changes over shorter and longer periods of time.</li>
                               <li>Allow the user to visualize what training works and what doesn’t in a relatively short time period – we all respond differently to training.</li>
@@ -96,9 +96,9 @@
                               <li>Training  Load vs Duration, plots weekly cumulative (or monthly when more than 366 days selected). </li>
                               <li>Heart rate by Zone and Power by Zone charts show cumulative weekly/monthly (as above) breakdown of time in zones, I want to create user settable zones at some point soon &mdash; for now they are based on popular calculations from threshold power and heart rate values. </li>
                             </ol>
-                            <p>The main purpose of <span class="jps-em"><span>Joule</span><span>Per</span><span>Second</span></span> is not analysis on a per-ride basis, it comes equipped with some useful tools:</p>
+                            <p>The main purpose of <span class="jps-em"><span>Joule</span><span>Per</span><span>Second</span></span> is not analysis on a per-ride basis, but it comes equipped with some useful tools:</p>
                             <ol>
-                              <li>Easy-to-navigate training diary - add notes and record how you feel you performed and felt from predefined, analysable metrics.</li>
+                              <li>Easy-to-navigate training diary - add notes and record how you feel you performed and felt. Select from predefined, analysable metrics.</li>
                               <li>Ride summary including: duration, av. power/hr/cadence, intensity %, Training load, work done/energy used (Power based value take precedence over Heart based value). </li>
                               <li>Lap summaries including: duration, av. power/hr/cadence. </li>
                               <li>Intensity %, Power and Heart rate quick view dials plus time spent in Zones.</li>
