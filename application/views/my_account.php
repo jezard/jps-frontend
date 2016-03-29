@@ -4,7 +4,7 @@
 	<div class="standard-ride-container">
 		<input type="hidden" name="id[]" value="0">
 		<input class="marked-deleted" type="hidden" name="marked_deleted[]" value="0">
-		<label>Ride Label:</label>
+		<label>Tag:</label>
 		<input type="text" name="ride_label[]" value="" maxlength="50" size="50" placeholder="e.g. TrainerRoad Z2 &amp; 4 Sweet Spot (1:04)" >
 		<select name="in_or_out[]">
 			<option value="in">Indoor / Trainer</option>
@@ -14,7 +14,7 @@
 			<option value="race">Race</option>
 			<option value="train">Training ride</option>
 		<select>
-		<div class="delete-standard-ride">Remove filter [x]</div>
+		<div class="delete-standard-ride">Remove tag [x]</div>
 	</div>
 
 '; ?>
@@ -24,7 +24,7 @@
 		<div class="standard-ride-container">
 			<input class="standard_ride_id" type="hidden" name="id[]" value="'.$id.'">
 			<input class="marked-deleted" type="hidden" name="marked_deleted[]" value="0">
-			<label>Ride Label:</label>
+			<label>Tag:</label>
 			<input type="text" name="ride_label[]" value="'.$ride_label.'" maxlength="50" size="50" placeholder="e.g. TrainerRoad Z2 &amp; 4 Sweet Spot (1:04)" >
 			<select name="in_or_out[]">
 				<option value="in" '.($in_or_out == "in"  ? " selected " : "" ).'>Indoor / Trainer</option>
@@ -34,7 +34,7 @@
 				<option value="race" '.($race_or_train == "race"  ?  " selected " : "" ).'>Race</option>
 				<option value="train" '.($race_or_train == "train"  ?  " selected " : "" ).'>Training ride</option>
 			<select>
-			<div class="delete-standard-ride">Remove filter [x]</div>
+			<div class="delete-standard-ride">Remove tag [x]</div>
 		</div>';
 		return $html;
 	}
@@ -363,12 +363,12 @@
 			</div>
 
 			<div class="section-ln set-rides">
-				<h2>My standard rides</h2>
+				<h2>Ride tags</h2>
 				<div class="col-1-2">
-					<p>Standard rides make it much easier to filter and compare performance over time when repeating workouts (by filtering out other rides). Works well with TrainerRoad and similar training setups:</p>
+					<p>Tags make it much easier to filter and compare performance over time when repeating workouts (by filtering out other rides). Works well with TrainerRoad and similar training setups:</p>
 				</div>
 				<div class="col-1-2">
-					<p>Of course - you can also use the advanced filter for comparsion of other similar rides or races</p>
+					<p>You can also use the advanced filter for comparsion of other similar rides or races</p>
 				</div>
 				<div class="clear:both"></div>
 				<div class="col-1-1" id="standard-rides">
@@ -382,7 +382,7 @@
 					<?php if($count == 0) echo $standard_ride_html; ?>
 				</div>
 				<div style="clear:both"></div>
-				<div id="add-standard-ride">Create new filter [+]</div>
+				<div id="add-standard-ride">Create new tag [+]</div>
 				<button class="btn-default" type="submit"><b>UPDATE ALL SETTINGS »<b></b></b></button>
 			</div>
 

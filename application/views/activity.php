@@ -36,9 +36,9 @@
 			<div class="basic-form">
 				<?php echo form_open('activity', array('id' => 'frm_activity')); ?>
 					<input type="hidden" id="activity_id" name="activity_id" value="">
-					<label for="activity_title">Standard Rides:</label>
+					<label for="activity_title">Tag:</label>
 					<select id="standard-ride-select" name="standard_ride_id">
-						<option value="0" data-ride_label="[activity name]">Select a standard ride to copy options</option>
+						<option value="0" data-ride_label="[activity name]">Select a tag to copy options</option>
 						<?php 
 							foreach ($standard_rides as $standard_ride) {
 								echo '<option data-ride_label="'.$standard_ride['ride_label'].'" data-in_or_out="'.$standard_ride['in_or_out'].'" data-race_or_train="'.$standard_ride['race_or_train'].'" value="'.$standard_ride['id'].'">'.$standard_ride['ride_label'].'</option>';
