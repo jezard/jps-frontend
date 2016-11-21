@@ -464,7 +464,7 @@
 							if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
 							    $perlscript_file = escapeshellcmd("C:/Users/Administrator/git-projects/jps-fileconverter/fit2tcx.pl $infile $outfile");
 							} else {
-							    $perlscript_file = "perl /var/www/jps-fileconverter/fit2tcx $infile $outfile";
+							    $perlscript_file = "perl /var/www/html/sites/jps-fileconverter/fit2tcx $infile $outfile";
 							}
 
 							$perl_return = shell_exec($perlscript_file);
