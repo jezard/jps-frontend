@@ -184,7 +184,7 @@ class Process extends CI_Controller {
 			//detect os for dev mainly
 			if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
 			    //create the CQL filepath
-				$CQLfilename = 'C:/Users/Administrator/git-projects/jps-frontend/temp/'.$_SESSION['ActivityKey'].'.cql';	
+				$CQLfilename = 'C:/Users/Administrator/git-projects/joulepersecond.com/temp/'.$_SESSION['ActivityKey'].'.cql';	
 			} else {
 			    //set paths
 				$CQLfilename = '/var/www/html/sites/jps-frontend/temp/'.$_SESSION['ActivityKey'].'.cql';
