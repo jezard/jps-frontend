@@ -14,3 +14,5 @@
 /temp/*
 ./index.php
 supervisord.conf
+*.DS_Store
+*.php.swp
